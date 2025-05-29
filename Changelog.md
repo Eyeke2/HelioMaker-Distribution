@@ -1,3 +1,10 @@
+Version 1.3.0
+
+* Improved reliability of surface feature tracking
+* Added surface tracking configuration option in Advanced Settings for finer control
+* Refined guiding lock position handling in the user interface
+* Minor bug fixes and stability improvements
+
 Version 1.2.5
 
 * Maintenance release addressing launch failure if the required Microsoft Visual C++ Redistributable is missing
