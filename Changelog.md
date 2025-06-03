@@ -1,3 +1,6 @@
+Version 1.3.1
+* Improved handling of guiding pauses in PHD2 (requires PHD2 v2.6.13dev7-solar.3 or later)
+
 Version 1.3.0
 
 * Improved reliability of surface feature tracking
