@@ -1,8 +1,13 @@
+Version 1.3.3
+
+* Updated help documentation for daytime polar alignment
+* Bug fixes and stability improvements
+
 Version 1.3.1
+
 * Improved handling of guiding pauses in PHD2 (requires PHD2 v2.6.13dev7-solar.3 or later)
 
 Version 1.3.0
-
 * Improved reliability of surface feature tracking
 * Added surface tracking configuration option in Advanced Settings for finer control
 * Refined guiding lock position handling in the user interface
@@ -24,4 +29,3 @@ Verion 1.2.4
 Version 1.0.8
 
 * Added Microsoft 2015-2022 Redistributable x86 Runtime (14.42.34433.0) as part of installer
- 
