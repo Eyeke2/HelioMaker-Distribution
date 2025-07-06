@@ -1,3 +1,9 @@
+Version 1.3.5
+
+* Added support for MONO12 camera format
+* Includes Microsoft Visual C++ Redistributable v14.44.35211.0
+* Bug fixes and stability improvements
+
 Version 1.3.3
 
 * Updated help documentation for daytime polar alignment
