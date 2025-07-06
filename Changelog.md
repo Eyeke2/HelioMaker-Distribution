@@ -1,3 +1,6 @@
+Version 1.3.4
+* Temporary
+
 Version 1.3.3
 
 * Updated help documentation for daytime polar alignment
