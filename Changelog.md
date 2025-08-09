@@ -1,3 +1,10 @@
+Version 1.3.6
+* Added display of remaining free disk space
+* Added display of completed cycles during a sequence
+* Increased timeout for retrieving the list of PHD2 profiles
+* Added an error message if no mount is selected in the PHD2 profile
+* Updated help documentation for daytime polar alignment
+
 Version 1.3.5
 
 * Added support for MONO12 camera format
