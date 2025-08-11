@@ -1,3 +1,6 @@
+Version 1.3.7
+* Updated and corrected PHD2 calibration help
+
 Version 1.3.6
 * Added display of remaining free disk space
 * Added display of completed cycles during a sequence
@@ -8,7 +11,7 @@ Version 1.3.6
 Version 1.3.5
 
 * Added support for MONO12 camera format
-* Includes Microsoft Visual C++ Redistributable v14.44.35211.0
+* Bundled Microsoft Visual C++ Redistributable v14.44.35211.0
 * Bug fixes and stability improvements
 
 Version 1.3.3
