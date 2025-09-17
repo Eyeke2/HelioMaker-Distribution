@@ -1,3 +1,8 @@
+Version 1.4.0
+* Extended code signing certificate validity by three years
+* Set the default installation folder to "Program Files" instead of the legacy "Program Files (x86)" path
+* Bug fixes and stability improvements
+
 Version 1.3.9
 * Automatically update the PHD2 lock position to the center of the detected object when detection settings change in Find & Track (Full Disk/Crescent and Planetary modes)
 * Recommend updating PHD2 to v2.6.13dev7-solar.rc5
