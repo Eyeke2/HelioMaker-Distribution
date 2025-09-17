@@ -1,4 +1,4 @@
-Version 1.3.8
+Version 1.3.9
 * Automatically update the PHD2 lock position to the center of the detected object when detection settings change in Find & Track (Full Disk/Crescent and Planetary modes)
 * Recommend updating PHD2 to v2.6.13dev7-solar.rc5
 
