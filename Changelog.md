@@ -1,3 +1,7 @@
+Version 1.4.1
+* Fixed an issue that could deactivate license during a cloud infrastructure disruption
+* Bug fixes and stability improvements
+
 Version 1.4.0
 * Extended code signing certificate validity by three years
 * Set the default installation folder to "Program Files" instead of the legacy "Program Files (x86)" path
