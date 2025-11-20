@@ -1,3 +1,11 @@
+Version 1.4.2
+* Fixed default capture folder path
+* Create capture folder if it doesn’t exist
+* Added ST-4 guiding support with Virtual Planetary Camera (experimental, requires PHD2 v2.6.13dev8-solar.2)
+* Resolved an issue where SharpCap overlays appeared in frames delivered to HelioMaker;
+  HM now receives calibrated images only. Requires SharpCap v4.1.13651.0 or later.
+* Updated bundled Microsoft Visual C++ Redistributable to 14.50.35710.0
+
 Version 1.4.1
 * Fixed an issue that could deactivate license during a cloud infrastructure disruption
 * Bug fixes and stability improvements
