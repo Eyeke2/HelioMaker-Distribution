@@ -171,5 +171,5 @@ Important Notes:
 
 
 Copyright Notice:
-Copyright (©) 2024-2025 Leo Shatz
+Copyright (©) 2024-2026 Leo Shatz
 All rights reserved.
