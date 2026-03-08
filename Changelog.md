@@ -1,8 +1,10 @@
-Version 1.4.3
+Version 1.4.4
 * Fixed Lucky Imaging (Live Stack) mode
 * Bug fixes and stability improvements
 * Updated the bundled Microsoft Visual C++ Redistributable to version 14.50.35719.0
 * Enhanced license security and updated server infrastructure
+* Improved update reliability in some cases where antivirus software could interfere with automatic updates.
+  Also enhanced the visual appearance of the upgrade process with a new background image
 
 Version 1.4.2
 * Fixed default capture folder path
