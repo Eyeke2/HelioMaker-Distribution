@@ -1,3 +1,20 @@
+Version 1.6.0
+
+* Added License Management PIN protection for HelioMaker license activations, providing an extra security layer beyond the license key and email address
+* Updated the License Activations Manager user interface with dedicated Activate and Deactivate buttons and improved activation status presentation for the current machine
+* Improved overall user interface responsiveness
+* Menu item descriptions now display correctly in the bottom status line while navigating the Setup and Help menus
+* Added an Exit command to the Setup menu and improved protection against inadvertent program closure
+* Added `F1` and context help shortcuts to the Dynamic Tracking and Find & Track dialogs
+* Bug fixes and stability improvements
+
+* Special notice for all users: Support for the legacy license activation management interface used by older HelioMaker versions is scheduled to end on August 1, 2026.
+  After this date, older versions of HelioMaker may no longer be able to retrieve and manage existing license activations. This change does not affect the validity of your
+  existing license activations themselves - it only affects the legacy activation management function in older versions. To continue using License Activations Manager,
+  please update to version 1.6.0 or later and set up a License Management PIN.
+* The license terms and EULA statements have also been updated in this release, so please read them carefully.
+  Installing this update constitutes agreement to the applicable license terms.
+
 Version 1.5.0
 
 * Added Dynamic Target Tracking for real-time tracking rate updates of the Sun, Moon, and major solar system bodies
@@ -78,7 +95,7 @@ Version 1.2.5
 
 * Maintenance release addressing launch failure if the required Microsoft Visual C++ Redistributable is missing
 
-Verion 1.2.4
+Version 1.2.4
 
 * Changed architecture to 64-bit
 * Added automatic version update checking
@@ -90,4 +107,3 @@ Verion 1.2.4
 Version 1.0.8
 
 * Added Microsoft 2015-2022 Redistributable x86 Runtime (14.42.34433.0) as part of installer
-
