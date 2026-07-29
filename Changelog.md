@@ -1,3 +1,17 @@
+Version 2.0.5
+
+* Added the new **Solar Eclipse Planner and Imaging Tool**, the centerpiece of HelioMaker 2.0. It provides site-specific eclipse planning, detailed contact and phase timing, draft and final imaging plans, simulation and rehearsal, comprehensive pre-flight checks, and automated SharpCap capture through the partial phases, thin crescents, diamond rings and totality
+* Eclipse imaging includes coordinated camera-mode and exposure changes, PHD2 guiding and recovery, planned refocusing, solar-filter and spoken cues, live phase and capture telemetry, shutter-sound feedback, storage protection, and safeguards for resuming or restarting a session
+* Added the new **Ephemeris Planner** for finding and preparing observing windows using JPL Horizons and locally cached ephemeris data, with altitude plots, observer-local time handling, lunar phase and magnitude information, target history, and safety-checked mount slewing
+* Extended Dynamic Target Tracking and guiding to comets, asteroids, minor solar-system bodies and natural satellites, including support for custom mount rates and PHD2 lock-position shifting where appropriate
+* Added the **SHG Scanner** for automated solar spectroheliograph scans in right ascension or declination, with SharpCap capture control, guiding coordination, mount-return handling and movement safety checks
+* Added automatic SharpCap refocusing, sequence pause and resume coordination, and guiding recovery after refocusing or other planned interruptions
+* Significantly improved Full Disk/Crescent and Surface detection, reacquisition and stability reporting. HelioMaker detection is now available consistently with supported physical PHD2 guide cameras as well as shared-camera configurations
+* Added a focal-length calculator and a focal-length estimator based on measured Sun or Moon size, together with new UTC time-checking and synchronization tools
+* Modernized dialogs, status indicators, collapsible panels, artwork and high-DPI presentation, while reducing user-interface flicker and improving responsiveness
+* Improved license renewal and activation management, encrypted locally stored license data, expanded expiry reporting, and refined license-management dialogs
+* Numerous improvements to stability, detection algorithms, mount and PHD2 control, SharpCap communication, shutdown handling, error recovery and diagnostic reporting
+
 Version 1.6.0
 
 * Added License Management PIN protection for HelioMaker license activations, providing an extra security layer beyond the license key and email address
