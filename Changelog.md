@@ -1,3 +1,13 @@
+Version 2.0.6
+
+* Added a **timeline preview** to the Solar Eclipse Planner. Play the selected eclipse and watch the simulated view, cursor readout and contact markers sweep the whole timeline, slowing automatically around second and third contact so the diamond ring, Baily's beads and totality are easy to follow
+* The enlarged simulation view now stays open while the preview plays, so the entire eclipse can be watched at the larger size
+* Smoother and sharper eclipse simulation. The Sun and Moon now move fluidly instead of stepping, limb edges are cleaner, and Baily's beads render as tighter, more distinct points
+* The simulation now sets behind a horizon. For an eclipse whose contacts fall below the horizon, the Sun and Moon sink out of sight at zero altitude and the sky goes to twilight, instead of the view continuing to show an eclipse that cannot be seen from your site
+* Fixed the mouse-wheel controls in **Find & Track**. On some systems they did nothing at all, depending on the Windows "scroll inactive windows" mouse setting. Resizing the search zone and adjusting the size lock now respond wherever the pointer is. The crescent detection actions are also mutually exclusive now, so the intended one is always the one applied
+* Fixed button and icon scaling in the Solar Eclipse Planner on high-DPI displays. The lock, undo and timeline preview buttons no longer appear oversized, and their artwork is sharp and sits correctly inside the button
+* Clearer guidance when opening the Ephemeris Planner or Solar Eclipse Planner without an observer location, explaining how the site is read from the mount
+
 Version 2.0.5
 
 * Added the new **Solar Eclipse Planner and Imaging Tool**, the centerpiece of HelioMaker 2.0. It provides site-specific eclipse planning, detailed contact and phase timing, draft and final imaging plans, simulation and rehearsal, comprehensive pre-flight checks, and automated SharpCap capture through the partial phases, thin crescents, diamond rings and totality
