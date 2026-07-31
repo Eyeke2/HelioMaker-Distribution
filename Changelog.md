@@ -1,3 +1,28 @@
+Version 2.0.7
+
+* Atmospheric refraction is now a single **Apply standard atmospheric refraction** setting in Plan preferences, replacing the temperature and pressure controls that were in the pre-flight. Refraction shifts the contact times, so the setting is saved with the plan and is on by default; changing it re-solves the contacts and refits every phase to its new window. The pre-flight shows the current choice as a readout
+* The solar filter density list now offers **ND 5.3, 5.6 and 5.9** for a certified solar filter with extra neutral density stacked behind it, one, two and three stops denser than ND 5.0 film. Select the total density of the stack when your rig still overexposes the disk at its shortest usable exposure, instead of shortening the exposure below about a millisecond and paying for it in noise
+* The eclipse pre-flight checklist can now be hidden from its summary banner, so the arm and cancel buttons stay within reach on a short screen. The go/no-go verdict stays visible while the checks are collapsed
+* Eclipse capture is considerably more resilient around the critical phases, recovering from lost capture commands and from the live view and still image switches either side of totality, so a single dropped instruction no longer costs a phase
+* Fixed **Finish, then switch** at a phase boundary while capturing in live view. A recording that was still completing at the boundary could be cancelled as though it had overrun, leaving its frames set aside for review instead of being saved normally
+* Fixed a rounding error in the phase timing after the eclipse
+* Fixed license, clock and update notices going quiet for the rest of the session after an update was agreed to and the exit was then cancelled, for example because an eclipse run was in progress
+* Fixed notices being lost when the startup splash screen was dismissed with a click rather than left to close on its own
+* The startup splash screen now stays up for its first three seconds instead of vanishing on a stray click or keypress, so a window opening behind it is no longer dismissed by accident
+* Fixed the guiding camera name in Plan preferences keeping the previous value after switching between a physical guiding camera and a shared camera
+* The warning about a phase overrunning into the next one now measures live view correctly. A run of equal short exposures is recorded as a single file and finishes as a whole, which the estimate previously counted as one frame
+* Updates and unrequested pop-ups are now blocked outright from 12 hours before your eclipse until 12 hours after it. Nothing can restart HelioMaker or change the system clock across eclipse day, and a notice that would have arrived in that window waits until it has passed. The tools you open yourself, including the pre-flight clock check, are unaffected
+* Installing an update no longer asks you to confirm the exit a second time, nor about mount tracking rates. Confirming the update is taken as your answer, and the mount keeps the tracking rate it is already running
+* The update installer now starts only once HelioMaker has fully closed, rather than alongside the shutdown, so it can no longer begin replacing files while the application is still using them
+* Updates are no longer offered while a sequence, an eclipse run, a scan or the eclipse pre-flight is in progress, so a capture cannot be interrupted by an update notice. A notice that arrives at a busy moment now waits for a quiet one instead of opening on top of another window
+* The Clock sync tool now says when the system clock is too far out for it to correct, instead of requesting administrator rights and then failing. It corrects drift of up to a day; a larger difference is set in Windows time settings
+* Guiding and focus now read the same way in both eclipse console sizes. Each occupies a full-width bar with its own icon, and both stay on screen for the whole run rather than one disappearing when nothing is scheduled
+* A mount that is parked, stopped or slewing is now reported in red as the leading fact on the guiding bar, for example **Mount parked, waiting for unpark**. Guiding cannot run at all until the mount tracks again, so the console no longer leads with what the plan asked for and buries the reason nothing can guide
+* Notices that arrive on their own now wait for a quiet moment instead of opening on top of a window you already have open. This covers the mount altitude safety stop, the cached ephemeris warning, PHD2 calibration results and scan completion. Where the fact is already on screen, as with a failed slew, the status line carries it rather than a pop-up. The safety stop itself is never delayed, only its explanation
+* Fixed the **Overrun** setting in the phase editor cutting its longer choice short
+* HelioMaker now closes reliably while a background lookup is still running. Time zone, clock verification and comet magnitude lookups against a slow or unreachable network no longer delay or block shutdown
+* Corrected eclipse run summaries and timing reports. A run that captured nothing, stopped early, lost timing records or ended with a failed capture phase can no longer be presented as a successful run with perfect timing; phases already past when the run was armed remain neutral context rather than false failures
+
 Version 2.0.6
 
 * Added a **timeline preview** to the Solar Eclipse Planner. Play the selected eclipse and watch the simulated view, cursor readout and contact markers sweep the whole timeline, slowing automatically around second and third contact so the diamond ring, Baily's beads and totality are easy to follow
