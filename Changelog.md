@@ -1,3 +1,7 @@
+Version 2.0.10
+
+* Bug fixes and stability improvements
+
 Version 2.0.9
 
 * Fixed conversion of eclipse SER recordings stored in nested SharpCap folders. Failed or unfinished conversion no longer remains busy indefinitely; original recordings are kept safely for another recovery attempt
