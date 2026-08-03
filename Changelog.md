@@ -1,4 +1,12 @@
+Version 2.0.9
+
+* Fixed conversion of eclipse SER recordings stored in nested SharpCap folders. Failed or unfinished conversion no longer remains busy indefinitely; original recordings are kept safely for another recovery attempt
+* Improved the detailed eclipse timing report with a concise guiding summary and a plot of guide deviations from the PHD2 lock position
+* Plan preferences no longer asks for a manual live-capture-overhead value; the System benchmark measures and applies it automatically
+* Bug fixes and stability improvements
+
 Version 2.0.8
+
 * Before you install this update:
 To allow the update to complete smoothly, first disconnect HelioMaker from SharpCap and
 PHD2, set the mount tracking rate you want in the prompt you may see when disconnecting
@@ -11,20 +19,17 @@ solar guiding, while eclipse imaging continues independently
 the critical alarm, restarts SharpCap, restores the eclipse camera settings and resumes the
 remaining capture window
 * Critical audio alarms now draw attention to an unexpected PHD2 or SharpCap shutdown or
-connection loss during a live eclipse run. They follow the plan's <b>Audio cues</b> setting,
+connection loss during a live eclipse run. They follow the plan's **Audio cues** setting,
 can be previewed from Plan preferences, and cannot interrupt spoken eclipse safety cues
-* Atmospheric refraction is now a single <b>Apply standard atmospheric refraction</b> setting
+* Atmospheric refraction is now a single **Apply standard atmospheric refraction** setting
 in Plan preferences. Refraction shifts the contact times, so the setting is saved with the
 plan and is on by default
-* The solar filter density list now offers <b>ND 5.3, 5.6 and 5.9</b> for a certified solar
+* The solar filter density list now offers **ND 5.3, 5.6 and 5.9** for a certified solar
 filter with extra neutral density stacked behind it. Select the total density of the stack
 when your rig still overexposes the disk at its shortest usable exposure
 * Updates and unrequested pop-ups are blocked from 12 hours before your eclipse until 12
 hours after it, so nothing can restart HelioMaker or change the system clock across eclipse
 day. The tools you open yourself are unaffected
-* Bug fixes and stability improvements
-* Eclipse capture is considerably more resilient around the critical phases
-* Corrected eclipse run summaries and timing reports.
 * Bug fixes and stability improvements
 
 Version 2.0.6
