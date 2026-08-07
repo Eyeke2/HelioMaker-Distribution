@@ -1,3 +1,20 @@
+Version 2.0.12
+
+* Annular and partial eclipses are now planned properly in their own right, instead of inheriting behaviour designed for totality. Their central phase has its own shot spacing and its own width, a partial eclipse gets a central phase at all, and guiding, focusing, capture mode and the camera benchmark are all available for these eclipses
+* Eye-safety and solar-filter wording now follows the eclipse type. On an annular or partial eclipse the filter never comes off, so HelioMaker no longer shows filter-removal instructions, countdowns or timeline markings on those plans, and keeps the filter and eye-protection reminders visible for the whole event
+* Audio cues now work for every eclipse type. Annular and partial runs play a single spoken prompt shortly before annularity or maximum eclipse, which announces the central phase and confirms that the filter stays on
+* Automatic refocus before the central phase is now available for annular and partial eclipses as well as total ones
+* All shot intervals are now shown in seconds throughout the planner, and requested and scheduled cycle counts are stated separately when a phase is set to repeat more times than it has room for
+* Camera performance measurements are now kept per machine and follow your camera rather than a particular eclipse plan
+* The run console keeps **Stop run** always reachable, and the end-of-run summary leads with a single result: frames captured against frames planned
+* Shutter feedback now sounds through the central phase, and simulated rehearsals make the same sounds as a real run
+* Dynamic Tracking now shows a live indicator in the main window while it is actually driving the mount
+* A live eclipse run cannot be armed more than 12 hours before the eclipse, and that refusal cannot be overridden
+* Fixed conversion of colour live-view recordings into FITS image sets
+* Rehearsals on the eclipse simulator now behave like a real camera, taking each frame at its scheduled moment. The run console no longer pauses at phase boundaries, and rehearsal frame counts are honest
+* Pre-flight now blocks a run whose camera frames are too large for Sun detection and guiding, and says to use binning or a smaller capture area
+* Bug fixes and stability improvements
+
 Version 2.0.10
 
 * Bug fixes and stability improvements
