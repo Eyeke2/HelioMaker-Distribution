@@ -1,3 +1,8 @@
+Version 2.0.14
+
+* Added the Lunar Eclipse Planner (Early Preview). It searches a site and date window for visible lunar eclipses
+* Bug fixes and stability improvements
+
 Version 2.0.12
 
 * Annular and partial eclipses are now planned properly in their own right, instead of inheriting behaviour designed for totality. Their central phase has its own shot spacing and its own width, a partial eclipse gets a central phase at all, and guiding, focusing, capture mode and the camera benchmark are all available for these eclipses
