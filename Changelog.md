@@ -1,3 +1,10 @@
+Version 2.0.16
+
+* The **Lunar Eclipse Planner remains an Early Preview**. It is unfinished, may contain bugs, and is offered as-is for evaluation
+* Expanded lunar-eclipse planning with phase-by-phase exposure and guiding controls, automatic partial and deep-umbra HDR brackets, plan locking, draft/final plans, and file import/export
+* Added real-time lunar scheduling based on the brightness and altitude at each planned capture, with Live View and Still capture, shared or separate guiding cameras, and simulated PHD2 guide frames
+* Bug fixes and stability improvements
+
 Version 2.0.14
 
 * Added the Lunar Eclipse Planner (Early Preview). It searches a site and date window for visible lunar eclipses
