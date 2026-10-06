@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 430" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    .axis{stroke:#58697f;stroke-width:2;}
+    .tick{stroke:#58697f;stroke-width:2;}
+    .contact{fill:#142c4e;font-size:14px;font-weight:bold;text-anchor:middle;}
+    .clab{fill:#586980;font-size:11px;text-anchor:middle;}
+    .partial{fill:#e9e2d2;}
+    .total{fill:#20304a;}
+    .filterband{fill:#ffb74d;stroke:#e59a2b;stroke-width:1;}
+    .bandlab{fill:#5a3a00;font-size:11px;font-weight:bold;text-anchor:middle;}
+    .still{fill:#425470;}
+    .cueline{stroke:#8a5a00;stroke-width:1.5;stroke-dasharray:4 3;}
+    .cueflag{fill:#8a5a00;font-size:11.5px;font-weight:bold;text-anchor:middle;}
+    .cuesub{fill:#8a5a00;font-size:10.5px;text-anchor:middle;}
+    .plab{font-size:12.5px;font-weight:bold;text-anchor:middle;}
+    .leg{fill:#162234;font-size:11.5px;font-weight:bold;}
+    .note{fill:#586980;font-size:11px;font-style:italic;}
+    .mode{fill:#1e874b;font-size:12.5px;font-weight:bold;}
+  </style>
+
+  <text x="12" y="24" fill="#162234" font-size="16px" font-weight="bold">One total eclipse, as the run console sees it: <tspan class="mode">Safe mode</tspan></text>
+  <text x="12" y="41" class="note">Time axis not to scale: the partial phases last over an hour, totality only minutes.</text>
+
+  <!-- cue flags -->
+  <line class="cueline" x1="300" y1="98" x2="300" y2="152"/>
+  <text class="cueflag" x="300" y="72">Cue: totality is coming</text>
+  <text class="cuesub"  x="300" y="86">about 90 s before C2</text>
+
+  <line class="cueline" x1="432" y1="126" x2="432" y2="152"/>
+  <text class="cueflag" x="432" y="104">Cue: get ready to REMOVE</text>
+  <text class="cuesub"  x="432" y="118">when the disc is fully covered</text>
+
+  <line class="cueline" x1="600" y1="98" x2="600" y2="152"/>
+  <text class="cueflag" x="600" y="72">Cue: get ready to REPLACE</text>
+  <text class="cuesub"  x="600" y="86">now, before the first bead</text>
+
+  <!-- filter-off band: Safe mode insets from the contacts (conservative) -->
+  <rect class="filterband" x="452" y="158" width="176" height="18" rx="3"/>
+  <text class="bandlab" x="540" y="171">FILTER OFF: totality only</text>
+
+  <!-- phase bands -->
+  <rect class="partial" x="60"  y="184" width="380" height="34"/>
+  <rect class="total"   x="440" y="184" width="200" height="34"/>
+  <rect class="partial" x="640" y="184" width="330" height="34"/>
+  <text class="plab" x="250" y="206" fill="#6b6248">Partial · filter ON</text>
+  <text class="plab" x="540" y="206" fill="#cee0f4">TOTALITY</text>
+  <text class="plab" x="805" y="206" fill="#6b6248">Partial · filter ON</text>
+
+  <!-- axis + contacts -->
+  <line class="axis" x1="40" y1="218" x2="990" y2="218"/>
+  <line class="tick" x1="60"  y1="218" x2="60"  y2="230"/>
+  <text class="contact" x="60"  y="248">C1</text><text class="clab" x="60"  y="264">first touch</text>
+  <line class="tick" x1="440" y1="218" x2="440" y2="230"/>
+  <text class="contact" x="440" y="248">C2</text><text class="clab" x="440" y="264">totality begins</text>
+  <line class="tick" x1="640" y1="218" x2="640" y2="230"/>
+  <text class="contact" x="640" y="248">C3</text><text class="clab" x="640" y="264">totality ends</text>
+  <line class="tick" x1="960" y1="218" x2="960" y2="230"/>
+  <text class="contact" x="960" y="248">C4</text><text class="clab" x="960" y="264">last touch</text>
+
+  <!-- what the app captures -->
+  <text class="leg" x="60" y="300">Single frames on a timer</text>
+  <text class="note" x="60" y="316">through both partial phases</text>
+  <rect class="still" x="408" y="300" width="264" height="16" rx="3"/>
+  <text class="leg" x="408" y="294">Exact-exposure capture window</text>
+  <text class="note" x="408" y="332">Around the central phase the plan captures its exact-exposure HDR brackets, then</text>
+  <text class="note" x="408" y="347">returns to single frames on a timer for the remaining partials.</text>
+
+  <!-- footnotes -->
+  <text class="note" x="12" y="380">Safe mode (default): the filter comes off only once totality is visually confirmed, and goes back on early;</text>
+  <text class="note" x="12" y="395">before any sunlight returns. You trade a few seconds of corona for a comfortable margin.</text>
+  <text class="note" x="12" y="410">Every cue is an early warning, never an instruction; your own eyes make the filter decision.</text>
+</svg>

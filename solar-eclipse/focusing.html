@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focusing | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:36px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  h3{font-size:18px;margin:24px 0 8px;}
+  p{margin:0 0 12px;} ul,ol{margin:0 0 14px;padding-left:22px;} li{margin:0 0 7px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .ui{display:inline-block;border:1px solid var(--line);background:var(--panel2);border-radius:5px;
+    padding:0 5px;font-size:13.5px;color:var(--ink);}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout.danger{border-left-color:var(--danger);background:var(--danger-bg);border-color:var(--danger-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);} .callout.danger .lbl{color:var(--danger);}
+  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
+  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
+  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
+  .verify{font-size:12.5px;color:var(--muted);font-style:italic;}
+  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>8 · Focusing</span></nav>
+
+<h1>Focusing</h1>
+<p class="lead">Establish sharp focus with the physical eclipse rig, prepare SharpCap Focus Assistant, and
+optionally let HelioMaker request one SharpCap refocus before the central phase.</p>
+
+<h2>Focus the Sun before you arm</h2>
+<p>Focus on the filtered Sun and confirm sharpness <strong>before</strong> you start the run. Use a clear
+feature, such as the limb, a sunspot, or the crisp edge of the partial crescent, and refine focus until it is as sharp
+as the seeing allows. Use the same telescope, camera, solar filter, optical train and motorized focuser that will
+image the eclipse. The preflight checklist has a <strong>Focusing</strong> gate that reflects whether you have
+a confirmed focus baseline.</p>
+
+<div class="callout warn">
+  <span class="lbl">Thermal drift</span>
+  Focus drifts as the tube and air cool through the partial phases. That is exactly what the automatic refocus
+  is for. If you do not have a motorized focuser, plan to nudge focus manually during the partials and lock it well
+  before C2. You do not want to be touching the focuser as the diamond ring appears.
+</div>
+
+<h2>Prepare SharpCap Focus Assistant first</h2>
+<p>HelioMaker does not calculate the focus curve itself. When
+<span class="ui">Automatically refocus before totality</span> is enabled, HelioMaker asks
+<strong>SharpCap Focus Assistant</strong> to repeat SharpCap's last successful focus scan. SharpCap saves the
+method and scan settings only after a successful scan, then its Refocus command reuses them. You must therefore
+complete at least one successful solar focus scan in SharpCap before enabling automatic refocus in the eclipse
+plan.</p>
+
+<h3>Choose a solar focus method</h3>
+<ul>
+  <li><span class="ui">Contrast (Edge) Detection</span> is the recommended starting point for the Sun. It uses
+  surface contrast and the solar limb, and SharpCap identifies it as suitable for planetary and surface targets.</li>
+  <li><span class="ui">Fourier Detail Detection</span> is a valid alternative. Try it with your own rig and use
+  whichever of the two methods produces the most repeatable sharp focus.</li>
+  <li>Do not prepare the eclipse refocus with an FWHM, Bahtinov or other star based method. Those methods expect
+  stellar point sources, not the solar disk, and HelioMaker will not accept a saved scan that uses one.</li>
+</ul>
+<figure class="shot">
+  <img src="img/focusing-sharpcap-method.png" alt="SharpCap Focus Assistant using Contrast Edge Detection on a
+  full solar disk with a motorized focuser connected.">
+  <figcaption>Prepare Focus Assistant with the physical eclipse rig. Contrast (Edge) Detection is a useful
+  starting method for the solar disk.</figcaption>
+</figure>
+
+<h3>Configure and prove the scan</h3>
+<ol>
+  <li>Connect the eclipse camera and motorized focuser to SharpCap, point the filtered rig at the Sun, and bring
+  the image close to focus manually.</li>
+  <li>Open SharpCap Focus Assistant from the focus tool menu and select
+  <span class="ui">Contrast (Edge) Detection</span> or <span class="ui">Fourier Detail Detection</span>. If a
+  measurement area is used, make it large enough to contain the full solar disk with margin.</li>
+  <li>Open the scan options and set <span class="ui">Scan Step Size</span>, the focuser movement between
+  measurements, and <span class="ui">Max Step Count</span>, the maximum number of those steps in the scan.
+  SharpCap also lets you set how many samples are collected at each step.</li>
+  <li>Run a focus scan that passes through best focus and collects measurements on both sides of the peak.
+  Adjust the step size and count until SharpCap can identify a convincing best focus position and return to it.</li>
+  <li>Inspect the solar image and confirm that the result is genuinely sharp. Then manually launch SharpCap's
+  Refocus command at least once to confirm that it can repeat the result using the saved scan.</li>
+  <li>Only after that test succeeds, enable the automatic refocus option in HelioMaker Plan preferences. Its
+  exact label names the phase it precedes, and so follows the eclipse type: see the list below.</li>
+</ol>
+<figure class="shot">
+  <img src="img/focusing-sharpcap-options.png" alt="SharpCap Focus Assistant scan options showing Scan Step Size,
+  Max Step Count and Samples to collect at each Step.">
+  <figcaption>Tune Scan Step Size, Max Step Count and the sample count until the scan crosses best focus and
+  measures both sides of the focus curve reliably.</figcaption>
+</figure>
+
+<p>For SharpCap's description of the focus tools and graphs, see
+<a href="https://www.sharpcap.co.uk/sharpcap/features/focus-assistance" target="_blank">SharpCap Focus
+Assistance</a>.</p>
+
+<div class="callout danger">
+  <span class="lbl">A successful SharpCap focusing scan is required</span>
+  Enabling automatic refocus in HelioMaker does not configure SharpCap and cannot create the first focus scan.
+  Without a previous successful SharpCap focus scan and saved solar method, automatic refocus will not work.
+  Configure and prove SharpCap first; enable the plan option only after SharpCap can refocus the physical rig
+  successfully.
+</div>
+
+<h2>Automatic refocus before the central phase</h2>
+<p>After SharpCap has a successful saved solar focus scan, HelioMaker can request one SharpCap refocus shortly
+before the central phase, so the most important frames are taken at fresh focus. It is deliberately a
+<strong>single</strong> operation timed a few minutes ahead, with a hard cutoff so it always finishes before
+the central capture window opens. On a total eclipse that cutoff is what keeps it clear of the diamond ring.
+Periodic refocus during the partials is intentionally not done.</p>
+<p>This is available for <strong>every eclipse type</strong>, and the option names the phase it precedes:</p>
+<ul>
+  <li>total: <span class="ui">Automatically refocus before totality</span></li>
+  <li>annular: <span class="ui">Automatically refocus before the annularity phase</span></li>
+  <li>partial: <span class="ui">Automatically refocus before the central phase</span></li>
+</ul>
+<p>The wording names the <strong>phase</strong> rather than the astronomical instant on purpose, because that is
+what the schedule is measured against. The countdown runs back from the moment the phase <em>begins</em>,
+including whatever <span class="ui">Start before (s):</span> that phase carries in the Phase editor, and not
+from annularity or maximum itself. The reason to do it at all is the same in all three cases: the tube and the
+air have been cooling for an hour or more by then, and the frames you care about most are the ones after that
+drift.</p>
+<figure class="shot">
+  <img src="img/focusing-prefs-group.png" alt="Focusing group in Plan preferences with automatic refocus enabled,
+  minutes before totality and refocus timeout settings.">
+  <figcaption>Enable automatic refocus only after SharpCap has saved a successful solar focusing scan and its
+  Refocus command has been tested with the physical eclipse rig.</figcaption>
+</figure>
+
+<p>The refocus is <strong>guarded</strong>: it manages the focuser carefully around the scan (temperature
+compensation is only touched around the scan and restored afterwards, and the focuser position is supervised and
+repaired if needed). HelioMaker also <strong>pauses PHD2 guiding corrections during the refocus scan</strong>.
+This prevents small mount movements commanded by guiding from introducing jitter while SharpCap measures focus,
+helping the scan obtain a more accurate focus result. Guiding resumes after the scan when the current eclipse
+phase permits it.</p>
+<div class="callout warn">
+  <span class="lbl">Planned captures continue during refocusing</span>
+  Refocusing does not stop the eclipse capture schedule. If a planned exposure occurs while the focuser is
+  moving or SharpCap is measuring the focus curve, that image may be slightly blurred. This is expected; inspect
+  frames captured during the refocus interval during post-processing. The benefit is that the imaging sequence
+  remains on schedule while the rig establishes a sharper focus for the more important phases that follow.
+</div>
+<p>The automatic refocus runs only when all of these are true:</p>
+<ul>
+  <li>Automatic refocus is <strong>enabled</strong> in the plan preferences;</li>
+  <li>SharpCap has a <strong>successful saved solar focus scan</strong> using
+  <span class="ui">Contrast (Edge) Detection</span> or <span class="ui">Fourier Detail Detection</span>;</li>
+  <li>A motorized focuser is connected in SharpCap and passes the preflight connection check;</li>
+  <li>In shared-camera mode, HelioMaker has a stable solar detection and SharpCap's saved focusing region contains
+  the complete detected solar disk;</li>
+  <li>You have manually confirmed that SharpCap can refocus the physical eclipse rig successfully;</li>
+  <li>You have not declined it in the preflight checklist; and</li>
+  <li>The eclipse is <strong>total</strong> (refocus is available only for a total eclipse).</li>
+</ul>
+
+<div class="callout">
+  <span class="lbl">The preflight Focusing badge</span>
+  The preflight checklist has a <strong>Focusing</strong> badge that checks for a connected focuser and a
+  successful saved solar focus scan. When automatic refocus is selected, confirming that the target is focused
+  is not enough by itself: the badge remains red until <span class="ui">Recheck focuser</span> verifies the live
+  SharpCap focuser connection and saved solar focusing method. In shared-camera mode it also checks that a stable
+  HelioMaker detection places the complete solar disk inside SharpCap's saved focusing region. If the disk or
+  region cannot be verified, correct the framing or the Focus Assistant region and recheck.
+  Its three buttons are <span class="ui">Recheck focuser</span>,
+  <span class="ui">Run autofocus</span> (request SharpCap Refocus; it turns to
+  <span class="ui">Cancel</span> while running), and
+  <span class="ui">Do not auto refocus before totality</span> (or <span class="ui">before the annularity
+  phase</span> / <span class="ui">before the central phase</span>, matching the plan) to opt out. You then tick
+  a confirmation:
+  <em>"I've run SharpCap focusing/refocusing successfully"</em> when refocus is on, or <em>"The imaging target is
+  focused"</em> when it is off. <span class="ui">Run autofocus</span> is a final confirmation shortcut, not a
+  substitute for configuring and proving Focus Assistant in advance.
+</div>
+<figure class="shot">
+  <img src="img/focusing-preflight-item.png" alt="Expanded Focus and auto refocus preflight item showing confirmed
+  focus, refocus controls and the successful SharpCap focusing confirmation.">
+  <figcaption>The preflight item confirms focus separately from the live focuser and saved-scan checks. Run
+  autofocus repeats the prepared scan; it does not configure the first scan.</figcaption>
+</figure>
+
+<div class="callout danger">
+  <span class="lbl">If you override the focus check</span>
+  If you override the focus confirmation before arming, the planned refocus <strong>will not run</strong>,
+  and the run console shows a red warning saying refocus is "in your plan but will NOT run" so you are never misled
+  into thinking it happened. If refocus matters to you, satisfy the focus gate rather than overriding it.
+</div>
+
+<div class="callout safe">
+  <span class="lbl">Rehearse the refocus</span>
+  First prove the saved scan by manually requesting Refocus in SharpCap. Then use
+  <span class="ui">Run autofocus</span> in preflight and rehearse the scheduled action in a
+  <a href="simulation.html">simulated run</a> with the physical rig. You should already know that SharpCap can
+  return to sharp focus, when the scheduled scan fires, and what the badge looks like while it works.
+</div>
+
+<nav class="foot"><a href="phase-editor.html">← Phase editor</a><a href="simulation.html">Simulation options →</a></nav>
+</div>
+</body>
+</html>

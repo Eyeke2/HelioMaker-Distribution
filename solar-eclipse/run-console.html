@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Run Console | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  h3{font-size:17px;margin:22px 0 6px;}
+  p{margin:0 0 12px;} ul,ol{margin:0 0 14px;padding-left:22px;} li{margin:0 0 6px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap;}
+  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
+  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
+  figure.shot .box{padding:22px 16px;text-align:center;color:var(--muted);font-size:13.5px;}
+  figure.shot .box b{color:var(--accent-ink);}
+  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout.danger{border-left-color:var(--danger);background:var(--danger-bg);border-color:var(--danger-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);} .callout.danger .lbl{color:var(--danger);}
+  dl.f{margin:10px 0;} dl.f dt{font-weight:600;margin-top:11px;} dl.f dd{margin:2px 0 0;color:var(--muted);font-size:14.5px;}
+  .cue{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0;font-size:14.5px;}
+  .cue b{color:var(--accent-ink);}
+  table.map{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+  table.map th,table.map td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;}
+  table.map th{background:var(--panel2);}
+  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout,.cue,table.map{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>11 · The run console</span></nav>
+
+<h1>The run console</h1>
+<p class="lead">Once you arm, the <em>Eclipse imaging</em> console opens. This is the live instrument panel you watch
+through the run. It stays on top and remains independent of the main HelioMaker window, so minimizing HelioMaker
+does not hide the console behind SharpCap or PHD2.</p>
+
+<div class="callout warn">
+  <span class="lbl">The exposure plan is already fixed</span>
+  The current version does not allow exposure or gain changes after automated imaging starts. The console reports
+  and executes the selected phase recipes; it is not a live exposure editor. Determine the filtered full solar
+  disk exposure, camera gain and effective ND rating of the complete filter stack with the physical rig, then
+  derive, tune and rehearse the plan before opening preflight. Do not tune sequence controlled parameters
+  manually in SharpCap after that point;
+  HelioMaker applies the saved plan again when the run is armed.
+</div>
+
+<figure class="shot">
+  <img src="img/run-console-overview.png" alt="Full Eclipse imaging console during a simulation that captures
+  images to disk, showing the Diamond ring C3 phase, enlarged central timeline, live geometry, filter replacement
+  cue, paused guiding, phase telemetry, captured image count and controls.">
+  <figcaption>The full console during the C3 diamond ring phase of a capture rehearsal. The red banner gives the
+  Classical mode instruction to prepare to replace the solar filter at the first returning bead. The run type
+  banner states clearly that images are being written to disk.</figcaption>
+</figure>
+
+<h2>First confirm the run identity</h2>
+<dl class="f">
+  <dt>Run type banner</dt>
+  <dd>The largest item in the top row distinguishes
+  <span class="ui">LIVE ECLIPSE: this is the real thing</span>,
+  <span class="ui">Simulation: images ARE captured to disk</span>, and
+  <span class="ui">Simulation: timing only, no images captured</span>. Read it before relying on the run.</dd>
+  <dt>Observer local, UTC and Sun alt / az</dt>
+  <dd>Both clocks are always visible. The Sun altitude and azimuth are calculated for the run clock and selected
+  observer site. The Time display choice made before the run controls the contact, phase and timeline labels; it
+  does not remove either clock from the console.</dd>
+  <dt>Event identity band</dt>
+  <dd>The dark strip identifies the eclipse type, date, coordinates, elevation and IANA time zone with its UTC
+  offset. Use it to catch a wrong event or site before the critical phases.</dd>
+</dl>
+
+<h2>Timeline, phase and live geometry</h2>
+<dl class="f">
+  <dt>Timeline</dt>
+  <dd>The main rail shows the current time, contacts, totality and the interval in which the filter is planned to
+  be off. Near the central phases it automatically enlarges the thin crescent or diamond ring through C3 window
+  so C2, maximum eclipse and C3 remain readable. A smaller overview rail continues to show the full C1 to C4
+  event and the position of the enlarged window.</dd>
+  <dt>Current phase card</dt>
+  <dd>Shows the active phase, its exposure or HDR recipe, camera gain, planned cycle count, completed cycle count,
+  progress bar and a large countdown to the next phase. Between phases it states what HelioMaker is waiting for
+  and counts down to that phase.</dd>
+  <dt>Live geometry</dt>
+  <dd>A calculated full solar disk view follows the run clock, including a compressed rehearsal clock. It is a
+  stable visual model of eclipse progress, not a live camera image and not proof that the physical Sun is
+  centred.</dd>
+</dl>
+<figure class="shot">
+  <img src="img/run-console-timeline.png" alt="Run console timeline enlarged around the central phases with C2,
+  maximum eclipse and C3 labels, the planned filter off interval, current time marker and full event overview
+  rail.">
+  <figcaption>Near the central phases, the main timeline enlarges the critical interval so the contacts remain
+  readable. The red shaded span is the planned filter off interval, the red marker shows the current time, and
+  the small rail below preserves the position within the full eclipse.</figcaption>
+</figure>
+
+<figure style="margin:20px 0;">
+  <img src="img/diagram-timeline-safe.svg" alt="One total eclipse in Safe mode as the run console sees it: contacts C1 to C4, a conservative unfiltered interval inside totality, voice cues before C2 and C3, and the exact exposure capture window around the central phase, with single frames on a timer through the partials."
+    style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff;">
+  <figcaption style="color:var(--muted);font-size:12.5px;margin-top:6px;">How a total eclipse plays out in
+  <strong>Safe mode</strong>. Diamond ring (Classical) mode differs; compare both on
+  <a href="safety.html">Safety and eclipse modes</a>. Visual confirmation controls removal, while Safe mode
+  replaces the filter early on its cue.</figcaption>
+</figure>
+
+<h2>Live telemetry and capture progress</h2>
+<p>The telemetry table keeps every planned phase visible and highlights the active row. Its columns are intended
+to answer both what the plan requested and what the rig is doing:</p>
+<table class="map">
+  <thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Starts / Ends</strong></td><td>The phase boundaries in the time display selected before the run.</td></tr>
+    <tr><td><strong>Frames / Cycles</strong></td><td>Completed versus planned counts. A tilde marks a prediction for
+    a deadline governed phase, so <code>12/~8</code> means twelve were captured against an estimate of eight.</td></tr>
+    <tr><td><strong>Guiding</strong></td><td>The plan's state for that phase: on, off or paused. The active cell turns
+    red if PHD2 disagrees with the plan; <em>stalled</em> means PHD2 has stopped reporting reliably.</td></tr>
+    <tr><td><strong>Capture</strong></td><td>The phase's planned SharpCap mode: <em>Live View</em> or <em>Still</em>.
+    The active cell turns red when the camera reports the other mode.</td></tr>
+    <tr><td><strong>State</strong></td><td><em>active</em>, <em>done</em>, <em>MISSED</em>,
+    <em>FAILED</em>, or <em>--</em> for a phase still to come.</td></tr>
+  </tbody>
+</table>
+<figure class="shot">
+  <img src="img/run-console-telemetry.png" alt="Live telemetry table with completed partial ingress, thin crescent
+  C2 and diamond ring C2 rows, active totality, and pending C3 and partial egress rows.">
+  <figcaption>The active phase is highlighted. Tildes mark deadline governed estimates; the Guiding and Capture
+  columns show the planned state for every phase, while State distinguishes completed, active and pending
+  work.</figcaption>
+</figure>
+<p><span class="ui">Images captured</span> shows the total confirmed frames against the plan estimate. A separate
+missed count appears when frames are lost during Hold.</p>
+<p>The footer carries <strong>buttons only</strong>. It used to lead with status text &mdash; time remaining, and
+the progress of post-capture image-set saving &mdash; and on a narrow console those growing labels could push
+<span class="ui">Stop run</span> off the end of the row. Nothing that matters was lost: the countdown to the next
+phase is on the phase card where you are already looking, and image-set saving is reported in the run log and in
+<code>eclipse_run.log</code>.</p>
+<p>In full view, <span class="ui">Open capture folder...</span> opens the current run folder. Captured files and
+<code>eclipse_run.log</code> are stored there, providing the durable record behind the live panel.</p>
+
+<h2>Shutter sound feedback</h2>
+<p>Shutter feedback is enabled by default and follows <strong>SharpCap capture telemetry</strong>, not merely an
+HM dispatch request. Short clicks and bursts follow confirmed forward progress. The long-exposure open/close pair
+is different: it marks SharpCap starting and ending an exposure attempt, and does <strong>not</strong> prove that
+the image was accepted or saved. Use the live frame counts, final summary and capture folder as the record of
+successful images. The sound is adapted to the phase:</p>
+<ul>
+  <li>Pre-eclipse, partial and post-eclipse single shots use one short shutter click.</li>
+  <li>Each completed HDR bracket in a thin crescent <strong>or the central phase</strong> uses a short group of
+  clicks matching the bracket size, up to nine. The central phase used to be silent; it is not any more, for
+  every eclipse type.</li>
+  <li>The rapid short exposures in the C2 and C3 diamond ring phases use an occasional restrained burst rather
+  than one click for every high-speed frame.</li>
+  <li>Exposures of one second or longer use distinct shutter-open and shutter-close sounds, in the diamond ring
+  phases and in <strong>totality</strong>. These are camera-activity cues, not saved-file confirmations.</li>
+</ul>
+<div class="callout">
+  <span class="lbl">One cue style per cycle</span>
+  Where a cycle's long exposures narrate themselves with the open and close sounds, that cycle does not also get
+  the completed-bracket click group: the two would fight over the same moment. It is one cue <em>style</em> per
+  cycle rather than one individual sound, so a cycle containing several long exposures still produces an
+  open/close pair for each of them. This only arises on a <strong>total</strong> eclipse. The long-exposure
+  sounds are tied to the totality and diamond ring phases, so an annular or partial central phase always keeps
+  its click group however long its exposures are.
+</div>
+<p>The diamond ring phases never take the completed-bracket click group. That is deliberate: they last seconds
+and fall exactly where your hands are on the filter, which is not a moment to add a burst of clicks to. They are
+not silent, though &mdash; their short exposures still produce the restrained burst above, and their long ones
+still produce the open and close sounds.</p>
+<p>Simulated runs make these sounds too. A rehearsal on the built-in eclipse simulator used to be completely
+silent, which made it a poor rehearsal of what eclipse day sounds like; the clicks now follow the simulator's
+own file writing, at the plan's real cadence.</p>
+<p>The small shutter button beside <span class="ui">Open capture folder...</span> is available in both full and
+compact views. Its tooltip states the current setting: <span class="ui">Silent shutter OFF</span> means capture
+sounds are audible; <span class="ui">Silent shutter ON</span> mutes them. This control affects shutter feedback
+only, not the spoken safety and filter cues, which use their own audio track.</p>
+
+<h2>The filter cues: visual confirmation for removal</h2>
+<p>The most important thing the console does is tell you when to move the filter. The cues are both
+<strong>visual</strong> (a large banner) and <strong>audio</strong> (spoken prompts, if enabled). Filter removal
+requires the visual confirmation defined by the selected mode. Safe mode replacement is deliberately scheduled
+early, while the disc is still covered. The countdown is advisory and is displayed separately in large type.</p>
+
+<div class="cue">Normal state: <b>Solar filter MUST be ON</b>, or, when the guide scope is also filtered,
+<b>BOTH filters MUST be ON (main + guide scope)</b>. HM cannot sense the physical filters; this wording states
+the required safe condition rather than claiming that the operator has already fitted them.</div>
+<div class="cue">Approaching totality: <b>Get ready to REMOVE the filter, ONLY WHEN YOU SEE THE DIAMOND RING</b>
+(Classical) or <b>… ONLY WHEN THE SUN'S DISC IS FULLY COVERED</b> (Safe).</div>
+<div class="cue">During totality: <b>Solar filter is OFF</b> (or <b>BOTH filters are OFF (main + guide scope)</b>).</div>
+<div class="cue">Coming out: Classical <b>Get ready to REPLACE the filter, AT THE FIRST BEAD OF SUNLIGHT</b>;
+Safe <b>REPLACE the filter NOW, BEFORE THE FIRST BEAD OF SUNLIGHT</b>.</div>
+
+<div class="callout danger">
+  <span class="lbl">Eyes, not the clock</span>
+  These cues drive the <strong>scope's</strong> solar filter. <strong>Remove it only when you actually see the
+  signal</strong>, which is the diamond ring (Classical) or the disc fully covered (Safe), and never just because the countdown
+  reached zero. In <a href="safety.html">Safe mode</a> you're prompted to <strong>replace</strong> it
+  <em>early</em>, while the disc is still covered. Follow that cue. If the plan guides through the filter off
+  interval with a separate guide scope, the cue names <strong>both</strong> scope filters; move them together.
+  Your own <strong>eye</strong> protection is separate: it comes off only during totality itself, in either mode.
+</div>
+
+<div class="callout warn">
+  <span class="lbl">Annular and partial eclipses have no filter cues at all</span>
+  Everything above belongs to a total eclipse. On an annular or partial run the filter never comes off, so the
+  banner stays at <b>Solar filter MUST be ON</b> and <b>Eclipse glasses ON</b> for the entire event, there is no
+  filter-off band on the timeline, and no removal countdown ever appears. The single spoken prompt you hear
+  about ninety seconds before annularity or maximum announces the central phase and repeats that the filter
+  stays on. If you have photographed a total eclipse before, this is the habit to unlearn: <strong>no cue is
+  coming, and its absence is the correct behaviour.</strong>
+</div>
+
+<h2>Guiding, refocus and recovery</h2>
+<table class="map">
+  <thead><tr><th>Status</th><th>Console meaning</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Guiding</strong></td><td>Green means locked with stable Sun detection and normal drift; blue
+    means an intentional planned pause; amber identifies questionable calibration; red identifies lost or
+    unstable Sun detection, drift above 20 guide-camera pixels, stopped guiding when required, a lost PHD2 link,
+    or a mount that is slewing, parked or not tracking. A mount that is not tracking outranks whatever the plan
+    asked for, so the badge states the mount fact plainly, for example
+    <span class="ui">Mount parked, waiting for unpark</span>: guiding cannot run at all until the mount tracks
+    again. A neutral badge means guiding is not required now.
+    When recovery needs a new PHD2 session, the badge offers <span class="ui">Reconnect PHD2</span> in both full
+    and compact views. If the PHD2 camera or mount is disconnected, HelioMaker reconnects the equipment before
+    sending any looping, target-selection or guiding command. Eclipse imaging continues while this guiding path
+    is being repaired.</td></tr>
+    <tr><td><strong>Automatic refocus</strong></td><td>Blue means armed, waiting, or pausing guiding; the
+    near-white badge marks an active focus scan; green means complete; red means failed, unable to run because
+    focus was not confirmed, or that the refocus time window was missed. A neutral badge means refocus is off or
+    is not scheduled for this run. See <a href="focusing.html">Focusing</a>.</td></tr>
+    <tr><td><strong>SharpCap camera and connection</strong></td><td>If camera frames stop, the device disconnects,
+    the wrong camera opens, or the SharpCap capture link is lost, capture is held and its recovery state takes
+    priority over ordinary refocus status. The console reports the outage, waiting, relaunching, reconnecting and
+    settings-restoration stages. HelioMaker resumes only after the planned camera is open and its capture folder,
+    mode and image settings have been restored. A brief USB outage may recover inside SharpCap's own grace
+    period; a longer outage can repeat the critical alarm while operator attention is still required.</td></tr>
+  </tbody>
+</table>
+
+<div class="callout warn">
+  <span class="lbl">Critical alarm</span>
+  When <span class="ui">Play audio cues during eclipse</span> is enabled, an alarm may sound if HelioMaker
+  detects an unexpected critical PHD2 or SharpCap error. The alarm asks for your attention; read the guiding,
+  SharpCap/refocus badge and incident text immediately. Depending on the failure, HM may relaunch PHD2 or
+  SharpCap, reconnect and attempt to resume eclipse imaging automatically. Do not assume the sound means either
+  failure or recovery is complete—the console reports the current state. The alarm follows the plan's Audio cues
+  checkbox and remains audible when <span class="ui">Silent shutter ON</span> has muted camera feedback. It uses
+  a separate audio path from the spoken safety and filter cues, so it cannot interrupt or mute a scheduled spoken
+  instruction; only cosmetic shutter feedback may yield briefly. Stopping the sequence or closing its console
+  stops any spoken eclipse cue that is already playing.
+</div>
+
+<div class="callout danger">
+  <span class="lbl">Red operator alerts force the full view</span>
+  A critical alert expands a compact console so it cannot remain hidden. Examples include a capture drive that
+  may fill, camera frames that stop arriving, a camera in the wrong capture mode, loss of the run or timing record,
+  or a SharpCap recovery that needs manual action. Read the instruction in the banner before touching the rig.
+</div>
+
+<h2>Compact console view</h2>
+<p>Select <span class="ui">Switch to compact view</span> to reduce the always on top console to a narrow corner
+strip. Select <span class="ui">Full view</span> to restore the complete panel.</p>
+<p>The compact strip retains the calculated geometry, phase and countdown, captured and missed frame counts,
+guiding and refocus badges, and the <strong>complete filter cue with its countdown</strong>. Filter instructions
+are never abbreviated. The footer remains available for Full view, Freeze during rehearsals, and Stop run.
+The capture-folder and Silent shutter controls remain available; the detailed timeline and telemetry are hidden
+until Full view is restored.</p>
+<p>Beside the calculated geometry, both console sizes show <span class="ui">Eclipse glasses ON</span> outside
+totality. During the fully covered interval it changes to a distinct <span class="ui">TOTALITY</span> indicator.
+Treat it as a prominent reminder, not a substitute for observing the real Sun and following certified eye-safety
+practice.</p>
+<p>Guiding and refocus each occupy a full-width bar carrying its own icon, in both the compact strip and the full
+console, so the two rig questions read the same way at either size. Both bars are always present: when refocus is
+not scheduled the bar says so rather than disappearing.</p>
+
+<figure class="shot">
+  <img src="img/run-console-compact.png" alt="Compact Eclipse imaging console showing calculated geometry, Thin
+  crescent C3 countdown, captured frame count, paused guiding, no refocus status, solar filter state, time
+  remaining and protected run controls.">
+  <figcaption>Compact view keeps the phase countdown, capture total, guiding and refocus state, complete filter
+  cue, capture-folder access, Silent shutter toggle and essential controls. Select
+  <span class="ui">Full view</span> to restore the timeline and telemetry.</figcaption>
+</figure>
+
+<h2>Hold, Freeze and Stop</h2>
+<dl class="f">
+  <dt><span class="ui">Hold</span></dt>
+  <dd>Manual Hold is intentionally disabled in this beta release. Do not plan on pausing a live eclipse run:
+  use <span class="ui">Stop run</span> only when capturing must end completely. HelioMaker may still place the
+  session on hold automatically if the mount starts slewing or stops tracking; the red console banner states
+  what happened and the session resumes automatically when the mount is tracking again.</dd>
+  <dt><span class="ui">Freeze</span> / <span class="ui">Unfreeze</span></dt>
+  <dd>A rehearsal only control that stops the rehearsal clock and schedule so you can inspect the panel.
+  Unfreeze continues from the same simulated eclipse instant. Freeze is hidden during the live eclipse and is
+  unavailable while the run is held.</dd>
+  <dt><span class="ui">Stop run</span></dt>
+  <dd>Hold <strong>Ctrl</strong> and click to end capturing. This cannot be undone. Closing an active console with
+  its window close button instead opens a guarded confirmation requiring <span class="ui">Yes, stop imaging the
+  eclipse</span>; Enter or Escape cannot confirm the stop.</dd>
+</dl>
+
+<h2>When the run ends</h2>
+<p>The console returns to full view automatically. The current phase card becomes
+<span class="ui">Run summary</span>, reports <span class="ui">Event ended</span>, and shows the total frames
+captured, planned and missed. The phase telemetry remains as the final per phase record.</p>
+<p>If frame timing data is available, a <span class="ui">Timing summary</span> button opens the detailed report in
+a browser. The summary card itself deliberately carries only the one result you came back for &mdash; frames
+captured against frames planned. The timing verdict is written to the run log and to
+<code>eclipse_run.log</code>, and the report behind that button holds the detail; a second, smaller line under
+the headline only competed with it. Hold, Freeze and compact controls disappear, and
+<span class="ui">Stop run</span> becomes <span class="ui">Done</span> with no Ctrl key required.</p>
+
+<div class="callout safe">
+  <span class="lbl">Rehearse the console until it's boring</span>
+  Everything on this page should be familiar before eclipse day: the layout, where the countdown is, what each cue
+  says and sounds like, what compact view retains, and how automatic mount warnings appear. That familiarity is the payoff of the
+  <a href="prepare-in-advance.html">advance preparation</a>: on the day, you glance at the panel, listen for
+  the cue, use the visual rule for your selected mode when removing the filter, follow the Safe mode early replacement
+  cue if applicable, and spend the rest of totality looking up.
+</div>
+
+<nav class="foot"><a href="preflight.html">← Preflight checklist</a><a href="index.html">Back to index →</a></nav>
+</div>
+</body>
+</html>

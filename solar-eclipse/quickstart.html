@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick Start | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:30px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  p{margin:0 0 12px;} ol,ul{margin:0 0 8px;padding-left:22px;} li{margin:0 0 8px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap;}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout.danger{border-left-color:var(--danger);background:var(--danger-bg);border-color:var(--danger-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);} .callout.danger .lbl{color:var(--danger);}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 18px 14px;margin:14px 0;}
+  .card h3{font-size:17px;margin:14px 0 4px;color:var(--accent-ink);}
+  .card ol{padding-left:20px;} .card li{margin:0 0 7px;}
+  .card li b{font-weight:650;}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    border-radius:999px;padding:2px 8px;margin-left:6px;color:var(--accent-ink);background:var(--panel2);border:1px solid var(--line);}
+  nav.foot{display:flex;justify-content:space-between;margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout,.card{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>Quick start</span></nav>
+
+<h1>Quick start</h1>
+<p class="lead">The whole flow on one page, for the impatient. Each step links to more detail if you want it,
+but do read the safety rule, and please <strong>rehearse before eclipse day</strong>.</p>
+
+<figure style="margin:16px 0;">
+  <img src="img/diagram-workflow.svg" alt="From first look to eclipse day, six steps: 1 find the eclipse, 2 build the plan, 3 set the exposure, 4 rehearse (looping back to adjust the plan as often as you like), 5 preflight and arm, 6 the run console captures while you watch. Steps 1 to 4 need no telescope."
+    style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff;">
+  <figcaption style="color:var(--muted);font-size:12.5px;margin-top:6px;">The whole path, start to finish. You can rehearse steps 1 through 4 indoors with the simulator; no telescope is needed.</figcaption>
+</figure>
+<figure style="margin:16px 0;">
+  <img src="img/quickstart-launch.png" alt="HelioMaker main screen with the Tools menu open on Solar Eclipse
+  Planner and the Capture Folder field visible in the Sequence area."
+    style="max-width:100%;height:auto;display:block;margin:0 auto;border:1px solid var(--line);border-radius:10px;background:#fff;">
+  <figcaption style="color:var(--muted);font-size:12.5px;margin-top:6px;">Open
+  <span class="ui">Tools ▸ Solar Eclipse Planner</span>. Before the run, also set
+  <span class="ui">Capture Folder:</span> in the main screen's Sequence area; this is the base root beneath which
+  HelioMaker creates the eclipse run folder.</figcaption>
+</figure>
+
+<div class="callout danger">
+  <span class="lbl">⚠ The one rule you cannot skip</span>
+  <strong>For your eyes:</strong> never look at the Sun with the naked eye or through any optic without certified eye
+  protection, except during <strong>totality</strong> itself (disc fully covered). <strong>For your gear:</strong>
+  keep a certified solar filter on every scope through the partial phases. <em>When</em> the scope filter comes off
+  depends on the mode (Safe versus Diamond ring), but your <strong>eye</strong> protection only ever comes off during
+  totality. Full detail: <a href="safety.html">Safety &amp; eclipse modes</a>.
+</div>
+
+<div class="callout safe">
+  <span class="lbl">Simple full solar disk example</span>
+  The default <strong>Safe mode</strong> with <strong>Shared camera</strong> uses one camera and one solar filter.
+  Guiding pauses briefly through totality and recenters itself afterwards. Choose the eclipse mode yourself after
+  reviewing and rehearsing its filter procedure. Shared camera also requires the full solar disk to fit comfortably
+  inside the main frame; use a separate guide scope for high magnification, partial disk imaging.
+</div>
+
+<div class="callout warn">
+  <span class="lbl">Set the imaging foundation before you start</span>
+  With the physical eclipse camera, scope and solar filter assembled, expose the <strong>filtered full solar
+  disk</strong> so it is bright and detailed without clipping. Record that exposure and camera gain. In
+  <span class="ui">Plan preferences...</span>, enter them as <span class="ui">Full solar disk exposure
+  (ms):</span> and <span class="ui">Full solar disk camera gain:</span>, then select the matching
+  effective <span class="ui">Solar filter density:</span> of the complete attenuation stack. If additional
+  photographic ND is used behind a certified front-mounted solar filter, the optical densities add; photographic
+  ND is never safe as the solar filter on its own. These three values are the most important inputs to the
+  automatic exposure plan. HelioMaker combines them with
+  <a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank">Fred Espenak's eclipse exposure
+  recommendations</a> to derive the recipes for all phases. Keeping the same gain across all phases is
+  recommended; use the
+  <a href="phase-editor.html">Phase editor</a> afterwards for deliberate tuning.
+  <strong>Once automated imaging starts, exposure and gain cannot be changed for that run.</strong>
+</div>
+
+<div class="card">
+  <h3>Weeks ahead <span class="tag">do not skip</span></h3>
+  <ol>
+    <li><b>Set your observing site first.</b> Before opening the planner, open the <b>Dynamic Target Tracking</b>
+    tool (the astronomer button) and select the <b>location where you'll observe the eclipse</b>. Its exact
+    coordinates and time zone drive the timing of every phase. → <a href="planner.html">Planner ▸ Set your site</a></li>
+    <li><b>Find your eclipse &amp; build a starting plan.</b> Open
+    <span class="ui">Tools ▸ Solar Eclipse Planner</span> and find the event for your site. Do not approve the plan
+    yet; its main imaging inputs still need to be measured and applied.
+    → <a href="planner.html">Planner</a></li>
+    <li><b>Make the plan's major choices</b> in <span class="ui">Plan preferences...</span>. Choose
+    <span class="ui">Safe</span> or <span class="ui">Diamond ring (Classical)</span>, choose
+    <span class="ui">Still mode (exact exposures)</span> or <span class="ui">Live view</span>, select the guiding
+    camera, and enter the measured full solar disk exposure, gain and filter ND rating. The eclipse mode changes
+    filter timing and the derived imaging plan; Still versus Live changes how the plan is captured.
+    → <a href="preferences.html">Preferences</a></li>
+    <li><b>Set the capture root on HelioMaker's main screen.</b> In the
+    <span class="ui">Sequence</span> area, choose the <span class="ui">Capture Folder:</span> with enough free
+    space for the run. The <span class="ui">Files</span> group in Plan preferences controls the base filename and
+    timestamp format, not this folder.</li>
+    <li><b>Run the System benchmark test</b> on your actual camera. It makes the plan's cycle counts realistic
+    (and qualifies Still mode if you use it). → <a href="capture-mode.html">Capture mode</a></li>
+    <li><b>Review and tune the derived phases</b> in the <a href="phase-editor.html">Phase editor</a>. Keep the
+    reference gain across all phases unless physical testing supports a deliberate exception.</li>
+    <li><b>Approve the completed plan</b> with <span class="ui">Save as final</span>. If testing later causes a
+    change, approve the revised plan and rehearse it again.</li>
+    <li><b>Practise daytime polar alignment and solar guiding</b> on ordinary sunny days. Never debug guiding on
+    eclipse day. → <a href="prepare-in-advance.html">Prepare in advance</a></li>
+    <li><b>If you will use automatic refocus, prepare SharpCap Focus Assistant.</b> With the physical eclipse rig,
+    complete a successful solar focus scan, manually request SharpCap Refocus, and confirm that it returns to
+    sharp focus. Only then enable <span class="ui">Automatically refocus before totality</span>.
+    → <a href="focusing.html">Focusing</a></li>
+    <li><b>Rehearse the run:</b> a <b>Dry run</b> (timing only), then a <b>Wet run</b> against the eclipse
+    simulator, until the cues feel automatic. → <a href="simulation.html">Simulation</a></li>
+    <li><b>Logistics:</b> sync the PC clock, charge batteries, free up disk.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>Eclipse day</h3>
+  <div class="callout danger">
+    <span class="lbl">No last minute SharpCap tuning after preflight opens</span>
+    HelioMaker applies and verifies the saved plan's sequence settings and applies them again when the run is
+    armed. If a value is wrong, cancel preflight, correct and save the plan, repeat any affected camera test, and
+    rehearse the revision. A manual SharpCap adjustment is not a plan edit and will be replaced when HelioMaker
+    reapplies the plan.
+  </div>
+  <ol>
+    <li><b>Set up and polar align</b> the mount using your daytime routine, secure the filter on the scope, and <b>focus the Sun</b>.</li>
+    <li><b>Confirm the planned exposure and gain on the filtered Sun before starting imaging.</b> If necessary,
+    use the initial partial phase, but do this before selecting <span class="ui">Start</span>. Update
+    <span class="ui">Plan preferences...</span>, derive and review the phases again, and save the revised plan as
+    final if either value changes.</li>
+    <li><b>Start tracking and guiding</b>, and frame the Sun. The preflight checklist has buttons for this.</li>
+    <li><b>Open the preflight checklist, clear the gates, then select <span class="ui">Start</span></b> to arm. → <a href="preflight.html">Preflight</a></li>
+    <li><b>Leave the planned camera selected in SharpCap.</b> A different active camera blocks preflight and
+    arming. If a disconnect or camera change occurs during the run, follow the console recovery status while
+    HelioMaker waits for and restores the planned camera.</li>
+    <li><b>Watch the console.</b> When it cues you and <b>you actually see totality begin</b> (the disc fully
+    covered, in Safe mode), <b>remove the scope filter</b>; <b>replace it early</b> on the cue, while the disc is
+    still dark. Your own eye protection stays until totality either way. → <a href="run-console.html">Run console</a></li>
+    <li><b>That's it.</b> The sequence captures automatically; with shared camera, guiding resumes and recenters
+    the Sun after C3. You just manage the filter at the cued moments and enjoy totality.</li>
+  </ol>
+</div>
+
+<p style="color:var(--muted);font-size:14px;">Want the full walkthrough instead? Start at the
+<a href="index.html">guide index</a> or the first chapter, <a href="prepare-in-advance.html">Prepare in advance</a>.</p>
+
+<nav class="foot"><a href="index.html">← Index</a><a href="prepare-in-advance.html">Prepare in advance →</a></nav>
+</div>
+</body>
+</html>

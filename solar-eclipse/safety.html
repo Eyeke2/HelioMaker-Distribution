@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Safety &amp; Eclipse Modes | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:36px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  h3{font-size:18px;margin:24px 0 8px;}
+  p{margin:0 0 12px;}
+  ul,ol{margin:0 0 14px;padding-left:22px;}
+  li{margin:0 0 7px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .safety{background:var(--danger-bg);border:1px solid var(--danger-line);border-left:5px solid var(--danger);
+    border-radius:12px;padding:16px 18px;margin:20px 0;}
+  .safety h2{color:var(--danger);border:0;margin:0 0 8px;font-size:15px;padding:0;}
+  .safety p{margin:0 0 8px;} .safety p:last-child{margin:0;}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);}
+  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
+  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
+  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
+  table.modes{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;}
+  table.modes th,table.modes td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;}
+  table.modes th{background:var(--panel2);}
+  table.modes .wrapcol{width:44%;}
+  .pair{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0;}
+  @media(min-width:640px){.pair{grid-template-columns:1fr 1fr;}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .card.safe{border-top:3px solid var(--safe);}
+  .card.classic{border-top:3px solid var(--warn);}
+  .card h3{margin-top:2px;}
+  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout,.safety,.card,table.modes{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>3 · Safety &amp; eclipse modes</span></nav>
+
+<h1>Safety &amp; eclipse modes</h1>
+<p class="lead">The rules that protect your eyes and your gear, and the one setting that decides
+when the filter comes off.</p>
+
+<div class="safety">
+  <h2>⚠ The absolute rules</h2>
+  <p><strong>1. Eye safety never changes with the imaging mode.</strong> Never look at the Sun with the naked eye,
+  or through any finder, eyepiece or unfiltered optic, without certified eye protection, <em>except during totality
+  itself</em> (the bright disc fully covered). For your eyes this conservative timing applies in <em>both</em> Safe
+  and Diamond ring modes. Unfiltered sunlight through optics causes permanent, instant eye injury.</p>
+  <p><strong>2. Keep a suitable solar filter secured over the front of every imaging scope through the partial phases.</strong>
+  Unfiltered sunlight can damage a camera sensor. If you use a separate guide scope, filter it too. In shared camera
+  mode there is only the main scope. <em>When</em> that scope filter comes off is set by the eclipse mode described
+  below. This is an equipment and imaging decision, separate from the eye rule above.</p>
+  <p><strong>3. For your eyes, the partial phases are never safe unfiltered</strong>, including the thin crescent,
+  Baily's beads and the diamond ring. Even a sliver of the photosphere is blinding through optics. (In Diamond ring
+  mode the <em>scope's</em> filter does come off at the diamond ring to image it, but that is the camera, not your
+  eyes.)</p>
+  <p><strong>4. Use purpose made solar filters only.</strong> The filter must be suitable for the instrument and
+  secured over the front of the optics. Inspect it for pinholes or damage before every use. Never look through
+  an instrument unless its front filter is specifically rated for visual solar use. Improvised filters,
+  exposed film, photographic neutral density filters, or welding glass of unknown grade are not acceptable.</p>
+</div>
+
+<h2>Diamond ring versus Safe mode</h2>
+<p>HelioMaker's eclipse plans for a <strong>total</strong> eclipse carry an <strong>eclipse mode</strong>
+setting with two radio buttons in Plan preferences: <strong>Safe</strong> (the default) and <strong>Diamond
+ring (Classical)</strong>. It is the single most important choice in the plan: it changes <em>when the scope's
+solar filter comes off and back on</em>, how deep the exposure brackets go around second and third contact
+(C2/C3), and what the audio and visual cues say. You pick it in the plan editor; it is saved with the plan.</p>
+<figure class="shot">
+  <img src="img/safety-mode-selector.png" alt="Solar filter policy in Plan preferences with Safe selected as the
+  default and Diamond ring Classical available as the alternative.">
+  <figcaption>Select Safe or Diamond ring (Classical) in Plan preferences. Safe is the default; the mode remains
+  the user's decision and changes filter timing, phase recipes and cues.</figcaption>
+</figure>
+<div class="callout warn">
+  <span class="lbl">This is about the equipment filter, not your eyes</span>
+  The mode sets when the <strong>scope's</strong> solar filter comes off. This is an equipment and imaging decision. Your own
+  <strong>eye</strong> protection follows the conservative rule in <em>both</em> modes: it only comes off during
+  totality itself. AAS <em>imaging</em> guidance informs Diamond ring mode, in which the <em>scope's</em>
+  filter comes off at the diamond ring; it does not change when it is safe to <em>look</em>.
+</div>
+
+<div class="callout safe">
+  <span class="lbl">Default mode</span>
+  <strong>Safe mode is the default.</strong>
+  It keeps the unfiltered window conservative: you are prompted to <em>replace</em> the filter <strong>early</strong>,
+  while the solar disk is still covered, using the planned time rather than waiting for the light to return. You trade a few
+  seconds at the very start and end of totality for a comfortable margin against getting caught unfiltered.
+</div>
+<div class="callout">
+  <span class="lbl">Totality filter margin in Safe mode</span>
+  <span class="ui">Totality filter margin (s):</span> exists to create a deliberate buffer between the predicted
+  contact times and the physical filter changes. It places filter removal that many seconds after C2 and filter
+  replacement the same number of seconds before C3. It does not alter the calculated C2 or C3 times. Instead, it
+  shortens the unfiltered interval so that you wait until after the predicted start of totality before removing the
+  filter and have time to replace it before the photosphere is predicted to return. A larger margin provides more
+  allowance for contact timing uncertainty and filter handling, but leaves less time for unfiltered imaging.
+  The timeline, cues and run monitor use those exact filter change instants. If you accept Safe mode recipe
+  regeneration, the margin also influences the default C2 and C3 phase windows, with a small overlap past each
+  filter transition; the Phase editor can tune those windows separately. The setting has no effect in Diamond ring
+  (Classical) mode.
+</div>
+
+<div class="pair">
+  <div class="card safe">
+    <h3>Safe <span style="font-weight:400;color:var(--muted);font-size:14px;">(default)</span></h3>
+    <ul>
+      <li><strong>Scope filter off:</strong> only once the disc is fully covered, with margin.</li>
+      <li><strong>Scope filter on:</strong> prompted <em>early</em>, while totality is still in progress. This is a planned,
+      conservative cue.</li>
+      <li>Shallower C2/C3 exposure brackets; cues worded for the conservative workflow.</li>
+      <li><strong>Provides:</strong> a greater timing margin around the unfiltered interval.</li>
+    </ul>
+  </div>
+  <div class="card classic">
+    <h3>Diamond ring (Classical)</h3>
+    <ul>
+      <li><strong>Scope filter off:</strong> at the C2 diamond ring. You remove it when you <em>see</em> the diamond
+      ring and put it back on at the C3 diamond ring or first bead. This window is slightly wider than totality.</li>
+      <li><strong>Scope filter on:</strong> at third contact, on the first returning bead, which is later than in Safe mode.</li>
+      <li>Deeper C2/C3 brackets to capture the inner corona and prominences.</li>
+      <li><strong>Requires:</strong> an operator who understands the risk and has rehearsed the timing
+      until it is automatic.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 style="margin-top:26px;">The two modes on a timeline</h3>
+<p>The eclipse and contacts are the same. The difference is <em>when</em> the filter comes off and back on, and what the
+cues say. Compare:</p>
+<figure style="margin:14px 0;">
+  <img src="img/diagram-timeline-safe.svg" alt="Safe mode total eclipse timeline: the unfiltered interval is inside totality; the remove cue fires when the disc is fully covered and the replace cue fires early, before the first bead."
+    style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff;">
+  <figcaption style="color:var(--muted);font-size:12.5px;margin-top:6px;"><strong>Safe mode:</strong> conservative unfiltered interval; replace early, before the first bead.</figcaption>
+</figure>
+<figure style="margin:14px 0;">
+  <img src="img/diagram-timeline-classic.svg" alt="Diamond ring (Classical) mode total eclipse timeline: the unfiltered interval runs from the C2 diamond ring to the C3 diamond ring; the remove cue fires when you see the diamond ring and the replace cue fires at the first returning bead."
+    style="width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff;">
+  <figcaption style="color:var(--muted);font-size:12.5px;margin-top:6px;"><strong>Diamond ring (Classical):</strong> the unfiltered interval is <strong>wider than totality</strong>, from diamond ring to first bead. Visual confirmation controls both ends. Note the AAS safety panel.</figcaption>
+</figure>
+
+<div class="callout warn">
+  <span class="lbl">Eyes, not the clock</span>
+  Whichever mode you use, HelioMaker's cues are deliberately tied to what you <strong>see</strong>, not blindly to
+  a countdown. <strong>Remove the filter only when you actually see the diamond ring / totality</strong>. In Safe
+  mode, replace it <strong>early</strong>, on the cue, while the disc is still dark. Never remove a filter because
+  "the timer says so" if the Sun still looks bright. Trust your eyes and err toward keeping the filter on.
+</div>
+
+<p>For partial and annular eclipses the mode is fixed to the safe behaviour (the filter never comes off), so the
+toggle is hidden. There is no total phase in which unfiltered viewing is ever appropriate.</p>
+
+<div class="callout">
+  <span class="lbl">Guiding through the filter change</span>
+  If your plan guides <em>through</em> the unfiltered phases (see <a href="preferences.html">Plan preferences</a>
+  and the <a href="preflight.html">preflight checklist</a>), remember the guide scope has its own filter on its
+  own schedule. HelioMaker warns about this at arm time and names <strong>both</strong> scopes' filters in the
+  live cue. Decide in advance whether the guide scope stays filtered (guiding pauses through totality) or you
+  accept the tradeoff. Do not improvise it at C2.
+</div>
+
+<h2>Authoritative safety references</h2>
+<p>Review the current guidance from
+<a href="https://science.nasa.gov/eclipses/safety/" target="_blank">NASA eclipse safety</a> and
+<a href="https://eclipse.aas.org/eye-safety/optics-filters" target="_blank">AAS solar filters for optics</a>
+before observing or imaging an eclipse. These sources explain direct viewing, front mounted instrument filters,
+and the special case of totality.</p>
+
+<nav class="foot"><a href="gear-setup.html">← Gear &amp; rig requirements</a><a href="planner.html">Planner basics →</a></nav>
+</div>
+</body>
+</html>

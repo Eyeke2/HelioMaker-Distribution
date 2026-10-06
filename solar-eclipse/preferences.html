@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan Preferences | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  h3{font-size:17px;margin:22px 0 6px;}
+  p{margin:0 0 12px;} ul,ol{margin:0 0 14px;padding-left:22px;} li{margin:0 0 6px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap;}
+  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
+  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
+  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);}
+  dl.f{margin:10px 0;} dl.f dt{font-weight:600;margin-top:10px;} dl.f dd{margin:2px 0 0;color:var(--ink);}
+  dl.f dd .m{color:var(--muted);}
+  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>5 · Plan preferences</span></nav>
+
+<h1>Plan preferences</h1>
+<p class="lead">The settings for the whole plan, including camera, exposure model, guiding, refocus and cues. Open them with
+<span class="ui">Plan preferences...</span> in the planner.</p>
+
+<figure class="shot">
+  <img src="img/preferences-overview.png" alt="Plan preferences dialog for a total eclipse, showing solar filter
+  policy, capture mode, system configuration, imaging base, camera settings, guiding, focusing, files and audio
+  cues.">
+  <figcaption>Plan preferences overview. Review the whole plan here, then use the detailed sections below for
+  each group, including the current Atmospheric model setting.</figcaption>
+</figure>
+
+<p>Preferences are grouped into sections: <strong>Solar filter policy</strong>,
+the central-phase capture group, <strong>Atmospheric model</strong>, <strong>System configuration</strong>,
+<strong>Imaging base</strong>, the SharpCap camera settings, <strong>Guiding</strong>, <strong>Files</strong>,
+<strong>Focusing</strong> and <strong>Audio cues</strong>. This page walks through the ones that matter most;
+individual phase recipes live in the <a href="phase-editor.html">Phase editor</a>.</p>
+
+<h2>Solar filter policy (eclipse mode)</h2>
+<div class="callout">
+  <span class="lbl">Total eclipses only</span>
+  This group appears only on a total eclipse plan. Annular and partial eclipses have no filter-off window to
+  schedule, so there is no policy to choose: the filter stays on from start to finish.
+</div>
+<p>In the <span class="ui">Solar filter policy</span> group, choose the eclipse mode:
+<span class="ui">Safe</span> (the default) or
+<span class="ui">Diamond ring (Classical)</span>. This changes the filter removal and replacement timing, the C2/C3 exposure brackets
+and the cues. Choose the mode whose filter procedure you understand and have rehearsed. Full explanation on the
+<a href="safety.html">Safety &amp; eclipse modes</a> page. A standing safety warning is shown here, and a second
+amber caution appears if your guiding would run through the unfiltered phases.</p>
+
+<figure class="shot">
+  <img src="img/preferences-filter-policy.png" alt="Solar filter policy choices and the warning displayed for
+  Diamond ring Classical mode.">
+  <figcaption>Solar filter policy changes both the filter cues and the derived imaging plan. Safe is the default;
+  select the mode whose procedure you have chosen and rehearsed.</figcaption>
+</figure>
+
+<h2 id="atmospheric-model">Atmospheric model</h2>
+<p>The <span class="ui">Atmospheric model</span> group contains one setting:
+<span class="ui">Apply standard atmospheric refraction</span>. It is enabled by default. When selected,
+HelioMaker includes atmospheric refraction in the calculated contact times using fixed standard conditions of
+<strong>10&nbsp;°C and 1010&nbsp;hPa</strong>. When cleared, the contact times are geometric and do not include
+atmospheric refraction.</p>
+<figure class="shot">
+  <img src="img/preferences-refraction.png" alt="Atmospheric model group with Apply standard atmospheric
+  refraction selected.">
+  <figcaption>Enable standard atmospheric refraction when the contact-time model should include the fixed
+  standard atmosphere of 10&nbsp;°C and 1010&nbsp;hPa.</figcaption>
+</figure>
+<p>There are no separate temperature or pressure controls. The effect is usually negligible while the Sun is
+well above the horizon, but it can become significant for an eclipse close to the horizon. Changing the checkbox
+recalculates the contact times and the plan windows derived from them, so make this choice before final approval
+and repeat the rehearsal after changing it.</p>
+<div class="callout">
+  <span class="lbl">Refraction belongs to the saved plan</span>
+  Preflight does not edit the atmospheric model. It shows the plan's current value as the read-only text
+  <span class="ui">Refraction: enabled</span> or <span class="ui">Refraction: disabled</span>. Return to
+  <span class="ui">Plan preferences...</span> if it needs to change.
+</div>
+
+<h2>System configuration</h2>
+<p>The <span class="ui">System configuration</span> group selects the imaging device.
+<span class="ui">SharpCap</span> uses the camera currently open in SharpCap Pro. The group also contains the important
+<span class="ui">Guiding camera:</span> choice:</p>
+<figure class="shot">
+  <img src="img/preferences-system-config.png" alt="System configuration group with Shared camera selected as the
+  guiding camera and SharpCap selected as the imaging device.">
+  <figcaption>Choose whether the imaging camera is shared with guiding or PHD2 uses a physical guiding camera.</figcaption>
+</figure>
+<ul>
+  <li><span class="ui">Shared camera</span> <em>(simple full solar disk setup)</em>: one scope and one camera do both
+  imaging and guiding (PHD2 uses the Virtual Planetary Camera fed by HelioMaker). Simplest rig, one filter to
+  manage. The entire solar disk must fit comfortably inside the main camera frame because eclipse automation uses
+  the Sun detector in crescent and full solar disk modes. HelioMaker guides through the ordinary partial phases
+  and <strong>pauses guiding through the C2 and C3 contact windows and totality</strong>. As the photospheric limb
+  becomes bright enough for reliable detection after C3, it <strong>automatically recenters the Sun to its locked
+  position</strong>. The mount tracks without guide corrections for those few minutes.</li>
+  <li><span class="ui">Physical guiding camera</span>: a separate guide scope with its own camera, selected in
+  PHD2. Choose this when you need guiding to run <em>through</em> totality or when the main camera shows only part
+  of the solar disk at high magnification. It needs its own solar filter, removed and replaced with the main one
+  if guiding continues through totality. See <a href="gear-setup.html">Gear &amp; rig requirements</a>.</li>
+</ul>
+
+<h2>SharpCap camera settings</h2>
+<p>If SharpCap isn't connected you'll see <em>"SharpCap not connected. Camera settings can't be read or
+applied."</em> and settings can't be read.</p>
+<figure class="shot">
+  <img src="img/preferences-camera-settings.png" alt="SharpCap camera settings for file format, data format,
+  binning and capture resolution.">
+  <figcaption>These controls describe how SharpCap captures each frame. Set the capture resolution before running
+  the System benchmark test.</figcaption>
+</figure>
+<dl class="f">
+  <dt>Capture format</dt>
+  <dd><span class="ui">FITS</span>, <span class="ui">PNG</span> or <span class="ui">TIFF</span>. <span class="m">FITS
+    preserves the raw data for later processing.</span></dd>
+  <dt>Binning / Capture resolution</dt>
+  <dd><span class="m">The </span><span class="ui">Capture resolution:</span><span class="m"> (capture area) is
+    important because it fixes the frame size the run will use, which in turn drives the data rate for each frame and the disk
+    estimate. Choose it deliberately; the preflight checklist and the system benchmark test measure against it.</span></dd>
+</dl>
+
+<p>The <span class="ui">System benchmark test...</span> measures live-view capture overhead
+automatically and uses it when HelioMaker calculates safe shot spacing. There is no manual overhead
+setting to estimate or tune.</p>
+
+<div class="callout warn">
+  <span class="lbl">The saved plan controls the eclipse sequence</span>
+  Complete these settings before opening preflight. HelioMaker applies the plan's sequence controlled camera
+  settings to SharpCap during preflight and again when the run is armed. Do not treat manual SharpCap changes as
+  edits to the eclipse plan; they can be detected as a mismatch and replaced by the saved values.
+  <p style="margin-top:8px;"><strong>The selected SharpCap camera is part of the saved plan.</strong> Preflight
+  and final arming block if the camera configured in HelioMaker, the plan camera and the camera currently open in
+  SharpCap do not agree. This camera identity check cannot be bypassed with an ignore-warnings choice.</p>
+  <p style="margin-top:8px;">If physical testing requires a change, enter it here or in the
+  <a href="phase-editor.html">Phase editor</a>, save the revised plan, repeat the System benchmark test when the
+  camera format, colour space, binning or capture area changed, and rehearse again. Avoid last minute tuning
+  after preflight begins.</p>
+</div>
+
+<h2>Capture file naming and location</h2>
+<p>The <span class="ui">Files</span> group is separate from the SharpCap camera settings. Set
+<span class="ui">Base filename:</span> and choose whether <span class="ui">Filename timestamp:</span> uses
+<span class="ui">Observer local time</span> or <span class="ui">UTC (prefix with utc)</span>.</p>
+<figure class="shot">
+  <img src="img/file-settings.png" alt="Files group with Base filename and Filename timestamp settings.">
+  <figcaption>The Files group controls the names written within an eclipse run folder.</figcaption>
+</figure>
+<div class="callout">
+  <span class="lbl">Set the capture root on the HelioMaker main screen</span>
+  The plan preferences do not choose the base capture folder. Set <span class="ui">Capture Folder:</span> in the
+  <strong>Sequence</strong> area of HelioMaker's main screen. HelioMaker creates the eclipse run folder beneath
+  that root. Confirm the location and its free space before the run; preflight shows the resolved capture folder
+  and lets you verify it again.
+</div>
+
+<div class="callout">
+  <span class="lbl">Central-phase capture: Still versus Live</span>
+  This group chooses how the central phase's HDR brackets are captured, using
+  <span class="ui">Still mode (exact exposures)</span> or <span class="ui">Live view</span>. On a total eclipse
+  it governs the C2/C3 brackets. The choice is offered for every eclipse type, and it depends on your camera.
+  See <a href="capture-mode.html">Capture mode: Still versus Live</a>.
+</div>
+
+<div class="callout warn">
+  <span class="lbl">This dialog defines the imaging plan</span>
+  Choose <span class="ui">Safe</span> or <span class="ui">Diamond ring (Classical)</span> under
+  <span class="ui">Solar filter policy</span>. This changes the filter removal and replacement timing and the
+  affected phase recipes. Then choose <span class="ui">Still mode (exact exposures)</span> or
+  <span class="ui">Live view</span> under the capture group named for the eclipse type
+  (<span class="ui">Totality capture</span>, <span class="ui">Annularity capture</span> or
+  <span class="ui">Central phase capture</span>); that choice changes how the bracket is captured and how many
+  sets can fit. Read <a href="safety.html">Safety and eclipse modes</a> and
+  <a href="capture-mode.html">Capture mode: Still versus Live</a> before deciding. Apply these choices before
+  tuning individual phases.
+</div>
+
+<h2 id="imaging-base">Imaging base: the exposure model</h2>
+<p>HelioMaker anchors the whole exposure plan to one filtered reference exposure and gain, together with the
+solar filter density. It combines these physical inputs with
+<a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank">Fred Espenak's eclipse exposure
+recommendations</a> to derive the starting recipe for every phase. These are the most important imaging
+parameters in the plan. Set:</p>
+<figure class="shot">
+  <img src="img/preferences-imaging-base.png" alt="Imaging base settings for full solar disk exposure, camera
+  gain, solar filter density, partial phase interval and totality filter margin.">
+  <figcaption>Measure the full solar disk exposure and gain with the filtered physical rig, then select the
+  matching effective density of the complete filter stack before HelioMaker derives the phase recipes. Totality
+  filter margin is disabled in this Diamond ring mode example because it applies only to Safe mode; on an
+  annular or partial plan that slot carries <span class="ui">Central interval</span> instead.</figcaption>
+</figure>
+<dl class="f">
+  <dt><span class="ui">Full solar disk exposure (ms):</span> &amp;
+  <span class="ui">Full solar disk camera gain:</span></dt>
+  <dd><span class="m">Your correct exposure and gain for the </span><em>filtered</em><span class="m"> full solar
+    disk with the physical eclipse rig. Adjust them in SharpCap until the photosphere is bright and detailed
+    without clipping, then record the pair and enter it here. Do this on an ordinary sunny day before the eclipse,
+    or no later than the initial partial phase before automated imaging starts. HelioMaker applies this reference
+    gain to every phase when it derives the plan.</span></dd>
+  <dt><span class="ui">Solar filter density:</span></dt>
+  <dd><span class="m">Select the effective optical density of <strong>all attenuation in front of the
+    sensor</strong> when you measured the full solar disk exposure. The choices are
+    </span><span class="ui">ND 5.9 (visual film + 3 stops)</span>,
+    <span class="ui">ND 5.6 (visual film + 2 stops)</span>,
+    <span class="ui">ND 5.3 (visual film + 1 stop)</span>,
+    <span class="ui">ND 5.0 (visual film)</span>, <span class="ui">ND 4.0</span> and
+    <span class="ui">ND 3.8 (photo film)</span>.<span class="m">
+    HelioMaker combines this value with the filtered full-disk exposure to derive the C2/C3 and totality
+    exposure defaults.</span>
+    <p><strong>Always use a certified front-mounted solar filter.</strong> Ordinary photographic ND filters are
+    not safe solar filters on their own and must <strong>never face the Sun directly</strong>. If used for
+    additional attenuation, they must sit farther back in the optical train, <strong>behind the certified solar
+    filter</strong>. Add their optical densities to select the effective total. For example, ND&nbsp;5.0 plus a
+    one-stop ND&nbsp;0.3 filter is ND&nbsp;5.3.</p>
+    <p>Add attenuation only when the shortest practical camera exposure still overexposes the filtered disk.
+    Going below approximately 1&nbsp;ms increasingly exposes the result to read noise. Measure and enter the
+    reference exposure using the same complete filter stack that will be used for the eclipse.</p></dd>
+  <dt>Partial phase interval</dt>
+  <dd><span class="ui">Fixed interval</span><span class="m"> (a constant time between shots, in seconds) or </span>
+    <span class="ui">Uniform coverage</span><span class="m"> (shots spaced to sample the changing crescent evenly,
+    set by </span><span class="ui">Coverage step (% magnitude):</span><span class="m">). The choice applies to
+    partial ingress and egress, and on Apply it also sets the pre-eclipse and post-eclipse intervals to
+    match, so the whole outer eclipse is paced one way.</span></dd>
+  <dt><span class="ui">Annularity interval (s):</span> / <span class="ui">Central interval (s):</span>
+    <span style="color:var(--muted);">(annular and partial eclipses)</span></dt>
+  <dd><span class="m">The time between shots through annularity, or through the central phase of a partial
+    eclipse. Unlike totality, these phases are long and their brightness barely changes, so shooting flat out
+    would fill the disk with thousands of near-identical frames for no gain. Pick a spacing you actually want
+    to keep. It occupies the same slot in the dialog that <span class="ui">Totality filter margin</span> uses
+    on a total eclipse, because only one of the two can ever apply. To change how <em>wide</em> the central
+    phase is, rather than how often it shoots, select its row in the
+    <a href="phase-editor.html">Phase editor</a> and use <span class="ui">Start before (s):</span> and
+    <span class="ui">End after (s):</span> there.</span></dd>
+  <dt><span class="ui">Totality filter margin (s):</span> <span style="color:var(--muted);">(total eclipses)</span></dt>
+  <dd><span class="m"><strong>Safe mode only.</strong> This parameter creates a deliberate buffer at both ends
+    of totality. HelioMaker sets filter removal to C2 plus the selected margin and filter replacement to C3 minus
+    the same margin. It does not change the calculated C2 or C3 contact times; it shortens the interval during
+    which the telescope is unfiltered. The buffer lets you wait until after the predicted C2 before removing the
+    filter and begin replacing it early enough to finish before the photosphere is predicted to return at C3.
+    Choose a value that allows for uncertainty in the predicted contact timing and for handling the physical
+    filter. A larger value provides more buffer but reduces unfiltered imaging time. The timeline, run monitor and
+    audio cues use these filter change instants. The setting also influences the default Safe mode phase layout:
+    when you accept recipe regeneration, HelioMaker sets the C2 diamond trail and C3 diamond lead to the rounded
+    margin plus two seconds, leaving a small overlap beyond each filter transition. Those phase boundaries remain
+    separately editable in the Phase editor. In Diamond ring (Classical) mode this setting has no effect; the C2
+    and C3 diamond phase windows determine the filter change points instead.</span></dd>
+  <dt>Include thin-crescent phase</dt>
+  <dd><span class="m">Adds the dedicated thin crescent phases just before and after the central phase.</span></dd>
+</dl>
+
+<div class="callout">
+  <span class="lbl">Keep the camera gain equal across all phases</span>
+  Using the same gain for every phase is recommended. HelioMaker derives the plan this way from the full solar
+  disk reference gain, while exposure time and bracketing provide the exposure changes between phases. Make an
+  individual phase gain change in the Phase editor only when testing with the physical camera supports that
+  deliberate exception. If some phases have drifted away from the reference gain, applying preferences offers
+  to put every phase back on it in one step, so you do not have to reset each row by hand.
+</div>
+
+<div class="callout danger">
+  <span class="lbl">Exposure and gain are locked once imaging starts</span>
+  The current eclipse workflow does not support changing exposure or gain during a run. The plan editor locks when
+  automated imaging starts, and the run sets the camera from the planned phase recipes. A change made only in
+  SharpCap will not update the plan and will not persist as a planning correction. Determine the reference pair
+  early with the physical rig, apply it here, let HelioMaker derive the phases again, then use the
+  <a href="phase-editor.html">Phase editor</a> to tune individual recipes before approving and rehearsing the plan.
+</div>
+
+<h2>Guiding</h2>
+<p>The <span class="ui">PHD2 guiding:</span> selector controls guiding. For a total eclipse with a
+<span class="ui">Physical guiding camera</span> (see above), the choices are:</p>
+<figure class="shot">
+  <img src="img/preferences-guiding.png" alt="Guiding group with PHD2 guiding set to Partial phases only.">
+  <figcaption>The shared camera layout uses the guiding policy selector and plan-wide guide interval. Guiding
+  pauses around C2 and C3 and throughout totality.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="img/preferences-guiding-separate.png" alt="Guiding group for a separate physical guiding camera,
+  including guide exposures for partial phases and totality and the plan-wide guide interval.">
+  <figcaption>With a separate guide scope and physical guiding camera, set the guide exposures for the filtered
+  partial phases and, when used, the unfiltered totality interval. The guide interval applies in both physical
+  setups.</figcaption>
+</figure>
+<ul>
+  <li><span class="ui">No guiding</span>: tracking only.</li>
+  <li><span class="ui">Partial phases only</span>: guides during the ordinary partial phases and pauses through
+  the C2 and C3 contact windows and totality.</li>
+  <li><span class="ui">Partial phases and totality</span>: available with a physical guiding camera. It guides
+  during the ordinary partial phases and inside totality, but still pauses through the thin crescent and diamond
+  ring phases around C2 and C3.</li>
+</ul>
+<dl class="f">
+  <dt><span class="ui">Guide interval (ms):</span></dt>
+  <dd>The start-to-start time between guide frames: how often PHD2 samples the guide image and can issue a
+    correction. The allowed range is <strong>500 to 6000&nbsp;ms</strong> (0.5 to 6&nbsp;seconds), and
+    <strong>2000 to 4000&nbsp;ms</strong> (2 to 4&nbsp;seconds) is the recommended starting range.
+    <p>The best value depends on the physical mount and the seeing. Some harmonic-drive mounts need a shorter
+    interval toward the lower end of the range so their periodic motion is corrected promptly. In poor seeing,
+    use a longer interval, commonly above 3000&nbsp;ms, so PHD2 is less likely to chase rapid image motion caused
+    by the atmosphere. Test the value with the actual mount, guide optics and observing conditions.</p>
+    <p>The interval applies to both shared-camera and physical-guiding-camera plans. When you apply a changed
+    value in Plan preferences, HelioMaker writes it to every phase. You can subsequently tune an individual
+    phase's <span class="ui">Interval (ms):</span> in the
+    <a href="phase-editor.html#per-phase-guiding">Phase editor</a>. Keep the interval longer than that phase's
+    guide exposure.</p></dd>
+</dl>
+<div class="callout warn">
+  <span class="lbl">Guiding through totality means an unfiltered guide scope</span>
+  <span class="ui">Partial phases and totality</span> only works if the separate guide scope can detect the Sun
+  during totality, which means removing its filter too. HelioMaker warns about this here, in the
+  <a href="preflight.html">preflight checklist</a>, and in the live cue (which names both filters). If in doubt, guide in
+  the partials only and let guiding pause through the central phase. (With a <span class="ui">Shared camera</span>,
+  guiding always pauses through the contact windows and totality, so this option does not apply.)
+</div>
+
+<h2>Focusing (automatic refocus)</h2>
+<p>Enable <span class="ui">Automatically refocus before totality</span> to run a single guarded refocus a few
+minutes before C2 (requires a motorized focuser). Set <span class="ui">Minutes before totality:</span> and a
+<span class="ui">Refocus timeout (s):</span>.</p>
+<div class="callout">
+  <span class="lbl">Annular and partial eclipses</span>
+  This group is available for every eclipse type. The wording follows the eclipse you are planning: the option
+  reads <span class="ui">Automatically refocus before the annularity phase</span> or
+  <span class="ui">Automatically refocus before the central phase</span>. It names the <strong>phase</strong>
+  rather than the instant deliberately, because that is what the scan is timed against: the countdown runs back
+  from the moment that phase <em>begins</em>, which includes whatever
+  <span class="ui">Start before (s):</span> you gave it in the Phase editor, not from annularity or maximum
+  itself. The purpose is identical everywhere &mdash; the temperature has been falling for an hour or more by
+  the time the central phase arrives, and focus drifts with it.
+</div>
+<p>HelioMaker relies on SharpCap Focus Assistant and repeats its last
+successful solar focus scan. Before enabling this option, use the physical eclipse rig to configure
+<span class="ui">Contrast (Edge) Detection</span> or <span class="ui">Fourier Detail Detection</span>, complete
+at least one successful scan, and manually confirm that SharpCap Refocus returns to sharp focus. Without that
+saved successful scan, HelioMaker automatic refocus will not work. During the automatic scan, HelioMaker pauses
+PHD2 guiding corrections to avoid correction-induced jitter and improve focusing accuracy. Planned captures
+continue, so an image taken while the focuser is moving may be slightly blurred. See
+<a href="focusing.html">Focusing</a>.</p>
+<figure class="shot">
+  <img src="img/focusing-prefs-group.png" alt="Focusing group with automatic refocus enabled, minutes before
+  the central phase and refocus timeout settings.">
+  <figcaption>These settings schedule one SharpCap refocus before the central phase &mdash; totality,
+  annularity or maximum eclipse, depending on the plan. Prepare and prove SharpCap Focus Assistant before
+  enabling the option.</figcaption>
+</figure>
+
+<h2>The System benchmark test</h2>
+<figure class="shot">
+  <img src="img/benchmark-intro.png" alt="System benchmark test introduction and settings, including bracket
+  repeats, the extended camera test and totality timing verification.">
+  <figcaption>The benchmark tests the selected camera, current image size, planned HDR bracket and capture
+  drive together. Optional longer checks can expose occasional faults and verify totality timing.</figcaption>
+</figure>
+<p>Click <span class="ui">System benchmark test...</span> to open the benchmark. It measures your camera's real
+capture overhead for each frame. Set <span class="ui">Bracket repeats in each pass:</span>, then
+<span class="ui">Start</span>. It runs a measure pass, a validate pass, and an extended pass if needed, shows the
+frame size it measured against, benchmarks your capture drive, and (for a Still mode plan)
+<strong>qualifies</strong> still mode on your camera. The summary reports rows such as <em>Camera check</em>,
+<em>Still capture</em>, <em>Live capture</em>, <em>Capture drive</em> and <em>Plan timing</em>. Two optional deeper
+checks are worth using before the eclipse: <span class="ui">Test the camera for 5 minutes (slower, finds occasional
+faults)</span>, a soak test that surfaces intermittent Still mode failures, and <span class="ui">Verify the
+plan's totality timing (slower)</span>. When you're happy, <span class="ui">Update &amp; close</span> applies the
+result to the plan, including the minimum interval for each phase and the disk space estimate.</p>
+<figure class="shot">
+  <img src="img/benchmark-running.png" alt="System benchmark in progress during the first measuring pass.">
+  <figcaption>Let both measurement passes complete without changing the camera, capture resolution or drive.</figcaption>
+</figure>
+<div class="callout warn">
+  <span class="lbl">Run this; it is not optional busywork</span>
+  The benchmark is what lets HelioMaker <strong>automate the sequence realistically</strong>. Its measured overhead
+  sets the minimum interval for each phase and produces the estimate of <strong>how many HDR cycles you can actually
+  capture in the central window</strong> (shown as &ldquo;~N sets in totality / in annularity / in the central phase&rdquo;,
+  following the eclipse type; on a total eclipse that window is C2 through C3). Without it, the plan is guessing. You
+  could arrive at the central phase with intervals the camera can't sustain, and capture fewer frames than you
+  planned. Run it on your
+  <em>actual</em> eclipse camera and capture configuration, well before the day.
+</div>
+<div class="callout">
+  <span class="lbl">Do this after choosing your capture area</span>
+  The measurement is tied to the frame size. Set your <span class="ui">Capture resolution:</span> first, then run
+  the benchmark. Otherwise the preflight checklist will flag that the measurement describes a different frame size than the
+  run will use. For a Still mode plan the qualification can <strong>block the run</strong> if the camera cannot switch
+  into Still mode reliably. See <a href="capture-mode.html">Capture mode: Still versus Live</a>.
+</div>
+<figure class="shot">
+  <img src="img/benchmark-summary.png" alt="System benchmark summary with camera check, still and live capture
+  overhead, capture drive speed, camera name and frame size.">
+  <figcaption>Review the camera check, measured Still and Live overhead, drive throughput, camera and frame size,
+  then select <span class="ui">Update &amp; close</span> to apply the result to the plan.</figcaption>
+</figure>
+
+<h2>Audio cues</h2>
+<p><span class="ui">Play audio cues during eclipse</span> enables the spoken prompts during a run;
+<span class="ui">Preview audio cues</span> plays them so you know exactly what you'll hear (it toggles to
+<span class="ui">Stop</span> while playing). Preview them until they are familiar. See
+<a href="run-console.html">The run console</a>. What you hear depends on the eclipse type.</p>
+
+<h3>Total eclipses</h3>
+<p>A set of three prompts that adapt to the mode: awareness, preparation to remove the filter, and preparation
+to replace it. These prompts control the imaging-scope filters; they never change the separate rule that
+certified eye protection stays on until totality.</p>
+
+<h3>Annular and partial eclipses</h3>
+<p>Exactly <strong>one</strong> spoken prompt, about a minute and a half before annularity or before maximum
+eclipse. It tells you the central phase is approaching and restates that the solar filter stays on.</p>
+<div class="callout warn">
+  <span class="lbl">There are no filter prompts, and there never will be</span>
+  On an annular or partial eclipse the filter never comes off, so there is nothing to prompt for. If you have
+  photographed a total eclipse, do not wait for a remove-filter cue here &mdash; none is coming, and the
+  absence is deliberate rather than a fault. The one prompt you do hear says so out loud.
+</div>
+<p>Because the prompt names the astronomical instant, it fires relative to <em>that</em> instant and not to the
+start of the central phase. The central phase is a window several minutes wide centred on annularity or
+maximum, so the cue normally sounds well after that phase has already begun. That is correct: it is announcing
+the moment of deepest eclipse, not the start of capture.</p>
+<p><span class="ui">Preview audio cues</span> plays the chime and that single prompt, which is the entire cue
+list for the run &mdash; the preview rehearses exactly what eclipse day will sound like.</p>
+<p>The same checkbox also enables HelioMaker's <strong>critical alarm</strong>. It may sound during a physical
+eclipse run if HM detects an unexpected PHD2 or SharpCap error that may require your attention. In some cases HM
+will attempt to relaunch the affected application, reconnect and resume eclipse imaging automatically. An alarm
+still means you should read the red/amber console status and confirm whether recovery succeeded. The
+<span class="ui">Silent shutter</span> button does not mute this alarm; clearing
+<span class="ui">Play audio cues during eclipse</span> does.</p>
+<p>Critical alarms and the spoken eclipse safety/filter prompts play on independent audio paths. An alarm can
+overlap a scheduled spoken instruction without stopping or muting it. Cosmetic shutter feedback may pause
+briefly so the alarm remains clear.</p>
+<p><span class="ui">Preview alarm</span> plays the actual 2.638-second critical sound so you can verify its
+volume before eclipse day. It is a test control and remains available whether or not run-time audio cues are
+currently selected.</p>
+<figure class="shot">
+  <img src="img/preferences-audio.png" alt="Audio cues group with the option to play cues, a Preview audio
+  cues button and a Preview alarm button.">
+  <figcaption>Enable the cues, preview every prompt the plan will actually play, and test the critical alarm at
+  a useful field volume.</figcaption>
+</figure>
+
+<div class="callout safe">
+  <span class="lbl">After editing preferences</span>
+  Changes made after approving a plan create a <em>draft</em>. When you are happy, approve it again with
+  <span class="ui">Save as final</span> so the preflight checklist sees an approved plan. → <a href="planner.html">Planner
+  basics ▸ Draft vs final</a>
+</div>
+<figure class="shot">
+  <img src="img/preferences-modified-pill.png" alt="Plan settings changed status beside the Apply plan settings
+  and Cancel buttons.">
+  <figcaption>The changed status appears after an edit. Apply the settings, review the derived phases, and save
+  the completed plan as final again.</figcaption>
+</figure>
+
+<nav class="foot"><a href="planner.html">← Planner basics</a><a href="capture-mode.html">Capture mode →</a></nav>
+</div>
+</body>
+</html>

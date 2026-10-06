@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preflight Checklist | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  p{margin:0 0 12px;} ul,ol{margin:0 0 14px;padding-left:22px;} li{margin:0 0 6px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap;}
+  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
+  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
+  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout.danger{border-left-color:var(--danger);background:var(--danger-bg);border-color:var(--danger-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);} .callout.danger .lbl{color:var(--danger);}
+  .grp{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 16px 12px;margin:14px 0;}
+  .grp h3{font-size:16px;margin:14px 0 6px;color:var(--accent-ink);}
+  .grp dl{margin:0;} .grp dt{font-weight:600;margin-top:9px;} .grp dd{margin:1px 0 0;color:var(--muted);font-size:14.5px;}
+  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout,.grp{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>10 · Preflight (arm) checklist</span></nav>
+
+<h1>Preflight (arm) checklist</h1>
+<p class="lead">The go or no go dialog you open before a run. It walks through a set of grouped checks; each shows green
+when satisfied, amber/red when it needs attention. When the checklist is clear, you arm.</p>
+
+<p>Open this dialog by selecting <span class="ui">Start eclipse imaging</span> for a live run or
+<span class="ui">Eclipse plan rehearsal...</span> for a rehearsal. The atmospheric-refraction choice is part of
+the saved plan. Preflight shows its current value as read-only text; change it in
+<a href="preferences.html#atmospheric-model">Plan preferences</a>, not here.</p>
+
+<p>The dialog is titled for the event and site (for example, <em>Eclipse imaging August 12, 2026:
+&lt;your coordinates&gt;</em>). A banner at the top tells you the next item standing between you and a clean start.
+When all is well, it ends with <em>"Checklist is clear, ready to start eclipse imaging."</em></p>
+
+<div class="callout danger">
+  <span class="lbl">Do not tune SharpCap after opening preflight</span>
+  From this point, the saved plan is the source of truth. HelioMaker applies the plan's sequence controlled
+  SharpCap settings, verifies them while preflight remains open, and applies them again when the run is armed or
+  SharpCap reconnects. A manual change in SharpCap can therefore fail a readiness check and will be replaced by
+  the plan.
+  <p style="margin-top:8px;">If any exposure, gain, capture format, colour space, binning, capture area or other
+  sequence parameter needs to change, cancel preflight and update it in
+  <a href="preferences.html">Plan preferences</a> or the <a href="phase-editor.html">Phase editor</a>. Save the
+  revised plan, repeat any affected camera test, and rehearse it again before starting the eclipse run. Do not
+  tune the sequence at the last minute in SharpCap.</p>
+</div>
+
+<!-- The former overview screenshot showed obsolete editable refraction, temperature and pressure controls. -->
+
+<div class="callout warn">
+  <span class="lbl">Work top to bottom, on the day and in rehearsal</span>
+  Run this checklist in your <a href="simulation.html">rehearsals</a> too, not just for real. The first time you see
+  a red badge should not be on eclipse morning. Most gates offer a button that fixes them in place (start tracking,
+  run autofocus, sync the clock, choose a folder).
+</div>
+
+<h2>Verify the run summary</h2>
+<p>The top of the dialog identifies the event, imaging mode, selected camera, physical setup, approximate shot
+count, number of phases and capture span. Check this summary before working through the gates. The camera shown
+here must agree with both the saved plan and the camera currently open in SharpCap. Any disagreement is a hard
+blocker: choose the planned camera or deliberately update and reapprove the plan before arming.</p>
+<figure class="shot">
+  <img src="img/preflight-gear.png" alt="Top of the eclipse imaging preflight dialog showing the selected event,
+  imaging mode, SharpCap camera, shared camera setup, planned shot count, phase count and capture span.">
+  <figcaption>Before checking individual gates, verify the event summary, imaging mode, selected camera, physical
+  setup and plan size at the top of the dialog.</figcaption>
+</figure>
+
+<div class="callout danger">
+  <span class="lbl">A different SharpCap camera cannot be ignored</span>
+  HelioMaker pins the imaging camera when the plan is saved and again when the run is armed. The preflight camera
+  identity check is not an ordinary warning and <span class="ui">Ignore warnings and start</span> cannot pass it.
+  This prevents a valid set of capture settings from being applied to—and capturing through—the wrong device.
+</div>
+
+<h2>The gates</h2>
+
+<div class="grp">
+  <h3>Plan version</h3>
+  <dl>
+    <dt><span class="ui">Plan version</span></dt>
+    <dd>Are you about to run the intended plan? If a draft exists beside the final plan, changes made since the
+    final plan was saved exist only in the draft. The gate asks you to choose <span class="ui">Use draft plan</span>
+    or <span class="ui">Run the final plan</span>. See <a href="planner.html">Draft vs final</a>.</dd>
+  </dl>
+</div>
+<figure class="shot">
+  <img src="img/preflight-plan-version.png" alt="Expanded Plan version gate explaining that a draft exists beside
+  the final plan and offering Use draft plan and Run the final plan buttons.">
+  <figcaption>When both versions exist, make a deliberate choice between the current draft and the last final
+  plan before arming the run.</figcaption>
+</figure>
+
+<div class="grp">
+  <h3>Time and Location</h3>
+  <dl>
+    <dt><span class="ui">Time and Location</span></dt>
+    <dd>Shows the selected observer, time zone, local time and the measured difference between the system clock
+    and network UTC. Confirm that the observer location, time zone and displayed clock are correct. When online,
+    the badge checks the clock against the NIST time service. <span class="ui">Clock sync...</span> opens the Time
+    sync dialog. Select <span class="ui">Sync the clock again when the sequence starts</span> to open that dialog
+    again when you actually start the run. This lets you recheck and, if needed, synchronize the clock when some
+    time has passed since the preflight badges were cleared.</dd>
+    <dt><span class="ui">Refraction: enabled</span> or <span class="ui">Refraction: disabled</span></dt>
+    <dd>This read-only text reports which contact-time model is stored in the plan. When enabled, HelioMaker uses
+    standard atmospheric conditions of 10&nbsp;°C and 1010&nbsp;hPa. When disabled, contacts are geometric.
+    There are no temperature or pressure controls in preflight. The tooltip identifies the standard conditions
+    and directs you to <a href="preferences.html#atmospheric-model">Plan preferences</a> if the setting must
+    change.</dd>
+    <dt><span class="ui">Eclipse timing</span></dt>
+    <dd>Confirms that contact timing is sound under the model saved in the plan. An accurate system clock keeps
+    the sequence aligned to the sky.</dd>
+  </dl>
+</div>
+<p><span class="ui">Time display</span> controls whether the dialog and run use UTC or the selected observer
+site's local time. It changes the display, not the calculated eclipse contacts.</p>
+<figure class="shot">
+  <img src="img/preflight-timesync.png" alt="Expanded Time and Location preflight badge showing the observer,
+  time zone, local time, measured system clock offset, location confirmation, an option to reopen the Time sync
+  dialog when the sequence starts and the Clock sync button.">
+  <figcaption>The Time and Location badge checks the PC clock against network UTC when online and warns when the
+  measured offset should be corrected before a live run. Select the sequence start checkbox if the run may begin
+  some time after you clear preflight.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="img/timesync-tool.png" alt="Time sync dialog showing the system clock offset from network UTC with
+  Sync now, Re-check, Windows time settings and Close buttons.">
+  <figcaption><span class="ui">Sync now</span> corrects the PC clock from network UTC and
+  <span class="ui">Re-check</span> measures it again. If automatic synchronization is unavailable, use
+  <span class="ui">Windows time settings...</span> to open Windows Date and time settings and correct the clock
+  or time zone manually.</figcaption>
+</figure>
+
+<div class="grp">
+  <h3>Focusing &amp; Guiding</h3>
+  <dl>
+    <dt><span class="ui">Focusing</span></dt>
+    <dd>Confirm focus or, if you use automatic refocus, verify that SharpCap has a successful saved solar focus
+    scan from the physical rig. <span class="ui">Run autofocus</span> asks SharpCap to repeat that saved scan; it
+    cannot configure the first scan. Buttons: <span class="ui">Recheck focuser</span>,
+    <span class="ui">Run autofocus</span>, or <span class="ui">Do not auto refocus before totality</span> to opt
+    out. With automatic refocus selected, the badge stays red until both focus is confirmed and
+    <span class="ui">Recheck focuser</span> verifies the live focuser connection and solar-compatible saved scan.
+    In shared-camera mode it also uses a stable HelioMaker solar detection to verify that SharpCap's saved focusing
+    region contains the complete solar disk. See <a href="focusing.html">Focusing</a>.</dd>
+    <dt><span class="ui">Guiding</span></dt>
+    <dd>If you use a separate guide scope and guide camera, focus the guide camera too; focusing the main imaging
+    camera does not focus the separate guiding optical path. The badge shows guiding status and, if your plan
+    would guide through the unfiltered phases, a red warning about both filters with a risk acceptance checkbox
+    that gates a clean arm. See <a href="safety.html">Safety</a>.</dd>
+  </dl>
+</div>
+<figure class="shot">
+  <img src="img/focusing-preflight-item.png" alt="Expanded Focus and auto refocus preflight item showing confirmed
+  focus, refocus controls and the successful SharpCap focusing confirmation.">
+  <figcaption>Focus confirmation and the focuser readiness test are separate gates. Run autofocus asks SharpCap
+  to repeat its prepared scan after the intended rig has been verified.</figcaption>
+</figure>
+
+<div class="grp">
+  <h3>Mount calibration</h3>
+  <dl>
+    <dt><span class="ui">Focal length</span></dt>
+    <dd>The effective focal length of the optical path used for guiding. HelioMaker uses it to calculate the PHD2
+    calibration step size, so it must be correct before calibration.</dd>
+    <dt><span class="ui">Polar alignment</span></dt>
+    <dd>Confirms that the mount is polar aligned. Guiding can correct small tracking errors, but it cannot replace
+    sound polar alignment.</dd>
+    <dt><span class="ui">PHD2 calibration</span></dt>
+    <dd>Reviews the current PHD2 calibration and its orthogonality error. A missing or failed calibration is a red
+    preflight item: PHD2 cannot apply the corrections needed to return the Sun to its locked position until a
+    successful calibration is available. Run <span class="ui">Calibrate PHD2</span>, preferably from the
+    HelioMaker main screen, then review the new result.</dd>
+  </dl>
+</div>
+<figure class="shot">
+  <img src="img/preflight-mount-sun.png" alt="Expanded Mount calibration group showing an unconfirmed focal length
+  and confirmed polar alignment and PHD2 calibration gates.">
+  <figcaption>Confirm the focal length used to estimate the Sun's detector size and calculate the PHD2 calibration
+  step. Then verify polar alignment and PHD2 calibration.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="img/preflight-phd2-calibration.png" alt="Expanded Mount calibration group with confirmed focal length
+  and polar alignment plus a PHD2 calibration item showing its date, age, possible stale status, zero degree
+  orthogonality error and confirmation control.">
+  <figcaption>The badge reports when the current PHD2 calibration was made and its orthogonality error. Even a
+  geometrically good calibration may be stale or no longer valid for the current physical setup, so confirm it
+  only after checking that the gear has not changed.</figcaption>
+</figure>
+
+<div class="callout warn">
+  <span class="lbl">Read the calibration result before accepting it</span>
+  <ul>
+    <li>A poor or failed calibration may indicate that polar alignment needs improvement. A large orthogonality
+    error is an important clue, although mount mechanics, balance and backlash can also contribute.</li>
+    <li>Too many or too few calibration sample points (dots) can indicate that the effective focal length is
+    incorrect, because HelioMaker derives the PHD2 calibration step size from that value.</li>
+    <li>Check or enter the correct focal length on the HelioMaker main screen (HelioMaker Help:
+    <span class="ui">Main Screen ▸ Focal Length</span>). You can measure it with the
+    <span class="ui">Focal length assistant</span> in Find &amp; Track (HelioMaker Help:
+    <span class="ui">Find &amp; Track ▸ Focal Length Assistant</span>), or calculate it with the main screen's
+    <span class="ui">Focal length calculator</span>. Then run PHD2 calibration again.</li>
+  </ul>
+  If a calibration warning remains unresolved, expect reduced guiding accuracy or guiding that cannot correct
+  the Sun's position reliably. For more diagnostic guidance, see HelioMaker Help:
+  <span class="ui">PHD2 Calibration and Troubleshooting ▸ Understanding the PHD2 Calibration Graph</span>.
+</div>
+
+<div class="grp">
+  <h3>Sun framing and tracking</h3>
+  <dl>
+    <dt><span class="ui">Sun altitude</span></dt>
+    <dd>Confirms that the Sun is above the observing horizon. For a simulation with the Sun below the horizon, a
+    checkbox lets you proceed anyway.</dd>
+    <dt><span class="ui">Mount tracking</span></dt>
+    <dd>Confirms that the mount is tracking the Sun. The controls in this group can start solar tracking.</dd>
+    <dt><span class="ui">Sun framing</span></dt>
+    <dd>Asks you to confirm that the Sun is centred in the frame.</dd>
+  </dl>
+</div>
+<figure class="shot">
+  <img src="img/preflight-sun-framing.png" alt="Confirmed Sun framing and tracking group showing Sun altitude,
+  Mount tracking and an expanded Sun framing item asking the user to confirm that the Sun is centred.">
+  <figcaption>Confirm that the Sun is above the horizon, the mount is tracking and the Sun is centred in the
+  camera frame.</figcaption>
+</figure>
+
+<div class="grp">
+  <h3>Exposure, storage &amp; latency</h3>
+  <dl>
+    <dt><span class="ui">Exposure plan</span> · <span class="ui">Totality slot</span></dt>
+    <dd>A check on the exposure plan and whether the central phase cycles fit their time slot.</dd>
+    <dt><span class="ui">Camera exposure and gain</span></dt>
+    <dd>Checks the plan's base exposure and gain against the filtered Sun; a
+    <span class="ui">Measure exposure</span> button runs the verification. It does not automatically choose new
+    planning values. If the disk is not bright and detailed without clipping, adjust the physical camera, record
+    the pair that works, return to <span class="ui">Plan preferences...</span>, enter it as the full solar disk
+    exposure and gain, derive and review the phases again, and save the revised plan as final before starting.</dd>
+    <dt><span class="ui">Camera latency</span></dt>
+    <dd>Warns if the intervals for each phase are faster than the camera was measured to sustain, or if the
+    measurement no longer matches the plan's frame size. Fix via the <a href="preferences.html">System benchmark
+    test</a>.</dd>
+    <dt><span class="ui">Capture folder</span> · <span class="ui">Disk space</span></dt>
+    <dd>Where frames are written (<span class="ui">Choose folder...</span>) and whether there's enough free space for
+    the estimated capture. HelioMaker preserves a non-empty folder from an earlier or interrupted Live session
+    and automatically selects a fresh numbered sibling for the restart, such as
+    <code>..._live.2</code>. This keeps the previous images, run log and timing record intact while avoiding
+    SharpCap filename collisions.</dd>
+    <dt><span class="ui">Calibration frames</span></dt>
+    <dd>A reminder/check for your darks/flats if you use them.</dd>
+  </dl>
+</div>
+<figure class="shot">
+  <img src="img/preflight-exposure.png" alt="Expanded Camera exposure and gain gate with Sun detection status,
+  Measure exposure button and an option to confirm without measuring.">
+  <figcaption>The exposure check becomes available after Sun framing is confirmed. Use it to verify the planned
+  reference exposure and gain against the filtered Sun, not to choose or rewrite those planning values.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="img/preflight-latency.png" alt="Confirmed Camera latency gate showing the measured milliseconds per
+  frame used for capture time estimates.">
+  <figcaption>A valid camera latency measurement lets HelioMaker include the measured time per frame in its
+  capture estimates.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="img/preflight-storage.png" alt="Storage group showing Capture folder and Disk space gates with free
+  space and estimated space required.">
+  <figcaption>Check both the capture folder and the estimated free space. The estimate shown here is based on the
+  planned frame count and measured frame size.</figcaption>
+</figure>
+
+<div class="callout warn">
+  <span class="lbl">This is the final verification, not the first measurement</span>
+  The exposure, gain and filter ND rating should already have been determined with the physical rig, applied to
+  the plan and rehearsed. Once you select <span class="ui">Start</span>, the current version locks exposure and
+  gain for the run. A last minute change in SharpCap alone does not update the planned phase recipes.
+</div>
+
+<div class="grp">
+  <h3>Power and wake</h3>
+  <dl>
+    <dt><span class="ui">Power</span> · <span class="ui">System wake</span></dt>
+    <dd>Battery level, estimated runtime, and confirmation that Windows will not sleep during the run.</dd>
+  </dl>
+</div>
+<figure class="shot">
+  <img src="img/preflight-power.png" alt="Confirmed Power and wake group with Power and System wake gates.">
+  <figcaption>Power and wake checks the available power and confirms that idle sleep and screen blanking will be
+  held off throughout the run.</figcaption>
+</figure>
+
+<h2>Arming and overriding warnings</h2>
+<p>When the checklist is clear, <span class="ui">Start</span> arms the run and opens the
+<a href="run-console.html">run console</a>. <span class="ui">Cancel</span> backs out.</p>
+
+<figure class="shot">
+  <img src="img/preflight-arm-sim.png" alt="All clear simulation preflight checklist with the expected Simulation
+  warning and an enabled Start simulation button.">
+  <figcaption>In a rehearsal, the Simulation warning identifies the type of run and remains visible even when all
+  readiness checks are clear. In this state, use <span class="ui">Start simulation</span>.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="img/preflight-arm-sim-warn.png" alt="Simulation preflight checklist with an unresolved focus warning
+  and an Ignore warnings and start simulation button.">
+  <figcaption>If another warning remains, the banner identifies the item to resolve and the button changes to
+  <span class="ui">Ignore warnings and start simulation</span>. The focus warning shown here is separate from the
+  expected Simulation warning.</figcaption>
+</figure>
+
+<div class="callout danger">
+  <span class="lbl">Overriding warnings is your risk</span>
+  If items are still red, the button becomes <span class="ui">Ignore warnings and start</span>. This action
+  overrides unresolved checklist warnings and raises one confirmation. It exists for the moment when a badge is
+  wrong and totality is seconds away, not as a way to skip preparation. If you override the focus confirmation,
+  <strong>automatic refocus will not run</strong> (the console says so). Use it knowingly.
+</div>
+
+<nav class="foot"><a href="simulation.html">← Simulation options</a><a href="run-console.html">The run console →</a></nav>
+</div>
+</body>
+</html>

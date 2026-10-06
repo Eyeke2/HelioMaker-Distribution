@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 260" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#58697f"/>
+    </marker>
+  </defs>
+  <style>
+    .box{fill:#d6e2f1;stroke:#b0c3db;stroke-width:1.5;}
+    .num{fill:#fff;font-size:13px;font-weight:bold;text-anchor:middle;}
+    .ndot{fill:#142c4e;}
+    .ttl{fill:#162234;font-size:14px;font-weight:bold;text-anchor:middle;}
+    .sub{fill:#586980;font-size:11px;text-anchor:middle;}
+    .flow{stroke:#58697f;stroke-width:2;fill:none;marker-end:url(#arr);}
+    .loop{stroke:#c86e00;stroke-width:2;fill:none;marker-end:url(#arr);stroke-dasharray:6 4;}
+    .loopt{fill:#c86e00;font-size:11.5px;font-style:italic;text-anchor:middle;}
+  </style>
+
+  <text x="10" y="26" fill="#162234" font-size="16px" font-weight="bold">From first look to eclipse day</text>
+  <text x="10" y="44" fill="#586980" font-size="12px">Steps 1 to 4 need no telescope: everything rehearses indoors with the simulator.</text>
+
+  <!-- boxes: x = 10,182,354,526,698,870 ; width 150 (last 160) ; y 64 h 84 ; mid-x 85,257,429,601,773,950 -->
+  <g>
+    <rect class="box" x="10"  y="64" width="150" height="84" rx="10"/>
+    <circle class="ndot" cx="34"  cy="90" r="13"/><text class="num" x="34"  y="94">1</text>
+    <text class="ttl" x="92"  y="112">Find the eclipse</text><text class="sub" x="92"  y="130">site and date</text>
+
+    <rect class="box" x="182" y="64" width="150" height="84" rx="10"/>
+    <circle class="ndot" cx="206" cy="90" r="13"/><text class="num" x="206" y="94">2</text>
+    <text class="ttl" x="264" y="112">Build the plan</text><text class="sub" x="264" y="130">phases fill in</text>
+
+    <rect class="box" x="354" y="64" width="150" height="84" rx="10"/>
+    <circle class="ndot" cx="378" cy="90" r="13"/><text class="num" x="378" y="94">3</text>
+    <text class="ttl" x="436" y="112">Set the exposure</text><text class="sub" x="436" y="130">base, gain, filter</text>
+
+    <rect class="box" x="526" y="64" width="150" height="84" rx="10"/>
+    <circle class="ndot" cx="550" cy="90" r="13"/><text class="num" x="550" y="94">4</text>
+    <text class="ttl" x="608" y="112">Rehearse</text><text class="sub" x="608" y="130">simulated runs</text>
+
+    <rect class="box" x="698" y="64" width="150" height="84" rx="10"/>
+    <circle class="ndot" cx="722" cy="90" r="13"/><text class="num" x="722" y="94">5</text>
+    <text class="ttl" x="780" y="112">Pre-flight, arm</text><text class="sub" x="780" y="130">go / no-go checklist</text>
+
+    <rect class="box" x="870" y="64" width="160" height="84" rx="10"/>
+    <circle class="ndot" cx="894" cy="90" r="13"/><text class="num" x="894" y="94">6</text>
+    <text class="ttl" x="955" y="112">The run console</text><text class="sub" x="955" y="130">it captures, you watch</text>
+  </g>
+
+  <!-- forward arrows (in the 22px gaps, mid-line y=106) -->
+  <line class="flow" x1="160" y1="106" x2="180" y2="106"/>
+  <line class="flow" x1="332" y1="106" x2="352" y2="106"/>
+  <line class="flow" x1="504" y1="106" x2="524" y2="106"/>
+  <line class="flow" x1="676" y1="106" x2="696" y2="106"/>
+  <line class="flow" x1="848" y1="106" x2="868" y2="106"/>
+
+  <!-- rehearse loop: box 4 back to box 2, arc below, label under the arc -->
+  <path class="loop" d="M 601 148 C 601 206, 257 206, 257 150"/>
+  <text class="loopt" x="429" y="228">adjust the plan and rehearse again, as often as you like</text>
+</svg>

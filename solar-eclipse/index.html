@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HelioMaker Solar Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:860px;margin:0 auto;padding:28px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .crumb{font-size:13px;color:var(--muted);margin:0 0 18px;}
+  header.hero h1{font-size:30px;line-height:1.2;font-weight:650;margin:0 0 6px;letter-spacing:.2px;}
+  header.hero .sub{color:var(--muted);font-size:16px;margin:0 0 4px;}
+  .guide-hero{display:flex;align-items:flex-start;gap:16px;margin:0 0 10px;}
+  .guide-hero-icon{flex:0 0 auto;width:128px;max-width:24vw;height:auto;border:1px solid #263052;
+    border-radius:9px;background:#161b33;}
+  .guide-hero-copy{min-width:0;padding-top:6px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:38px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  h3{font-size:18px;margin:26px 0 8px;}
+  p{margin:0 0 12px;}
+  ul,ol{margin:0 0 14px;padding-left:22px;}
+  li{margin:0 0 7px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .safety{background:var(--danger-bg);border:1px solid var(--danger-line);border-left:5px solid var(--danger);
+    border-radius:12px;padding:16px 18px;margin:20px 0;}
+  .safety h2{color:var(--danger);border:0;margin:0 0 8px;font-size:15px;}
+  .safety p{margin:0 0 8px;}
+  .safety p:last-child{margin:0;}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);}
+  .callout.warn .lbl{color:var(--warn);}
+  .toc{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:1fr;gap:10px;}
+  @media(min-width:620px){.toc{grid-template-columns:1fr 1fr;}}
+  .toc li{margin:0;}
+  .toc a{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:13px 15px;height:100%;}
+  .toc a:hover{border-color:var(--accent);text-decoration:none;}
+  .toc .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;}
+  .toc .t{font-weight:600;display:block;margin-top:1px;}
+  .toc .d{color:var(--muted);font-size:13.5px;display:block;margin-top:3px;}
+  .spine{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0;}
+  .spine h3{margin-top:0;}
+  .hero-shot{margin:20px 0 24px;border:1px solid var(--line);border-radius:12px;
+    background:var(--panel);overflow:hidden;}
+  .hero-shot img{display:block;width:100%;height:auto;}
+  .hero-shot figcaption{padding:9px 12px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:13.5px;}
+  footer{color:var(--muted);font-size:13px;margin-top:44px;border-top:1px solid var(--line);padding-top:16px;}
+  .ph{display:block;background:var(--panel2);border:1px dashed var(--line);border-radius:8px;
+    padding:14px;color:var(--muted);font-size:13.5px;text-align:center;margin:14px 0;}
+  @media print{
+    body{background:#fff;color:#000;font-size:12pt;}
+    .toc a,.callout,.spine,.safety,.guide-hero,.hero-shot{break-inside:avoid;}
+    a{color:#000;text-decoration:underline;}
+  }
+  @media(max-width:560px){
+    .guide-hero{flex-direction:column;gap:12px;}
+    .guide-hero-icon{width:112px;max-width:45vw;}
+    .guide-hero-copy{padding-top:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero guide-hero">
+  <img class="guide-hero-icon" src="img/diamond-ring.png"
+    alt="Diamond ring at the edge of a total solar eclipse">
+  <div class="guide-hero-copy">
+    <h1>HelioMaker Solar Eclipse Imaging Guide</h1>
+    <p class="sub">Planning, rehearsing and running an automated capture of a <strong>total solar eclipse</strong>.</p>
+    <p class="crumb">Draft user guide · this is a companion to HelioMaker's integrated Windows help.</p>
+  </div>
+</header>
+
+<div class="callout" style="border-left-color:var(--accent);background:var(--panel);">
+  <span class="lbl" style="color:var(--accent-ink);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;">In a hurry?</span>
+  Read the <a href="quickstart.html"><strong>Quick start</strong></a>, which presents the whole flow on one page for the
+  impatient. (Then please still rehearse before eclipse day.)
+</div>
+
+<h2>What's in this guide</h2>
+<ol class="toc">
+  <li><a href="prepare-in-advance.html"><span class="n">1</span><span class="t">Prepare in advance</span>
+    <span class="d">The advance checklist: planning early, daytime polar alignment, solar guiding practice, timing verification and full rehearsal.</span></a></li>
+  <li><a href="gear-setup.html"><span class="n">2</span><span class="t">Gear &amp; rig requirements</span>
+    <span class="d">What you need, including shared camera guiding and the optional separate guide scope used to guide during totality.</span></a></li>
+  <li><a href="safety.html"><span class="n">3</span><span class="t">Safety &amp; eclipse modes</span>
+    <span class="d">Solar filter rules, and Diamond ring versus Safe mode.</span></a></li>
+  <li><a href="planner.html"><span class="n">4</span><span class="t">Planner basics</span>
+    <span class="d">Find an eclipse for your site, read the contact times, build a plan, preview the simulation.</span></a></li>
+  <li><a href="preferences.html"><span class="n">5</span><span class="t">Plan preferences</span>
+    <span class="d">Safe or Diamond ring timing, Still or Live capture, the measured exposure model, guiding, refocus and the system benchmark test.</span></a></li>
+  <li><a href="capture-mode.html"><span class="n">6</span><span class="t">Capture mode: Still versus Live</span>
+    <span class="d">Why Still mode gives the most accurate HDR, and how to test your camera before trusting it.</span></a></li>
+  <li><a href="phase-editor.html"><span class="n">7</span><span class="t">Phase editor</span>
+    <span class="d">Recipes for each phase: exposure, gain, HDR brackets, interval, cycles and coverage.</span></a></li>
+  <li><a href="focusing.html"><span class="n">8</span><span class="t">Focusing</span>
+    <span class="d">Preparing SharpCap Focus Assistant, proving a successful solar scan, and optional refocus before totality.</span></a></li>
+  <li><a href="simulation.html"><span class="n">9</span><span class="t">Simulation options</span>
+    <span class="d">Dry run, wet run, the integrated eclipse simulator, and the planned DirectShow simulation path.</span></a></li>
+  <li><a href="preflight.html"><span class="n">10</span><span class="t">Preflight (arm) checklist</span>
+    <span class="d">The go or no go gates: camera, plan version, focus, guiding, time and location, storage and power.</span></a></li>
+  <li><a href="run-console.html"><span class="n">11</span><span class="t">The run console</span>
+    <span class="d">Full and compact instrument views with clocks, telemetry, filter cues, guiding and refocus
+    status, recovery alerts, and protected run controls.</span></a></li>
+</ol>
+
+<div class="safety">
+  <h2>⚠ Read this first: solar safety</h2>
+  <p><strong>Your eyes come first, and that rule never changes.</strong> Never look at the Sun with the naked eye,
+  or through any finder, eyepiece or unfiltered optic, without certified eye protection, <em>except during totality
+  itself</em> (the bright disc fully covered). This eye safety rule is the same <strong>whichever imaging mode you
+  choose</strong>. Unfiltered sunlight through optics causes <strong>permanent, instant eye injury</strong>.</p>
+  <p><strong>Your imaging scopes need a suitable solar filter secured over the front of the optics</strong> through every
+  partial phase. Unfiltered sunlight can damage the camera sensor. If you use a separate guide scope,
+  <strong>filter it too</strong>. <em>When the scope's filter comes off</em> is what the eclipse mode sets, and it's
+  about equipment/imaging timing, not your eyes:</p>
+  <ul style="margin:0 0 10px;">
+    <li><strong>Safe (the default mode):</strong> the scope's filter comes off only well inside
+    totality and goes back on early. This provides a more conservative filter timing window.</li>
+    <li><strong>Diamond ring (Classical):</strong> based on AAS <em>imaging</em> guidance, the scope's filter comes off
+    at the diamond ring near C2 and back on near C3. This window is slightly wider than totality and captures the beads.
+    It requires a clear understanding of the procedure and thorough rehearsal.</li>
+  </ul>
+  <p style="margin:0;">Either mode, your <strong>eye</strong> protection still only comes off during totality.
+  → <a href="safety.html">Safety &amp; eclipse modes</a></p>
+</div>
+
+<h2>What HelioMaker does</h2>
+<p>HelioMaker brings the <strong>whole solar eclipse imaging workflow into one tool</strong>: it finds the eclipse
+for your exact site, helps you design an exposure plan across every phase, and then <strong>runs that plan
+automatically</strong>. It drives the camera through SharpCap, guides on the Sun through the custom PHD2, manages
+the HDR exposure brackets, and can optionally <strong>refocus a few minutes before totality</strong>. It provides
+visual and audio prompts for the planned filter changes, plus optional shutter sounds driven by capture telemetry.
+Most shutter sounds confirm new capture progress; the long-exposure open/close pair reports camera activity and is
+not proof that the file was ultimately saved. When audio cues are enabled, a critical alarm may also sound if HM
+detects an unexpected PHD2 or SharpCap failure requiring attention; HM may attempt to relaunch the affected
+application, reconnect the planned equipment and resume eclipse imaging. The camera saved in the plan remains
+authoritative: HelioMaker will not knowingly continue the eclipse sequence through a different SharpCap camera.</p>
+<p>Once the plan is set and your mount is ready, including <strong>daytime polar alignment</strong> (as good as you can
+achieve in daylight), <strong>PHD2 calibration</strong>, and <strong>passing the preflight checklist</strong>,
+HelioMaker takes over the sequence. You handle safety and the filter swaps at the cued moments; the software does
+the rest, so you can actually <em>watch the eclipse</em>.</p>
+<div class="callout warn">
+  <span class="lbl">Camera compatibility in this version</span>
+  This version of the eclipse workflow is not designed for DSLR or mirrorless cameras. It requires a
+  <strong>fast planetary imaging camera that SharpCap supports natively</strong>. Open the camera through
+  SharpCap's native camera support; <strong>do not select an ASCOM camera driver</strong>.
+  <p style="margin-top:8px;">Fast camera readout and frame download are especially important during the brief
+  central phases from C2 to C3. A faster camera can complete more of the planned brackets and capture a greater
+  portion of totality before those unrepeatable moments end. See
+  <a href="gear-setup.html">Gear &amp; rig requirements</a> and test the complete camera configuration with the
+  System benchmark well before eclipse day.</p>
+</div>
+<div class="callout safe">
+  <span class="lbl">Why it's different</span>
+  Instead of stitching together separate planning, capture and guiding programs, HelioMaker
+  integrates the solar eclipse workflow in one place: planning, timing, capture, guiding and refocus.
+  It uses a <strong>detailed physical model</strong> with precise ephemerides for the eclipse phases and
+  contact timing, optional <strong>atmospheric refraction correction</strong>, and <strong>lunar limb
+  modeling</strong> for the beads and diamond ring.
+</div>
+
+<h2>The one message that matters most</h2>
+<div class="spine">
+  <h3>Prepare in advance. Rehearse everything, weeks ahead.</h3>
+  <p>A total eclipse gives you <strong>one opportunity under strict timing constraints</strong>. Totality often lasts only a few minutes,
+  and there is <strong>no retry</strong>. Everything this guide describes exists so that on eclipse day you are
+  <em>watching the sky</em>, not fighting software.</p>
+  <p>Well before the eclipse: find the event in the planner and build a starting plan. With the physical rig,
+  determine a well exposed filtered full solar disk exposure and camera gain, and enter them with the correct
+  effective ND rating of the complete solar-filter stack. HelioMaker uses these key inputs with
+  <a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank">Fred Espenak's eclipse exposure
+  recommendations</a> to derive every phase. Review and tune those phases, run the camera benchmark, then <strong>approve</strong> and
+  rehearse the completed plan until the sequence, filter cues and refocus feel like muscle memory. Exposure and
+  gain cannot be changed after automated imaging starts. Practise
+  <strong>daytime polar alignment</strong> and <strong>solar guiding</strong> on ordinary sunny days. Never
+  debug guiding for the first time on eclipse day.</p>
+  <p style="margin:0;">→ Start here: <a href="prepare-in-advance.html">Prepare in advance</a></p>
+</div>
+
+<figure class="hero-shot">
+  <img src="img/index-eclipse-planner.png"
+    alt="HelioMaker Solar Eclipse Planner showing the August 12, 2026 eclipse timeline, generated phase plan and Totality phase settings">
+  <figcaption>The Solar Eclipse Planner brings together the selected event and observer site, automatically
+  calculated contact timeline, generated exposure and guiding plan, and detailed settings for each phase.</figcaption>
+</figure>
+
+<footer>
+  <p>HelioMaker bridges <strong>SharpCap Pro</strong> and a custom <strong>PHD2</strong> fork to run an automated
+  eclipse capture sequence. This guide covers the eclipse feature specifically; for general setup, licensing and
+  the Find&nbsp;&amp;&nbsp;Track tool, see HelioMaker's integrated help.</p>
+  <p>Draft documentation. The eclipse UI is still evolving, so some screens may differ slightly from what you see.
+  Current screenshots are included where captures are available.</p>
+</footer>
+
+</div>
+</body>
+</html>

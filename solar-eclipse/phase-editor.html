@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase Editor | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  h3{font-size:17px;margin:22px 0 6px;}
+  p{margin:0 0 12px;} ul,ol{margin:0 0 14px;padding-left:22px;} li{margin:0 0 6px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap;}
+  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
+  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
+  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);}
+  table.t{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px;}
+  table.t th,table.t td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top;}
+  table.t th{background:var(--panel2);}
+  dl.f{margin:10px 0;} dl.f dt{font-weight:600;margin-top:10px;} dl.f dd{margin:2px 0 0;color:var(--muted);}
+  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout,table.t{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>7 · Phase editor</span></nav>
+
+<h1>Phase editor</h1>
+<p class="lead">A plan is a sequence of <strong>phases</strong>, each with its own capture recipe. The phase table
+and the editor for each phase are where you shape exactly what gets captured, and how fast.</p>
+
+<h2>The phase set</h2>
+<p>HelioMaker builds a phase for each stage of the eclipse. For a total eclipse the set runs, in order:</p>
+<table class="t">
+  <thead><tr><th>Phase</th><th>What it captures</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pre-eclipse</strong></td><td>Before first contact; setup and baseline frames.</td></tr>
+    <tr><td><strong>Partial ingress</strong></td><td>C1 → the approach to totality; the shrinking crescent.</td></tr>
+    <tr><td><strong>Thin crescent · C2</strong></td><td>The last sliver before totality (optional; enabled by
+      <span class="ui">Include thin-crescent phase</span>).</td></tr>
+    <tr><td><strong>Diamond ring · C2</strong></td><td>The diamond ring / Baily's beads at second contact.</td></tr>
+    <tr><td><strong>Totality</strong> <span style="color:var(--muted);">(or <strong>Annularity</strong>, or
+      <strong>Central</strong>)</span></td>
+      <td>The central phase, showing the corona (total), the ring (annular) or the deepest crescent
+      (partial).</td></tr>
+    <tr><td><strong>Diamond ring · C3</strong></td><td>The diamond ring returning at third contact.</td></tr>
+    <tr><td><strong>Thin crescent · C3</strong></td><td>The first sliver after totality (optional).</td></tr>
+    <tr><td><strong>Partial egress</strong></td><td>C3 → C4; the widening crescent.</td></tr>
+    <tr><td><strong>Post-eclipse</strong></td><td>After fourth contact.</td></tr>
+  </tbody>
+</table>
+<p>The C3 phases mirror the C2 phases, so what you set going into totality is echoed coming out.</p>
+<div class="callout">
+  <span class="lbl">Annular and partial phase sets</span>
+  Annular and partial eclipses share a simpler five-phase set: <strong>Pre-eclipse</strong>,
+  <strong>Partial ingress</strong>, the central phase, <strong>Partial egress</strong> and
+  <strong>Post-eclipse</strong>. The thin crescent and diamond ring phases belong to a total eclipse only.
+  The central phase is called <strong>Annularity</strong> on an annular plan and <strong>Central</strong> on a
+  partial one &mdash; Central rather than Maximum on purpose, because it is a window minutes wide rather than
+  the instant of maximum, and naming it after the instant made the two easy to confuse. To widen or narrow that
+  window, select its row here and use <span class="ui">Start before (s):</span> and
+  <span class="ui">End after (s):</span> below.
+</div>
+
+<h2>The phase table</h2>
+<p>The table lists every phase with its key numbers: <span class="ui">Phase</span>, <span class="ui">Start</span>,
+<span class="ui">Duration</span>, <span class="ui">Gain</span>, <span class="ui">Exposure</span>,
+<span class="ui">Bracketing</span>, <span class="ui">Cycles</span>, <span class="ui">Interval</span>,
+<span class="ui">Shots</span>, <span class="ui">Coverage</span> and <span class="ui">Guiding</span>. Two narrow
+columns flag whether the solar filter is off for the phase and whether a meridian crossing falls inside it. Select
+a row to edit that phase below.</p>
+
+<figure class="shot">
+  <img src="img/phase-editor-table.png" alt="Exposure and guiding plan table listing every eclipse phase with
+  start time, duration, gain, exposure, bracketing, cycles, interval, shots, coverage and guiding.">
+  <figcaption>Select a row to inspect and edit that phase. The table provides an overview of the complete
+  exposure and guiding plan.</figcaption>
+</figure>
+
+<h2>Preview an HDR bracket and compare it with the recommendations</h2>
+<p>When you select a bracketed phase, expand <span class="ui">Phase summary</span>. It lists every exposure time
+in the HDR bracket and reports the full EV span, estimated time per set and total exposure time. This is the
+complete capture ladder that results from the selected base exposure, EV step and frame count.</p>
+<p>The <span class="ui">Tips:</span> panel shows exposure guidance for the selected phase. HelioMaker scales these
+recommendations from the plan's measured full solar disk exposure and filter density, and accounts for the
+selected eclipse mode. Use the summary and Tips together while changing the recipe so you can see whether the
+resulting bracket covers the intended features and still fits the available phase time.</p>
+<figure class="shot">
+  <img src="img/phase-editor-hdr-preview.png" alt="Expanded Totality Phase summary showing the complete HDR
+  exposure ladder, EV span, estimated time per set, editable imaging controls and phase specific Tips.">
+  <figcaption>The expanded summary lists every exposure in the selected HDR bracket. Compare the ladder and its
+  timing with the phase specific Tips while tuning the recipe.</figcaption>
+</figure>
+
+<div class="callout">
+  <span class="lbl">Diamond ring lead and trail times</span>
+  The C2 and C3 diamond ring phases include <span class="ui">Lead time (s):</span> and
+  <span class="ui">Trail time (s):</span>. They extend the selected phase before and after the corresponding
+  contact, changing how much capture time is devoted to the diamond ring and Baily's beads. The values generated
+  from <span class="ui">Plan preferences...</span> should normally be used unchanged. Experienced eclipse imagers
+  can adjust them for a specific capture strategy, but should then review the timeline and rehearse the revised
+  plan. In Diamond ring (Classical) mode, these phase boundaries also determine the filter change points.
+</div>
+
+<h2>Recipe for each phase</h2>
+<dl class="f">
+  <dt><span class="ui">Exposure (ms):</span> and <span class="ui">Gain:</span></dt>
+  <dd>The exposure and gain for this phase. HelioMaker initially derives them from the measured filtered full
+  solar disk exposure, the reference camera gain, the effective ND rating of the complete filter stack and
+  <a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank">Fred Espenak's eclipse exposure
+  recommendations</a>. Keeping the same gain for every phase is recommended; make a phase specific gain change
+  only when physical camera testing supports it.</dd>
+  <dt><span class="ui">Bracketing:</span> (<code>EV/step ×</code> count)</dt>
+  <dd>HDR bracketing specifies how many exposures occur in each cycle and how many EV separate them. Deeper brackets around C2/C3 capture the
+  huge dynamic range of the inner corona and prominences.</dd>
+  <dt><span class="ui">Repeat (cycles):</span></dt>
+  <dd>How many times the recipe repeats within the phase. <span class="ui">Max</span> fills the phase's time slot
+  with as many cycles as fit.</dd>
+  <dt><span class="ui">Interval (s):</span></dt>
+  <dd>The time from the start of one cycle to the start of the next, which defines the cadence rather than the gap
+  between cycles. <span class="ui">Max speed</span> sets it to the fastest rate the camera can sustain.
+  <strong>Every imaging interval in the plan is shown in seconds</strong>, in the phase table and in this
+  editor, including the estimated time per cycle beside it. Guiding is the one exception: the guide exposure
+  and guide interval below remain in milliseconds, which is the unit PHD2 itself uses.</dd>
+  <dt><span class="ui">Lead time (s):</span> / <span class="ui">Trail time (s):</span></dt>
+  <dd>For the diamond ring phases, how far before and after C2 or C3 the selected phase extends. The same controls
+  adjust the applicable edge of a thin crescent phase. Plan preferences supplies the initial values; use these
+  controls only for deliberate phase specific tuning.</dd>
+  <dt><span class="ui">Start before (s):</span> / <span class="ui">End after (s):</span>
+  <span style="color:var(--muted);">(annular and partial central phase)</span></dt>
+  <dd>The same pair of controls, renamed for what they do on the central phase of an annular or partial eclipse:
+  how long before and after its anchor the phase runs. For <strong>annularity</strong> the anchor is the pair of
+  inner contacts, so zero means the phase is exactly C2 to C3 and larger values extend it either side. For a
+  <strong>partial</strong> eclipse the anchor is maximum itself, and since there are no inner contacts these two
+  values are what give the phase its length. Partial ingress and egress take whatever is left on each side.</dd>
+  <dt><span class="ui">Overrun:</span></dt>
+  <dd>What to do if a cycle is still running when the phase ends: <span class="ui">Cancel &amp; switch</span> or
+  <span class="ui">Finish, then switch</span>.</dd>
+</dl>
+<figure class="shot">
+  <img src="img/phase-editor-recipe.png" alt="Phase Imaging controls for exposure, gain, HDR bracketing, repeat
+  cycles, overrun policy, capture interval and lead time.">
+  <figcaption>The Imaging panel changes with the selected phase. This example includes Lead time; a diamond ring
+  phase provides both Lead time and Trail time for experienced timing adjustments.</figcaption>
+</figure>
+
+<div class="callout warn">
+  <span class="lbl">Tune a measured plan, not a guessed one</span>
+  First measure the filtered full solar disk with the actual eclipse rig and enter the exposure, gain and
+  effective total ND rating in <a href="preferences.html">Plan preferences</a>. Let HelioMaker derive the phase
+  set, then use this
+  editor to tune it. The phase editor locks when automated imaging starts, so exposure and gain changes must be
+  completed, approved and rehearsed before the run.
+</div>
+
+<div class="callout">
+  <span class="lbl">Coverage &amp; interval</span>
+  <strong>Interval</strong> is the spacing from the start of one cycle to the start of the next. <strong>Coverage</strong> reflects how
+  well the phase samples the changing eclipse. For the partials, the <span class="ui">Uniform coverage</span>
+  option (in <a href="preferences.html">Plan preferences</a>) spaces shots by how much the crescent has changed
+  rather than by a fixed clock interval, so you do not oversample the slow parts or undersample the fast ones.
+</div>
+
+<div class="callout">
+  <span class="lbl">How many cycles will actually fit?</span>
+  The C2/C3 bracket cadence and the number of cycles that fit in totality depend on your camera's measured overhead and
+  the capture mode. In <span class="ui">Live view</span> mode each short bracket rung is recorded as several frames
+  to stay honest, so totality writes many runs of short frames; <span class="ui">Still mode</span> captures exact
+  exposures and usually fits more complete sets. Run the <a href="preferences.html">System benchmark test</a> so the
+  minimum intervals and cycle counts here are realistic, and see <a href="capture-mode.html">Capture mode: Still versus
+  Live</a>.
+</div>
+
+<div class="callout">
+  <span class="lbl">When you ask for more cycles than fit</span>
+  Set <span class="ui">Repeat (cycles)</span> higher than the phase's time slot allows and the table shows both
+  numbers, as <strong>31&nbsp;(50)*</strong> &mdash; the scheduled count first, what you asked for in brackets.
+  The plan description says the same thing in words: <em>50 requested; 31 fit</em>. HelioMaker does not silently
+  reduce the request, and it does not pretend the extra cycles will happen.
+</div>
+
+<div class="callout">
+  <span class="lbl">Shots and recorded frames are different numbers</span>
+  <span class="ui">Shots</span> counts what you asked the camera for: cycles multiplied by the exposures in the
+  bracket. A three-exposure bracket repeated 45 times is 135 shots. In <span class="ui">Live view</span> a short
+  rung is recorded as a run of several frames, so the number of <em>files</em> on the disk is larger &mdash;
+  that figure is the recorded frame count, and it is used for disk-space estimates rather than presented as your
+  shot total.
+</div>
+
+<h2 id="per-phase-guiding">Per phase guiding within the plan limits</h2>
+<p><span class="ui">PHD2 guiding:</span> in <a href="preferences.html">Plan preferences</a> establishes the
+overall guiding policy and populates the phase plan. The <span class="ui">Guide this phase:</span> option then
+lets you enable or disable guiding for an individual phase where the selected physical setup permits it. The
+phase panel also provides <span class="ui">Exposure (ms):</span> and <span class="ui">Interval (ms):</span> for
+the guide camera. A per phase choice cannot override a guiding restriction imposed by the contact window or the
+selected camera setup.</p>
+<p>The plan-wide <span class="ui">Guide interval (ms):</span> is copied to every phase when it changes. Its
+allowed range is 500 to 6000&nbsp;ms, with 2000 to 4000&nbsp;ms recommended as a starting range. Make any
+phase-specific interval adjustment here after applying Plan preferences; keep the interval longer than the guide
+exposure.</p>
+<figure class="shot">
+  <img src="img/phase-editor-guiding.png" alt="Per phase Guiding controls for guide exposure, guide interval and
+  the Guide this phase option.">
+  <figcaption>Use the phase controls to refine the guiding policy supplied by Plan preferences. Controls are
+  unavailable where the current setup requires guiding to pause.</figcaption>
+</figure>
+<div class="callout">
+  <span class="lbl">The C2 and C3 contact windows always pause</span>
+  HelioMaker disables guiding through the thin crescent and diamond ring phases around C2 and C3 in both physical
+  setups. Near a contact, the detected target changes from a thinning crescent to beads and then the corona.
+  Continuing to guide can lock onto the wrong feature and move the mount away from the intended position. The
+  mount continues tracking during this brief pause, which together with totality normally lasts only a few
+  minutes. As the photospheric limb grows bright enough for reliable detection after C3, HelioMaker resumes
+  guiding and returns the Sun to its original locked position.
+</div>
+<div class="callout warn">
+  <span class="lbl">Guiding inside totality requires a separate guide scope</span>
+  A <span class="ui">Shared camera</span> cannot guide during totality because the same camera is capturing the
+  eclipse. With a <span class="ui">Physical guiding camera</span>, guiding inside totality is available only when
+  <span class="ui">PHD2 guiding:</span> is set to <span class="ui">Partial phases and totality</span> in Plan
+  preferences and guiding remains enabled for the totality phase. This requires the separate guide scope to work
+  without its solar filter during totality. Review <a href="safety.html">Safety and eclipse modes</a> and rehearse
+  both filter procedures.
+</div>
+
+<h2>Applying plan changes</h2>
+<p>When you apply changed Plan preferences, HelioMaker asks before deriving the affected phase settings again.
+Within the phase editor, use <span class="ui">Max</span> to fill the available time with cycles and
+<span class="ui">Max speed</span> to choose the fastest sustainable interval. Then adjust the phases you care
+about most, usually the C2/C3 group.</p>
+
+<nav class="foot"><a href="capture-mode.html">← Capture mode</a><a href="focusing.html">Focusing →</a></nav>
+</div>
+</body>
+</html>

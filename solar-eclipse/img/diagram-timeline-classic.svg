@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 520" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    .axis{stroke:#58697f;stroke-width:2;}
+    .tick{stroke:#58697f;stroke-width:2;}
+    .contact{fill:#142c4e;font-size:14px;font-weight:bold;text-anchor:middle;}
+    .clab{fill:#586980;font-size:11px;text-anchor:middle;}
+    .partial{fill:#e9e2d2;}
+    .total{fill:#20304a;}
+    .bandcore{fill:#ffb74d;stroke:#e59a2b;stroke-width:1;}
+    .bandbuf{fill:#ffd79a;stroke:#e59a2b;stroke-width:1;}
+    .bandlab{fill:#5a3a00;font-size:11.5px;font-weight:bold;text-anchor:middle;}
+    .cueline{stroke:#8a5a00;stroke-width:1.5;stroke-dasharray:4 3;}
+    .cueflag{fill:#8a5a00;font-size:11.5px;font-weight:bold;text-anchor:middle;}
+    .cuesub{fill:#8a5a00;font-size:10.5px;text-anchor:middle;}
+    .plab{font-size:12.5px;font-weight:bold;text-anchor:middle;}
+    .drop{stroke:#b3261e;stroke-width:1.2;stroke-dasharray:3 3;}
+    .mark{fill:#b3261e;font-size:11.5px;font-weight:bold;text-anchor:middle;}
+    .brk{stroke:#586980;stroke-width:1.5;fill:none;}
+    .brklab{fill:#586980;font-size:11px;text-anchor:middle;}
+    .note{fill:#586980;font-size:11px;font-style:italic;}
+    .mode{fill:#b5730b;font-size:12.5px;font-weight:bold;}
+    .safebox{fill:#fdeaea;stroke:#c0392b;stroke-width:1.5;}
+    .safetitle{fill:#a12318;font-size:13px;font-weight:bold;}
+    .safetext{fill:#5a1a13;font-size:11.5px;}
+  </style>
+
+  <text x="12" y="24" fill="#162234" font-size="16px" font-weight="bold">One total eclipse, as the run console sees it: <tspan class="mode">Diamond ring (Classical) mode</tspan></text>
+  <text x="12" y="41" class="note">Time axis not to scale: the partial phases last over an hour, totality only minutes.</text>
+
+  <!-- cue flags -->
+  <line class="cueline" x1="300" y1="92" x2="300" y2="152"/>
+  <text class="cueflag" x="300" y="66">Cue: totality is coming</text>
+  <text class="cuesub"  x="300" y="80">about 90 s before C2</text>
+
+  <line class="cueline" x1="415" y1="124" x2="415" y2="152"/>
+  <text class="cueflag" x="415" y="100">Cue: get ready to REMOVE</text>
+  <text class="cuesub"  x="415" y="114">when you SEE the diamond ring</text>
+
+  <line class="cueline" x1="665" y1="92" x2="665" y2="152"/>
+  <text class="cueflag" x="665" y="66">Cue: get ready to REPLACE</text>
+  <text class="cuesub"  x="665" y="80">at the FIRST BEAD of sunlight</text>
+
+  <!-- filter-off band: WIDER than totality. Dark core = totality; lighter buffers = the diamond-ring edges. -->
+  <rect class="bandbuf"  x="415" y="158" width="25"  height="18"/>
+  <rect class="bandcore" x="440" y="158" width="200" height="18"/>
+  <rect class="bandbuf"  x="640" y="158" width="25"  height="18"/>
+  <text class="bandlab" x="540" y="171">FILTER OFF</text>
+
+  <!-- edges drop down to the comparison bracket, showing they fall OUTSIDE C2 / C3 -->
+  <line class="drop" x1="415" y1="176" x2="415" y2="300"/>
+  <line class="drop" x1="665" y1="176" x2="665" y2="300"/>
+  <text class="mark" x="421" y="190" style="text-anchor:start;">OFF &#8594; remove</text>
+  <text class="mark" x="659" y="190" style="text-anchor:end;">replace &#8592; ON</text>
+
+  <!-- phase bands -->
+  <rect class="partial" x="60"  y="200" width="380" height="34"/>
+  <rect class="total"   x="440" y="200" width="200" height="34"/>
+  <rect class="partial" x="640" y="200" width="330" height="34"/>
+  <text class="plab" x="250" y="222" fill="#6b6248">Partial · filter ON</text>
+  <text class="plab" x="540" y="222" fill="#cee0f4">TOTALITY</text>
+  <text class="plab" x="805" y="222" fill="#6b6248">Partial · filter ON</text>
+
+  <!-- axis + contacts -->
+  <line class="axis" x1="40" y1="234" x2="990" y2="234"/>
+  <line class="tick" x1="60"  y1="234" x2="60"  y2="246"/>
+  <text class="contact" x="60"  y="264">C1</text><text class="clab" x="60"  y="280">first touch</text>
+  <line class="tick" x1="440" y1="234" x2="440" y2="246"/>
+  <text class="contact" x="440" y="264">C2</text><text class="clab" x="440" y="280">diamond ring</text>
+  <line class="tick" x1="640" y1="234" x2="640" y2="246"/>
+  <text class="contact" x="640" y="264">C3</text><text class="clab" x="640" y="280">diamond ring</text>
+  <line class="tick" x1="960" y1="234" x2="960" y2="246"/>
+  <text class="contact" x="960" y="264">C4</text><text class="clab" x="960" y="280">last touch</text>
+
+  <!-- comparison brackets: filter-off window is WIDER than totality -->
+  <path class="brk" d="M 415 306 L 415 300 L 665 300 L 665 306"/>
+  <text class="brklab" x="540" y="320" fill="#b3261e">filter OFF: diamond ring &#8594; first bead</text>
+  <path class="brk" d="M 440 340 L 440 334 L 640 334 L 640 340"/>
+  <text class="brklab" x="540" y="354">totality (C2 to C3), narrower</text>
+
+  <!-- AAS safety panel -->
+  <rect class="safebox" x="10" y="372" width="1000" height="138" rx="10"/>
+  <text class="safetitle" x="26" y="396">&#9888; AAS safety: the scope filter and your eyes are two different things</text>
+  <text class="safetext" x="26" y="418">&#8226; SCOPE FILTER: keep a certified solar filter on every imaging scope through the partial phases; it protects the camera sensor.</text>
+  <text class="safetext" x="26" y="438">&#8226; This mode (AAS imaging advisory): take the SCOPE filter off at the diamond ring, when you SEE it, and back on at the first returning bead.</text>
+  <text class="safetext" x="26" y="458">&#8226; That makes the unfiltered interval run C2 diamond ring &#8594; C3 first bead, slightly WIDER than totality.</text>
+  <text class="safetext" x="26" y="478">&#8226; YOUR EYES: eye protection comes off ONLY during totality itself, in BOTH modes. The diamond ring and beads are never eye-safe.</text>
+  <text class="safetext" x="26" y="498" style="font-style:italic;">Eyes decide, not the clock. Safe mode is the default: even the scope filter stays on until well inside totality.</text>
+</svg>

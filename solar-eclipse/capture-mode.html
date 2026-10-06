@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capture Mode: Still versus Live | HelioMaker Eclipse Guide</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
+  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
+  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
+    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  nav.top a{color:var(--muted);}
+  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
+    margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
+  h3{font-size:17px;margin:22px 0 6px;}
+  p{margin:0 0 12px;} ul,ol{margin:0 0 14px;padding-left:22px;} li{margin:0 0 6px;}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
+  .ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap;}
+  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
+  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
+  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
+  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
+    border-left:4px solid var(--accent);background:var(--panel);}
+  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
+  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
+  .callout.danger{border-left-color:var(--danger);background:var(--danger-bg);border-color:var(--danger-line);}
+  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);} .callout.danger .lbl{color:var(--danger);}
+  table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;}
+  table.t th,table.t td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;}
+  table.t th{background:var(--panel2);}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px 18px 12px;margin:16px 0;}
+  .step h3{display:flex;align-items:baseline;gap:10px;}
+  .step h3 .num{flex:0 0 auto;font-size:13px;font-weight:700;color:#fff;background:var(--accent);border-radius:999px;
+    min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;padding:0 7px;align-self:center;}
+  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
+  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
+    .callout,table.t,.step{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">← Eclipse guide index</a><span>6 · Capture mode</span></nav>
+
+<h1>Capture mode: Still versus Live</h1>
+<p class="lead">The way HelioMaker captures the HDR brackets around the central phase matters. There are two
+modes, and the right one for you depends on your camera.</p>
+
+<p>You choose in Plan preferences: <span class="ui">Still mode (exact exposures)</span> or
+<span class="ui">Live view</span>. On a total eclipse the choice governs the thin crescent and C2/C3 bracket
+span, which is the most demanding HDR part of the whole event.</p>
+<div class="callout">
+  <span class="lbl">Every eclipse type has this choice</span>
+  The group is no longer limited to total eclipses. An annular or partial plan brackets its central phase too,
+  and the benchmark that measures your camera has to be run against the mode the plan will actually use &mdash;
+  so the choice, the measurement and the timing budget follow the same rules whichever eclipse you are
+  planning.
+</div>
+<p>The group and the benchmark name that window in the eclipse's own words, so the exact labels
+depend on the plan you have open:</p>
+<table class="t">
+  <thead><tr><th style="width:22%;">Eclipse</th><th>Preferences group</th><th>Benchmark result reads</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Total</strong></td><td><span class="ui">Totality capture</span></td>
+      <td>&ldquo;~N sets in totality&rdquo;</td></tr>
+    <tr><td><strong>Annular</strong></td><td><span class="ui">Annularity capture</span></td>
+      <td>&ldquo;~N sets in annularity&rdquo;</td></tr>
+    <tr><td><strong>Partial</strong></td><td><span class="ui">Central phase capture</span></td>
+      <td>&ldquo;~N sets in the central phase&rdquo;</td></tr>
+  </tbody>
+</table>
+<p>The screenshots and the worked examples below are from a <strong>total</strong> eclipse, which is
+the most demanding case. Read &ldquo;totality&rdquo; in them as &ldquo;the central capture
+window&rdquo; when your plan is annular or partial.</p>
+<figure class="shot">
+  <img src="img/capture-mode-totality-group.png" alt="Totality capture choices for Still mode exact exposures
+  and Live view.">
+  <figcaption>Select Still or Live view before tuning the plan. This choice changes how the totality HDR bracket
+  is captured and how many complete sets can fit.</figcaption>
+</figure>
+
+<h2>How Still mode handles HDR</h2>
+<p>In <strong>Still mode</strong> the camera takes a discrete still image for each exposure, so
+<strong>each frame is intended to integrate for the requested exposure</strong>. On cameras that implement SharpCap
+Still mode reliably, this produces accurate HDR brackets for the corona, prominences and diamond ring.
+Still mode can also fit <strong>more complete HDR sets into the central capture window</strong>. The system
+benchmark test reports the measured result for each mode, using the wording for your eclipse type from the table
+above, so use its result for your camera.</p>
+<div class="callout safe">
+  <span class="lbl">When your camera supports it</span>
+  Still mode is the accuracy focused path <em>for cameras that fully support SharpCap's still image mode</em>.
+  The decision depends on camera support, measured performance and rehearsal. See the risk section below.
+</div>
+
+<h2>How Live view handles HDR</h2>
+<p><strong>Live view</strong> is based on a continuous video stream. Changing to the next exposure in an HDR
+bracket is an <strong>expensive operation that costs dropped frames</strong>. The stream has to settle to the new
+exposure, and frames captured during that settle are stale and must be discarded.</p>
+<p>To mitigate that, HelioMaker <strong>records several frames of the same exposure</strong> for each short rung
+of the bracket. This is useful for <strong>short exposures of roughly two seconds and below</strong>, where taking a
+few extra frames is cheap. Through the central capture window you therefore get <strong>runs of short
+frames at each exposure</strong> (on a total eclipse that window runs from C2 to C3). That keeps the short rungs
+honest, but it means live view writes a lot of similar frames, spends more of the capture budget on settling, and
+may complete fewer HDR sets than Still mode. Longer exposures cannot be duplicated as cheaply.</p>
+
+<h3>Side by side</h3>
+<table class="t">
+  <thead><tr><th style="width:16%;"></th><th>Still mode (exact exposures)</th><th>Live view</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Exposure handling</strong></td><td>Each requested exposure is a discrete still capture.</td>
+      <td>Relies on discarding stale frames after each exposure change.</td></tr>
+    <tr><td><strong>HDR brackets</strong></td><td>Uses one still capture for each requested bracket frame.</td>
+      <td>Captures several frames for each short bracket rung.</td></tr>
+    <tr><td><strong>Central-phase throughput</strong></td><td>Usually more complete HDR sets in the window.</td>
+      <td>Time lost to exposure settling; many duplicate short frames written.</td></tr>
+    <tr><td><strong>Camera support</strong></td><td>Requires reliable SharpCap Still mode.</td>
+      <td>Avoids switching into SharpCap Still mode.</td></tr>
+    <tr><td><strong>Benchmark behaviour</strong></td><td>Qualification can <strong>block</strong> the run if the
+      switch fails.</td><td>Benchmark only <strong>warns</strong>; never blocks on mode switching.</td></tr>
+  </tbody>
+</table>
+
+<h2>The catch and how to decide safely</h2>
+<div class="callout danger">
+  <span class="lbl">Partial Still mode support can fail during the eclipse</span>
+  Still mode depends on the camera supporting SharpCap's Still mode. <strong>Not all cameras do</strong>, and
+  a camera that only <em>partially</em> supports it may work in testing yet <strong>fail during the eclipse</strong>
+  at the worst possible time. Do not assume; verify. HelioMaker also flags cameras it knows to be risky on the Still
+  path.
+</div>
+
+<div class="step">
+  <h3><span class="num">1</span> Check the forums for your camera</h3>
+  <p>Search the SharpCap and astronomy imaging forums for your exact camera model and its Still mode reliability.
+  Other imagers' experience is the fastest way to learn whether your camera is a safe candidate.</p>
+</div>
+<div class="step">
+  <h3><span class="num">2</span> Run the System benchmark test on the physical camera</h3>
+  <p>With the camera connected, open <span class="ui">System benchmark test...</span> in
+  <a href="preferences.html">Plan preferences</a>. On a Still mode plan it <strong>qualifies</strong> Still mode:
+  it switches the camera into still mode, captures, and checks the frames are correct, <strong>blocking the run if
+  that fails</strong>. It also reports Still versus Live as &ldquo;ms/frame, ~N sets&rdquo; (named for your eclipse
+  type, per the table above) so you can compare,
+  plus a capture drive benchmark. Run it on your <em>actual</em> eclipse camera and capture configuration.</p>
+</div>
+<div class="callout warn">
+  <span class="lbl">The benchmark is what makes the automation trustworthy</span>
+  Running it isn't just about qualifying still mode. Its measured overhead is what lets HelioMaker
+  <strong>automate the sequence realistically</strong>. It sets the minimum interval for each phase and produces an
+  estimate of <strong>how many HDR cycles you can capture in the central window</strong> (the &ldquo;~N sets&rdquo;
+  figure; C2 through C3 on a total eclipse). Skip it and the plan is guessing: you may reach the central phase with a
+  cadence the camera can't sustain and come
+  away with fewer frames than you planned. Treat the benchmark as a required step, not an optional one.
+</div>
+<div class="step">
+  <h3><span class="num">3</span> If it passes and you're confident, accept the risk and select Still mode</h3>
+  <p>If the benchmark qualifies your camera and your other testing indicates it is reliable, choose
+  <span class="ui">Still mode (exact exposures)</span> in the capture group named for your eclipse type
+  (<span class="ui">Totality capture</span>, <span class="ui">Annularity capture</span> or
+  <span class="ui">Central phase capture</span>). You are
+  accepting the measured risk in exchange for more direct exposure control.</p>
+</div>
+<div class="step">
+  <h3><span class="num">4</span> If in any doubt, use Live view</h3>
+  <p>If your camera cannot switch modes reliably, or you prefer to avoid that mode switch, choose
+  <span class="ui">Live view</span>. The benchmark then only <em>warns</em> instead of blocking, and the central phase is
+  captured in Live view using the repeated frame mitigation described above. It is the fallback that avoids Still mode switching.</p>
+</div>
+
+<div class="callout warn">
+  <span class="lbl">Rehearse whichever you choose</span>
+  Test your chosen mode in a full <a href="simulation.html">rehearsal</a> well before the day. If you picked still
+  mode, rehearse the central-phase mode switch so you have seen the complete operation. Do not let the eclipse be the first
+  time your camera switches into still mode for real.
+</div>
+
+<nav class="foot"><a href="preferences.html">← Plan preferences</a><a href="phase-editor.html">Phase editor →</a></nav>
+</div>
+</body>
+</html>
