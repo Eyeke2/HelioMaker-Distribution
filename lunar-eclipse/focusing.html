@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focusing | HelioMaker Lunar Eclipse Guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="top" aria-label="Guide navigation"><a href="index.html">← Lunar eclipse guide index</a><span>8 · Focusing</span></nav>
+<main id="main"><header><h1>Focusing</h1><p class="lead">Establish a sharp lunar baseline and rehearse any automatic refocus.</p></header>
+
+<h2>Focus before starting</h2>
+<ol><li>Centre and frame the Moon with the intended image configuration.</li><li>Adjust exposure so lunar detail is readable without clipping.</li><li>Focus using the lunar image in SharpCap, and inspect the result at a useful display scale.</li><li>If you intend to use autofocus, configure the focuser and SharpCap Focus Assistant and prove a repeatable successful scan with this rig.</li><li>Confirm focus in preflight only after inspecting the image.</li></ol>
+<h2>Check and confirm in preflight</h2>
+<p>With automatic refocusing selected in the plan, <span class="ui">Focus &amp; auto-refocus</span> provides <span class="ui">Recheck focuser</span>, <span class="ui">Run autofocus</span> (which becomes <span class="ui">Cancel</span> during a scan), and a separate confirmation checkbox. Recheck after connecting the focuser in SharpCap and wait for the result. A pending check is not a disconnected focuser.</p>
+<p>Inspect the image before checking <span class="ui">I've run SharpCap focusing/refocusing successfully</span>, or <span class="ui">The imaging target is focused</span> when refocusing is not planned. A successful scan does not check this box for you, and checking it does not verify SharpCap's saved autofocus setup. Confirmation lasts up to ten minutes and is checked again at Start. A changed camera or physical/simulated imaging source, or an observed change or loss of a previously known focuser position, requires a new confirmation. A focuser that reported no position at confirmation is not required to provide one later. Reopening preflight does not renew the confirmation.</p>
+<figure class="shot" id="focusing-preflight"><img src="img/focusing-preflight.png" alt="The lunar Focus &amp; auto-refocus item with Recheck focuser, Run autofocus, the run-only toggle, setup advice and confirmation."><figcaption>The lunar Focus &amp; auto-refocus item with Recheck focuser, Run autofocus, the run-only toggle, setup advice and confirmation.</figcaption></figure>
+<h2>Prepare SharpCap's method and focusing ROI</h2>
+<p>First configure and successfully test SharpCap autofocus/refocus on this rig. HelioMaker checks the saved successful configuration. <strong>Contrast (Edge) Detection</strong> is recommended; Fourier detail and other non-stellar methods remain accepted. Star/FWHM/HFD/HFR/Bahtinov methods are not suitable for this lunar check.</p>
+<p>The saved SharpCap focusing measurement ROI must contain the full lunar disk with margin for imperfect guiding. This is not HelioMaker's tracking ROI, and the preflight badge does not edit it. With a shared camera, the check needs a current stable lunar detection and the imaging-camera geometry. With a separate guiding camera, guide-camera detection cannot verify the imaging camera's focusing ROI: inspect that ROI in SharpCap yourself.</p>
+<h2>Optional refocus before U1</h2>
+<p>When your build exposes the Focusing group, <span class="ui">Automatically refocus before U1</span> plans one SharpCap autofocus during the penumbral phase. Choose the lead in <span class="ui">Minutes before U1</span> and a <span class="ui">Refocus timeout (s)</span>. For a live physical-camera run, scheduling also requires current focuser/setup readiness, valid focus confirmation, and no run-only decline. Starting with warnings ignored does not grant this permission.</p>
+<p>Use <span class="ui">Do not auto refocus before U1</span> to decline it for this run, or <span class="ui">Enable auto refocusing before U1</span> to reconsider. This choice leaves the saved plan unchanged, survives plan-version detours in the same preparation, and resets for a new preparation. Declining refocus does not remove the need to inspect and confirm the focus baseline.</p>
+<p>U1 is the start of the umbral eclipse, so this occurs before partial ingress. A penumbral-only eclipse has no U1 and cannot enable this option. Rehearse the scan with enough lead time and verify how capture and guiding resume.</p>
+<p>In a physical-camera rehearsal, the preflight <span class="ui">Run autofocus</span> action can test the real rig. Automatic scheduled refocusing during a rehearsal remains simulated; a rehearsal is not proof that the timed hardware scan will succeed during a live run.</p>
+<figure class="shot" id="focusing-preferences"><img src="img/focusing-preferences.png" alt="The optional Focusing group with Automatically refocus before U1, its lead time and timeout."><figcaption>The optional Focusing group with Automatically refocus before U1, its lead time and timeout.</figcaption></figure>
+<aside class="callout "><span class="lbl">Read the result</span>Watch refocus status in the run console and inspect focus after a rehearsal. An enabled option is not evidence that the scan succeeded. If the Focusing group is absent, complete focus manually before the run.</aside>
+</main>
+<nav class="foot" aria-label="Chapter navigation"><a href="phase-editor.html">← Phase editor</a><a href="simulation.html">Simulation options →</a></nav>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+</div>
+</body>
+</html>

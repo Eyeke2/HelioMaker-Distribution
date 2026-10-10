@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking for Updates — HelioMaker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Checking for Updates</h1>
+
+    <p>
+        HelioMaker can automatically check for new releases, download, and install them without leaving the application.
+        You can trigger a manual check at any time via <strong>Help &rarr; Check for Updates</strong>.
+    </p>
+
+    <h2>1. Open the Update Dialog</h2>
+    <p>
+        From the main menu select <strong>Help &rarr; Check for Updates</strong>. This opens the Update dialog:
+    </p>
+    <img src="Images/VersionCheck1.jpg" alt="Help menu with Check for Updates highlighted" class="fig">
+
+    <h2>2. Check for Updates</h2>
+    <p>
+        Click the <strong>Check now</strong> button. HelioMaker will:
+    </p>
+    <ol>
+        <li>Query the update server for the latest version.</li>
+        <li>Compare it against your installed version (displayed above).</li>
+        <li>If a newer build is found, the button label changes to <strong>Download</strong>.</li>
+    </ol>
+
+    <h2>3. Download & Install</h2>
+    <p>
+        After clicking <strong>Download</strong>, HelioMaker fetches the installer package. Once downloaded, the button label changes to <strong>Install</strong>.
+    </p>
+    <img src="Images/VersionCheck2.jpg" alt="Update dialog showing installed version and options" class="fig">
+
+    <h2>4. Applying the Update</h2>
+    <p>
+        When you click <strong>Install</strong>, HelioMaker will:
+    </p>
+    <ul>
+        <li>Prompt for confirmation to close the running application.</li>
+        <li>Run the downloaded installer package.</li>
+        <li>Reopen HelioMaker into the newly installed version when the installer completes.</li>
+    </ul>
+
+    <h2>Enable Automatic Checks</h2>
+    <p>
+        You can enable or disable daily checks at startup by toggling the <strong>Check for updates daily at startup</strong> option.
+    </p>
+
+    <p><a href="ConfigurationAndSetup.htm">Back to Configuration and Setup</a></p>
+
+</body>
+</html>

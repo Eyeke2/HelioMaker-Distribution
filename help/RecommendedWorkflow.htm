@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Solar, Lunar and Planetary Workflow - HelioMaker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Recommended Solar, Lunar and Planetary Workflow</h1>
+    <p>
+        This section provides a step-by-step guide for using HelioMaker to optimize guiding and imaging.
+        While the process may initially seem complex, HelioMaker is designed to simplify your workflow,
+        minimizing the need for manual adjustments or constant monitoring to correct target drift.
+        Additionally, HelioMaker speeds up the setup process, allowing you to begin imaging more quickly.
+        Once properly configured with the appropriate detection and guiding parameters, you can achieve
+        effective autoguiding and seamless image capture, freeing you to focus on other tasks or leave the
+        system running unattended when conditions allow.
+    </p>
+    <p>
+        For the best experience, follow these steps carefully.
+    </p>
+
+    <h2>Step 1: Assemble and Prepare Your Gear</h2>
+    <p>
+        Ensure your imaging gear is fully assembled and connected to your computer with all required software installed,
+        as outlined in the <a href="Installation.htm">Installation and Prerequisites</a> section.
+    </p>
+    <p>
+        Make sure that HelioMaker is properly configured as outlined in <a href="ConfigurationAndSetup.htm">Configuration And Setup</a> section.
+        These steps must be performed at least once before initial use:
+    </p>
+    <ul>
+        <li><a href="sharpcap_configuration.htm">SharpCap Pro Configuration</a>.</li>
+        <li><a href="phd2_configuration.htm">PHD2 Configuration</a>.</li>
+        <li>Review and adjust <a href="advanced_settings.htm">Advanced Settings</a>.</li>
+        <li><a href="advanced_settings.htm">Check System Configuration</a>.</li>
+        <li>Determine if you need a <a href="DarkLibrary.htm">Dark Library in PHD2</a> and, if so, create one before running a capture session.</li>
+    </ul>
+    <ul>
+        <li>Install proper solar filters if performing solar imaging.</li>
+        <li>Level and balance your fully loaded telescope, including the camera and additional gear.</li>
+    </ul>
+
+    <h2>Step 2: Start HelioMaker and Launch SharpCap Pro and PHD2</h2>
+    <p>
+        Start HelioMaker and use its <strong>link buttons</strong> to launch both SharpCap Pro and PHD2.
+        First, connect SharpCap Pro to HelioMaker, followed by PHD2. Ensure that all equipment (camera, mount, etc.)
+        is properly connected. If the PHD2 equipment profile uses the <strong>Virtual Planetary Camera</strong>, the
+        PHD2 main screen will display the same camera view as SharpCap Pro, updated at a slower frame rate determined
+        by the sampling period set in PHD2.
+    </p>
+
+    <h2>Step 3: Polar Alignment</h2>
+    <p>Perform polar alignment as accurately as possible:</p>
+    <ul>
+        <li>For nighttime imaging, use standard polar alignment tools.</li>
+        <li>
+            For daytime solar imaging, polar alignment can be more challenging.
+            Follow the <a href="DaytimePolarAlignment.htm">Daytime Polar Alignment Using HelioMaker and PHD2</a>
+            for tips and explore additional resources on astronomical forums and websites.
+        </li>
+    </ul>
+
+    <h2>Step 4: Locate and Frame the Target</h2>
+    <p>Point the telescope toward your target (e.g., Sun, Moon, or a planetary surface feature) and locate it in the SharpCap Pro live view.</p>
+    <p>Use the following methods to locate the target before fine-tuning its framing:</p>
+    <ul>
+        <li>
+            For solar imaging, use a solar finder and minimize shadows cast by the telescope to align the target roughly.
+        </li>
+        <li>
+            For lunar or planetary imaging, use a finder scope to locate the target and align the telescope accordingly.
+        </li>
+        <li>
+            If the target remains out of frame, use SharpCap's <strong>Spiral Search</strong> feature. This tool automates slewing in a
+            spiral pattern and can help locate the target when manual methods are insufficient.
+        </li>
+    </ul>
+    <p>Adjust the framing to ensure the target is well-centered and properly oriented, and achieve <strong>initial focus</strong> to make the target clearly visible.</p>
+
+    <h2>Step 5: Start Dynamic Target Tracking or Select a Standard Mount Rate</h2>
+    <p>
+        When imaging the Sun, Moon, or other supported solar system bodies, it is recommended to open
+        <a href="DynamicTracking.htm"><strong>Dynamic Target Tracking</strong></a> at this stage and select the correct target.
+        Once the telescope is already pointed at and centered on the selected object, click <strong>Start Dynamic Tracking</strong>
+        so HelioMaker can update the mount tracking rate in real time.
+    </p>
+    <p>
+        <strong>Note:</strong> For daytime polar alignment using the <strong>Guiding Assistant</strong> or <strong>Drift Alignment</strong> tools in PHD2 with the Moon or the Sun,
+        starting Dynamic Target Tracking before using these tools can noticeably reduce drift and improve polar alignment accuracy.
+    </p>
+    <p>
+        If you prefer not to use Dynamic Target Tracking, or if it is not available or is not working as expected, it is still possible to continue with a standard mount
+        tracking rate instead. In that case, select the most appropriate built-in rate for your target:
+    </p>
+    <ul>
+        <li><strong>Lunar</strong> for the Moon.</li>
+        <li><strong>Solar</strong> for the Sun.</li>
+        <li><strong>Sidereal</strong> for planets or for general fallback use.</li>
+    </ul>
+    <p>
+        Standard mount rates may be selected through the <strong>PHD2 Planetary and Solar Guiding</strong> tool, through SharpCap Pro,
+        through planetarium software, or directly in the mount's hand controller or software. However, these built-in rates are static and generally less accurate than
+        Dynamic Target Tracking.
+    </p>
+
+    <h2>Step 6: Perform a Mount Sync</h2>
+    <p>
+        After framing your target near the center of the main imaging scope's field of view, perform a mount sync to confirm
+        that the telescope is accurately aligned with the intended celestial target. If you are using a separate guide scope
+        with its own guiding camera, ensure the guide scope is aligned so the target is properly visible in PHD2 for guiding.
+        Mount syncing minimizes alignment errors and reduces adjustment times following a meridian flip.
+    </p>
+
+    <h2>Step 7: Refine Framing, Focus, Exposure Settings, and Prepare Calibration Frames in SharpCap Pro</h2>
+    <ul>
+        <li>
+            Set your preferred binning ratio in the <strong>Capture Format and Area</strong> settings of SharpCap Pro.
+            This setting will be applied consistently for framing, initialization, and running the imaging sequence.
+            A binning value of 1 (indicating no binning) is typically recommended for planetary cameras with small sensor sizes.
+            Adjust the camera's <strong>exposure duration</strong> and <strong>gain</strong> in SharpCap Pro to achieve optimal brightness and contrast.
+            Using the SharpCap Histogram tool is recommended to prevent histogram clipping.
+        </li>
+
+        <li>
+            Select the proper image <strong>Capture Format and Area</strong>
+            <ul>
+                <li>Recommended <strong>Color Space</strong> formats include <strong>MONO8/16</strong> for monochrome cameras or <strong>RGB24/32</strong> for color cameras.</li>
+                <li>Recommended <strong>Output Format</strong> is SER file (*.ser).</li>
+            </ul>
+        </li>
+        <li>
+            Set the <strong>Frame Rate Limit</strong> in <strong>Camera Controls</strong> to the maximum value, or adjust it to your preferred setting.
+        </li>
+        <li>
+            <strong>Note:</strong> Live Image Stacking is generally not recommended for planetary imaging.
+        </li>
+        <li>Capture Flat calibration frames in SharpCap Pro.</li>
+        <li>Refine the focus for sharp details using SharpCap's <strong>Focus Assistant</strong> tool.</li>
+    </ul>
+
+    <h2>Step 8: Prepare PHD2 for Guiding using Find &amp; Track tool</h2>
+    <ul>
+        <li>
+            Before HelioMaker and PHD2 can identify your target and perform guiding or calibration, ensure you have achieved optimal
+            focus and completed initial object framing, including finalizing the camera orientation and image flip in
+            SharpCap Pro. If you later adjust the camera orientation or change the image flip settings in SharpCap Pro,
+            you will need to recalibrate PHD2. Since recalibration is time-consuming, it is best to avoid such changes
+            after calibration.
+        </li>
+        <li>Verify that PHD2 is looping exposures and that the target is visible in the PHD2 main window.</li>
+        <li>
+            Open the <strong>Find &amp; Track</strong> tool in HelioMaker and select the appropriate detection mode for your target.
+            Adjust detection parameters as needed to achieve reliable detection.
+            Please refer to the <a href="Find_Tool.htm">Find &amp; Track</a> section for the detailed description.
+        </li>
+        <li>
+            Optionally, you can review and fine-tune timing parameters in the PHD2 Configuration dialog in HelioMaker, and further adjust them directly
+            in PHD2 by opening the <strong>Planetary and Solar Guiding</strong> tool.
+        </li>
+        <li>
+            Select PHD2 guiding algorithms and initial guiding parameters: Choose values recommended by the
+            mount manufacturer. Alternatively, rely on your prior experience or seek advice from astronomy forums and related resources.
+        </li>
+        <li>
+            Allow PHD2 to guide for a few minutes to ensure that target detection is reliable, guiding corrections are stable, and the target does not drift.
+        </li>
+    </ul>
+
+    <h2>Step 9: Configure HelioMaker Parameters</h2>
+    <p>Set the following parameters in HelioMaker:</p>
+    <ul>
+        <li>
+            <a href="MainScreen.htm#focal-length"><strong>Focal Length:</strong></a> Enter the effective focal length of your guiding system (in mm),
+            which is required for PHD2 calibration.
+        </li>
+        <li><a href="MainScreen.htm#sequence-params"><strong>Target Name:</strong></a> Enter a descriptive name for the target.</li>
+        <li><a href="MainScreen.htm#sequence-params"><strong>Capture Folder:</strong></a> Specify the folder where images will be saved.</li>
+        <li>
+            <a href="MainScreen.htm#sequence-params"><strong>Frames / Time Limit:</strong></a>
+            Define either the number of frames to capture per cycle or the burst duration in seconds,
+            depending on the mode selected in <a href="sequence_options.htm">Sequence Options</a>.
+        </li>
+        <li><a href="MainScreen.htm#sequence-params"><strong>Sequence Length:</strong></a> Set the total number of cycles to run.</li>
+        <li>
+            <a href="MainScreen.htm#sequence-params"><strong>Interval:</strong></a> Set the time
+            <em>from the start of one capture cycle to the start of the next one</em>.
+        </li>
+        <li>
+            Based on your needs, enable or disable:
+            <ul>
+                <li><a href="MainScreen.htm#control"><strong>Continuous Guiding</strong></a></li>
+                <li><a href="MainScreen.htm#control"><strong>Guiding on Surface Features</strong></a></li>
+                <li><a href="MainScreen.htm#control"><strong>Calibrate at Start of Sequence</strong></a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2 id="calibration">Step 10: Perform PHD2 Calibration</h2>
+    <p>
+        PHD2 calibration is <strong>mandatory</strong> before guiding can start. Calibration measures how the telescope mount responds
+        to guiding commands in each of the available axes - Right Ascension (RA) and Declination (Dec).
+    </p>
+    <p>
+        The purpose of calibration is to allow PHD2 to determine the correct guiding pulse adjustments needed to minimize drift
+        and maintain accurate tracking of the target object.
+    </p>
+    <p>
+        Before starting PHD2 calibration on the Sun, the Moon, or another supported planetary target, it is strongly recommended to enable
+        <a href="DynamicTracking.htm"><strong>Dynamic Target Tracking</strong></a>, or at least select the most appropriate standard mount tracking rate if Dynamic Target Tracking
+        is not being used. Using the correct tracking rate can greatly reduce drift during calibration and, if the mount is properly polar aligned,
+        lunar calibration may result in practically no orthogonality error. Dynamic tracking may also be helpful for solar imaging, although the benefit is usually smaller than for the Moon.
+    </p>
+    <p>
+        <strong>Note:</strong> Calibration can be skipped if the mount has already been polar aligned and calibrated successfully in a previous session,
+        and no changes have been made to the setup. This includes ensuring the camera orientation, mount, tripod or pier position,
+        and other gear remain unchanged. If you wish to use the existing calibration, disable the <strong>Calibrate at Start of Sequence</strong>
+        checkbox in HelioMaker and verify that the <strong>Auto restore calibration</strong> option is enabled in PHD2's
+        <strong>Advanced Settings</strong> (the "brains") dialog under the <strong>Guiding</strong> tab.
+    </p>
+    <img src="Images/control.jpg" alt="Control Area">
+    <p>
+        The calibration process may take a few minutes, depending on the sampling period and other user-defined parameters.
+        For detailed explanations of the related parameters, refer to the following sections
+        <a href="phd2_configuration.htm#guiding-params">Guiding Parameters</a> in HelioMaker's PHD2 Configuration,
+        and <a href="advanced_settings.htm">Settling Parameters</a> in HelioMaker's Advanced Configuration,
+        as well as the official PHD2 user documentation.
+    </p>
+
+    <ul>
+        <li>If <strong>Calibrate at Start of Sequence</strong> is enabled, HelioMaker will automatically perform calibration.</li>
+        <li>If not, manually initiate calibration by clicking the <strong>Calibrate PHD2</strong> button.</li>
+    </ul>
+
+    <div class="framed">
+        <div class="center">
+            <h3><span class="red">&#10071;&#10071;&#10071;</span> Attention <span class="red">&#10071;&#10071;&#10071;</span></h3>
+        </div>
+        <p>
+            If you change your camera orientation, binning, or adjust the image flip settings in SharpCap Pro,
+            you will need to rerun PHD2 calibration for guiding to remain effective.
+        </p>
+        <p>
+            Failure to recalibrate PHD2 after such changes may result in PHD2 driving the target
+            away from its position faster than it would without guiding.
+        </p>
+        <div class="red center">&#10034;&#10034;&#10034</div>
+    </div>
+    <p>
+        For additional information on the calibration process, please refer to the <a href="Icons.htm#indicator-calibration">PHD2 Calibration</a>.
+    </p>
+
+    <h2>Step 11: Review PHD2 Calibration Graph</h2>
+    <p>
+        After performing PHD2 calibration, it is recommended to evaluate the result of the calibration process. If the calibration fails, guiding will not work,
+        and the automated session cannot continue without resolving the issue causing the failure. For troubleshooting calibration failures,
+        please refer to the <a href="Faq_Calibration.htm#troubleshooting-calibration-issues">Troubleshooting Calibration Issues</a> section.
+    </p>
+    <p>
+        If calibration was successful, it is still recommended to evaluate its quality by reviewing the <strong>PHD2 calibration graph</strong>,
+        which provides insights into polar alignment and calibration quality. When polar alignment is nearly perfect,
+        the RA and Dec axes should be orthogonal to each other, with minimal orthogonality error (shown when the mouse pointer hovers over the graph).
+    </p>
+    <p>
+        If you are calibrating on the Moon, make sure Dynamic Target Tracking is enabled before interpreting the result. A correct dynamic lunar rate can noticeably
+        improve the calibration graph and, with good polar alignment, may result in practically no orthogonality error compared with using only the mount's built-in static lunar rate.
+    </p>
+    <p>
+        An ideal calibration graph should also display at least 12 well-spaced thick dots along each axis, as illustrated in the image below.
+        However, HelioMaker can still perform reasonably well with less-than-perfect PHD2 calibration or an approximate, best-effort polar alignment.
+        That said, significant misalignment or invalid PHD2 calibration can eventually cause the target to drift out of frame.
+    </p>
+    <img src="Images/cal_graph.jpg" alt="Calibration Graph">
+    <p>
+        If you experience issues with PHD2 calibration or find that HelioMaker fails to keep your target in frame for the desired duration, the first step is to check
+        and adjust the detector in HelioMaker's Find &amp; Track tool. If HelioMaker has reported that the live
+        physical-camera detection link is unavailable, adjust PHD2's built-in detector instead. If your view is
+        obscured by clouds or other visual obstacles, detection may become unreliable. If detection is stable and
+        consistent but the target still drifts, please refer to the
+        <a href="https://openphdguiding.org/documentation/" target="_blank" rel="noopener">PHD2 user manual</a>, user forums, or other resources for advice on improving your mount's polar alignment
+        and guiding performance.
+    </p>
+    <p>
+        It is possible to improve daytime polar alignment by following tips shared in instructional videos or using techniques like the one described
+        by the author in the following reference:
+        <a href="https://github.com/Eyeke2/phd2.planetary/wiki/Fine%E2%80%90Tuning-Polar-Alignment" target="_blank" rel="noopener">Fine-Tuning Polar Alignment</a>.
+        Improving polar alignment can be time-consuming, and while it is recommended, practice will help you complete the process more efficiently.
+        Ultimately, achieving a reasonable polar alignment is a balance between obtaining the best possible guiding quality and the time available for your session.
+    </p>
+
+    <h2>Step 12: Start the Sequence and Monitor the Session</h2>
+    <p>
+        <strong>Note:</strong> While it is entirely possible to initiate a series of video or image captures directly within SharpCap Pro,
+        using HelioMaker's built-in sequencer is highly advisable. HelioMaker offers enhanced timing precision and seamless integration with
+        the custom PHD2 guiding software, ensuring better coordination between guiding and capture activities. Additionally, HelioMaker is
+        required to delegate guiding frames from SharpCap Pro to PHD2 for guiding purposes, regardless of which sequencer is used. The HelioMaker
+        sequencer also provides centralized control over both session and guiding parameters, streamlining your workflow and enabling adjustments
+        to sequence parameters on-the-fly for greater flexibility during imaging sessions.
+    </p>
+
+    <p>Click the <strong>Start Sequence</strong> button in HelioMaker to begin the imaging session. HelioMaker will manage SharpCap Pro image captures and PHD2 guiding.</p>
+    <p>During the session:</p>
+    <ul>
+        <li>Periodically verify focus and adjust if necessary, especially when changing physical conditions affect image quality.</li>
+        <li>
+            Most of SharpCap's specialized tools (e.g., <strong>Focus Assistant</strong>, <strong>Seeing Monitor</strong>)
+            remain available for use during a sequence. However, avoid overloading the system with computationally intensive tools for extended periods.
+        </li>
+    </ul>
+    <p>Keep an eye on the HelioMaker session display for:</p>
+    <ul>
+        <li>Estimated session completion time.</li>
+        <li>Remaining time and meridian flip timer.</li>
+        <li>
+            Check HelioMaker detection and PHD2 guiding parameters if the target exhibits excessive drift.
+            Use PHD2's detector controls only during standalone or fallback physical-camera operation.
+        </li>
+        <li>Status indicators, monitor graphs, and PHD2 performance.</li>
+    </ul>
+
+    <p>
+        During an active session, it is possible to modify operational sequence parameters such as <strong>Sequence Length</strong> (number of cycles),
+        <strong>Frame Count</strong>, and <strong>Interval</strong>, provided that changing these parameters has not been locked in HelioMaker
+        <a href="sequence_options.htm">Sequence Options</a>.
+        Adjusting sequence length can be beneficial when conditions allow extending the imaging session or require shortening it for any reason,
+        or adjusting other parameters to optimize the session.
+    </p>
+    <p>
+        While it is generally recommended to lock these parameters in Sequence Options to avoid accidental changes, you can enable changes by opening the
+        Sequence Options dialog, unlocking the parameters, and modifying them as needed. After making changes, it is advisable to lock the settings again in
+        Sequence Options to prevent unintentional alterations. Be mindful that changing these parameters during an active session may affect the final quality
+        of your time-lapse.
+    </p>
+    <p>
+        The HelioMaker sequencer offers greater flexibility and control over your imaging session compared to SharpCap's
+        "Series of Captures" feature. While SharpCap allows you to start a capture sequence, it does not support making on-the-fly changes
+        to an active sequence and offers less precise timing between capture cycles compared to HelioMaker.
+    </p>
+
+</body>
+</html>

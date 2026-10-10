@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Custom Version of PHD2 - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+
+    <h2>About the Custom Version of PHD2</h2>
+    <p>
+        <strong>PHD2</strong> is a widely-used autoguiding software, originally developed for long-exposure astrophotography.
+        It compensates for tracking errors by sending periodic guiding pulses to the telescope based on star positions,
+        using a dedicated guidescope, or an off-axis guider with a separate guiding camera. The main objective is to prevent
+        target drift and ensure sharp, long-exposure images.
+    </p>
+
+    <p>
+        The author of HelioMaker has developed a custom version of PHD2 to extend its capabilities to guide on solar system
+        objects such as the Sun, Moon, and planets. This version retains the standard PHD2's robust guiding algorithms while
+        introducing advanced methods for detecting and tracking non-stellar objects. When combined with HelioMaker and
+        <strong>SharpCap Pro</strong>, it enables the simultaneous use of a single physical camera for both guiding and
+        imaging — a groundbreaking feature made possible by the <strong>Virtual Planetary Camera</strong>.
+    </p>
+
+    <p>
+        The custom PHD2 open-source project, including its documentation and helpful resources, is hosted on
+        <a href="https://github.com/Eyeke2/phd2.planetary" target="_blank" rel="noopener">GitHub</a>.
+        You can explore the project and its accompanying Wiki pages for additional information. The latest release of the
+        custom PHD2 incorporates the recent features from the official PHD2 v2.6.14.
+    </p>
+
+    <h3>Download Link for Custom PHD2</h3>
+    <p>
+        The latest binary release of the custom version PHD2 required for HelioMaker is available on
+        <a href="https://github.com/Eyeke2/phd2.planetary/releases/latest" target="_blank" rel="noopener">this GitHub page</a>.
+        Navigate to the assets section and download the Windows installer. The custom PHD2 open-source project can be
+        found on the GitHub alongside its <a href="https://github.com/Eyeke2/phd2.planetary/wiki" target="_blank" rel="noopener">Wiki pages</a>.
+    </p>
+
+    <h3>Video Demonstrations</h3>
+    <p>
+        Community demonstrations highlight the effectiveness of the customized PHD2:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Brent Ellis Presentation:</strong> Brent Ellis showcased a solar eclipse imaging setup
+                for the Memphis Astronomical Society, describing this custom PHD2 version as a “game-changer.”
+                You can watch his discussion of the software at
+                <a href="https://www.youtube.com/watch?v=Jo1bcJLRQuA&t=5652s" target="_blank" rel="noopener">this link</a>,
+                and learn about his automation techniques at
+                <a href="https://www.youtube.com/watch?v=Jo1bcJLRQuA&t=2155s" target="_blank" rel="noopener">this link</a>.
+                You may also view Brent’s resulting
+                <a href="https://www.youtube.com/watch?v=1eO9Bdzqy5o" target="_blank" rel="noopener">Eclipse Video</a>.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Lunar Libration and Shadows:</strong> A
+                <a href="https://www.astrobin.com/tgrxzi/" target="_blank" rel="noopener">3-hour time-lapse</a> created by the
+                HelioMaker author demonstrates lunar libration and shifting shadows using the custom PHD2 version.
+            </p>
+        </li>
+    </ul>
+
+    <h2>Key Features</h2>
+    <p>
+        The custom PHD2 version introduces several advanced features not available in the standard release. These enhancements
+        are especially beneficial for capturing a wide range of solar system phenomena, such as
+        <strong>sunspot evolution</strong>,
+        <strong>all regular lunar phases</strong>,
+        <strong>lunar libration</strong>, planetary rotations, and nearly all phases of
+        <strong>solar and lunar eclipses</strong> (except for brief moments of totality). The custom version also enables
+        detection and guiding on entire solar, lunar, or planetary disks, as well as partial views of their surfaces when coupled with HelioMaker.
+        Even with imperfect polar alignment, it eliminates drift during extended imaging sessions, ensuring the target remains stable and
+        in the same position for long-duration captures.
+    </p>
+
+    <p>
+        Another significant advantage of the added algorithms is their robustness. Based on feedback from beta testers, the algorithms
+        can reliably continue detection and tracking even under challenging conditions, such as partial cloud cover or interference from
+        tree branches, ensuring consistent performance in less-than-ideal environments.
+    </p>
+
+    <ul>
+        <li>
+            <p>
+                <strong>Virtual Planetary Camera:</strong> The custom PHD2 introduces a new
+                <em>Virtual Planetary Camera</em> option in the camera selection menu, allowing a single camera
+                to serve both guiding and imaging purposes. This feature is particularly beneficial for
+                planetary imaging workflows that demand precise tracking. When integrated with HelioMaker,
+                the <em>Virtual Planetary Camera</em> seamlessly shares the same physical camera used by the
+                primary imaging application (currently supported via SharpCap Pro and HelioMaker), enabling
+                simultaneous guiding and imaging without interruptions. In addition, the
+                <em>Virtual Planetary Camera</em> is designed to minimize latency, typically maintaining a
+                delay of only 10–15 milliseconds. This low latency lets PHD2 receive near real-time frames
+                and send more responsive corrections, resulting in more effective and accurate guiding.
+            </p>
+
+        </li>
+        <li>
+            <p>
+                <strong>Planetary and Solar Guiding Tool</strong> – a configuration dialog box for managing all aspects of
+                detecting and tracking solar system objects, such as the Sun, Moon, and planets. When used with HelioMaker,
+                certain settings in this tool are automatically adjusted to ensure streamlined operation and synchronization
+                between the two applications.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>HelioMaker integration</strong> allowing guiding on large celestial bodies offering sub-pixel accuracy. These algorithms
+                support the following modes when PHD2 is set to <strong>Planetary and Solar Guiding Mode</strong>:
+            </p>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <p>
+                <strong>Full Planetary Disk Detection Mode:</strong> Enables detection of the full disk or crescent shapes of solar,
+                lunar, and planetary objects. This mode has been proven very effective during the 2024 Great American Solar Eclipse,
+                helping users to keep Sun fixed in the telescope view for the entire eclipse duration (except the brief period of totality),
+                and can be very useful for imaging the lunar eclipses as well.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Surface Features Detection Mode:</strong> Enabled exclusively by HelioMaker this option extends
+                PHD2’s detection capabilities by focusing on visible textures and patterns of the Sun or Moon,
+                rather than relying on point-like targets.
+                It is especially helpful at higher magnifications or longer focal lengths, where conventional star-based
+                detection can fail. The mode works with the <em>Virtual Planetary Camera</em> shared through SharpCap
+                Pro and with a supported physical camera connected directly to PHD2. In either arrangement,
+                HelioMaker performs surface-feature detection and PHD2 converts the detected motion into guiding
+                corrections. With a shared primary imaging camera, this provides an entirely software-based guiding
+                solution without dedicated solar-guider hardware.
+            </p>
+        </li>
+    </ul>
+
+    <div class="w-800">
+        <!-- Container width -->
+        <img src="Images/solar_guiding.jpg" alt="Solar Guiding" class="float-left">
+        <strong><em>Guiding on solar surface</em></strong>
+        <p>
+            <em>
+                A screenshot of the custom PHD2 during active guiding on the Sun,
+                captured while running a video capture sequence in HelioMaker with SharpCap Pro.
+                In this session, the author used an APM 107/700 refractor equipped
+                with an ERF filter and a DayStar Quark Chromosphere filter.
+            </em>
+        </p>
+        <br>
+    </div>
+    <img src="Images/planetary_tool.jpg" alt="Planetary Tool" class="fig">
+
+    <p>Screenshot of the <strong>Planetary and Solar Guiding Tool</strong> in the custom version of PHD2.</p>
+
+    <h3>Installation Tips</h3>
+    <p>
+        By following these suggestions, you can take advantage of all HelioMaker’s advanced features
+        without affecting your existing PHD2 installation or nighttime guiding workflows.
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Use a Separate Folder:</strong>
+                For example, <code>"C:\Program Files (x86)\PHDGuiding2-solar"</code>, ensuring that updates
+                to the standard PHD2 do not overwrite the custom version.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>PHD2 Instance Numbers:</strong>
+                Assign a unique instance number to avoid conflicts between the custom and standard versions.
+                Learn more in
+                <a href="Faq_Phd2Instance.htm">How to Configure the PHD2 Instance Number</a>.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Follow HelioMaker Installation Requirements:</strong>
+                Consult the
+                <a href="Installation.htm">Installation and Prerequisites</a> section for a complete setup
+                checklist.
+            </p>
+        </li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daytime Polar Alignment Using HelioMaker and PHD2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Daytime Polar Alignment Using HelioMaker and PHD2</h1>
+
+    <p>
+        Accurate polar alignment is crucial for achieving stable guiding during astrophotography. While nighttime polar alignment
+        is typically straightforward, daytime polar alignment presents unique challenges due to the absence of visible stars.
+        This chapter explains how to use PHD2 tools to refine your alignment for daytime imaging, particularly for solar
+        and lunar photography.
+    </p>
+    <p>
+        While solar, lunar, or planetary imaging does not demand the highest degree of polar alignment accuracy, be aware that significant
+        polar alignment error can degrade guiding performance or cause autoguiding to fail. In many cases, a rough polar alignment
+        may be sufficient for daytime imaging, but refining the alignment can improve tracking and guiding performance.
+    </p>
+
+    <h2>Steps for Daytime Polar Alignment</h2>
+
+    <h3>1. Rough Alignment</h3>
+    <p>
+        Ensure the mount’s altitude matches your geographical latitude and that it is properly leveled to avoid unnecessary drift.
+        Begin by roughly aligning your mount using a compass or a smartphone application such as PolarAlign Pro or a similar tool.
+    </p>
+
+    <h3>2. Optimize Detection Parameters in HelioMaker</h3>
+    <p>
+        Use the <strong>Find &amp; Track</strong> tool to fine-tune detection parameters. For detailed information and examples
+        for setting detection parameters, please refer to <a href="Find_Tool.htm">Find &amp; Track</a>.
+        The same live detector interface applies to shared and supported physical PHD2 cameras.
+    </p>
+
+    <h3>3. Start Dynamic Target Tracking for Solar or Lunar Imaging</h3>
+    <p>
+        If the selected object for daytime polar alignment is the Moon or the Sun, it is strongly recommended to start
+        <a href="DynamicTracking.htm">Dynamic Target Tracking</a> before using PHD2's Guiding Assistant or Drift Alignment Tool.
+        This ensures that the mount is already following a more accurate target-specific tracking model before PHD2 measures drift.
+    </p>
+    <p>
+        This step is especially important for lunar imaging, where the dynamic lunar rate can significantly improve the accuracy of drift measurements.
+        The same principle also helps solar imaging, although usually to a lesser extent.
+    </p>
+
+    <h3>4. Use PHD2 Guiding Assistant or Drift Alignment Tool</h3>
+    <p>
+        Before using this method, make sure you have entered the correct focal length in the HelioMaker main screen.
+        An incorrect focal length will lead to inaccurate drift measurements and may cause PHD2 calibration
+        to fail or produce incorrect results. When using the Drift Alignment Tool, do not use the Slew button in this dialog, as it is
+        designed for nighttime polar alignment when stars are visible, and is not suitable when only a single object such as the Sun or the Moon
+        is in view.
+    </p>
+    <p>
+        With Guiding Assistant you can measure drift and make manual adjustments. This method, recommended by the author,
+        is explained in detail here:
+        <a href="https://github.com/Eyeke2/phd2.planetary/wiki/Fine%E2%80%90Tuning-Polar-Alignment" target="_blank" rel="noopener">Fine Tuning Polar Alignment</a>.
+    </p>
+    <p>
+        In summary: observe the drift in PHD2’s guiding graph (guiding is disabled during this measurement to allow drift
+        to be plotted over time) or monitor the real time RA and Dec drift rates shown in the Guiding Assistant dialog.
+        Adjust your mount’s altitude and azimuth until the drift is minimized.
+    </p>
+    <p>
+        Ideally, each drift measurement should run long enough to average out the mount’s periodic error and show a clear
+        drift trend. In practice, a one minute measurement is usually sufficient, especially when the polar alignment is
+        far off. Make only small adjustments to the altitude and azimuth bolts to keep the target in the field of view,
+        allowing you to re-center it easily with gentle slews if needed.
+    </p>
+    <p>
+        After completing polar alignment, run or enable PHD2 calibration as part of your sequence to ensure
+        optimal guiding performance. Note that after PHD2 calibration, any change to the camera angle or adjustments to
+        image flip options in SharpCap will invalidate the calibration. In such cases, repeat PHD2 calibration to maintain accuracy.
+    </p>
+    <p>
+        When performing this workflow on the Moon, it is strongly recommended to enable <a href="DynamicTracking.htm">Dynamic Target Tracking</a>
+        before starting calibration or drift measurements. Using the dynamic lunar tracking rate can greatly reduce drift and, if the mount is properly polar aligned,
+        can result in practically no orthogonality error during PHD2 calibration on the Moon. It is also very helpful when using Guiding Assistant for daytime polar
+        alignment with the Moon as the selected target. The same principle may also benefit solar imaging, both for PHD2 calibration and for Guiding Assistant-based
+        daytime polar alignment, although usually to a lesser extent.
+    </p>
+    <p>
+        For the original PHD2 Guiding Assistant documentation, refer to:
+        <a href="https://openphdguiding.org/man-dev/Tools.htm#Guiding_Assistant" target="_blank" rel="noopener">Guiding Assistant</a>.
+    </p>
+    <img src="Images/guiding_assistant.jpg" alt="Guiding Assistant">
+
+    <p>
+        The Drift Alignment Tool provides a similar, and in some cases more convenient interface. However, do not use its
+        <em>Slew</em> button to move to the suggested declination; this will slew the telescope off the Sun (or Moon) and you
+        will not be able to continue.
+    </p>
+    <p>
+        <strong>Important:</strong> unlike the GA tool, this method depends on a successful, up to date PHD2 calibration.
+        If the calibration is missing, outdated, or incomplete, it will not produce meaningful results.
+    </p>
+    <p>
+        For the original PHD2 Drift Alignment Tutorial, refer to:
+        <a href="https://openphdguiding.org/man-dev/Tutorials.htm#Drift_Align" target="_blank" rel="noopener">Drift Alignment</a>.
+    </p>
+    <img src="Images/DriftAlign.jpg" alt="Drift Align">
+
+    <h2>Tips for Successful Daytime Alignment</h2>
+    <ul>
+        <li>
+            If you can perform nighttime polar alignment it will be superior to daytime polar alignment.
+            If you have to move your mount, mark the tripod positions to help restore the mount to its previous alignment.
+        </li>
+        <li>Ensure the mount’s tracking rate is set appropriately for the target: Solar for the Sun, Lunar for the Moon, or Sidereal for other objects as a starting point. For lunar imaging, and optionally for solar imaging, it is strongly recommended to also enable <a href="DynamicTracking.htm">Dynamic Target Tracking</a> for improved real-time rate accuracy.</li>
+        <li>Minimize thermal distortion by keeping the mount and telescope shaded during alignment.</li>
+        <li>
+            For a simple and inexpensive approach you can use a smartphone and a bracket that allows you to align the phone with the mount.
+            This video demonstrates the method:
+            <a href="https://www.youtube.com/watch?v=FjUE95OLv4g" target="_blank" rel="noopener">Daytime Polar Alignment with a Smartphone</a>.
+        </li>
+        <li>
+            After a rough polar alignment, use PHD2’s Guiding Assistant (GA) or the Drift Alignment Tool to refine accuracy as outlined above.
+        </li>
+    </ul>
+
+    <h2>Troubleshooting Common Issues</h2>
+    <ul>
+        <li><strong>Persistent Drift:</strong> Check focal length, repeat PHD2 calibration and reduce orthogonality error by fine-tuning polar alignment.</li>
+        <li><strong>Unstable Target Detection:</strong> Refine the detection parameters in the Solar and Planetary Guiding Tool.</li>
+        <li><strong>Backlash Problems:</strong> Perform regular mount maintenance to minimize backlash, which can affect alignment and guiding.</li>
+    </ul>
+
+    <p>
+        If your polar alignment is very poor, PHD2 calibration is likely to fail with a warning about excessively large orthogonal error.
+        When this happens, HelioMaker will not be able to start a sequence because PHD2 cannot begin guiding without a successful calibration.
+        In such cases you will need to repeat the polar alignment. You may find it helpful to use a trial and error approach with larger adjustments
+        to the altitude and azimuth bolts to locate a more favorable starting point before performing a finer polar alignment.
+    </p>
+
+    <h2>Learn More</h2>
+    <p>
+        For additional tools and techniques, refer to the PHD2 documentation on guiding and alignment tools:
+        <a href="https://openphdguiding.org/man-dev/Tools.htm" target="_blank" rel="noopener">PHD2 Tools Documentation</a>.
+        You can also explore related resources and tips by searching for daytime polar alignment techniques online.
+    </p>
+
+</body>
+</html>

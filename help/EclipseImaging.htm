@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Eclipse Imaging: HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+
+    <h1>Solar Eclipse Imaging</h1>
+    <p>
+        HelioMaker includes a dedicated workflow for planning, rehearsing, and running an automated capture
+        of a total solar eclipse. It coordinates the selected eclipse plan with SharpCap Pro camera control,
+        optional PHD2 guiding, precise contact timing, operator cues, preflight checks, and a live run console.
+    </p>
+    <p>
+        This chapter is an introduction to the feature. The separate <strong>Solar Eclipse Imaging Guide</strong>
+        provides detailed instructions organized by task and should be read well before eclipse day.
+    </p>
+
+    <h2>What Makes HelioMaker Different</h2>
+    <p>
+        HelioMaker brings the <strong>entire solar eclipse imaging workflow into one application</strong>.
+        It finds the eclipse for your site, helps you design an exposure plan across every phase, and then runs
+        that plan automatically. It drives the camera through SharpCap Pro, guides on the Sun through the custom
+        PHD2, manages the HDR exposure brackets, and can optionally refocus a few minutes before the central phase.
+        Total, annular and partial eclipses are each planned in their own right, with pacing, cues and safety wording
+        that follow the eclipse you are actually observing.
+    </p>
+    <p>
+        It uses a <strong>detailed physical model</strong> with precise ephemerides for eclipse phases and contact
+        timing, optional atmospheric refraction correction, and lunar limb modeling for Baily's beads and the
+        diamond ring. Once the plan is set and the mount is ready, HelioMaker executes the sequence and prompts
+        you at each filter moment, so you can watch the eclipse
+        instead of operating software.
+    </p>
+
+    <h2 class="red">Solar Safety</h2>
+    <p>
+        <strong>Never look at the Sun through unfiltered optics.</strong> Except during the brief total phase of a
+        total solar eclipse, use proper eye protection for direct viewing and secure a suitable solar filter over
+        the front of every camera lens, telescope, binocular or finder pointed at the Sun. Unfiltered sunlight
+        through optics can cause immediate, permanent eye injury and can damage cameras and other equipment.
+    </p>
+    <ul>
+        <li>Use a suitable solar filter secured over the front of the main imaging telescope throughout all partial phases.</li>
+        <li>If a separate guide scope is used, it requires its own solar filter.</li>
+        <li>
+            Removing a filter during the brief total phase is an advanced procedure that depends on the selected
+            eclipse mode and exact local circumstances. Follow the detailed eclipse guide and rehearse the
+            procedure in advance.
+        </li>
+        <li>HelioMaker's cues and automation assist the operator but do not replace safe solar imaging practice.</li>
+    </ul>
+
+    <h2>Prepare and Rehearse in Advance</h2>
+    <p>
+        An eclipse is a single event with strict timing constraints. Do not use eclipse day to learn the equipment,
+        establish guiding for the first time, or test a new capture plan. Begin preparation weeks in advance.
+    </p>
+    <ul>
+        <li>Enter and verify the observer latitude, longitude, elevation, time zone, and computer clock.</li>
+        <li>Verify the predicted contact times against a trusted independent eclipse source.</li>
+        <li>
+            With the physical eclipse rig and solar filter, determine a well exposed full solar disk exposure and
+            camera gain. Enter them in Plan preferences with the matching solar filter ND rating. HelioMaker uses
+            these inputs with
+            <a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank" rel="noopener">Fred Espenak's eclipse exposure
+            recommendations</a> to derive the phase recipes.
+        </li>
+        <li>Practice daytime polar alignment and solar guiding on ordinary sunny days.</li>
+        <li>
+            If the plan will use automatic refocus, configure SharpCap Focus Assistant with the physical eclipse
+            rig and complete a successful solar focus scan before enabling the option in HelioMaker. Manually
+            confirm that SharpCap Refocus can repeat the result.
+        </li>
+        <li>Build and approve the plan, then repeat both timing only and full equipment rehearsals.</li>
+        <li>Practice every filter action and become familiar with the audio and visual cues.</li>
+        <li>Verify storage capacity, power, camera performance, focus, and recovery procedures.</li>
+    </ul>
+    <p>
+        <strong>Do not tune sequence parameters manually in SharpCap after opening the preflight dialog.</strong>
+        HelioMaker applies and verifies the saved plan's camera settings and applies them again when the run is
+        armed. If testing requires a change, cancel preflight, update and save the plan, repeat any affected
+        camera test, and rehearse the revision. Last minute SharpCap adjustments will be replaced by the plan.
+    </p>
+
+    <h2>Required Equipment</h2>
+    <p>
+        The exact configuration depends on whether guiding is enabled, but a typical automated eclipse rig includes:
+    </p>
+    <ul>
+        <li>A main imaging telescope and camera controlled by SharpCap Pro.</li>
+        <li>Suitable solar filtration for the telescope, camera, and selected eclipse procedure.</li>
+        <li>An equatorial mount capable of reliable tracking.</li>
+        <li>
+            For full solar disk imaging, HelioMaker can guide from the <strong>shared primary imaging camera</strong>.
+            Shared camera guiding pauses around C2 and C3 and throughout totality, then resumes and recenters the
+            Sun after C3 when reliable limb detection returns.
+        </li>
+        <li>
+            A <strong>separate guide scope with its own camera and solar filter</strong> is preferred when guiding
+            is required inside totality, or when the main camera images only part of the solar disk at high
+            magnification. Shared camera guiding assumes that the main camera contains the entire solar disk with
+            enough surrounding space for reliable detection.
+        </li>
+        <li>The custom PHD2 version required by HelioMaker when guiding is enabled.</li>
+        <li>A Windows computer with an accurate clock, dependable power, and sufficiently fast storage.</li>
+        <li>
+            A motorized focuser configured in SharpCap is needed when the plan uses automatic refocusing before
+            totality. SharpCap must already have a successful saved solar focus scan using Contrast (Edge)
+            Detection or Fourier Detail Detection; HelioMaker requests SharpCap Refocus rather than calculating
+            its own focus curve.
+        </li>
+    </ul>
+
+    <h2>Workflow Overview</h2>
+    <ol>
+        <li>
+            <strong>Select the eclipse and observer site.</strong> The planner calculates the local circumstances
+            and displays the contact times and eclipse geometry.
+        </li>
+        <li>
+            <strong>Define the capture plan in Plan preferences.</strong> Choose Safe or Diamond ring (Classical)
+            imaging mode, choose Still mode or Live view, select the guiding configuration, and enter the measured
+            full solar disk exposure, camera gain and filter ND rating. The eclipse mode affects filter timing and
+            the derived imaging plan; Still versus Live affects how the plan is captured.
+        </li>
+        <li>
+            <strong>Review the derived phase recipes.</strong> HelioMaker creates the starting exposures and
+            brackets from the measured imaging base and
+            <a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank" rel="noopener">Fred Espenak's eclipse exposure
+            recommendations</a>. Keeping the same gain across all phases is recommended. Use the phase editor for
+            deliberate tuning.
+        </li>
+        <li>
+            <strong>Review and approve the plan.</strong> Approval separates the rehearsed plan from later,
+            unverified edits.
+        </li>
+        <li>
+            <strong>Rehearse.</strong> Use a dry run that exercises only the timing, then a wet run with the intended camera or the
+            eclipse simulator. Confirm that cues, filter actions, focusing, guiding, and file output behave as expected.
+        </li>
+        <li>
+            <strong>Run preflight.</strong> Before arming, HelioMaker checks the plan, camera, focus, guiding,
+            time and location, storage, power readiness, and other conditions that could compromise the run.
+        </li>
+        <li>
+            <strong>Monitor the run console.</strong> During the eclipse, the console presents the active phase,
+            clocks, capture progress, cues, guiding state, refocus state, and any missed or rejected work. A
+            compact view retains the critical status and filter cues while using less screen space.
+        </li>
+    </ol>
+
+    <p>
+        <strong>Determine exposure and gain before imaging starts.</strong> The current eclipse workflow locks the
+        plan during a run, so exposure and gain cannot be changed after automated imaging begins. Measure them
+        with the physical rig on an ordinary sunny day whenever possible, or no later than the initial partial
+        phase before starting the run. A camera change made only in SharpCap does not update the planned phase
+        recipes.
+    </p>
+
+    <h2>Simulation and Preflight Are Part of the Workflow</h2>
+    <p>
+        Simulation is not merely a demonstration mode. It is how the complete plan, timing, camera behavior,
+        operator responses, and critical safety cues are validated before the real event. Likewise, the preflight
+        dialog is a go or no go review rather than a formality. Resolve warnings before arming whenever possible;
+        forcing a run transfers responsibility for every unresolved condition to the operator.
+    </p>
+
+    <h2 id="eclipse-manual">Solar Eclipse Imaging Guide (full manual)</h2>
+    <p>
+        The full, illustrated <strong>Solar Eclipse Imaging Guide</strong> is installed with HelioMaker.
+        It is a set of standalone pages that open in your web browser, separate from this Windows Help system.
+    </p>
+    <p>
+        &#9658;&nbsp;<a href="https://docs.heliomaker.com/solar-eclipse/" target="_blank" rel="noopener"><strong>Open the Solar Eclipse Imaging Guide</strong></a>
+    </p>
+    <p>
+        You can also open it any time from the application menu: <strong>Help &#9656; Solar Eclipse Guide (opens in
+        browser)</strong>.
+    </p>
+
+    <h2>Related HelioMaker Help</h2>
+    <ul>
+        <li><a href="LunarEclipseImaging.htm">Lunar Eclipse Imaging</a></li>
+        <li><a href="ConfigurationAndSetup.htm">Configuration and Setup</a></li>
+        <li><a href="DaytimePolarAlignment.htm">Daytime Polar Alignment</a></li>
+        <li><a href="phd2_configuration.htm">PHD2 Configuration</a></li>
+        <li><a href="Find_Tool.htm">Find &amp; Track</a></li>
+    </ul>
+
+</body>
+</html>

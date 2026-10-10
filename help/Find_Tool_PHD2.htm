@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find &amp; Track with a Physical PHD2 Camera - HelioMaker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+
+    <h1>Find &amp; Track with a Physical PHD2 Camera</h1>
+    <p>
+        Current HelioMaker and custom PHD2 versions provide a continuous live Find &amp; Track view when the
+        equipment profile uses a physical camera connected directly to PHD2. This is no longer a reduced,
+        snapshot-based mode. The same HelioMaker detector controls used with a shared camera are available here.
+    </p>
+    <p>
+        For the complete description of Star, Full Disk/Crescent, Planetary, and Surface Features modes, see
+        <a href="Find_Tool.htm"><strong>Find &amp; Track</strong></a>.
+    </p>
+
+    <h2>Normal Operation</h2>
+    <ul>
+        <li>PHD2 must be connected with its physical camera and mount available in the selected equipment profile.</li>
+        <li>SharpCap Pro is not required merely to display and tune the physical PHD2 camera in Find &amp; Track.</li>
+        <li>HelioMaker shows each newly captured guide frame automatically; there is no camera snapshot/import button.</li>
+        <li>
+            In Full Disk/Crescent, Planetary, and Surface Features modes, HelioMaker performs detection and
+            supplies the result to PHD2. In Star mode, PHD2 uses its native stellar detector.
+        </li>
+        <li>
+            Planetary and Surface Features modes require an active HelioMaker license. Star and Full
+            Disk/Crescent modes remain available without those advanced-detector entitlements.
+        </li>
+    </ul>
+
+    <h2>Adopting an Existing PHD2 Detection</h2>
+    <p>
+        You may start PHD2 first and establish a working full-disk or crescent detection before connecting
+        HelioMaker. On connection, HelioMaker can adopt the current object size and sensitivity so the transition
+        to HelioMaker-driven detection is smooth. Once HelioMaker confirms detection, it also keeps PHD2's
+        built-in fallback detector synchronized with the last confirmed sensitivity and user-adjusted radius range.
+    </p>
+
+    <h2>Fallback to PHD2 Detection</h2>
+    <p>
+        If HelioMaker cannot establish the live physical-camera detection link, it displays a warning and leaves
+        PHD2 using its own built-in detector for that session. Find &amp; Track cannot display live physical-camera
+        frames in this fallback state. Open PHD2's <em>Planetary and Solar Guiding Tool</em> to adjust its local
+        full-disk/crescent settings, or reconnect after correcting the PHD2 version, instance, or process-permission
+        mismatch.
+    </p>
+    <p>
+        See <a href="Phd2PlanetaryTool.htm"><strong>Using PHD2 Solar &amp; Planetary Guiding Tool</strong></a>
+        for standalone and fallback detector instructions.
+    </p>
+
+    <h2>Camera Size, Binning, and Focal Length</h2>
+    <p>
+        HelioMaker automatically accounts for physical-camera binning and any image scaling required for efficient
+        detection. Detected positions and object sizes are returned to PHD2 in the camera's original coordinate
+        system. Changing binning while idle therefore does not require manually rescaling an established target.
+    </p>
+    <p>
+        In Full Disk/Crescent mode, the focal-length assistant can measure the Sun or Moon and apply the result to
+        the guidescope focal length stored in PHD2. Re-run PHD2 calibration after applying a changed focal length.
+    </p>
+
+    <h2 id="lucky-imaging">Star Mode (lucky imaging)</h2>
+    <p>
+        When PHD2 uses a separate physical guiding camera, SharpCap Pro's Live Stack feature can operate independently
+        on the imaging camera while PHD2 performs ordinary stellar guiding. Find &amp; Track may be used to select
+        Star mode, but PHD2's native stellar detector and star-selection controls remain authoritative.
+    </p>
+    <p>
+        For the complete workflow, see
+        <a href="LuckyImaging.htm"><strong>Lucky Imaging / Live Stack</strong></a>.
+    </p>
+
+</body>
+</html>

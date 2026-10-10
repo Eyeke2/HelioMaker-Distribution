@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comets and Minor Bodies Workflow - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Comets and Minor Bodies Workflow</h1>
+
+    <p>
+        This workflow is intended for comets, asteroids, and other natural solar-system minor bodies. It uses the
+        <a href="DynamicTracking_EphemerisPlanner.htm">Ephemeris Planner</a> to create a time-windowed plan, then loads that plan
+        into <a href="DynamicTracking.htm">Dynamic Target Tracking</a> so HelioMaker can update the required drift or tracking rates.
+    </p>
+
+    <h2>Prepare the Target Plan</h2>
+    <ol>
+        <li>Open the Ephemeris Planner from the <strong>Tools</strong> menu or from the button next to <strong>Target body</strong> in DTT.</li>
+        <li>Use COBS, Minor Planet Center, ESA NEO pages, or another trusted source to identify the object name or designation.</li>
+        <li>Confirm observer location, start time, duration, and planning mode.</li>
+        <li>Create or update the plan and review the altitude graph, including the optional Moon overlay when useful.</li>
+        <li>Load the plan into DTT only when the current time is inside the plan window and the target is above the configured minimum altitude.</li>
+    </ol>
+
+    <h2>Center and Track the Object</h2>
+    <ol>
+        <li>Return to DTT with the selected plan loaded.</li>
+        <li>Use <strong>Slew To Target</strong> or manual mount controls to bring the object field into the camera view.</li>
+        <li>Start Dynamic Target Tracking after confirming mount compatibility and safe operation.</li>
+        <li>Verify that the DTT rates update and that the target remains where expected in the imaging field.</li>
+    </ol>
+
+    <h2>Imaging With Other Capture Applications</h2>
+    <p>
+        When PHD2 is using a physical guiding camera, HelioMaker does not need to be connected to SharpCap for comet, asteroid,
+        or minor-body imaging. Once the planned object is centered and Dynamic Target Tracking is active, the user can continue
+        with an existing imaging workflow while PHD2 guides on the surrounding star field.
+    </p>
+    <p>
+        HelioMaker updates the object drift rates in real time in the background, with precision based on the Ephemeris Planner
+        cadence, such as 10 minutes, 2 minutes, or 1 minute. For example, NINA, SGP, or another imaging tool can take a series
+        of exposures while HelioMaker keeps the PHD2 comet/minor-body drift rate updated.
+    </p>
+
+    <h2>Offline and Reuse Workflows</h2>
+    <ul>
+        <li>Use <strong>Add or update local model for this object</strong> when internet access is available and you may later need to plan at a site without internet.</li>
+        <li>Reuse an existing ready plan only while its time window still contains the current time and the observer location is still valid.</li>
+        <li>Create a fresh plan when the previous plan expired, was made for another site, or no longer covers the observing session.</li>
+    </ul>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li>If the plan cannot be loaded into DTT, check the plan time window, target altitude, observer location, and system clock.</li>
+        <li>If centering is inaccurate, recheck mount sync, observer coordinates, time zone, and the selected object designation.</li>
+        <li>If drift compensation is poor, use a finer planning mode, verify PHD2 guiding, and confirm that the loaded plan matches the current object and session.</li>
+        <li>If custom mount tracking rates are not supported, review <a href="DynamicTracking_MountCompatibility.htm">Mount Compatibility for Dynamic Tracking</a> for fallback behavior.</li>
+    </ul>
+
+    <p><a href="DynamicTracking_EphemerisPlanner.htm">Back to Ephemeris Planner</a></p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase editor | HelioMaker Lunar Eclipse Guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="top" aria-label="Guide navigation"><a href="index.html">← Lunar eclipse guide index</a><span>7 · Phase editor</span></nav>
+<main id="main"><header><h1>Phase editor</h1><p class="lead">Review the adaptive exposure recipe and timing for each lunar phase.</p></header>
+
+<h2>Select and read a phase</h2>
+<p>Select a row in the plan table. For a total eclipse, the plan includes Pre-eclipse, Penumbral ingress, Partial ingress, Totality ingress, Totality egress, Partial egress, Penumbral egress and Post-eclipse. Greatest eclipse separates the ingress and egress portions. Partial and penumbral events contain only their applicable phases.</p>
+<p>Expand the phase summary and Tips to see the exposure and timing explanation. Exposure ranges change with shadow geometry and altitude within a phase; they are not a single constant shutter setting.</p>
+<figure class="shot" id="phase-editor-partial"><img src="img/phase-editor-partial.png" alt="Partial ingress selected, with the phase summary, adaptive exposure range, bracketing controls and Tips visible."><figcaption>Partial ingress selected, with the phase summary, adaptive exposure range, bracketing controls and Tips visible.</figcaption></figure>
+<h2>Adjust the recipe</h2>
+<div class="table-scroll"><table class="t"><thead><tr><th scope="col">Field</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td>Calculated range</td><td>Read-only exposure result derived from the model, phase adjustment and plan-wide ceiling.</td></tr><tr><td>Gain</td><td>Camera gain for this phase. Verify a gain change on your camera; it affects the image response.</td></tr><tr><td>Exposure adjustment (EV)</td><td>Shift the adaptive exposures. +1 EV doubles the exposure; −1 EV halves it. The exposure ceiling still applies.</td></tr><tr><td>Minimum interval (s)</td><td>Requested minimum spacing between imaging sets for this phase. It replaces the plan's <span class="ui">Sets every</span> value for this phase; the reset icon at the end of a changed row returns the phase to the plan's values. A set that takes longer starts the next one later. <span class="ui">Fit set intervals</span> and a change of the minimum guiding time can raise it, and so can <span class="ui">Lengthen set interval</span>; see <a href="preferences.html#guiding-between-sets">guiding between sets</a>.</td></tr><tr><td>Bracketing / EV per step</td><td>Spacing between bracket exposures. Smaller steps produce more closely spaced exposures and may increase the time needed per set. Pre/Post single-exposure phases do not use this field.</td></tr><tr><td>Guide during this phase</td><td>Enable or disable guide work for this phase. The PHD2 exposure range and interval follow the guiding model.</td></tr></tbody></table></div>
+<figure class="shot" id="phase-editor-totality"><img src="img/phase-editor-totality.png" alt="Totality ingress selected, showing the calculated range, bracket frame count, minimum interval and guiding information."><figcaption>Totality ingress selected, showing the calculated range, bracket frame count, minimum interval and guiding information.</figcaption></figure>
+<h2>Balance detail against timing</h2>
+<p>Review both short illuminated-surface exposures and the long shadow exposures. Compare bracket duration with interval and available guide time. If sets take too long, adjust cadence, the exposure ceiling or bracket spacing and inspect the result again.</p>
+<h2>The row warning icon</h2>
+<p>A warning icon at the start of a row marks a phase whose sets start further apart than its interval asks. Point at the icon to read why. Either each set takes longer than the interval, for example "Each set takes 87.2 s, longer than the 30 s set in Plan preferences.", or <span class="ui">Lengthen set interval</span> moved the sets apart to leave time for guiding, for example "Sets start every 106 s to leave at least 15 s for guiding between them. Each set takes 87.2 s; Plan preferences asks for 30 s." The table's interval, the set count, the storage estimate and the run all use the interval the tooltip gives.</p>
+<h2>The meridian marker</h2>
+<p>Two curved arrows beside a phase mark the phase in which the Moon crosses the meridian. When you select that phase, its details show <span class="ui">MERIDIAN</span>, and preflight’s <span class="ui">Meridian crossing</span> item gives the time of the crossing.</p>
+<p>Meridian flips are not automatic: HelioMaker does not flip the mount. If yours must flip, supervise the flip yourself, and afterwards make sure the telescope frames the Moon correctly and guiding has resumed. You may need to stop the eclipse run with <span class="ui">Stop run</span> before the flip, then start it again with <span class="ui">Start eclipse imaging</span> once the Moon is framed and guided. The new run continues from the current phase; sets due while it was stopped are missed.</p>
+<p>With <span class="ui">Lengthen set interval</span>, applying Plan preferences, changing a phase here or resetting it stores that interval as the phase's <span class="ui">Minimum interval</span>, and the icon clears. A <span class="ui">Minimum interval</span> you type yourself is kept until you next apply Plan preferences.</p>
+<p>Per-phase changes are retained as overrides. Later edits to Plan preferences update untouched fields without erasing those deliberate overrides. Review every edited phase before saving a final plan.</p>
+<aside class="callout "><span class="lbl">Inspect representative images</span>A plausible exposure ladder still needs camera verification. Check clipping in bright lunar areas, signal in the dark areas, framing and motion at long exposures. Rehearse the revised plan before approving it.</aside>
+</main>
+<nav class="foot" aria-label="Chapter navigation"><a href="capture-mode.html">← Capture mode: Still versus Live</a><a href="focusing.html">Focusing →</a></nav>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's New in This Version - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>What's New in This Version</h1>
+    <p>
+        HelioMaker continues to evolve to better support solar, lunar, and planetary imaging workflows.
+        This release brings a more stable lunar eclipse workflow, an improved surface tracking algorithm,
+        and further reliability improvements for camera and PHD2 communication.
+    </p>
+    <h2>Latest Improvements (2.0.18)</h2>
+    <ul>
+        <li>
+            <strong><a href="#lunar-eclipse">More stable lunar eclipse imaging.</a></strong> Improved capture
+            scheduling, shared-camera guiding, capture counts, and recovery after camera or PHD2 interruptions.
+            Long exposures are handled more reliably during camera startup and recovery. Stopping a run or
+            leaving pre-flight during autofocus also includes improved cleanup of pending capture and focus work.
+        </li>
+        <li>
+            <strong><a href="#surface-tracking">Improved surface tracking.</a></strong> Better feature matching,
+            reference-image selection, and recovery help maintain a stable lock through changing seeing.
+            The three-position lock sensitivity slider makes the tracking requirement easier to adjust.
+        </li>
+        <li>
+            <strong><a href="advanced_settings.htm#detection-settings">Surface tracking tolerance in pixels.</a></strong>
+            The former Surface Tracking Threshold is now shown as <strong>Surface Tracking Tolerance (px)</strong>,
+            making the allowed feature jitter easier to interpret and adjust for the imaging scale and seeing.
+        </li>
+        <li>
+            <strong>More reliable PHD2 communication.</strong> Better handling of interrupted connections,
+            delayed replies, and invalid messages reduces failures during guiding and equipment recovery.
+        </li>
+        <li>
+            <strong>Improved cloud and haze monitoring.</strong> The new
+            <a href="sequence_options.htm#observed-target"><strong>Observed target</strong></a> choice in
+            Sequence Options helps the monitor distinguish natural airmass-related brightness changes as
+            the Sun or Moon moves across the sky from clouds or haze. Monitoring also better accounts for
+            long exposures and the end of mount motion. In Find &amp; Track, the observed target is shown on its own
+            line below the sky-conditions readout, so a wrong choice is visible at a glance.
+            Right-click the readout to evaluate the sky again from the current view; every reading is described under
+            <a href="Find_Tool.htm#sky-conditions">Sky conditions</a>.
+            In this version the readout is diagnostic: it does not pause or resume a sequence, except
+            that a detection-loss pause during <em>No usable image</em> lasts until the sky reads Clear (see
+            <a href="sequence_options.htm#cloud-detection">Cloud Detection and Pause Handling</a>).
+        </li>
+    </ul>
+    <p>
+        <strong>Known limit:</strong> when PHD2 guides with its own camera and cannot share its camera images with
+        HelioMaker, HelioMaker says so when PHD2 is linked. For that session PHD2 guides with its built-in planetary
+        detection, and the <a href="sequence_options.htm">Sequence Options</a> <strong>Run SharpCap refocus
+        periodically</strong> and <strong>Pause sequence while no object is detected</strong> have no effect.
+    </p>
+    <h2>Feature Highlights</h2>
+    <ul>
+        <li>
+            A new <a href="EclipseImaging.htm"><strong>Solar Eclipse Planner and Sequencer</strong></a>
+            for planning, rehearsing, checking, and running an automated eclipse capture, for total,
+            annular, and partial eclipses alike. Each type is planned in its own right: an annular or
+            partial plan paces its central phase to suit an event that lasts far longer than totality,
+            and never shows filter-removal instructions, because on those eclipses the filter stays on
+            throughout.
+        </li>
+        <li>Unified live Find &amp; Track detection with shared and physical PHD2 cameras.</li>
+        <li>
+            More robust Full Disk/Crescent, Planetary, and Surface Features detection, with improved
+            acquisition, stability assessment, and recovery after a temporary loss.
+        </li>
+        <li>
+            New focusing, exposure-diagnosis, cloud/haze monitoring, search-region, and focal-length
+            assistance tools.
+        </li>
+        <li>
+            Extensive reliability improvements around camera links, PHD2 state, capture confirmation,
+            shutdown, power events, and recovery from interrupted equipment communication.
+        </li>
+    </ul>
+
+    <h2>License Management Update</h2>
+    <p>
+        This release introduces the <strong>License Management PIN</strong>, a user-defined secret that adds an extra protection layer for managing existing license activations.
+        The License Manager workflow has also been improved to make it easier to review activation status and manage license activations directly from the dialog.
+    </p>
+
+    <h2>License Renewal</h2>
+    <p>
+        The new <a href="LicenseRenewal.htm"><strong>Renew License</strong></a> workflow supports license renewal with carry-over of remaining license days
+        from an existing 1-year license to a new license. This applies when renewing to another 1-year plan or upgrading to a lifetime license, when the
+        renewal conditions are met.
+    </p>
+
+    <h2>Dynamic Target Tracking Tool</h2>
+    <p>
+        Introduced the new <strong>Dynamic Target Tracking</strong> tool, designed to update the mount tracking rate in real time for major solar system bodies,
+        including the Sun and the Moon. For beginners, the main idea is simple: telescope mounts usually use one of the standard built-in tracking rates, such as
+        sidereal, solar, or lunar. Dynamic Target Tracking is a more accurate replacement for those standard solar-system rates, because HelioMaker continually updates
+        the mount rate to follow the actual motion of the selected target throughout the session, using computational models that account for the observer location,
+        current time, and selected target.
+    </p>
+    <p>
+        As a premium feature, Dynamic Target Tracking is available after HelioMaker activation.
+    </p>
+    <p>
+        The tool also adds <a href="DynamicTracking_SlewAndSafety.htm"><strong>Slew To Target</strong></a>, allowing HelioMaker to command a supervised
+        mount slew to the selected supported target when the mount, target, and observer-location state allow it. The slew can be stopped from HelioMaker
+        when immediate interruption is needed.
+    </p>
+    <p>
+        <a href="DynamicTracking_MountCompatibility.htm"><strong>Dynamic Target Tracking features depend on mount support for custom tracking rates</strong></a>. If the connected mount does not support custom RA/Dec tracking
+        rates, HelioMaker uses the best legacy tracking-rate fallback for the selected target, such as solar, lunar, or sidereal. For generated comet and
+        minor-object ephemeris plans, the fallback uses PHD2 comet tool mode and automates it by applying the comet or minor-object drift rate in real time.
+    </p>
+    <p>
+        In this context, <strong>dynamic tracking</strong> does not mean guiding or any other closed-loop tracking method. It refers only to applying a real-time target
+        tracking rate computed by HelioMaker from the target ephemeris model. With the introduction of Dynamic Target Tracking, HelioMaker effectively provides a two-layered
+        correction model: first, it selects and applies the proper tracking model for the chosen target using this new tool; second, PHD2 continues issuing guiding corrections
+        based on the object's detected position, with detection performed by HelioMaker.
+    </p>
+    <p>
+        This tool is especially important for lunar imaging. By applying custom rates dynamically updated in real time by HelioMaker, lunar guiding drift can be reduced very
+        substantially. If the mount is properly polar aligned, this can result in practically no orthogonality error during PHD2 calibration on the Moon. It is also very helpful
+        when using PHD2's Guiding Assistant for daytime polar alignment with the Moon as the selected target, because the measured drift becomes more accurate when the mount is
+        already following the correct lunar motion.
+    </p>
+    <p>
+        The same principle also helps solar imaging, both for PHD2 calibration and for using Guiding Assistant to refine daytime polar alignment, although usually to a lesser
+        extent than for the Moon. Real-time custom rates are superior to relying on the mount's built-in standard solar or lunar tracking rates, which are static and only
+        approximate the actual motion of the target. The greatest improvement is expected for the Moon, because its required tracking adjustments are much larger than for the Sun
+        or other planets due to distance and orbital mechanics.
+    </p>
+    <p>
+        The tool also includes distant planets such as Jupiter and Saturn for completeness, but these targets are generally affected much less and will not usually show a major
+        practical improvement from this feature.
+    </p>
+
+    <h2 id="ephemeris-planner">Ephemeris Planner</h2>
+    <p>
+        The new <a href="DynamicTracking_EphemerisPlanner.htm"><strong>Ephemeris Planner</strong></a> creates ephemeris data for natural solar-system minor
+        bodies, including comets, asteroids, planets and moons, over a user-selected time window. Artificial satellites are not supported. A planned object can later
+        be loaded into Dynamic Target Tracking tool for precise centering, tracking and guiding, optionally using the enhanced Comet Tracking feature of the custom PHD2 version.
+    </p>
+    <p>
+        The planner can be opened from the <strong>Tools</strong> menu or from the Dynamic Target Tracking dialog. It supports draft, fine, and precise planning modes, displays
+        planned object visibility, and can use confirmed observer-location data when generating the request.
+    </p>
+
+    <h2 id="tools-menu">Tools Menu</h2>
+    <p>
+        HelioMaker now includes a <strong>Tools</strong> menu for opening specialized utilities from one place. This menu includes entries such as
+        Dynamic Target Tracking, Find &amp; Track, Ephemeris Planner, Solar Eclipse Planner,
+        Lunar Eclipse Planner, SHG Scanner, and Focal Length Calculator.
+    </p>
+    <img src="Images/tools_menu.jpg" alt="Tools menu" class="fig fig-75">
+
+    <h2 id="eclipse-imaging">Solar Eclipse Planner and Sequencer</h2>
+    <p>
+        The new Solar Eclipse Planner and Sequencer provides a dedicated workflow for planning, rehearsing,
+        and running an automated total solar-eclipse capture. The planner calculates the local eclipse
+        circumstances for the observer site, presents the contact times and geometry, and builds a phase-based
+        capture plan covering the partial phases, thin crescents, diamond-ring transitions, and totality.
+    </p>
+    <p>
+        Each phase can define its camera exposure, gain, bracket, interval, cycle count, and guiding behavior.
+        Plan preferences also cover camera configuration, eclipse safety mode, optional refocusing, timing and
+        location inputs, and other run-wide choices. A plan-approval step helps distinguish the rehearsed plan
+        from later unverified edits.
+    </p>
+    <p>
+        Dry-run and wet-run simulation options let the operator practise the complete sequence before eclipse
+        day. Before arming, the pre-flight dialog checks the plan, camera, focus, guiding, time and location,
+        storage, and other readiness conditions. During the event, the run console displays the active phase,
+        local and UTC clocks, capture progress, filter cues, guiding and refocus state, and missed or rejected
+        work. The workflow includes visual and audio prompts, but the operator remains responsible for solar
+        filtration and safe equipment use.
+    </p>
+    <p>
+        See the <a href="EclipseImaging.htm"><strong>Solar Eclipse Imaging introduction</strong></a>.
+        Detailed, task-oriented instructions are supplied separately in the Solar Eclipse Imaging Manual.
+    </p>
+
+    <h2 id="lunar-eclipse">More Stable Lunar Eclipse Workflow</h2>
+    <p>
+        The Lunar Eclipse Planner brings together event search, phase-by-phase exposure planning, rehearsal,
+        pre-flight checks, and automated capture. This release improves coordination between imaging and
+        guiding when sharing a camera, phase transitions, and the reporting of completed and missed captures.
+    </p>
+    <p>
+        Camera startup and recovery now allow for long exposures before treating missing frames as a camera
+        fault. Run cancellation and autofocus cleanup have also been improved, along with recovery from
+        interrupted SharpCap or PHD2 connections. Rehearse the intended plan with your equipment before
+        eclipse night to verify capture, guiding, and recovery with your rig.
+    </p>
+    <p>
+        <strong>Known limit:</strong> Lunar eclipse diagnostics are recorded in HelioMaker's
+        <a href="Faq_Support.htm">general debug log</a>. A separate log for each lunar run and a
+        post-run capture-timing report are not yet available. When reporting a problem, retain the debug
+        log and saved plan.
+    </p>
+    <p>
+        Detailed instructions are supplied separately in the standalone Lunar Eclipse Imaging Guide.
+    </p>
+
+    <h2 id="sequence-options">Sequence Options</h2>
+    <p>
+        The new <a href="sequence_options.htm">Sequence Options</a> dialog groups sequence workflow settings in one place. It covers automatic SharpCap
+        refocusing, detection-loss pause/resume behavior, PHD2 pause handling while the sequence is paused, guiding recovery timeouts, delayed start,
+        capture time-limit mode, and locking active sequence parameters. The new
+        <a href="sequence_options.htm#observed-target"><strong>Observed target</strong></a> choice identifies
+        the camera target for cloud monitoring and its allowance for natural airmass changes.
+    </p>
+    <img src="Images/sequence_options.jpg" alt="Sequence Options Dialog" class="fig fig-75">
+
+    <h2 id="shg-scanner">Experimental SHG Scanner</h2>
+    <p>
+        A new experimental <a href="SHGScanner.htm"><strong>SHG Scanner</strong></a> automates spectroheliograph scanning with SharpCap Pro capture.
+        It can be opened from the new <strong>Tools</strong> menu, or from the Dynamic Target Tracking dialog when the Sun is selected.
+    </p>
+    <p>
+        The scanner examines the mount's capabilities and selects the most suitable scanning method for the connected mount. When using
+        an additional guide scope and guide camera (protected by an appropriate solar filter), multipass scanning can be enhanced by automatically
+        recentering the Sun between scan passes using PHD2 guiding. Scanning in Ra and Dec is supported.
+    </p>
+    <img src="Images/shg_scanner.jpg" alt="SHG Scanner Dialog" class="fig fig-75">
+
+    <h2>Advanced Dialog Settings</h2>
+    <p>
+        The <a href="advanced_settings.htm">Advanced Settings</a> dialog now remains focused on lower-level configuration, including communication port,
+        PHD2 guiding and calibration settling parameters, detection settings, and selected global application behavior.
+        Sequence workflow options previously present there, including delayed sequence start and capture burst duration mode, have moved to the new
+        <a href="sequence_options.htm">Sequence Options</a> dialog.
+    </p>
+
+    <h2>PHD2 Config: Invert RA Rate for Dynamic Tracking</h2>
+    <p>
+        Added a new option in the <strong>PHD2 Config</strong> dialog to invert the RA rate for Dynamic Target Tracking. This helps match the tracking
+        direction to mount-specific behavior on mounts that expect the opposite RA-rate sign.
+    </p>
+    <img src="Images/phd2_setup1.jpg" alt="PHD2 Configuration Dialog" class="fig fig-75">
+
+    <h2>PHD2 Calibration Pre-flight Dialog</h2>
+    <p>
+        HelioMaker now shows a <a href="Phd2CalibrationPreflight.htm"><strong>PHD2 Calibration Pre-flight Dialog</strong></a> whenever PHD2 calibration
+        is started from HelioMaker. For solar and lunar calibration, HelioMaker uses accurate real-time ephemeris declination for the Sun or Moon instead
+        of relying only on mount star-alignment data. For other targets, the dialog allows the user to select the appropriate target type before continuing.
+    </p>
+
+    <h2 id="surface-tracking">Enhanced Surface Features Tracking</h2>
+    <p>
+        Surface Features tracking now manages its reference image more carefully when the ROI, frame geometry,
+        or scene quality changes. Improved feature matching, reference selection, signal-quality measurements,
+        and fallback tracking reduce unnecessary reference resets and help retain a stable surface lock through
+        changing seeing. The enhanced tracking option remains enabled by default and can be disabled in Advanced
+        Settings when troubleshooting unusual equipment or image conditions.
+    </p>
+    <p>
+        In <a href="Find_Tool.htm#surface-features">Find &amp; Track's Surface Features mode</a>, the
+        <strong>lock sensitivity slider</strong> now has three positions: the bottom favors the most accurate
+        tracking with a rich set of higher-quality features, the middle is the default, and the top requires
+        the <strong>minimum number of trackable features</strong>. The top setting can help lock onto a target
+        with few unique features when the other positions cannot detect it, though tracking performance may
+        be inferior. Double-click the tuning icon to restore the default.
+    </p>
+    <p>
+        A new <strong>landscape/portrait ROI flip button</strong> lets you orient the surface tracking area to
+        better fit the target. Change the orientation while guiding is stopped, then wait for a stable lock
+        before restarting guiding.
+    </p>
+    <p>
+        <a href="advanced_settings.htm#detection-settings"><strong>Surface Tracking Tolerance (px)</strong></a>
+        in Advanced Settings now expresses the allowed jitter of matched surface features in pixels.
+        Existing saved thresholds are converted automatically. This controls when the tracking reference is
+        replaced, while the Find &amp; Track slider controls the feature requirement for locking.
+    </p>
+
+    <h2>Detection Algorithm Improvements</h2>
+    <p>
+        Full Disk/Crescent detection has received major robustness improvements for partial eclipses, thin
+        crescents, faint limbs, haze, and temporary obstruction. Improved contour validation, complementary-arc
+        checks, circle refinement, radius locking, and adaptive confidence assessment help reject false fits
+        without making the detector slow to recover after a genuine telescope movement or brief loss of view.
+    </p>
+    <p>
+        Re-acquisition is now context-sensitive: the initial search can cover the full useful frame, while an
+        auto-find request during guiding is constrained around the established target. Temporal filtering adapts
+        to idle, calibration, and guiding states, and is reset deliberately after a user move, ROI change, frame
+        size change, or other action that invalidates the previous position history.
+    </p>
+    <p>
+        Planetary and Surface Features modes also include stronger input validation, exception handling, frame
+        geometry handling, and signal-quality reporting. Detector readouts now provide clearer fit, feature,
+        signal, stability, and exposure information so a poor camera image can be distinguished from an
+        incorrectly tuned detector.
+    </p>
+
+    <h2>Find &amp; Track Tool</h2>
+    <p>
+        A new detection and tracking module featuring improved algorithms capable of reliably detecting and tracking almost any natural celestial body, including the Sun,
+        Moon, planets, and stars (satellites are not supported). This module provides four distinct detection modes: Star Mode (for lucky imaging or Live Stacking in SharpCap Pro),
+        Crescent and Full Disk, Planetary, and Surface Features. The Planetary mode is optimized for detecting and tracking planets such as Saturn and Jupiter but can also be used to track the
+        full solar or lunar disk, as well as other planets. The tool is designed to make it easier and faster to fine-tune detection parameters and adjust them during
+        an imaging session when needed.
+    </p>
+    <p>
+        <em>Note:</em> In this context, "detection and tracking" refers to identifying and monitoring the position of a celestial object within the field of view.
+        This is not the same as PHD2 guiding, which uses the detected position to control the mount by sending guiding corrections. Guiding is a closed-loop
+        process performed by PHD2, using either its own detection methods (such as star detection) or position data provided by HelioMaker. This process applies
+        guiding pulses to keep the target as stable as possible within the field of view.
+    </p>
+    <p>
+        To clarify, this tool is not related to mount tracking or tracking rate settings. Those must be configured separately, for example, using the mount's control software
+        or PHD2's Solar and Planetary Guiding Tool. When imaging the Sun or Moon, make sure to set the appropriate solar or lunar tracking rates in the mount's settings,
+        as the Find &amp; Track tool does not manage those parameters.
+    </p>
+
+    <h2>Unified Detection with Physical PHD2 Cameras</h2>
+    <p>
+        Find &amp; Track now provides a continuous live view and the same detector choices when PHD2 uses a
+        physical camera connected directly to PHD2. HelioMaker performs Full Disk/Crescent, Planetary, and
+        Surface Features detection and supplies the result to PHD2 for guiding. If the new live detection link
+        is unavailable, PHD2 automatically remains on its built-in detector and HelioMaker explains the fallback.
+    </p>
+    <p>
+        An existing full-disk or crescent detection can be adopted when HelioMaker connects, avoiding the need
+        to repeat object-size and sensitivity setup. Camera binning and large-frame scaling are handled
+        automatically. Planetary and Surface Features are active-license features in both camera arrangements.
+    </p>
+
+    <h2>Find &amp; Track Acquisition and Exposure Tools</h2>
+    <p>
+        Full Disk/Crescent mode now includes automatic first acquisition, a constrained re-acquisition action
+        while guiding, an optional movable and resizable search zone, and direct radius-tolerance adjustment.
+        Surface Features ROI size is now adjusted directly with the mouse wheel in Find &amp; Track instead of
+        through Advanced Settings.
+    </p>
+    <p>
+        A live exposure histogram and plain-language underexposure/overexposure diagnosis help tune camera
+        settings before guiding. The new focal-length assistant measures the Sun or Moon over several live
+        detections and can apply the result to the appropriate primary scope or PHD2 guidescope configuration.
+    </p>
+
+    <img src="Images/find_tool_intro.jpg" alt="Find Tool" class="fig">
+
+    <h2>Architecture Update: Improved Detection and 64-bit Performance</h2>
+    <p>
+        This version introduces an architectural change by moving surface feature detection and tracking to HelioMaker's new
+        <strong>Find &amp; Track</strong> tool. This change improves performance by taking advantage of HelioMaker's 64-bit processing environment,
+        enabling faster and more efficient detection. The custom PHD2 version continues to support full planetary and crescent disk detection,
+        making it suitable for use both with and without HelioMaker. Users who rely on this detection method can continue using the custom PHD2 independently.
+        HelioMaker users, however, benefit from a fully integrated solution for surface feature tracking at high magnifications,
+        along with new detection modes for guiding on a broader range of celestial targets.
+    </p>
+    <p>
+        <strong>Note:</strong> This HelioMaker release requires the updated custom PHD2 version <strong>v2.6.14-solar.3.3</strong> or later,
+        which can be downloaded from <a href="https://github.com/Eyeke2/phd2.planetary/releases/latest" target="_blank" rel="noopener">this GitHub page</a>.
+    </p>
+
+    <h2>Version Update Checking and Notification</h2>
+    <p>
+        Added automatic daily version check at startup, along with an option to manually check for updates.
+    </p>
+
+    <h2>Lucky Imaging Support (Live Stack)</h2>
+    <p>
+        While star-based guiding is a standard feature of PHD2, its integration with HelioMaker and SharpCap enables guided lucky imaging
+        of deep sky objects using a single telescope and camera. This approach simplifies the overall setup and helps reduce equipment costs.
+    </p>
+
+    <h2>Improved Stability and Recovery</h2>
+    <p>
+        This release includes extensive reliability work across the capture, detection, guiding, and equipment
+        control paths. Detector mode changes now keep the displayed controls, the active HelioMaker detector, and
+        PHD2 state synchronized. ROI and frame-size changes reset only the state that is no longer valid, reducing
+        stale locks and avoiding unnecessary loss of a good detection.
+    </p>
+    <p>
+        Camera and PHD2 communication is monitored more closely. Missing guide frames, stalled camera delivery,
+        lost application links, and interrupted guiding states are detected explicitly, with bounded recovery or
+        a clear operator warning instead of silently continuing with stale status. Capture results are counted
+        only after confirmation, and the interface no longer presents an old detector time as though it were live.
+    </p>
+    <p>
+        Thread shutdown, socket cancellation, repeated connection attempts, application close, system sleep and
+        resume, and long-running capture ownership have also been hardened. HelioMaker keeps the computer awake
+        during capture and scanning work and takes a conservative approach when equipment state cannot be verified.
+    </p>
+
+    <h2>Refined User Interface</h2>
+    <p>
+        Updated interface with crisp, sharp graphics and full support for Windows High-DPI display devices. Added on-screen display of the currently
+        selected main imaging camera and real-time CPU load indicators, showing the impact of detection and tracking algorithms.
+    </p>
+    <img src="Images/hm-guiding.jpg" alt="UI" class="fig">
+
+</body>
+</html>

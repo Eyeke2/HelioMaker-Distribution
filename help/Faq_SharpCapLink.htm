@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why doesn't the SharpCap Pro Link Button work? - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <!-- Unable to connect to SharpCap Pro -->
+    <h2>Why doesn't the SharpCap Pro Link Button work?</h2>
+
+    <p>
+        If you encounter the following error when attempting to connect to <strong>SharpCap Pro</strong> using its link button:
+        <em><strong>"Windows cannot find '...\SharpCapPro.exe'. Make sure you typed the name correctly, and then try again."</strong></em>,
+        this may indicate a misconfiguration of the SharpCap Pro folder paths in HelioMaker.
+        Please reopen the SharpCap Pro Configuration in HelioMaker and enter the correct SharpCap Pro installation path.
+        For more details, please refer to the <a href="sharpcap_configuration.htm">SharpCap Pro Configuration</a> section.
+    </p>
+
+    <p>
+        If you encounter an issue where the <strong>SharpCap Pro</strong> link button remains red, and after waiting more
+        than 30 seconds, SharpCap Pro appears to load but fails to connect, consider the following potential causes and solutions:
+    </p>
+
+    <ul>
+        <li>
+            <strong>SharpCap Pro Initialization Delay and Timeout:</strong>
+            <p>
+                SharpCap Pro may take longer to fully load, initialize, and establish a connection with HelioMaker, especially during
+                the first start after a system restart. HelioMaker has a built-in timeout of 30 seconds while awaiting connection with SharpCap Pro.
+            </p>
+            <p class="vtop">
+                Solution: Press the link button again to allow HelioMaker to retry the connection. This additional attempt can help establish a successful
+                link once SharpCap Pro has fully initialized.
+            </p>
+        </li>
+
+        <li>
+            <strong>SharpCap Pro Version Compatibility:</strong>
+            <p class="vtop">
+                Verify that you are using the latest version of SharpCap Pro (version <strong>4.1.12221.0 or later</strong> is required by HelioMaker).
+                If you are using an older version, consider updating or reinstalling the latest version of SharpCap Pro to ensure compatibility.
+            </p>
+        </li>
+
+        <li>
+            <strong>Invalid SharpCap Pro License Activation:</strong>
+            <p>
+                HelioMaker relies on an active and valid <strong>SharpCap Pro</strong> license for proper functionality.
+                An inactive or improperly activated license can prevent successful connections.
+            </p>
+            <p class="vtop">
+                Ensure that your SharpCap Pro is properly activated with a valid license. If the license is not activated,
+                follow the activation instructions provided by AstroSharp Ltd. to secure a valid license before attempting
+                to connect again. If you continue to experience issues, reinstalling SharpCap Pro may help resolve license-related problems.
+            </p>
+        </li>
+
+        <li>
+            <strong>SharpCap Pro Without HelioMaker support:</strong>
+            <p>
+                If you manually start SharpCap Pro before using the Link button in HelioMaker, or if SharpCap takes longer
+                than usual to respond, HelioMaker may detect a running instance of SharpCap Pro without HelioMaker support.
+            </p>
+            <p class="vtop">
+                When prompted with the message:
+                <img src="Images/scap_warning.jpg" alt="No SharpCap Support">
+                <br>
+                You have the following options:
+                <ul>
+                    <li class="vtop">
+                        <strong>Decline Termination and Wait:</strong> If you launched SharpCap Pro from HelioMaker but see this message,
+                        it may be due to a timeout. Declining and waiting a few more moments should allow HelioMaker to establish a connection
+                        with SharpCap Pro, causing the link button to turn green.
+                    </li>
+                    <li><strong>Decline Termination:</strong> Choose to decline HelioMaker's suggestion to close SharpCap Pro and try using HelioMaker later.</li>
+                    <li><strong>Finish Immediate Tasks:</strong> Complete any ongoing tasks in SharpCap Pro before allowing HelioMaker to terminate it.</li>
+                    <li><strong>Accept Termination:</strong> Allow HelioMaker to terminate the running instance of SharpCap Pro. HelioMaker will then attempt to restart SharpCap Pro with the necessary linkage, enabling proper integration and functionality.</li>
+                </ul>
+            </p>
+        </li>
+    </ul>
+
+    <p>
+        If the issue persists after attempting the above solutions, consider reaching out to HelioMaker support or consulting the user communities for further assistance.
+    </p>
+</body>
+</html>

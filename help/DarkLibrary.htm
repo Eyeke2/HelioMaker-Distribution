@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes about PHD2 Dark Library - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Notes About PHD2 Dark Library and Image Calibration</h1>
+
+    <p>
+        In most HelioMaker planetary-imaging workflows, a PHD2 <strong>Dark Library</strong> is not required. This is especially true
+        when using a shared camera such as the <strong>Virtual Planetary Camera</strong> in PHD2, where exposures are typically very short
+        and the targets are bright. Under these conditions, thermal noise is usually a much smaller concern than it is in deep-sky imaging.
+    </p>
+    <p>
+        As a result, warnings issued by PHD2 about a missing dark library for a profile built around the
+        <strong>Virtual Planetary Camera</strong> can usually be ignored for ordinary planetary, solar, or lunar use.
+    </p>
+
+    <h2>Important Exception: Live Stack with HelioMaker</h2>
+    <p>
+        An important exception is when HelioMaker is used as part of a <strong>Live Stack</strong> workflow. In that case, PHD2 may receive
+        non-calibrated frames in a manner much closer to ordinary night-time guiding on stars. Under these conditions, creating a
+        <strong>Dark Library</strong> or a <strong>Bad-pixel Map</strong> in PHD2 can be useful and may improve guiding reliability.
+    </p>
+    <p>
+        To build this calibration in that mode, SharpCap should be running in <strong>Live Stack</strong>, the telescope cover should be closed,
+        and the dark library or bad-pixel map should be created directly inside <strong>PHD2</strong>.
+    </p>
+    <p>
+        This distinction is important: building a dark calibration frame in SharpCap is not the correct solution for PHD2 when using
+        <strong>Live Stack</strong> with HelioMaker. If dark calibration or bad-pixel suppression is needed for guiding in this workflow,
+        it should be built in <strong>PHD2</strong>, not in SharpCap.
+    </p>
+    <p>
+        For detailed instructions on creating a PHD2 dark library or bad-pixel map, please refer to the official PHD2 documentation.
+    </p>
+
+    <h2>Using a Separate Guiding Camera</h2>
+    <p>
+        If you are not using the <strong>Virtual Planetary Camera</strong> and instead guide with a separate physical guiding camera,
+        creating a PHD2 <strong>Dark Library</strong> or <strong>Bad-pixel Map</strong> may also be reasonable. This is similar to ordinary
+        PHD2 guiding workflows, where the guiding camera may benefit from its own calibration data.
+    </p>
+
+    <h2>Flat Frame Recommendation</h2>
+    <p>
+        It is <strong>highly recommended</strong> to build a <strong>master flat frame</strong> in SharpCap Pro and apply
+        it in real time. Flat frame calibration helps achieve the best image quality by correcting for uneven illumination
+        (e.g., vignetting) and removing sensor dust artifacts.
+    </p>
+
+    <h2>In Summary</h2>
+    <p>
+        PHD2 dark calibration is usually unnecessary for standard shared-camera planetary imaging, but it can be useful
+        with <strong>Live Stack</strong> or a separate guiding camera.
+    </p>
+
+    <p>For further details, please refer to the relevant sections in the official PHD2 and SharpCap documentation.</p>
+    <hr>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start with Custom Version of PHD2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+
+    <h2>Quick Start with Custom Version of PHD2</h2>
+
+    <p>
+        Welcome to the Quick Start guide for the Custom Version of PHD2, designed to work seamlessly with HelioMaker.
+        This guide is tailored for planetary imagers aiming to capture detailed images of the Sun, Moon, and planets.
+        Whether you're new to PHD2 or astrophotography, this chapter will help you set up and start guiding efficiently
+        using the extended version of PHD2.
+    </p>
+
+    <h2>Where to Download the Custom Version of PHD2?</h2>
+    <p>
+        The custom PHD2 is available for download from this page: <a href="https://github.com/Eyeke2/phd2.planetary/releases/latest"
+                                                                     target="_blank" rel="noopener">PHD2 for Solar, Lunar and Planetary Guiding</a>.
+        Go to the assets section and download the Windows installer package.
+    </p>
+
+    <h2>Operational Concepts</h2>
+
+    <p>
+        The custom version of PHD2 operates similarly to standard PHD2 but adds full-disk/crescent guiding and
+        integration with HelioMaker's detector suite. Standard PHD2 continues to provide stellar guiding. With
+        HelioMaker connected, use <strong>Find &amp; Track</strong> to select Full Disk/Crescent, Planetary, or
+        Surface Features detection; PHD2 receives the detected target position and converts it into mount corrections.
+        PHD2's own <strong>Planetary and Solar Guiding Tool</strong> remains available for standalone and fallback
+        full-disk/crescent detection.
+    </p>
+
+    <h2>Enable the PHD2 Server</h2>
+    <p>
+        To allow HelioMaker to communicate with PHD2, make sure the <strong>Enable Server</strong> option is checked in the <strong>Tools</strong> menu of PHD2.
+    </p>
+
+    <h2>Configuring Your Equipment</h2>
+
+    <p>
+        To utilize PHD2 effectively with HelioMaker, you need to configure it with at least one equipment profile.
+        Each profile consists of your camera, mount, and other specialized devices like Adaptive Optics (AO)
+        and an optional Rotator. If you do not use AO or a Rotator, these can be set to <strong>None</strong>.
+    </p>
+
+    <h3>Creating a New Equipment Profile</h3>
+
+    <p>There are multiple ways to create a new equipment profile in PHD2:</p>
+
+    <ul>
+        <li><strong>New Profile Wizard:</strong> Ideal for new PHD2 users, this wizard guides you through the setup process step-by-step.</li>
+        <li><strong>Connect Equipment Dialog Box:</strong> Accessible from the <em>Guide</em> menu, this option provides advanced configuration settings.</li>
+        <li><strong>Connect Equipment Button:</strong> Typically located in the bottom toolbar, this button offers a quick access point for equipment configuration.</li>
+    </ul>
+    <img src="Images/phd2_connect_equipment.jpg" alt="PHD2 Connect Equipment" class="fig">
+
+    <h3>Selecting Correct Camera and Mount to Work with HelioMaker</h3>
+    <p>
+        Configuring the correct camera and mount in your PHD2 equipment profile is essential for seamless integration with HelioMaker.
+    </p>
+
+    <h4>Camera Selection</h4>
+    <p>
+        Using the <strong>Virtual Planetary Camera</strong> in the PHD2 profile is the recommended configuration for most HelioMaker use cases.
+        This setup allows PHD2 to utilize the main imaging camera from SharpCap Pro for both imaging and guiding, eliminating the need for
+        a separate guiding camera or guidescope.
+    </p>
+    <p>
+        With the Virtual Planetary Camera, PHD2 can detect and guide on a wide range of targets, including full circular disks or crescent shapes
+        at lower magnifications (or shorter focal lengths) and surface features at higher magnifications (or longer focal lengths). This flexibility
+        makes the use of a dedicated guidescope and guiding camera largely unnecessary, as the main imaging camera ensures precise target stabilization
+        across various scenarios.
+    </p>
+    <p>
+        A physical camera connected directly to PHD2 is also fully supported. Current versions provide its live
+        frames to Find &amp; Track so HelioMaker can use the same Full Disk/Crescent, Planetary, and Surface Features
+        detectors. Planetary and Surface Features require an active HelioMaker license. If the live integration is
+        unavailable, PHD2 falls back to its built-in detector for that session.
+    </p>
+    <p>
+        For detailed instructions on camera selection relevant to HelioMaker, please refer to the
+        <a href="phd2_configuration.htm#shared-camera">PHD2 Configuration</a> documentation.
+    </p>
+
+    <h4>Mount Selection</h4>
+    <p>
+        In the PHD2 profile, the mount must always be included as part of the equipment configuration, as PHD2 sends guiding corrections
+        directly to the mount to minimize target drift. Most mounts with ASCOM driver support allow simultaneous connections from multiple
+        clients, enabling both SharpCap and PHD2 to communicate with the mount without conflicts.
+    </p>
+    <p>
+        It is crucial to ensure that the PHD2 equipment profile used with HelioMaker is configured to use the same mount as SharpCap Pro,
+        which serves as the main imaging application in this setup.
+    </p>
+
+    <h3>Creating and Managing Equipment Profiles</h3>
+
+    <p>
+        Equipment profiles in PHD2 define your specific setup, including the camera, mount, auxiliary devices, and guiding algorithms.
+        Profiles can be created, managed, and selected from the <strong>Connect Equipment</strong> dialog, as shown below.
+        In this example, an existing user-defined profile named <strong>HelioMaker</strong> is displayed, configured with
+        a <strong>Virtual Planetary Camera</strong> (used for integration with HelioMaker and SharpCap Pro) and the
+        <strong>EQMOD ASCOM HEQ5/6</strong> mount.
+    </p>
+    <img src="Images/phd2-equipment-profile.jpg" alt="PHD2 Connect Equipment Dialog Screenshot" class="fig">
+
+    <p>To create, edit, or manage equipment profiles:</p>
+
+    <ul>
+        <li>
+            <strong>Create a New Profile:</strong> Click the <strong>Manage Profiles</strong> button and select
+            <strong>New using Wizard...</strong> for a guided setup, or select <strong>New</strong> to configure the profile manually.
+        </li>
+        <li>
+            <strong>Edit an Existing Profile:</strong> Use the <strong>Manage Profiles</strong> button to rename,
+            delete, or adjust settings for an existing profile. You can also import or export profiles for use
+            across different setups or systems.
+        </li>
+        <li>
+            <strong>Select a Profile:</strong> Use the drop-down menu labeled <strong>Equipment Profile</strong> to choose from previously saved profiles.
+        </li>
+    </ul>
+
+    <p>
+        Once a profile is selected, the <strong>Camera</strong>, <strong>Mount</strong>, <strong>Aux Mount</strong>,
+        and other associated devices can be configured. Use the <strong>Connect All</strong> button to establish
+        connections with all devices listed in the current profile.
+    </p>
+
+    <h2>Guiding Algorithm Settings</h2>
+
+    <p>
+        Understanding and configuring guiding algorithms is essential for achieving optimal guiding performance. PHD2 allows you to select
+        different guiding algorithms for the Right Ascension (RA) and Declination (Dec) axes, which determine how PHD2 responds to guiding
+        corrections. By default, PHD2 uses the Hysteresis guiding algorithm for the RA axis and ResistSwitch for the Dec axis.
+    </p>
+    <p>
+        For the best results, consult your mount manufacturer's recommendations or explore relevant astronomical forums, including the PHD2
+        user forum, to identify the settings that best match your specific mount. If this information is unavailable, using PHD2's default
+        settings is a reliable choice.
+    </p>
+
+    <p>
+        Profiles store guiding algorithm selections along with their respective settings for each axis. For example,
+        when using algorithms like Hysteresis, Lowpass2, and ResistSwitch, the settings saved in each profile include
+        parameters such as Aggression, Hysteresis, Min Motion, and Max Pulse Duration, among others.
+    </p>
+
+    <p>
+        Default settings are suitable for most scenarios but can be fine-tuned for better results. For further
+        guidance, refer to the <a href="https://openphdguiding.org/man-dev/Advanced_settings.htm" target="_blank" rel="noopener">PHD2 Advanced Settings</a>
+        documentation, and <a href="https://openphdguiding.org/documentation/" target="_blank" rel="noopener">PHD2 User Guide</a>, as well as other
+        relevant resources.
+    </p>
+
+    <h3>Key Guiding Parameters (common to the default Hysteresis and ResistSwitch guiding algorithms)</h3>
+    <p>
+        If unfamiliar with guiding algorithms and their associated settings, leaving the default values is recommended as a starting point, and when you
+        gain more experience, you can adjust these settings to optimize guiding performance. Here are some key parameters to consider:
+    </p>
+
+    <ul>
+        <li>
+            <strong>Aggression:</strong> This parameter determines the percentage of the computed correction movement that is applied to the mount.
+            For example, an aggression value of 70 means that 70% of the calculated guiding correction will be implemented.
+            Aggression can be adjusted independently for the RA (Right Ascension) and DEC (Declination) axes, allowing you to fine-tune
+            guiding performance. High aggression may lead to overcorrection, causing excessive oscillations visible in the guiding graph,
+            while low aggression can result in undercorrection, allowing tracking errors to accumulate and causing gradual drift.
+        </li>
+        <li>
+            <strong>Hysteresis:</strong> This setting determines the percentage of the history of
+            previous guiding pulses that should influence the next correction pulse. For instance,
+            if hysteresis is set to 50, half of the most recent guide correction will be factored
+            into the new correction. This helps smooth out guiding corrections and reduces oscillations
+            caused by erratic or abrupt adjustments, particularly in challenging guiding conditions.
+            The default value is 10.
+        </li>
+        <li>
+            <strong>Min Motion:</strong> This parameter specifies the minimum amount of target movement, measured in fractional pixels,
+            required to trigger a guiding correction. Movements below this threshold are ignored to filter out minor fluctuations caused
+            by atmospheric seeing, wind, or mechanical vibrations. Setting Min Motion too low can result in unnecessary corrections,
+            introducing instability to the guiding and reducing image quality, while setting it too high may lead to slow response
+            and sluggish guiding performance. Choosing an appropriate Min Motion value ensures that corrections are applied only when
+            necessary, leading to smoother and more accurate guiding.
+        </li>
+
+        <li>
+            <strong>Max Pulse Duration:</strong> This parameter sets the maximum duration, in milliseconds,
+            for a guiding correction pulse sent to the mount. It acts as a safety limit to prevent excessive
+            corrections that could destabilize guiding or cause the mount to overshoot. For instance, in cases
+            where large tracking errors occur (due to poor polar alignment or sudden gusts of wind), Max Pulse
+            Duration ensures that corrections remain within a manageable range. Adjusting this value may be
+            necessary for mounts with slower motors or when guiding long focal length systems, as shorter
+            pulse durations may not adequately compensate for tracking errors in such setups. In most cases,
+            the default value of 2500 milliseconds is sufficient for typical guiding scenarios.
+        </li>
+    </ul>
+
+    <p>
+        <em>Note:</em> The default selection of guiding algorithms and associated settings is a good starting point.
+        However, to optimize guiding results, users are encouraged to learn more about these settings and understand
+        their purposes. This knowledge will empower you to troubleshoot and solve guiding issues as they arise.
+    </p>
+
+    <p>
+        For further guidance, refer to the <strong>PHD2 Best Practices</strong> document, participate in user forums,
+        watch instructional videos, and explore other related resources.
+    </p>
+
+    <h2>PHD2 Calibration</h2>
+    <p>
+        <strong>PHD2 Calibration</strong> is a required step to ensure accurate guiding. During calibration,
+        PHD2 measures how the mount responds to guiding commands in both RA and DEC axes. These measurements
+        allow PHD2 to compute the correct guiding pulses to minimize target drift effectively.
+    </p>
+    <p>
+        For a seamless experience, HelioMaker can handle the calibration process automatically. By enabling
+        the <strong>Calibrate at Start of Sequence</strong> option in HelioMaker, calibration will be initiated
+        automatically at the beginning of a sequence, saving time and effort. For detailed steps on using this
+        feature, refer to the <a href="RecommendedWorkflow.htm#calibration">Recommended Workflow - PHD2 Calibration</a> section.
+        When calibration is started from HelioMaker, the <a href="Phd2CalibrationPreflight.htm">PHD2 Calibration Pre-flight Dialog</a>
+        is shown first so the calibration target and declination source can be confirmed.
+    </p>
+    <p>
+        If you prefer to take full control of the calibration process, you can disable the <strong>Calibrate at Start of Sequence</strong>
+        option in HelioMaker. This allows you to manually initiate and monitor calibration directly from PHD2.
+        There are several methods available in PHD2 to perform calibration, including the <strong>Begin Guiding</strong> button
+        pressed while holding down the <strong>Shift</strong> key, or through the <strong>Tools</strong> menu.
+        PHD2 tools such as <strong>Calibration Assistant</strong> and <strong>Manual Guide</strong> provide additional
+        options for calibration. The PHD2 documentation and online materials provides detailed instructions on manual
+        calibration procedures.
+    </p>
+    <p>
+        Regardless of whether PHD2 calibration is performed via HelioMaker or directly from PHD2, it is essential
+        to enter the correct effective focal length in HelioMaker's main screen. This value is critical for PHD2
+        to create accurate calibration data for optimal guiding results. For detailed instructions on setting the
+        focal length, refer to the <a href="MainScreen.htm#focal-length">Main Screen - Focal Length</a> section.
+    </p>
+    <p>
+        Proper calibration is essential for guiding accuracy. It is particularly critical if you make any changes to your
+        imaging setup, such as rotating the camera, adjusting the mount, or switching equipment profiles. Always ensure
+        calibration is performed correctly for optimal guiding performance.
+    </p>
+    <p>
+        During the calibration process, HelioMaker displays detailed progress information in the status area. If calibration completes successfully,
+        the resulting <strong>PHD2 Calibration Graph</strong> will appear in the Session area, providing a visual assessment of calibration quality.
+        If calibration fails or shows unacceptable orthogonality errors, refer to the troubleshooting section for guidance.
+        The PHD2 Calibration Graph can also be accessed directly in PHD2 from the <strong>Tools</strong> menu or by using the <strong>Alt-C</strong> shortcut.
+    </p>
+
+    <h2>Accessing the Planetary and Solar Guiding Tool</h2>
+
+    <p>
+        The <strong>Planetary and Solar Guiding</strong> Tool is a specialized set of features and algorithms designed to enable guiding on larger
+        celestial bodies, such as the Sun, Moon, and planets, rather than pinpoint light sources like stars. This tool can be accessed in the
+        following ways:
+    </p>
+
+    <ul>
+        <li>Click the dedicated "eclipse-like" button in the toolbar.</li>
+        <li>Navigate through the <em>Tools</em> menu and select <strong>Planetary and Solar Guiding</strong>.</li>
+        <li>Use the <strong>Ctrl-P</strong> keyboard shortcut.</li>
+    </ul>
+
+    <p><!-- Placeholder for additional information about the Planetary and Solar Guiding tool --></p>
+
+    <h2>Tips and Additional Resources</h2>
+
+    <p>To ensure a smooth and successful guiding experience, consider the following tips:</p>
+
+    <ul>
+        <li><strong>Use a Stable Mount:</strong> Ensure your mount is properly balanced and stable to minimize vibrations and tracking errors.</li>
+        <li><strong>Optimal Calibration:</strong> Perform calibration under good seeing conditions to achieve the best results.</li>
+        <li><strong>Regular Monitoring:</strong> Keep an eye on the guiding status to promptly address any issues.</li>
+    </ul>
+
+    <p>Additionally, make use of the following resources to enhance your guiding setup and performance:</p>
+
+    <ul>
+        <li><strong>PHD2 Best Practices:</strong> Comprehensive guidelines to optimize your guiding setup.</li>
+        <li><strong>User Forums:</strong> Engage with the community to seek advice and share experiences.</li>
+        <li><strong>Instructional Videos:</strong> Watch step-by-step tutorials to visualize setup and troubleshooting processes.</li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHD2 Calibration Pre-flight Dialog - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>PHD2 Calibration Pre-flight Dialog</h1>
+
+    <p>
+        When PHD2 calibration is started from HelioMaker, HelioMaker shows a pre-flight dialog before the calibration run begins.
+        This dialog gives the user a chance to confirm the calibration target and review the information HelioMaker will use for
+        the calibration request.
+    </p>
+
+    <img src="Images/phd2-calibration.jpg" alt="PHD2 calibration pre-flight dialog" class="fig fig-75">
+
+    <h2>Purpose</h2>
+    <p>
+        PHD2 calibration depends on the target declination. For ordinary nighttime star calibration, this is usually derived from
+        the mount position. During solar or lunar imaging, however, the mount's star-alignment model may not always be accurate
+        enough to provide the best declination value for calibration.
+    </p>
+    <p>
+        HelioMaker avoids this problem for the Sun and Moon by computing the target declination from real-time solar or lunar
+        ephemeris data. This gives PHD2 a more reliable calibration declination and reduces dependence on the mount's internal
+        alignment model.
+    </p>
+
+    <h2>Target Selection</h2>
+    <p>
+        The dialog lets you select the object type used for calibration:
+    </p>
+    <ul>
+        <li><strong>Sun:</strong> HelioMaker computes the current solar declination from ephemeris data and uses it for calibration.</li>
+        <li><strong>Moon:</strong> HelioMaker computes the current lunar declination from ephemeris data and uses it for calibration.</li>
+        <li><strong>Other:</strong> Use this for targets that are not the Sun or Moon. In this case, HelioMaker cannot compute a special solar or lunar declination and relies on the available target or mount information instead.</li>
+    </ul>
+    <p>
+        HelioMaker remembers the last selected object type and restores it the next time this dialog is opened.
+    </p>
+
+    <h2>When It Appears</h2>
+    <p>
+        This dialog is used whenever calibration is started from HelioMaker, including manual calibration from the main screen and
+        calibration initiated as part of a sequence when calibration at sequence start is enabled.
+    </p>
+
+    <h2>Practical Notes</h2>
+    <ul>
+        <li>Make sure the effective focal length in HelioMaker is correct before running calibration.</li>
+        <li>For lunar calibration, enabling Dynamic Target Tracking first can reduce drift and improve calibration quality.</li>
+        <li>For solar calibration, using the correct solar tracking model can also improve the result.</li>
+        <li>If calibration fails or shows poor orthogonality, review the <a href="Faq_Calibration.htm">PHD2 Calibration and Troubleshooting</a> chapter.</li>
+    </ul>
+
+</body>
+</html>

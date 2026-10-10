@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunar Eclipse Imaging: HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+
+    <h1>Lunar Eclipse Imaging</h1>
+    <p>
+        HelioMaker includes a dedicated workflow for planning, rehearsing and running an automated capture
+        of a lunar eclipse. Use it to find a lunar eclipse for your observing site, build adaptive imaging and
+        guiding settings, rehearse the sequence, complete preflight and monitor capture through SharpCap and the
+        custom PHD2 integration.
+    </p>
+    <p>
+        This chapter is an introduction to the feature. The separate <strong>Lunar Eclipse Imaging Guide</strong>
+        provides detailed instructions organized by task. Read it, and rehearse the plan with your equipment,
+        before eclipse night.
+    </p>
+
+    <h2>What the Lunar Workflow Does</h2>
+    <p>
+        The Lunar Eclipse Planner supports total, partial and penumbral events, with the phases and local
+        visibility appropriate to the selected eclipse. Open it from <strong>Tools &rarr; Lunar Eclipse
+        Planner</strong> or with <strong>Ctrl+Shift+L</strong>.
+    </p>
+    <ul>
+        <li>It finds a lunar eclipse for your observing site and shows its contacts and the Moon's visibility from that site.</li>
+        <li>
+            Plan preferences set the rig reference, brightness assumptions, cadence and camera configuration
+            used to derive the lunar plan.
+        </li>
+        <li>The phase editor shows the adaptive exposure recipe and timing for each lunar phase.</li>
+        <li>
+            A rehearsal runs the sequence on a simulated eclipse clock, and preflight verifies the current plan,
+            clock and equipment before the sequence starts.
+        </li>
+        <li>The run console shows phase timing, delivered images, guiding and recovery during the run.</li>
+    </ul>
+
+    <h2>Prepare and Rehearse in Advance</h2>
+    <p>
+        Build and rehearse the plan while there is time to change the setup.
+    </p>
+    <ul>
+        <li>
+            Set the observer site in Dynamic Target Tracking before opening the planner, then confirm the
+            coordinates, elevation and time zone in the planner header.
+        </li>
+        <li>
+            Check the Moon's altitude through the phases you want to record. A calculated horizon does not describe
+            buildings, trees or your mount's clearance, so check those obstructions in advance.
+        </li>
+        <li>
+            Frame the Moon with enough margin for tracking error through the whole run, and confirm polar
+            alignment, image scale and PHD2 calibration for the actual optics and guiding camera.
+        </li>
+        <li>Establish a sharp focus baseline and repeatable exposure and gain settings on the Moon.</li>
+        <li>Test cables, power, storage and the capture folder with a sustained camera run.</li>
+        <li>
+            Review the meridian crossing and mount limits. HelioMaker reports a crossing but does not command a
+            meridian flip in this workflow.
+        </li>
+        <li>
+            Prove the plan in stages: save a draft, run the lunar camera benchmark for the selected setup, rehearse
+            with timing only or rendered images, then rehearse with the real SharpCap camera and the chosen guiding
+            arrangement. Review the saved images, achievable cadence and recovery prompts before saving the
+            approved final plan.
+        </li>
+    </ul>
+    <p>
+        Use preflight again on eclipse night. A successful rehearsal does not confirm the current camera
+        connection, sky conditions or framing.
+    </p>
+
+    <h2>Required Equipment</h2>
+    <p>
+        HelioMaker coordinates lunar imaging through SharpCap and lunar tracking and guiding through its custom
+        PHD2 integration. Prepare SharpCap Pro and the matching custom PHD2 installation before connecting the rig.
+    </p>
+    <ul>
+        <li>
+            An imaging camera and configuration that pass the lunar System benchmark. A working preview alone does
+            not verify long exposures, HDR transitions or saved-file delivery.
+        </li>
+        <li>
+            One of three camera arrangements, chosen in Plan preferences:
+            <ul>
+                <li>
+                    <strong>Shared imaging camera.</strong> Imaging and guide work use the same camera, and PHD2
+                    uses the Virtual Planetary Camera. Verify the time left for guide work between brackets,
+                    especially during totality.
+                </li>
+                <li>
+                    <strong>Separate guide camera.</strong> Choose Physical guiding camera and select that camera in
+                    PHD2. Set and test its own bright-Moon and dark-eclipse exposures, and confirm its field of view
+                    and calibration.
+                </li>
+                <li>
+                    <strong>Guiding off.</strong> Set PHD2 guiding to Off in Plan preferences. The mount must preserve
+                    framing without guide corrections. Physical capture still requires lunar mount preparation through PHD2.
+                </li>
+            </ul>
+        </li>
+        <li>Enough storage and power for a multi-hour session.</li>
+    </ul>
+
+    <h2>Workflow Overview</h2>
+    <p>
+        The workflow to practice: set the site &rarr; plan &rarr; test &rarr; rehearse &rarr; approve &rarr;
+        preflight &rarr; capture.
+    </p>
+    <ol>
+        <li>
+            <strong>Set your site.</strong> Open Dynamic Target Tracking and check the observer coordinates,
+            elevation and time zone for the site where you will image.
+        </li>
+        <li>
+            <strong>Find and select the eclipse.</strong> In the planner, set <strong>Window</strong>, click
+            <strong>Find lunar eclipses</strong>, then inspect the contacts and Moon visibility. A past event is
+            suitable for rehearsal.
+        </li>
+        <li>
+            <strong>Set the imaging plan.</strong> In Plan preferences, enter your full-Moon reference and gain,
+            choose the guiding camera arrangement, HDR capture mode, cadence and file settings, and review the
+            brightness model and exposure ceiling.
+        </li>
+        <li>
+            <strong>Review each phase.</strong> Inspect its adaptive exposure range, bracket, interval and guiding,
+            then save your work with <strong>Save as draft</strong>.
+        </li>
+        <li>
+            <strong>Test the camera and focus.</strong> Run the System benchmark test with the intended
+            configuration, establish focus, and practice lunar tracking and guiding with the physical rig.
+        </li>
+        <li>
+            <strong>Rehearse.</strong> Click <strong>Eclipse plan rehearsal...</strong>. Start with the internal
+            simulator, then exercise the SharpCap camera and guiding at realistic timing, and inspect the output.
+        </li>
+        <li>
+            <strong>Approve the plan.</strong> After reviewing and rehearsing the settings, use
+            <strong>Save as final</strong>. A live run requires the saved final plan.
+        </li>
+        <li>
+            <strong>Complete preflight on eclipse night.</strong> Click <strong>Start eclipse imaging</strong>.
+            Verify the selected event, site and real clock; apply camera settings, prepare tracking and guiding,
+            verify focus and exposure, and review every checklist item.
+        </li>
+        <li>
+            <strong>Start and monitor.</strong> Start the run from preflight. Watch capture progress and alerts in
+            the run console, and open the capture folder to check the saved images.
+        </li>
+    </ol>
+    <p>
+        Start with an imaging reference measured for your rig, review the brightness assumptions and long
+        exposures, and leave enough time for the camera and guiding to complete each set. A rehearsal should prove
+        both the sequence and the resulting images.
+    </p>
+
+    <h2>Simulation and Preflight Are Part of the Workflow</h2>
+    <p>
+        A rehearsal runs the plan on a simulated eclipse clock. Choose its imaging source:
+    </p>
+    <ul>
+        <li><strong>Eclipse simulator</strong> renders lunar images and writes them without a physical SharpCap camera.</li>
+        <li>
+            <strong>SharpCap camera</strong> uses the simulated clock with the real imaging camera. Camera
+            operations and image files are real.
+        </li>
+        <li><strong>None (timing only)</strong> exercises timing without writing science image files.</li>
+    </ul>
+    <p>
+        With shared camera guiding enabled, a rehearsal can also offer <strong>Simulated guiding frames</strong>,
+        which feed rendered lunar frames to PHD2 to exercise lunar disk detection without the sky. A SharpCap
+        camera rehearsal operates physical equipment, so check the selected source and guiding settings before
+        starting. Rehearse with realistic timing when judging long exposures, camera overhead and guiding
+        opportunities.
+    </p>
+    <p>
+        Preflight verifies the current plan, clock and equipment before the sequence starts. Read each item and
+        complete its action or confirmation; some checks require your judgment rather than an automatic
+        measurement. Review amber warnings even if the start control allows proceeding. A live start is blocked
+        more than 12 hours before P1 and after the eclipse has ended.
+    </p>
+
+    <h2 id="eclipse-manual">Lunar Eclipse Imaging Guide (full manual)</h2>
+    <p>
+        The full <strong>Lunar Eclipse Imaging Guide</strong> is a set of standalone pages that open in your web
+        browser, separate from this Windows Help system.
+    </p>
+    <p>
+        &#9658;&nbsp;<a href="https://docs.heliomaker.com/lunar-eclipse/" target="_blank" rel="noopener"><strong>Open the Lunar Eclipse Imaging Guide</strong></a>
+    </p>
+
+    <h2>Related HelioMaker Help</h2>
+    <ul>
+        <li><a href="EclipseImaging.htm">Solar Eclipse Imaging</a></li>
+        <li><a href="ConfigurationAndSetup.htm">Configuration and Setup</a></li>
+        <li><a href="phd2_configuration.htm">PHD2 Configuration</a></li>
+        <li><a href="Find_Tool.htm">Find &amp; Track</a></li>
+    </ul>
+
+</body>
+</html>

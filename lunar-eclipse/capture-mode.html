@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capture mode: Still versus Live | HelioMaker Lunar Eclipse Guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="top" aria-label="Guide navigation"><a href="index.html">← Lunar eclipse guide index</a><span>6 · Capture mode: Still versus Live</span></nav>
+<main id="main"><header><h1>Capture mode: Still versus Live</h1><p class="lead">Choose and qualify the camera path for lunar HDR imaging.</p></header>
+
+<h2>What the preference controls</h2>
+<div class="table-scroll"><table class="t"><thead><tr><th scope="col">Mode</th><th scope="col">Behavior</th><th scope="col">Check during rehearsal</th></tr></thead><tbody><tr><td>Still mode (exact exposures)</td><td>Captures one exact image at each requested HDR exposure.</td><td>Still-mode delivery, long exposures, transition overhead and shared guide frames.</td></tr><tr><td>Live view</td><td>Uses the continuous stream. Short HDR steps may capture several frames while the stream reaches the requested exposure.</td><td>Exposure settling, the delivered frames at each step and the achievable interval.</td></tr></tbody></table></div>
+<aside class="callout "><span class="lbl">The setting applies to HDR phases</span>Single-frame and automatic penumbral recipes remain in Live View even when Still is selected for HDR. Seeing Live View during those phases is expected.</aside>
+<figure class="shot" id="capture-mode-hdr"><img src="img/capture-mode-hdr.png" alt="The HDR capture group showing Still mode (exact exposures), Live view and the explanatory note."><figcaption>The HDR capture group showing Still mode (exact exposures), Live view and the explanatory note.</figcaption></figure>
+<h2>Run the lunar System benchmark</h2>
+<ol><li>Connect the intended SharpCap camera and select the camera/guiding configuration and image settings in Plan preferences.</li><li>Open <span class="ui">System benchmark test...</span>. Check the camera identity, mode, short/long test exposures and shared-guide check.</li><li>Click <span class="ui">Start</span> and let the test finish. It exercises three short/long exposure pairs. Shared Still setups also test long no-file guide frames.</li><li>Read the Test summary. Resolve any failure and retest the selected configuration before the eclipse.</li></ol>
+<figure class="shot" id="capture-benchmark-result"><img src="img/capture-benchmark-result.png" alt="A completed lunar System benchmark with selected setup, imaging test, guiding path, tested camera and details visible."><figcaption>A completed lunar System benchmark with selected setup, imaging test, guiding path, tested camera and details visible.</figcaption></figure>
+<p>The test writes temporary images and removes its test images afterward. It may temporarily stop and restore PHD2 capture. Let it complete before starting another operation on the camera.</p>
+<p>The benchmark is refused while another eclipse run owns the imaging system, or while a capture sequence, an SHG scan or a PHD2 calibration uses the same camera, mount and guiding. The message names what to stop or close first.</p>
+<p>The standard recipe is three pairs at 20 ms and 8 seconds, plus three 3.5-second no-file guide frames for Shared Still setups. These probes are independent of the plan's base exposure, gain, guiding exposures and exposure ceiling. Allow approximately one to two minutes; the summary reports the measured duration for your camera.</p>
+<aside class="callout warn"><span class="lbl">Test the longest planned captures too</span>A plan allowing exposures beyond the benchmark's eight-second probe still needs a realistic camera rehearsal at those exposures. A benchmark pass verifies equipment capabilities; the planner recalculates the interval and the time left for guiding from the current plan's exposures.</aside>
+<p>After a benchmark the planner allows generously for each frame, so the suggested interval can be longer than the exposures alone. Measurements from earlier versions are reused with the same allowance; changing the plan's exposures still does not invalidate the equipment test.</p>
+<p>Passed results remain usable after exposure edits and after restarting HelioMaker. A changed camera, capture resolution, data format or binning requires matching equipment evidence. Switching Still/Live or shared/separate guiding selects the corresponding measured capability; any missing capability still requires a test. Save and rehearse the configuration you intend to run.</p>
+</main>
+<nav class="foot" aria-label="Chapter navigation"><a href="preferences.html">← Plan preferences</a><a href="phase-editor.html">Phase editor →</a></nav>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+</div>
+</body>
+</html>

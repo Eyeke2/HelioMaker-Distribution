@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The run console | HelioMaker Lunar Eclipse Guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="top" aria-label="Guide navigation"><a href="index.html">← Lunar eclipse guide index</a><span>11 · The run console</span></nav>
+<main id="main"><header><h1>The run console</h1><p class="lead">Monitor phase timing, delivered images, guiding and recovery during the run.</p></header>
+
+<h2>Read the full view</h2>
+<p>The console shows the mode and run identity, clocks and timeline, current phase and recipe, next phase/countdown, guiding and refocus status where applicable, capture telemetry and totals. Check the mode first so a rehearsal is never mistaken for a live event.</p>
+<figure class="shot" id="run-console-overview"><img src="img/run-console-overview.png" alt="The full lunar run console during capture, showing mode, timeline, phase, recipe, guiding, telemetry and image totals."><figcaption>The full lunar run console during capture, showing mode, timeline, phase, recipe, guiding, telemetry and image totals.</figcaption></figure>
+<p>Watch the delivered-image count and missed work as well as the timeline. A moving clock does not prove files are being saved. Use the capture-folder button to inspect output.</p>
+<p>When the Moon is below the observable altitude, its sets are skipped: the recipe reads <span class="ui">Skipped (not observable)</span>, and the console counts these sets separately from missed cycles, which are sets the run could not capture.</p>
+<p>The guiding line says how guiding runs. With a physical guiding camera and <span class="ui">Pause guiding during exposures</span> ticked, it reads "Guiding: separate camera, paused during each imaging set": PHD2 pauses for each set and resumes between sets, or before a set ends with <span class="ui">Resume guiding early</span>. If the run paused PHD2, HelioMaker resumes it when the run ends, when you stop the run and when HelioMaker exits; PHD2 is never left paused.</p>
+<h2>Compact view</h2>
+<p><span class="ui">Switch to compact view</span> reduces the console to its essential status. Return to the full view when you need detailed telemetry or to understand an alert. A completed run returns to its full summary.</p>
+<figure class="shot" id="run-console-compact"><img src="img/run-console-compact.png" alt="The lunar run console in compact view with phase, progress and status indicators."><figcaption>The lunar run console in compact view with phase, progress and status indicators.</figcaption></figure>
+<h2>Run controls</h2>
+<div class="table-scroll"><table class="t"><thead><tr><th scope="col">Control</th><th scope="col">Effect</th></tr></thead><tbody><tr><td>Freeze / Unfreeze</td><td>Ctrl+click to stop or resume the simulation clock. Available only during rehearsal.</td></tr><tr><td>Hold</td><td>Disabled in the current release pending further integration testing.</td></tr><tr><td>Retry recovery</td><td>Appears when the reported fault offers a retry. Correct the reported condition and use this action.</td></tr><tr><td>Stop run</td><td>Ctrl+click to stop the run and end capturing. Read any ensuing confirmation.</td></tr><tr><td>Close</td><td>Replaces Stop run after completion and closes the completed-run console.</td></tr></tbody></table></div>
+<p id="expected-brightness"><a href="preferences.html#danjon-l">Danjon L</a> is hard to predict. When the eclipse turns out darker or brighter than planned, choose the new value under <span class="ui">Estimated Danjon brightness</span> in the full view and hold Ctrl while you click <span class="ui">Apply</span>. The change takes effect from the next imaging set; the set being exposed keeps its exposures. Each phase still to come gets the set interval Plan preferences would give it at the new value, so sets may start further apart or closer together. The plan itself keeps its original value, and the run summary lists every change. In a rehearsal, the simulated Moon keeps the plan’s brightness.</p>
+<p>Beside the list, <span class="ui">In use</span> shows the value the run is using. The list keeps your choice until you apply it, so the two can differ: before you apply, and after a change is refused, when a line under the row says why.</p>
+<figure class="shot" id="run-console-brightness"><img src="img/run-console-brightness.png" alt="The Estimated Danjon brightness row of the full run console: the brightness list with a new value chosen, In use showing the value the run is using, and the Apply and Help buttons."><figcaption>The Estimated Danjon brightness row of the full run console: the brightness list with a new value chosen, In use showing the value the run is using, and the Apply and Help buttons.</figcaption></figure>
+<h2>Handle an alert</h2>
+<p>Read the alert’s affected device and requested action. Restore the intended camera or guiding connection, and wait for recovery status. Use <span class="ui">Retry recovery</span> when offered. Verify that capture progress and saved files resume; recovery cannot restore images missed during the interruption.</p>
+<figure class="shot" id="run-console-recovery"><img src="img/run-console-recovery.png" alt="A lunar run alert with its recovery detail and Retry recovery button, when available."><figcaption>A lunar run alert with its recovery detail and Retry recovery button, when available.</figcaption></figure>
+<h2>Storage holds</h2>
+<p>If the drive fills or cannot be checked, capture is held before the next set, and the alert says why, for example "Capture is held: not enough space in D:\Capture (12 KB free, 2.1 MB needed). Free space, then choose Retry recovery, or Stop." HelioMaker rechecks every 30 seconds and resumes capture by itself once the next set fits; <span class="ui">Retry recovery</span> rechecks at once. While a check runs, the alert reads "Checking free space...". With the shared camera in Live view, guiding continues during the hold.</p>
+<h2>If the last capture does not finish</h2>
+<p>After <span class="ui">Stop run</span>, HelioMaker waits up to a minute for SharpCap to confirm that its last capture ended. If it does not, the console says: "Run stopped. SharpCap did not confirm within a minute that its last capture ended, and it appears to be stuck." HelioMaker then keeps the camera, mount and guiding reserved until SharpCap confirms or is closed, and frees them by itself; the console says when they are free again. Check the camera cables. If SharpCap still does not respond, close SharpCap, wait until it has closed completely, then relink HelioMaker to SharpCap. Until then, a new eclipse run or System benchmark is refused.</p>
+<h2>After the run</h2>
+<p>When the run ends, the phase card becomes the run summary: <span class="ui">Run complete</span> when the selected phases finished, <span class="ui">Event ended</span> when they finished after the eclipse's last contact (P4), or <span class="ui">Run stopped</span> when you stopped it. It gives the frames captured against the plan's estimate, for example "412 frames captured (plan estimate ~420)", and any skipped sets.</p>
+<p>Review the completed summary, total images, missed work and any errors. Open the run folder, inspect representative files from the available phases and preserve the output and logs before changing the setup.</p>
+<figure class="shot" id="run-console-complete"><img src="img/run-console-complete.png" alt="The completed lunar run summary with capture totals, missed work and Close control."><figcaption>The completed lunar run summary with capture totals, missed work and Close control.</figcaption></figure>
+<p>Files are placed beneath the main-window Capture Folder in an event/run folder derived from the base filename, eclipse date and run mode. Rehearsal output uses simulation folders; live output uses a live folder and a numbered suffix when needed. Use the console’s folder action to locate the actual run.</p>
+</main>
+<nav class="foot" aria-label="Chapter navigation"><a href="preflight.html">← Preflight checklist</a><a href="index.html">Guide index →</a></nav>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+</div>
+</body>
+</html>

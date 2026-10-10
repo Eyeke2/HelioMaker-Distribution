@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation and Prerequisites - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Installation and Prerequisites</h1>
+    <p>Before installing and using HelioMaker, ensure that your system meets the following requirements and that all necessary software components are in place.</p>
+
+    <h2>Safety Considerations for Solar Imaging and Viewing</h2>
+    <ul>
+        <li>
+            Always follow established solar observing safety protocols. Ensure that the solar filter is securely attached before pointing
+            the telescope at the Sun, and never look directly at the Sun without appropriate filtration.
+        </li>
+    </ul>
+
+    <h2>System Requirements</h2>
+    <ul>
+        <li>
+            <strong>Operating System</strong>:<br>
+            - Windows machines only (32-bit or 64-bit OS types).<br>
+            - Recommended OS: <strong>Windows 10</strong> or <strong>Windows 11</strong> for optimal performance.
+        </li>
+        <li>
+            <strong>Computer Hardware Requirements</strong>:<br>
+            - <strong>RAM</strong>: Minimum 4 GB (8 GB or more recommended for better performance).<br>
+            - <strong>Storage</strong>:<br>
+            - For general usage: Any modern storage solution with adequate free space.<br>
+            - For solar imaging: An <strong>SSD</strong> with at least <strong>1 TB of dedicated storage</strong> for image capture is strongly recommended.<br>
+            - <strong>Processor</strong>: A fast multi-core processor (Intel Core i5, AMD Ryzen 5, or better).
+        </li>
+        <li>
+            <strong>Equatorial Mount</strong>:<br>
+            - For best results, an equatorial mount with motorized drives on both the right ascension (RA) and declination (Dec) axes is
+            strongly recommended. Although some users have experimented with PHD2 on alt-azimuth mounts, this can lead to reduced stability,
+            field rotation artifacts, and inconsistent performance during extended sessions.
+        </li>
+        <li>
+            <strong>Imaging Equipment</strong>:<br>
+            - A suitable planetary imaging camera and telescope are required. When conducting solar imaging, the telescope must be equipped with
+            a proper solar filter to protect both the equipment and the observer's eyesight.
+        </li>
+    </ul>
+
+    <h2>Software Requirements</h2>
+    <ul>
+        <li>
+            <strong>ASCOM Platform</strong>:<br>
+            The ASCOM platform provides a standardized interface for astronomy equipment, ensuring that
+            various software tools like PHD2 and SharpCap can communicate reliably with your mount,
+            imaging camera, and other devices. Installing ASCOM is essential for stable, integrated
+            control and automation of your imaging setup. For more information and to download the
+            platform, please visit the
+            <a href="https://ascom-standards.org/" target="_blank" rel="noopener">ASCOM official website</a>.
+        </li>
+        <li>
+            <strong>ASCOM and Native Device Drivers</strong>:<br>
+            In addition to installing the ASCOM platform itself, you will need to install the appropriate
+            ASCOM-compatible drivers for your mount, imaging camera, focuser, and any other essential
+            equipment. These drivers ensure proper recognition, configuration, and control of your
+            devices through the ASCOM interface. Consult your device manufacturer's documentation or
+            website to obtain the latest drivers and follow their recommended installation procedures.
+        </li>
+        <li>
+            <strong>Camera Drivers for Direct Integration</strong>:<br>
+            For optimal performance, particularly in SharpCap, it is advisable to use the camera's native
+            (direct) hardware driver rather than relying solely on ASCOM drivers. This generally provides
+            improved performance, reduced latency, and better compatibility with advanced camera features.
+            Before proceeding, verify that your chosen camera is supported natively by SharpCap by checking
+            their list of directly supported cameras. Installing the native camera driver will help ensure
+            smooth operation, faster frame rates, and more reliable imaging sessions.
+        </li>
+        <li>
+            <strong>SharpCap Pro</strong>:<br>
+            - A licensed copy of <strong>SharpCap Pro</strong> is required for HelioMaker and must be installed.<br>
+            - Version 4.1.12221.0 or later (with .NET 8) is necessary.<br>
+            - For download, installation, and purchase information, visit the official AstroSharp Ltd. website:
+            <a href="https://www.sharpcap.co.uk/" target="_blank" rel="noopener">SharpCap</a>.<br>
+            - The free version of SharpCap is not compatible with HelioMaker.
+        </li>
+        <li>
+            <strong>Custom Version of PHD2</strong>:<br>
+            - HelioMaker requires a <strong>custom version of PHD2</strong> (v2.6.14-solar.3.3 or later).<br>
+            - Download and install the custom PHD2 software from <a href="https://github.com/Eyeke2/phd2.planetary/releases/latest"
+                                                                    target="_blank" rel="noopener">PHD2 for Solar, Lunar and Planetary Guiding</a>.<br>
+            - For additional information about the custom PHD2 version, refer to the <a href="About_CustomPhd2.htm">About the Custom Version of PHD2</a> section.
+        </li>
+        <li>
+            <strong>Microsoft Visual C++ Redistributables</strong>:<br>
+            - HelioMaker requires the <strong>Microsoft Visual C++ 2015-2022 Redistributable</strong> files (x86, English version).<br>
+            - Although the HelioMaker installer assists in downloading and installing these files automatically, you can also download them manually from the official Microsoft website: <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" rel="noopener">Download VC++ Redistributables</a>.<br>
+            - Note: The x86 version is required, even when installing HelioMaker on a 64-bit platform.
+        </li>
+    </ul>
+
+    <h2>Other Recommendations:</h2>
+    <ul>
+        <li>
+            <strong>Electronic Focuser</strong>:<br>
+            - While not strictly required, using an electronic focuser controlled by SharpCap Pro is recommended for more precise and convenient focusing.<br>
+            <strong>PHD2 and SharpCap Experience</strong>:<br>
+            - Familiarity and prior experience with both PHD2 and SharpCap are highly advised.
+            Users should be prepared to perform some manual configurations to achieve optimal results.
+            This may include selecting the appropriate camera and telescope in both applications, adjusting
+            camera exposure and imaging formats in SharpCap, fine-tuning focus and framing, and configuring
+            detection in HelioMaker's Find &amp; Track tool. PHD2's local solar and planetary detector controls
+            are used for standalone or fallback physical-camera operation. Selecting appropriate PHD2 guiding
+            parameters remains necessary for stable and accurate tracking.
+        </li>
+    </ul>
+
+    <h2>Licensing</h2>
+    <ul>
+        <li>
+            <strong>License Purchase</strong>:<br>
+            - Choose from the available licensing options: <strong>Lifetime License</strong> or <strong>Yearly Plan</strong>.<br>
+            - After purchasing a license from the official website <a href="https://HelioMaker.com" target="_blank" rel="noopener">HelioMaker.com</a>,
+            you will receive an email with a download link for the software installer and your unique license key.<br>
+        </li>
+        <li>
+            <strong>License Activation</strong>:<br>
+            - After installation, activate HelioMaker with the purchased license key.<br>
+            - <strong>Note:</strong> License activation requires an active internet connection and acceptance of the embedded <strong>End User License Agreement (EULA)</strong>.<br>
+            - After activation, HelioMaker may prompt you to create a <strong>License Management PIN</strong> to protect future activation management tasks.
+        </li>
+    </ul>
+
+    <h2>HelioMaker Installation Steps</h2>
+    <ol>
+        <li>
+            <strong>Download the HelioMaker Installer</strong>:<br>
+            - Use the download link provided in the email received after purchasing your license to download the ZIP file containing the installer package.
+        </li>
+        <li>
+            <strong>Extract the ZIP File</strong>:<br>
+            - Use any standard archive tool (e.g., Windows Explorer, 7-Zip, WinRAR) to extract the contents of the ZIP file to a desired location on your system.
+        </li>
+        <li>
+            <strong>Run the Installer</strong>:<br>
+            - Double-click the extracted setup file to launch the installation wizard.<br>
+            - Follow the on-screen instructions to complete the installation.
+        </li>
+        <li>
+            <strong>Install Prerequisite Software</strong>:<br>
+            - Ensure both <strong>SharpCap Pro</strong> and the <strong>custom PHD2</strong> version are installed and properly configured.
+        </li>
+        <li>
+            <strong>Activate the License</strong>:<br>
+            - Open HelioMaker and navigate to <strong>Help &gt; Activate License</strong> to unlock the full version.<br>
+            - If prompted, create a <strong>License Management PIN</strong> and keep it in a safe place. You will need it later to review or deactivate activations from the <strong>License Activations Manager</strong>.
+        </li>
+    </ol>
+
+    <p>If you encounter any issues during the installation process, please refer to the <em>Troubleshooting</em> section or contact support via the official website.</p>
+</body>
+</html>

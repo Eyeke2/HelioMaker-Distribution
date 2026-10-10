@@ -1,0 +1,182 @@
+/* HelioMaker Solar Eclipse Imaging Guide: the one stylesheet of every page (ticket 051).
+   Rules only one page uses keep a class only that page carries; a page that differs on purpose is
+   scoped by the page-* class on its body. */
+
+:root{
+  --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
+  --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
+  --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
+  --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
+  --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
+    --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
+    --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
+    --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
+    --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
+  }
+}
+
+/* ---- Base */
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+nav.top a{color:var(--muted)}
+h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650}
+.lead{color:var(--muted);font-size:16px;margin:0 0 8px}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+h3{font-size:17px;margin:22px 0 6px}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:0 0 6px}
+code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font:13.5px/1.4 SFMono-Regular,Consolas,monospace}
+.ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap}
+
+/* ---- Figures */
+figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden}
+figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto}
+figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted)}
+/* A diagram or screenshot on a white card, its caption below it. */
+figure.plain{margin:16px 0}
+figure.plain img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
+figure.plain img.natural{width:auto;max-width:100%;margin:0 auto}
+figure.plain figcaption{color:var(--muted);font-size:12.5px;margin-top:6px}
+
+/* ---- Callouts */
+.callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--panel)}
+.callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line)}
+.callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line)}
+.callout.danger{border-left-color:var(--danger);background:var(--danger-bg);border-color:var(--danger-line)}
+.callout.tip{border-left-color:var(--accent)}
+.callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px}
+.callout.safe .lbl{color:var(--safe)}
+.callout.warn .lbl{color:var(--warn)}
+.callout.danger .lbl{color:var(--danger)}
+.callout.tip .lbl{color:var(--accent-ink)}
+
+/* ---- Tables */
+table.t{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+table.t th,table.t td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+table.t th{background:var(--panel2)}
+table.t code{font-size:12.5px}
+table.map{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+table.map th,table.map td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.map th{background:var(--panel2)}
+table.modes,table.opt{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px}
+table.modes th,table.modes td,table.opt th,table.opt td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.modes th,table.opt th{background:var(--panel2)}
+table.modes .wrapcol{width:44%}
+
+/* ---- Steps, definition lists and footers */
+.step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px 18px 12px;margin:16px 0}
+.step h3{display:flex;align-items:baseline;gap:10px}
+.step h3 .num{flex:0 0 auto;font-size:13px;font-weight:700;color:#fff;background:var(--accent);border-radius:999px;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;padding:0 7px;align-self:center}
+dl.f{margin:10px 0}
+dl.f dt{font-weight:600;margin-top:10px}
+dl.f dd{margin:2px 0 0;color:var(--muted)}
+dl.f dd .m{color:var(--muted)}
+nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px}
+footer{color:var(--muted);font-size:13px;margin-top:44px;border-top:1px solid var(--line);padding-top:16px}
+
+/* ---- The index: hero, safety panel, contents and the workflow spine */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 18px}
+header.hero h1{font-size:30px;line-height:1.2;font-weight:650;margin:0 0 6px;letter-spacing:.2px}
+header.hero .sub{color:var(--muted);font-size:16px;margin:0 0 4px}
+.guide-hero{display:flex;align-items:flex-start;gap:16px;margin:0 0 10px}
+.guide-hero-icon{flex:0 0 auto;width:128px;max-width:24vw;height:auto;border:1px solid #263052;border-radius:9px;background:#161b33}
+.guide-hero-copy{min-width:0;padding-top:6px}
+.safety{background:var(--danger-bg);border:1px solid var(--danger-line);border-left:5px solid var(--danger);border-radius:12px;padding:16px 18px;margin:20px 0}
+.safety h2{color:var(--danger);border:0;margin:0 0 8px;font-size:15px;padding:0}
+.safety p{margin:0 0 8px}
+.safety p:last-child{margin:0}
+.toc{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:1fr;gap:10px}
+.toc li{margin:0}
+.toc a{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px;height:100%}
+.toc a:hover{border-color:var(--accent);text-decoration:none}
+.toc .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+.toc .t{font-weight:600;display:block;margin-top:1px}
+.toc .d{color:var(--muted);font-size:13.5px;display:block;margin-top:3px}
+.spine{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
+.spine h3{margin-top:0}
+.hero-shot{margin:20px 0 24px;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+.hero-shot img{display:block;width:100%;height:auto}
+.hero-shot figcaption{padding:9px 12px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+
+/* ---- Gear and rig requirements */
+.gear{list-style:none;padding:0;margin:16px 0}
+.gear>li{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:0 0 10px}
+.gear .g-h{font-weight:650;margin-bottom:2px}
+.gear .req{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:1px}
+.req.must{color:var(--danger);background:var(--danger-bg);border:1px solid var(--danger-line)}
+.req.rec{color:var(--accent-ink);background:var(--panel2);border:1px solid var(--line)}
+.gear .g-d{color:var(--muted);font-size:14.5px}
+
+/* ---- Focusing, preflight, preparing and the quick start */
+.verify{font-size:12.5px;color:var(--muted);font-style:italic}
+.grp{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 16px 12px;margin:14px 0}
+.grp h3{font-size:16px;margin:14px 0 6px;color:var(--accent-ink)}
+.grp dl{margin:0}
+.grp dt{font-weight:600;margin-top:9px}
+.grp dd{margin:1px 0 0;color:var(--muted);font-size:14.5px}
+.checklist{list-style:none;padding:0}
+.checklist li{padding-left:28px;position:relative}
+.checklist li::before{content:"\2610";position:absolute;left:2px;top:-1px;font-size:17px;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 8px;margin-left:6px;color:var(--accent-ink);background:var(--panel2);border:1px solid var(--line)}
+
+/* ---- The run console and safety pages */
+figure.shot .box{padding:22px 16px;text-align:center;color:var(--muted);font-size:13.5px}
+figure.shot .box b{color:var(--accent-ink)}
+.cue{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0;font-size:14.5px}
+.cue b{color:var(--accent-ink)}
+.pair{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0}
+.card.safe{border-top:3px solid var(--safe)}
+.card.classic{border-top:3px solid var(--warn)}
+
+/* ---- Where a page differs on purpose */
+body.page-index .wrap{max-width:860px;padding-top:28px}
+body.page-preferences dl.f dd{color:var(--ink)}
+body.page-run-console dl.f dd{font-size:14.5px}
+body.page-quickstart .card{padding:6px 18px 14px;margin:14px 0}
+body.page-quickstart .card h3{font-size:17px;margin:14px 0 4px;color:var(--accent-ink)}
+body.page-quickstart .card ol{padding-left:20px}
+body.page-quickstart .card li{margin:0 0 7px}
+body.page-quickstart .card li b{font-weight:650}
+body.page-safety .card{padding:14px 16px}
+body.page-safety .card h3{margin-top:2px}
+
+/* ---- Single-use spacing and widths, formerly style attributes */
+.muted{color:var(--muted)}
+.small-muted{color:var(--muted);font-size:14px}
+.h-note{font-weight:400;color:var(--muted);font-size:14px}
+p.mt-8{margin-top:8px}
+p.m-0{margin:0}
+p.mb-8,ul.mb-8{margin:0 0 8px}
+ul.mb-10{margin:0 0 10px}
+h3.mt-26{margin-top:26px}
+th.w-16{width:16%}
+th.w-22{width:22%}
+th.w-26{width:26%}
+
+/* ---- Wider and narrower screens */
+@media (min-width:620px){ .toc{grid-template-columns:1fr 1fr} }
+@media (min-width:640px){ .pair{grid-template-columns:1fr 1fr} }
+@media (max-width:560px){
+  .guide-hero{flex-direction:column;gap:12px}
+  .guide-hero-icon{width:112px;max-width:45vw}
+  .guide-hero-copy{padding-top:0}
+}
+
+/* ---- Print */
+@media print{
+  body{background:#fff;color:#000;font-size:12pt}
+  a{color:#000;text-decoration:underline}
+  nav.top,nav.foot{display:none}
+  .callout,table.t,table.map,table.modes,table.opt,.step,.gear>li,.toc a,.spine,.safety,.guide-hero,
+  .hero-shot,.grp,.card,.cue{break-inside:avoid}
+}

@@ -1,0 +1,188 @@
+/* style.css */
+body {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333333; /* Dark text for readability */
+    font-family: Arial, sans-serif; /* Font type */
+    font-size: 1.0em;
+    line-height: 1.25;
+    margin: 20px; /* Optional padding around the content */
+}
+
+h1 {
+    font-size: 1.4em;
+    color: #2c3e50;
+}
+
+h2 {
+    font-size: 1.3em;
+    color: #2c3e50;
+}
+
+h3 {
+    font-size: 1.2em;
+    color: #2c3e50;
+}
+
+h4 {
+    font-size: 1.0em;
+    color: #2c3e50;
+}
+
+ul {
+    margin-left: 30px;
+    padding-left: 0px;
+    list-style-position: outside;
+}
+
+hr {
+    margin-top: 20px; /* Adds space before the horizontal line */
+    margin-bottom: 20px; /* Adds space after the horizontal line */
+    border: none; /* Optional: removes the default border */
+    border-top: 1px solid #ccc; /* Adds a custom line */
+}
+
+a {
+    color: #3498db; /* Link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.tight {
+    margin: 5px 0; /* Reduced vertical spacing */
+}
+
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}
+.blue {
+    color: blue;
+}
+
+.framed {
+    border: 2px solid #333; /* Solid border with a dark color */
+    padding: 15px; /* Space between the content and the border */
+    margin: 20px; /* Space around the section */
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+/* Styles for vertical spacing */
+.vtop {
+    margin-top: 10px; /* Extra spacing */
+}
+
+/* Figure style */
+.fig {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+/* Apply to display images in a row, f.e. <div class="two-column-float"> */
+.two-column-float {
+    /* Ensure floated elements remain contained */
+    overflow: auto;
+    margin-top: 10px;
+}
+
+.two-column-float img {
+    float: left;
+    width: 48%;
+    /* Add spacing only to the first image or fine-tune margins per your preference */
+    margin-right: 4%;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.two-column-float img:last-child {
+    /* Remove extra spacing on the second image so columns line up properly */
+    margin-right: 0;
+}
+
+/* Formerly style attributes and a style block in the pages (ticket 051): the web copy's security policy allows
+   neither, so their rules live here. */
+
+/* A screenshot at three quarters of the page width */
+img.fig-75 {
+    max-width: 75%;
+    height: auto;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Screenshots side by side: <div class="image-row"><span class="image-cell"><img ...></span>...</div> */
+.image-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0;
+    overflow: auto;
+}
+
+.image-cell {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* A block of fixed width with a picture on its left and the text beside it */
+.w-800 {
+    width: 800px;
+}
+
+/* On a narrow screen the block takes the page's width, so the page does not scroll sideways. The CHM viewer
+   renders in IE7 mode, which ignores media queries. */
+@media (max-width: 840px) {
+    .w-800 {
+        width: auto;
+    }
+}
+
+img.float-left {
+    float: left;
+    margin-right: 10px;
+}
+
+/* The license activation steps */
+.activation-steps > li {
+    margin-bottom: 1.00em;
+}
+
+/* The web copy only (docs.heliomaker.com/help/). tools/help_publish/publish_guides.py adds the navigation line at
+   the top of each page and generates the contents page; the CHM uses neither. */
+nav.web-nav {
+    margin: 0 0 20px;
+    padding: 0 0 8px;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.9em;
+}
+
+ul.web-contents > li {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+ul.web-contents ul {
+    margin-top: 4px;
+    font-weight: normal;
+}

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor Area Indicators - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Monitor Area Indicators</h1>
+
+    <h2 id="indicator-disconnected">Disconnected or Not Fully Connected</h2>
+    <img src="Graphics/switched_off.png" alt="off">
+    <p>
+        This is the normal initial status right after launching HelioMaker. It indicates that HelioMaker is not yet
+        fully connected to the components required by the selected workflow. A shared-camera workflow requires
+        SharpCap Pro and PHD2; a physical PHD2 camera can be viewed and tuned in Find &amp; Track without a SharpCap link.
+        The indicator changes as the required applications and imaging hardware become available.
+    </p>
+    <p>Fully connected gear implies that PHD2 has both the camera and mount connected to the system:</p>
+    <ul>
+        <li><strong>When using Virtual Planetary Camera in PHD2:</strong> It depends on and requires SharpCap Pro to have its main camera connected, so that PHD2 can make its own camera connection. This involves a single physical camera virtualized by HelioMaker and shared between SharpCap Pro, HelioMaker, and PHD2.</li>
+        <li><strong>If not using Virtual Planetary Camera:</strong> PHD2 must be connected to the physical guiding camera of the user's choice.</li>
+    </ul>
+    <p>Continue reading this section to learn more about the different system states and their associated indicators.</p>
+    <hr>
+
+    <h2 id="indicator-looping-idle">Looping Exposures (Greyed-Out)</h2>
+    <img src="Graphics/loop_no_detection.png" alt="Looping Exposures Icon">
+    <p>
+        This indicator represents a normal state right after all components (SharpCap Pro and PHD2) and all imaging gear are initially connected.
+        It means that PHD2 has started looping exposures but the selected detector has not yet established a target.
+        The target may be a star, a solar-system body, or a group of surface features.
+    </p>
+    <p>At this stage, this status is expected and recommended as part of the workflow. To proceed, follow the recommended workflow outlined in a separate section of this manual.</p>
+    <hr>
+
+    <h2 id="indicator-looping">Looping Exposures (Green)</h2>
+    <img src="Graphics/loop_detected.png" alt="Looping Exposures (Green) Indicator">
+    <p>
+        This indicator is displayed when PHD2 has been instructed and configured to detect an object, and the object is successfully detected.
+        "Object" may refer to an entire solar system body or an anchor point on its surface.
+    </p>
+    <p>
+        In some cases, this indicator might disappear and be replaced with another one, reflecting a failure in object detection.
+        For detailed explanations of potential issues and troubleshooting steps, refer to other sections of this document.
+    </p>
+    <p>To ensure the best possible results, it is recommended to follow the suggested workflow outlined in a separate help section.</p>
+    <hr>
+
+    <h2 id="indicator-findstar">Searching for Object</h2>
+    <img src="Graphics/finding_object.png" alt="Searching for Object Indicator">
+    <p>
+        This indicator is displayed when the user starts a sequence in HelioMaker and PHD2 is attempting to detect an object.
+        "Object" can refer to an entire solar system body or an anchor point on its surface, depending on the detection mode configured.
+    </p>
+    <p>
+        If this symbol is displayed for longer than a few consecutive guiding periods, it may indicate that PHD2 is having difficulties detecting
+        an object. This could be due to various factors, which can be resolved by following the guidelines outlined in the recommended workflow section.
+    </p>
+    <hr>
+
+    <h2 id="indicator-calibration">PHD2 Calibration</h2>
+    <img src="Graphics/calibration.png" alt="PHD2 Calibration">
+    <p>
+        This indicator is displayed when PHD2 is in the process of calibration, a critical phase required before guiding can start.
+        Calibration measures how the telescope mount responds to guiding commands in each of the available axes - Right Ascension (RA) and Declination (Dec).
+    </p>
+    <p>The purpose of calibration is to allow PHD2 to determine the correct guiding pulse adjustments needed to minimize drift and maintain accurate tracking of the target object.</p>
+    <p>
+        The calibration process may take a few minutes, depending on the sampling period and other user-defined parameters. For detaild explanations of these
+        parameters, refer to the <strong>PHD2 Configuration</strong> section of this manual, as well as the official PHD2 user documentation.
+    </p>
+    <p>Key points to note during calibration:</p>
+    <ul>
+        <li>When calibration is started manually in PHD2, its duration and behavior depend on user-selected parameters.</li>
+        <li>When calibration is initiated by HelioMaker, most of the parameters affecting calibration are selected automatically for convenience.</li>
+        <li>
+            Calibration results are heavily dependent on the accuracy of <strong>polar alignment</strong>. Poor polar alignment can:
+            <ul>
+                <li>Cause calibration failure in severe cases.</li>
+                <li>Introduce a large <strong>orthogonality error</strong> in the calibration graph, where RA and Dec axes are not perpendicular.</li>
+                <li>Lead to guiding instability, making it harder to keep the target object in the same place and potentially causing noticeable drift over time.</li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        During the calibration process, HelioMaker may display detailed progress information in the status area. If calibration completes successfully,
+        the resulting <strong>PHD2 calibration graph</strong> will be shown in the Session area, providing a visual assessment of calibration quality.
+    </p>
+    <p>
+        If calibration fails or exhibits unacceptable orthogonality error, refer to the <strong>troubleshooting section</strong> for suggestions.
+    </p>
+    <hr>
+
+    <h2 id="indicator-settling">Mount Settling</h2>
+    <img src="Graphics/settling.png" alt="Mount Settling Indicator">
+    <p>
+        The <strong>Mount Settling</strong> indicator is displayed during the <em>settling phase</em> in PHD2,
+        which occurs just before guiding begins. Settling is an essential step after PHD2 completes its calibration
+        process or resumes guiding.
+    </p>
+    <p>
+        During the settling phase, PHD2 evaluates mount movement to ensure the target is stable within the allowed limits
+        before active guiding starts. The settling process uses the parameters configured in the
+        <a href="advanced_settings.htm">Advanced Settings</a> dialog of HelioMaker, specifically:
+    </p>
+    <ul>
+        <li><strong>Tolerance:</strong> The maximum allowable deviation in pixels for the target position.</li>
+        <li><strong>Min Settle Time:</strong> The minimum time (in seconds) that the mount must remain within tolerance.</li>
+        <li><strong>Settle Timeout:</strong> The maximum duration (in seconds) allowed for settling to complete.</li>
+    </ul>
+    <p>
+        If the user does not change the default values in the <strong>Advanced Settings</strong> dialog,
+        HelioMaker will use the predefined defaults for either <strong>Calibration Settling</strong>
+        or <strong>Guiding Settling</strong>, depending on the current PHD2 state.
+    </p>
+    <h3>Status Feedback</h3>
+    <p>
+        During the settling phase, HelioMaker provides real-time feedback about the progress in the <strong>Status Area</strong>.
+        The displayed information includes:
+    </p>
+    <ul>
+        <li><strong>Remaining distance:</strong> The error value, which indicates how far the target is from the lock position.</li>
+        <li><strong>Time in tolerance:</strong> The duration for which the object has remained within the specified tolerance range.</li>
+        <li><strong>Object detection status:</strong> Confirmation of whether the object has been successfully detected (locked/not locked).</li>
+    </ul>
+    <p>
+        This detailed feedback helps users monitor and assess the settling process, ensuring the mount stabilizes properly
+        before guiding begins.
+    </p>
+    <hr>
+
+    <h2 id="indicator-guiding">PHD2 Guiding</h2>
+    <img src="Graphics/guiding.png" alt="PHD2 Guiding Indicator">
+    <p>The <strong>PHD2 Guiding Indicator</strong> is displayed when PHD2 has successfully detected an object, is taking exposures, and is actively guiding based on:</p>
+    <ul>
+        <li>The results of the most recent PHD2 calibration.</li>
+        <li>The target position detected by HelioMaker, or by PHD2 during stellar, standalone, or fallback detection.</li>
+        <li>Other PHD2 guiding settings controlled by the user from the PHD2 program.</li>
+    </ul>
+    <p>
+        For <strong>beginners</strong>, it is highly recommended to get acquainted with the concepts of PHD2 and guiding best practices.
+        The official PHD2 documentation provides valuable resources:
+    </p>
+    <ul>
+        <li><a href="https://openphdguiding.org/phd2-best-practices" target="_blank" rel="noopener">PHD2 Best Practices</a></li>
+        <li>Additionally, explore other resources available on astrophotography forums and guides across the web.</li>
+    </ul>
+    <h3>Tuning Solar/Planetary Detection</h3>
+    <p>
+        Use HelioMaker's <a href="Find_Tool.htm"><strong>Find &amp; Track</strong></a> tool to select and tune
+        Full Disk/Crescent, Planetary, or Surface Features detection. If HelioMaker reports that its live
+        physical-camera detection link is unavailable, use the custom PHD2 detector controls for that fallback session:
+    </p>
+    <ul>
+        <li>Visit the dedicated Wiki pages: <a href="https://github.com/Eyeke2/phd2.planetary/wiki" target="_blank" rel="noopener">PHD2 Planetary Wiki</a>.</li>
+        <li>
+            Learning PHD2's local parameters remains useful for standalone and fallback full-disk/crescent operation.
+        </li>
+    </ul>
+    <p>
+        For more details, refer to PHD2's Solar and Planetary tool documentation and explore additional information available on
+        <strong>dedicated forums</strong> and other astrophotography web resources.
+    </p>
+    <hr>
+
+    <h2 id="indicator-tracking-rate">Tracking Rate Status Indicator</h2>
+    <p>
+        In addition to the large monitor-state icons shown in this chapter, HelioMaker displays a smaller tracking-rate status indicator in the status area.
+        This indicator reflects the mount's current tracking-rate mode and helps distinguish between standard built-in tracking and dynamically updated custom tracking.
+    </p>
+    <ul>
+        <li><strong>Standard mount rates:</strong> Sidereal, Solar, Lunar, and King are shown with the default background color.</li>
+        <li><strong>Dynamic Target Tracking:</strong> When HelioMaker is actively updating a custom tracking rate in real time, the indicator is shown with a light blue background.</li>
+        <li><strong>Unknown external custom rate:</strong> If the mount reports a custom rate that was not applied by HelioMaker's Dynamic Target Tracking tool, the indicator is shown with an orange background.</li>
+    </ul>
+    <p>
+        While Dynamic Target Tracking is active, the symbol in the indicator is refreshed periodically to show that HelioMaker is continuing to update the rate in the background.
+        For more information, refer to the <a href="DynamicTracking.htm">Dynamic Target Tracking</a> chapter.
+    </p>
+    <hr>
+
+    <h2 id="indicator-recording-paused">Recording Cycle</h2>
+    <img src="Graphics/capturing.png" alt="Recording Cycle Indicator">
+    <p>
+        The <strong>Recording Cycle</strong> indicator is displayed when a HelioMaker sequence is actively running,
+        and SharpCap Pro is capturing images in a high-speed cycle. Depending on the selected <a href="sequence_options.htm">Sequence Options</a>,
+        each capture cycle may be defined either by the total number of frames or by a time limit in seconds.
+    </p>
+    <p>Additionally, you may observe that <strong>PHD2 guiding is paused</strong> during this phase by checking the following:</p>
+    <ul>
+        <li>The PHD2 guiding graph.</li>
+        <li>The PHD2 main display, which reflects the paused guiding state.</li>
+    </ul>
+    <p>
+        When <strong>Continuous Guiding</strong> is disabled, it offers benefits in specific scenarios:
+    </p>
+    <ul>
+        <li>When image drift is minimal, and the <strong>Interval</strong> between recording cycles is long enough for PHD2 to restore the original target position before the next cycle begins.</li>
+        <li>
+            When the mount's guiding corrections produce more jitter or instability than the slow, natural drift of the target.
+            By pausing guiding during exposures, any unwanted motion introduced by frequent corrections is reduced, potentially resulting in sharper and more stable images.
+        </li>
+    </ul>
+    <p>
+        In these cases, disabling continuous guiding allows for smoother image capture while still maintaining effective target alignment.
+    </p>
+    <p>
+        When this indicator is active, <strong>PHD2 guiding is paused</strong> until the current image capture cycle ends.
+        Guiding will automatically resume during the interval before the next capture cycle begins,
+        as defined by the <strong>Interval</strong> parameter.
+    </p>
+    <h3>Guiding Effectiveness and Interval Timing</h3>
+    <p>
+        When the <strong>Continuous Guiding</strong> checkbox is disabled, HelioMaker pauses guiding
+        while SharpCap Pro captures images. It is important to ensure that the selected <strong>Interval</strong>
+        value is long enough to allow guiding to stabilize the target between image capture cycles.
+    </p>
+    <p>
+        HelioMaker makes an <strong>educated guess</strong> about the minimal time interval required
+        for the current settings. If the <strong>Interval</strong> is too short, HelioMaker will display the
+        <strong>Interval</strong> field with a <span class="red">red background</span> as a warning.
+    </p>
+    <p>
+        Note: In certain cases, the estimated interval may be overly optimistic. System load, disk write latency,
+        or other factors could cause guiding to become ineffective and allow the target to drift away.
+    </p>
+    <p>If PHD2 guiding fails to prevent target drift, consider the following options:</p>
+    <ul>
+        <li>Increase the <strong>Interval</strong> value to allow more time for guiding adjustments.</li>
+        <li>Reduce the number of frames per capture cycle, or shorten the capture time limit if that mode is in use.</li>
+        <li>Enable the <strong>Continuous Guiding</strong> checkbox.</li>
+        <li>Verify HelioMaker detection and PHD2 guiding settings.</li>
+        <li>Verify that the mount is using the correct standard tracking rate or, when appropriate, enable <a href="DynamicTracking.htm">Dynamic Target Tracking</a>.</li>
+        <li>Refer to the recommended workflow and troubleshooting sections in this manual.</li>
+    </ul>
+    <h3>Status Information</h3>
+    <p>During the recording cycle phase, the following information will be displayed:</p>
+    <ul>
+        <li><strong>Number of currently captured frames</strong> in the current cycle.</li>
+        <li><strong>Remaining free disk space</strong> in the status area.</li>
+    </ul>
+    <hr>
+
+    <h2 id="indicator-recording">Recording Cycle with Guiding</h2>
+    <img src="Graphics/rec_and_guiding.png" alt="Recording Cycle with Guiding Indicator">
+    <p>
+        The <strong>Recording Cycle with Guiding</strong> indicator is displayed when a HelioMaker sequence is actively running,
+        and SharpCap Pro is capturing images in a high-speed cycle. Unlike the <a href="#indicator-recording-paused">Recording Cycle</a> mode,
+        PHD2 guiding remains <strong>active throughout the recording phase</strong>.
+    </p>
+    <p>
+        This powerful feature, introduced by HelioMaker and activated by selecting the <strong>Continuous Guiding</strong> option,
+        enables a single physical camera to be shared simultaneously for both image capture and guiding.
+        It is particularly useful for sequences defined with a short <strong>Interval</strong>, where the time between cycles is limited,
+        or when polar alignment is less than perfect, requiring consistent corrections to stabilize the target position.
+    </p>
+    <h3>Guiding Stability During Recording</h3>
+    <p>
+        While PHD2 guiding continues uninterrupted during recording, it is still important to ensure that your
+        guiding settings and HelioMaker detection are correctly configured. Factors such as:
+    </p>
+    <ul>
+        <li>Focus quality of the target.</li>
+        <li>Correct camera exposure, gain, image scale, and focal length for the selected guide camera.</li>
+        <li>Good polar alignment and minimal guiding corrections.</li>
+    </ul>
+    <p>
+        These factors contribute to maintaining stability while guiding and capturing images simultaneously.
+        If the target begins to drift, revisit the configuration of guiding intervals, calibration, and detection parameters.
+    </p>
+    <h3>Status Information</h3>
+    <p>During this phase, the following information will be displayed:</p>
+    <ul>
+        <li><strong>Number of currently captured frames</strong> in the current cycle.</li>
+        <li><strong>Remaining free disk space</strong> in the status area.</li>
+    </ul>
+    <hr>
+
+    <h2 id="indicator-rec">SharpCap Recording</h2>
+    <img src="Graphics/recording.png" alt="SharpCap Recording Indicator">
+    <p>
+        The <strong>SharpCap Recording</strong> indicator appears when the user initiates an image capture
+        operation <em>directly from SharpCap Pro</em>, rather than using the HelioMaker sequencer.
+    </p>
+    <p>
+        If you require <strong>PHD2 guiding</strong> during a sequence that is controlled outside of HelioMaker,
+        you must perform the following steps manually:
+    </p>
+    <ul>
+        <li>Ensure that PHD2 is <strong>looping exposures</strong>.</li>
+        <li>Configure the target detector in HelioMaker's <strong>Find &amp; Track</strong> tool.</li>
+        <li>Complete a one-time <strong>PHD2 calibration</strong> before initiating guiding.</li>
+        <li>Start guiding in PHD2 and verify that it remains stable throughout the session.</li>
+    </ul>
+    <p>
+        When guiding is managed manually in this manner, PHD2 will <strong>not pause guiding</strong> between
+        capture cycles. Instead, it will continue guiding continuously under user-defined settings.
+    </p>
+    <h3>Workflow Differences</h3>
+    <p>
+        The <strong>SharpCap Recording</strong> indicator differs from the <strong>Recording Cycle</strong>
+        indicator, which appears when a sequence is initiated through HelioMaker using the
+        <strong>Start Sequence</strong> button.
+    </p>
+    <p>
+        Although it is possible to start image capture operations manually from within SharpCap Pro, doing so
+        (i.e., bypassing the HelioMaker sequencer for capture initiation) is generally <strong>not recommended</strong>
+        unless it serves a specific purpose. Typical reasons for using this approach include:
+    </p>
+    <ul>
+        <li>Complex capture workflows that require extensive manual control.</li>
+        <li>Custom scripts or automated tasks executed directly within SharpCap Pro.</li>
+    </ul>
+    <h3>Advantages of Using the HelioMaker Sequencer</h3>
+    <p>
+        Controlling image capture operations with the HelioMaker sequencer offers several advantages:
+    </p>
+    <ul>
+        <li>Precisely timed capture cycles, ensuring uniform intervals between exposures.</li>
+        <li>Automated management of guiding pauses (if <strong>Continuous Guiding</strong> is disabled).</li>
+        <li>
+            Improved integration and oversight via HelioMaker's status indicators and logging,
+            as HelioMaker can automatically control PHD2 to perform required actions, including
+            pausing and resuming guiding, or maintaining continuous guiding as configured.
+        </li>
+        <li>
+            Designed to speed up, automate, and streamline basic image capture sequences for
+            creating long time-lapses, allowing you to focus on more critical tasks and save time.
+        </li>
+    </ul>
+    <p>
+        Note: If system performance cannot guarantee perfectly timed capture cycles, HelioMaker will
+        still use a <strong>best-effort approach</strong> to adhere to the desired schedule.
+    </p>
+    <hr>
+
+    <h2 id="indicator-clouds">Clouds or Poor Seeing While Guiding</h2>
+    <img src="Graphics/guiding_with_clouds.png" alt="Clouds or Poor Seeing Indicator">
+    <p>
+        The <strong>Clouds or Poor Seeing</strong> indicator is displayed when <strong>PHD2 loses its target</strong> while guiding.
+        During this time, guiding cannot continue until the conditions improve, such as:
+    </p>
+    <ul>
+        <li>Presence of <strong>clouds</strong>, haze, or other visual obstacles.</li>
+        <li>Issues caused by <strong>poor focus</strong> or insufficient image quality.</li>
+        <li>Incorrect exposure, focus, target size, or detection sensitivity in Find &amp; Track.</li>
+    </ul>
+    <p>
+        When this indicator appears, PHD2 cannot detect the target, and guiding will remain paused until conditions allow the target to be identified again.
+    </p>
+    <h3>Troubleshooting Steps</h3>
+    <p>
+        If this issue is caused by <strong>misconfigured parameters</strong>, it is recommended to:
+    </p>
+    <ul>
+        <li>Review the active mode and detector readouts in <strong>Find &amp; Track</strong>.</li>
+        <li>Adjust exposure, target size, ROI, or sensitivity to improve detection accuracy.</li>
+        <li>Ensure the camera is properly focused and the target is well-positioned in the frame.</li>
+    </ul>
+    <p>
+        If the guiding issues are due to external conditions like clouds, haze, or poor seeing,
+        the user will need to wait until the conditions improve.
+    </p>
+    <hr>
+
+    <h2 id="indicator-no-camera">No Camera</h2>
+    <img src="Graphics/no_camera.png" alt="No Camera Indicator">
+    <p>
+        The <strong>No Camera</strong> symbol is displayed when SharpCap or PHD2 has lost connection to its camera
+        or when a camera has not been connected yet. It can also appear in the following cases:
+    </p>
+    <ul>
+        <li>SharpCap has lost connection with the currently selected camera.</li>
+        <li>PHD2 has been disconnected from its guiding gear, such as the camera or mount.</li>
+    </ul>
+    <h3>Common Causes</h3>
+    <ul>
+        <li><strong>Hardware Connectivity Issues:</strong> Loose cables or disconnected devices.</li>
+        <li><strong>Hardware Failures:</strong> Malfunctioning cameras, mounts, or USB hubs.</li>
+        <li><strong>User Actions:</strong> The user manually disconnected or switched the camera in SharpCap or PHD2.</li>
+    </ul>
+    <h3>Troubleshooting Steps</h3>
+    <p>
+        If this indicator appears and was not caused by intentional user actions, it is recommended to:
+    </p>
+    <ul>
+        <li>Verify that all <strong>hardware connections</strong> (USB cables, mounts, hubs) are secure and functional.</li>
+        <li>Reconnect the camera in <strong>SharpCap Pro</strong> or PHD2.</li>
+        <li>Restart SharpCap, PHD2, or both, if necessary, to reinitialize connections.</li>
+        <li>Ensure that the camera and guiding gear are powered on and working correctly.</li>
+    </ul>
+    <p>
+        If hardware connectivity issues persist, consider testing the camera or mount with other software
+        or reviewing the manufacturer's troubleshooting guidelines.
+    </p>
+    <hr>
+
+    <h2 id="indicator-stop">PHD2 Stopped</h2>
+    <img src="Graphics/stopped.png" alt="PHD2 Stopped Indicator">
+    <p>
+        The <strong>PHD2 Stopped</strong> symbol indicates that PHD2 stopped taking exposures
+        and cannot perform its guiding functions. This state can occur for the following reasons:
+    </p>
+    <ul>
+        <li><strong>Manual Stop:</strong> The user pressed the <em>Stop Looping and Guiding</em> button in PHD2.</li>
+        <li>
+            <strong>Initial Connection Phase:</strong> This indicator may briefly appear when HelioMaker is
+            establishing an initial connection with PHD2 and SharpCap Pro.
+        </li>
+    </ul>
+
+    <h2 id="indicator-pause">Sequence Paused</h2>
+    <img src="Graphics/pause.png" alt="Sequence Paused Indicator">
+    <p>
+        The <strong>Sequence Paused</strong> symbol indicates that sequence execution is currently paused,
+        which can be triggered manually by operator or automatically due to certain conditions:
+    </p>
+    <ul>
+        <li><strong>Manual Pause:</strong> The user pressed the <em>Pause Sequence</em> button.</li>
+        <li><strong>Automatic pause on detection loss:</strong> as configured by <a href="sequence_options.htm">Sequence Options</a>.</li>
+    </ul>
+    <p>
+        When sequence execution is paused automatically, it will be resumed automatically
+        once the condition that triggered the pause is resolved. For manual pauses, the user can resume
+        the sequence by pressing the <em>Resume Sequence</em> button.
+    </p>
+
+    <h2 id="indicator-refocus">Image refocusing</h2>
+    <img src="Graphics/focus.png" alt="Sequence Refocus Indicator">
+    <p>
+        The <strong>Focusing</strong> symbol indicates that sequence execution is currently paused
+        and is executing SharpCap's Automatic refocusing routine, as configured in <a href="sequence_options.htm">Sequence Options</a>.
+    </p>
+    <p>
+        Results of the refocusing routine will be shown in the Session area, and the sequence
+        will automatically resume once the refocusing routine is completed. The refocusing routine
+        can fail if no prior focusing was performed in SharpCap, or when SharpCap is unable to complete the routine
+        successfully. Refocusing can be cancelled by the user by pressing the <em>Resume sequence</em> button at any
+        time during the refocusing process, which will put the refocusing routine in a "snoozed" mode, where it will
+        be attempted again at the time configured by <a href="sequence_options.htm">Sequence Options</a>.
+    </p>
+
+    <h3>Troubleshooting Steps</h3>
+    <p>If this indicator persists and was not caused by intentional user actions:</p>
+    <ul>
+        <li>Verify that PHD2 is set to <em>Loop Exposures</em>.</li>
+        <li>If using <strong>HelioMaker Sequencer</strong>, restart the current capture session.</li>
+        <li>
+            If capturing manually using the <strong>SharpCap UI</strong>:
+            <ul>
+                <li>Ensure PHD2 is configured correctly.</li>
+                <li>Make sure the target is detected and guiding is active.</li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+
+</body>
+</html>

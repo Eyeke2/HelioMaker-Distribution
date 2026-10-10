@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why does the target drift excessively after enabling Dynamic Target Tracking?</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Why does the target drift excessively after enabling Dynamic Target Tracking?</h1>
+
+    <p>
+        If enabling <a href="DynamicTracking.htm">Dynamic Target Tracking</a> causes the target to drift excessively instead of improving stability,
+        check the following items before assuming there is a mount or software problem.
+    </p>
+
+    <h2>1. Polar Alignment</h2>
+    <p>
+        Accurate polar alignment is a prerequisite for every setup and workflow. Dynamic Target Tracking does not replace polar alignment.
+        If polar alignment is poor, drift will still occur, and gross polar-alignment errors will result in more significant drift.
+    </p>
+
+    <h2>2. Observer Location</h2>
+    <p>
+        Make sure the observer location stored in the mount is correct and consistent with the telescope's actual physical geographical location.
+        Dynamic Target Tracking depends on accurate site information when computing real-time target rates.
+    </p>
+    <p>
+        If necessary, HelioMaker allows small manual corrections through the custom observer-location override in the Dynamic Target Tracking dialog.
+        However, this override is intended only for minor tweaks. If the mount is not reasonably well synchronized with its real physical location,
+        Dynamic Target Tracking may not produce accurate results.
+    </p>
+
+    <h2>3. Time and Time Zone</h2>
+    <p>
+        Ensure the mount and computer are using the correct time settings and time zone. This is important because Dynamic Target Tracking updates
+        the tracking rate in real time and depends on accurate timing information.
+    </p>
+
+    <h2>4. Target Synchronization</h2>
+    <p>
+        Make sure the telescope is synced to the intended target, at least approximately, so that the declination derived from the mount coordinates
+        is reasonably close to the actual target location. Large sync errors can reduce the accuracy of the converted tracking-rate values.
+    </p>
+
+    <h2>5. RA Rate Polarity</h2>
+    <p>
+        Some mounts require the opposite RA-rate polarity for Dynamic Target Tracking to work correctly. If the above items are correct and the target
+        still drifts rapidly after enabling Dynamic Target Tracking, try toggling <strong>Invert RA rate for Dynamic Tracking</strong> in HelioMaker's
+        <a href="phd2_configuration.htm">PHD2 configuration</a> dialog.
+    </p>
+
+    <p><a href="Faq.htm">Back to FAQ</a></p>
+</body>
+</html>

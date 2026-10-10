@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHG Scanner - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>SHG Scanner</h1>
+
+    <p>
+        The <strong>SHG Scanner</strong> is an experimental tool for automating spectroheliograph scanning and SharpCap Pro capture. It is intended for
+        solar imaging workflows where the solar disk is scanned across the spectroheliograph slit while image capture is coordinated automatically.
+    </p>
+    <p>
+        The scanner uses an intelligent design that examines mount capabilities and chooses the best available scanning behavior for the connected mount.
+        Availability of the scanner is controlled by the <strong>Enable SHG scanning</strong> option in
+        <a href="advanced_settings.htm#global-settings">Advanced Settings</a>. Scanner-specific preferences are configured from the
+        <strong>SHG Preferences</strong> button inside the scanner dialog.
+    </p>
+    <p>
+        This feature is experimental. It supports RA scanning and, when the license and mount capabilities allow it, Dec scanning and multi-pass operation.
+    </p>
+    <img src="Images/shg_scanner.jpg" alt="SHG Scanner Dialog" class="fig fig-75">
+
+    <h2>Opening the Tool</h2>
+    <p>
+        The SHG Scanner can be opened in either of these ways:
+    </p>
+    <ul>
+        <li>Open the <strong>Tools</strong> menu and select <strong>SHG Scan</strong>, or press <strong>Ctrl-G</strong>.</li>
+        <li>Select the Sun in the <a href="DynamicTracking.htm#dynamic-target-tracking">Dynamic Target Tracking (DTT)</a> dialog and click <strong>SHG Scanner</strong>.</li>
+    </ul>
+    <img src="Images/tools_menu.jpg" alt="Tools menu" class="fig fig-75">
+    <p>
+        The SHG entry is controlled by the <strong>Enable SHG scanning</strong> option in <a href="advanced_settings.htm#global-settings">Advanced Settings</a>.
+        When that option is disabled, the DTT dialog button is hidden and the Tools menu entry is disabled. When enabled, the scanner is available only when
+        SharpCap Pro is ready with an open camera, no HelioMaker sequence or PHD2 calibration is active, the selected DTT target is the Sun, and the connected
+        mount supports a compatible scanning method. HelioMaker can use custom tracking rates when supported, or a directional MoveAxis fallback when the mount
+        offers it.
+    </p>
+
+    <h2>Prerequisites</h2>
+    <ul>
+        <li>SharpCap Pro must be installed, licensed, connected, and configured with the imaging camera.</li>
+        <li>The mount must be connected and able to perform the selected scan operation.</li>
+        <li>Dynamic Target Tracking should have correct observer location and current solar target information.</li>
+        <li>The spectroheliograph slit must be oriented so the solar image crosses it along the selected scan axis.</li>
+        <li>The planned sweep must cover the full solar disk, including any desired margin.</li>
+        <li>The focal length and binning settings used by HelioMaker should match the current optical setup.</li>
+        <li>SharpCap should be set to SER capture with an accepted mono or raw format. The scanner can offer to prepare these settings when needed.</li>
+    </ul>
+
+    <h2>Scan Settings</h2>
+    <ul>
+        <li><strong>Scan axis:</strong> Selects RA or Dec. Dec scanning is shown only when it is available for the current license and mount capability set.</li>
+        <li><strong>Scan direction:</strong> Selects the direction along the selected axis, including whether the mount should return near the starting position after capture.</li>
+        <li><strong>Extra scan margin:</strong> Adds additional sweep distance beyond the computed solar disk coverage.</li>
+        <li><strong>Oversampling factor:</strong> Controls how densely the scan samples the solar disk. With fixed legacy MoveAxis speeds, HelioMaker shows the resulting oversampling instead.</li>
+        <li><strong>Pre/post capture:</strong> Adds capture time before and after the computed scan interval.</li>
+        <li><strong>Custom FPS:</strong> Uses a specified frame rate for scanner calculations when enabled.</li>
+        <li><strong>Scan speed:</strong> Displays the resulting scan speed, typically expressed relative to sidereal rate.</li>
+        <li><strong>Return mode:</strong> Shows whether and how the mount will return after the scan when supported.</li>
+        <li><strong>Solar diameter:</strong> Displays the computed apparent solar diameter in arcseconds and pixels.</li>
+        <li><strong>Capture time:</strong> Displays the estimated capture duration for the scan.</li>
+    </ul>
+
+    <h2>Multi-Pass Scanning</h2>
+    <p>
+        When available, the <strong>Multi-Pass scanning</strong> section allows several scan passes to run from a single start command.
+        This is useful when several captures of the same solar line are needed. The repeat count controls how many passes will be attempted,
+        and the delay between scans leaves time for the mount and guiding setup to settle before the next pass begins. Multi-pass operation
+        requires a scan direction that includes a return move.
+    </p>
+
+    <h2>SHG Preferences</h2>
+    <p>
+        Click <strong>SHG Preferences</strong> in the scanner dialog to configure behavior that is not part of the per-scan setup.
+    </p>
+    <img src="Images/shg_prefs.jpg" alt="SHG Preferences Dialog" class="fig fig-75">
+    <ul>
+        <li><strong>Enable stall detector:</strong> Lets HelioMaker stop a scan or return motion if mount position feedback indicates that the mount is no longer moving as expected.</li>
+        <li><strong>Allow 8-bit capture:</strong> Allows the scanner to accept 8-bit capture formats. When disabled, HelioMaker prefers 16-bit output and falls back to 8-bit only when the camera does not support 16-bit.</li>
+        <li><strong>Use absolute MoveAxis speeds:</strong> Controls how MoveAxis fallback commands are interpreted. Toggle this if forward and return travel distances differ, or if the scan length does not match the expected solar diameter.</li>
+        <li><strong>Scanner return method:</strong> Selects how the mount returns after a scan, such as slew-to-coordinates, directional slew, or custom tracking rate when supported.</li>
+        <li><strong>Reset to defaults:</strong> Restores the SHG preferences to their default values.</li>
+    </ul>
+
+    <h2>Progress</h2>
+    <p>
+        The progress panel shows scanner state, elapsed time, remaining time, frame count, exposure, nominal FPS, and a progress bar. These values help confirm
+        that the capture and mount scan are proceeding as expected.
+    </p>
+
+    <h2>Starting a Scan</h2>
+    <ol>
+        <li>Configure the solar image and SHG slit orientation so the disk crosses the slit along the selected scan axis.</li>
+        <li>Confirm that the disk will be fully covered by the planned sweep.</li>
+        <li>Check focal length, binning, exposure, and FPS assumptions.</li>
+        <li>Review the computed scan speed, solar diameter, and capture time.</li>
+        <li>Review any orange warning panel shown by HelioMaker, especially undersampling or mount-speed warnings.</li>
+        <li>Click <strong>Start Scan and Capture</strong>.</li>
+        <li>Monitor the mount and SharpCap Pro capture until the scan completes.</li>
+    </ol>
+
+    <h2>Relationship to Standard Sequences</h2>
+    <p>
+        The SHG Scanner is separate from the normal HelioMaker sequence workflow. A standard sequence captures repeated video or image bursts using the main
+        sequence controls. The SHG Scanner performs a specialized scan-and-capture operation for spectroheliograph work.
+    </p>
+
+    <p><a href="DynamicTracking.htm">Back to Dynamic Target Tracking</a></p>
+</body>
+</html>

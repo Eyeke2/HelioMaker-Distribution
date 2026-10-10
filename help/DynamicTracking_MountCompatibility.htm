@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mount Compatibility for Dynamic Tracking - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Mount Compatibility for Dynamic Tracking</h1>
+
+    <p>
+        Dynamic Target Tracking depends on the ability to apply custom RA and Dec tracking rates to the mount. This is different from selecting one of the
+        mount's built-in tracking modes, such as sidereal, solar, or lunar. HelioMaker must be able to send target-specific rate updates repeatedly during
+        the session.
+    </p>
+
+    <h2>Capability Check</h2>
+    <p>
+        When Dynamic Target Tracking is started, HelioMaker checks the connected mount's reported capabilities. If the mount reports that custom tracking
+        rates are not supported, HelioMaker reports the limitation clearly and falls back to legacy mount tracking rates. For generated comet and minor-body
+        ephemeris plans, HelioMaker can still automate the legacy PHD2 comet-tracking workflow by using the PHD2 lock-shift drift method.
+    </p>
+
+    <h2>Fallback Workflow</h2>
+    <p>
+        If the mount cannot use custom tracking rates for the Sun, Moon, or planets, the Dynamic Target Tracking dialog allows you to select the closest available
+        legacy standard mount rate.
+        The available choices are:
+    </p>
+    <ul>
+        <li><strong>Solar</strong> for the Sun.</li>
+        <li><strong>Lunar</strong> for the Moon.</li>
+        <li><strong>Sidereal</strong> for planets and general fallback use.</li>
+    </ul>
+    <p>
+        For generated comet and minor-body ephemeris plans, HelioMaker automates the PHD2 comet tool by supplying precise ephemeris rate data directly,
+        removing the manual guessing required when using PHD2's comet-tracking tool without HelioMaker.
+    </p>
+
+    <p><a href="DynamicTracking.htm">Back to Dynamic Target Tracking</a></p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planner basics | HelioMaker Lunar Eclipse Guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="top" aria-label="Guide navigation"><a href="index.html">← Lunar eclipse guide index</a><span>4 · Planner basics</span></nav>
+<main id="main"><header><h1>Planner basics</h1><p class="lead">Find an event, inspect its geometry and save a plan for rehearsal and live imaging.</p></header>
+
+<h2>Search for an eclipse</h2>
+<ol><li>Open <span class="ui">Tools ▸ Lunar Eclipse Planner</span> or press <code>Ctrl+Shift+L</code>.</li><li>Check the observer site. Set the start and end dates in <span class="ui">Window:</span>; <span class="ui">Today</span> resets the start date.</li><li>Click <span class="ui">Find lunar eclipses</span> and select a result. Use a past date window to practise with a historical event.</li><li>Select UTC or observer-site local time using <span class="ui">Times:</span>. Read the displayed date as well as the time when an event crosses midnight.</li></ol>
+<figure class="shot" id="planner-search"><img src="img/planner-search.png" alt="Lunar planner search controls and results, with the observer site, date window and time-display choice visible."><figcaption>Lunar planner search controls and results, with the observer site, date window and time-display choice visible.</figcaption></figure>
+<p><span class="ui">Include faint penumbral eclipses</span> adds the faint penumbral events hidden by default. <span class="ui">View all eclipses for this site</span> opens timeanddate.com’s eclipse list for the observer coordinates in your browser; that optional lookup needs an internet connection. The contact columns are P1, U1, U2, Greatest, U3, U4 and P4, followed by overall P1–P4 duration and totality duration.</p>
+<h2>Inspect the preview and phase plan</h2>
+<p>Use the timeline to explore the event. With <span class="ui">Show umbra</span> checked, Earth’s shadow stays still while the Moon moves through it. Uncheck it to hold the Moon still and see the shadow cross the lunar disk.</p>
+<figure class="shot" id="planner-preview-umbra"><img src="img/planner-preview-umbra.png" alt="The lunar preview with Show umbra enabled, showing the Moon’s position relative to Earth’s shadow."><figcaption>The lunar preview with Show umbra enabled, showing the Moon’s position relative to Earth’s shadow.</figcaption></figure>
+<p>The plan table shows phase start and duration, gain, exposure range, bracket/cycle details, cycle count, interval and guide exposure/interval. Select a phase to read its summary and edit its settings. Review any below-horizon or unavailable portions before approving the plan.</p>
+<figure class="shot" id="planner-phase-table"><img src="img/planner-phase-table.png" alt="The generated lunar phase table with exposure ranges, bracket/cycle details, interval and guiding columns."><figcaption>The generated lunar phase table with exposure ranges, bracket/cycle details, interval and guiding columns.</figcaption></figure>
+<h2>Save and protect the plan</h2>
+<div class="table-scroll"><table class="t"><thead><tr><th scope="col">Control</th><th scope="col">Purpose</th></tr></thead><tbody><tr><td>Save as draft</td><td>Save work in progress. A rehearsal can use a draft.</td></tr><tr><td>Save as final</td><td>Approve and save the reviewed settings for a live eclipse run.</td></tr><tr><td>Save to file...</td><td>Export plan settings to a portable JSON file.</td></tr><tr><td>Load from file...</td><td>Replace the working settings with those in a saved JSON file; review before approving.</td></tr><tr><td>Padlock button</td><td>Protect the plan against accidental edits. While locked, preferences, phase edits, draft/final saves and loading are disabled; export remains available.</td></tr></tbody></table></div>
+<p>A new search, or a change to the date window or filters, keeps the plan you are editing, with its unsaved changes, even when its eclipse is not among the new results. Selecting another eclipse, or closing the planner, asks whether to save them first.</p>
+<p>A draft may exist alongside a saved final plan. Confirm which version preflight will run. A portable settings file does not replace camera testing or checking the observing site.</p>
+<p>Use <span class="ui">Eclipse plan rehearsal...</span> for a simulated event, or <span class="ui">Start eclipse imaging</span> to open preflight for the real event.</p>
+</main>
+<nav class="foot" aria-label="Chapter navigation"><a href="contacts-and-visibility.html">← Contacts & Moon visibility</a><a href="preferences.html">Plan preferences →</a></nav>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharpCap Pro Configuration - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>SharpCap Pro Configuration</h1>
+    <p>
+        This section explains how to configure SharpCap Pro in HelioMaker, particularly during the initial HelioMaker setup.
+        Note that this document does not cover SharpCap Pro's own settings and tools, which are detailed in the SharpCap Pro documentation available at
+        <a href="https://www.sharpcap.co.uk/" target="_blank" rel="noopener">SharpCap.co.uk</a>. However, other sections of this help tutorial may include
+        examples or references to specific SharpCap settings, which will be clearly identified.
+    </p>
+    <p>
+        The SharpCap Pro Configuration step ensures seamless integration between HelioMaker and SharpCap Pro.
+        While required during the initial setup, this step can be revisited as needed.
+    </p>
+
+    <h2>Accessing SharpCap Configuration</h2>
+    <ul>
+        <li>Click on the <strong>gears icon</strong> next to the "SharpCap Pro" label on the main screen, OR</li>
+        <li>Open the <strong>Setup</strong> menu and select <strong>SharpCap Configuration</strong>.</li>
+    </ul>
+    <img src="Images/scap_config1.jpg" alt="SharpCap Configuration Dialog">
+    <p>
+        Note: While HelioMaker is connected to SharpCap, the fields for selecting the SharpCap executable path and its optional command line arguments are disabled to prevent changes
+        during an active connection. To modify these settings, exit the SharpCap Configuration dialog, disconnect from SharpCap using the Link button, and then reopen the SharpCap Configuration dialog.
+    </p>
+
+    <h2>Setting the Installation Folder</h2>
+    <ul>
+        <li><strong>64-bit version:</strong> The default location is <code>C:\Program Files\SharpCap 4.1 (64 bit)</code>.</li>
+        <li><strong>32-bit version:</strong> The default location is <code>C:\Program Files (x86)\SharpCap 4.1</code>.</li>
+        <li>Use the <strong>Browse</strong> button to navigate to the appropriate folder if SharpCap is installed in a custom location.</li>
+    </ul>
+
+    <h2>Optional Command Line Arguments</h2>
+    <p>
+        You can enter any custom command-line arguments to use when launching SharpCap. In most cases, this field can be left empty.
+        If you wish to customize launch behavior, refer to the SharpCap documentation for details:
+        <a href="https://docs.sharpcap.co.uk/4.1/#Command%20Line%20Arguments" target="_blank" rel="noopener">SharpCap Command Line Arguments</a>.
+    </p>
+
+    <h2>SharpCap devices</h2>
+    <p>
+        Select the camera to be automatically opened and used by SharpCap Pro when it is launched from HelioMaker
+        via the corresponding Link button. To configure this entry correctly, follow these steps:
+    </p>
+    <ul>
+        <li>Physically connect your camera to the computer.</li>
+        <li>Click the <strong>Refresh</strong> button to populate the camera list.</li>
+        <li>Select the desired camera from the drop-down menu, or leave it set to &lt;Default&gt; to enable manual camera selection in SharpCap Pro.</li>
+    </ul>
+
+    <p>
+        HelioMaker is designed to simplify your workflow by automating the launch of SharpCap and connecting to your preferred camera.
+        Proper configuration ensures an efficient and seamless experience. If you prefer not to use this feature, leave the camera
+        selection set to default.
+    </p>
+
+    <h2>Important Note: Let HelioMaker Launch SharpCap</h2>
+    <p>
+        HelioMaker must control the launch of SharpCap to enable proper communication. If SharpCap is already running,
+        HelioMaker will suggest closing it before reopening it automatically.
+    </p>
+
+    <p><a href="ConfigurationAndSetup.htm">Back to Configuration and Setup</a></p>
+
+</body>
+</html>

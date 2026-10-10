@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slew to Target and Safety - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Slew to Target and Safety</h1>
+
+    <p>
+        The <strong>Slew To Target</strong> button in the Dynamic Target Tracking dialog can command the mount to slew to the currently selected target.
+        This helps with initial acquisition of the Sun, Moon, planets, or a loaded ephemeris target before final framing and focusing.
+    </p>
+
+    <h2>Before Slewing</h2>
+    <ul>
+        <li>Confirm that the selected target is correct.</li>
+        <li>Confirm that the observer location, time, and time zone are correct.</li>
+        <li>Check that the mount has been initialized and synced well enough for safe pointing.</li>
+        <li>Verify that the planned movement is safe for your pier, tripod, cables, telescope, camera, and filter equipment.</li>
+        <li>For solar work, follow all solar safety practices and keep safe filtering in place.</li>
+    </ul>
+
+    <h2>During Slew</h2>
+    <p>
+        Watch the mount while it moves. HelioMaker can request the slew, but it cannot know every physical constraint of a specific setup. Pier collision,
+        cable tension, horizon limits, roof clearance, and meridian behavior remain the user's responsibility.
+    </p>
+    <p>
+        If the slew must be stopped immediately, use the available cancel/stop control for the slew operation. This sends a stop request to the mount so
+        the slew can be interrupted in an emergency.
+    </p>
+
+    <h2>After Slew</h2>
+    <p>
+        After the slew completes, verify the target in the camera view or finder. Center and focus the target as needed before starting Dynamic Target Tracking,
+        PHD2 calibration, guiding, or capture.
+    </p>
+    <p>
+        Canceling or stopping a slew is separate from stopping Dynamic Target Tracking. If <a href="DynamicTracking.htm#dynamic-target-tracking">DTT</a> is
+        already active and must be stopped, use <strong>Stop Dynamic Tracking</strong> in the <a href="DynamicTracking.htm#dynamic-target-tracking">DTT</a> dialog.
+    </p>
+
+    <p><a href="DynamicTracking.htm">Back to Dynamic Target Tracking</a></p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gear &amp; rig requirements | HelioMaker Lunar Eclipse Guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="top" aria-label="Guide navigation"><a href="index.html">← Lunar eclipse guide index</a><span>2 · Gear & rig requirements</span></nav>
+<main id="main"><header><h1>Gear & rig requirements</h1><p class="lead">Choose how imaging and guiding will share the camera and mount.</p></header>
+
+<h2>The equipment chain</h2>
+<p>HelioMaker coordinates lunar imaging through <strong>SharpCap</strong> and lunar tracking/guiding through its custom <strong>PHD2</strong> integration. Prepare SharpCap Pro and the matching custom PHD2 installation before connecting the rig. The lunar preferences currently offer SharpCap as the imaging device.</p>
+<p>Use an imaging camera and configuration that pass the lunar System benchmark. A working preview alone does not verify long exposures, HDR transitions or saved-file delivery.</p>
+<div class="table-scroll"><table class="t"><thead><tr><th scope="col">Arrangement</th><th scope="col">Setup</th><th scope="col">What to test</th></tr></thead><tbody><tr><td>Shared imaging camera</td><td>Choose <span class="ui">Shared imaging camera</span> in Plan preferences and <strong>Virtual Planetary Camera</strong> in PHD2.</td><td>Imaging and guide work use the same camera. Verify the time left for guide work between brackets, especially during totality.</td></tr><tr><td>Separate guide camera</td><td>Choose <span class="ui">Physical guiding camera</span> and select that physical camera in PHD2.</td><td>Set and test its own bright-Moon and dark-eclipse exposures. Confirm its field of view and calibration. To keep guide corrections from moving the mount during an exposure, tick <span class="ui">Pause guiding during exposures</span>; see <a href="preferences.html#guiding-between-sets">guiding between sets</a>.</td></tr><tr><td>Guiding off</td><td>Set <span class="ui">PHD2 guiding: Off</span>.</td><td>The mount must preserve framing without guide corrections. Physical capture still requires lunar mount preparation through PHD2.</td></tr></tbody></table></div>
+<figure class="shot" id="gear-shared-camera"><img src="img/gear-shared-camera.png" alt="System configuration set to Shared imaging camera, with the imaging camera’s name and the benchmark result."><figcaption>System configuration set to Shared imaging camera, with the imaging camera’s name and the benchmark result.</figcaption></figure>
+<figure class="shot" id="gear-separate-camera"><img src="img/gear-separate-camera.png" alt="System configuration set to Physical guiding camera, showing the guide and imaging camera names."><figcaption>System configuration set to Physical guiding camera, showing the guide and imaging camera names.</figcaption></figure>
+<h2>Choose the image configuration before testing</h2>
+<p>In Plan preferences, select file format, data format, binning and capture resolution. The available camera choices depend on the connected or cached camera capabilities. Retest if the benchmark status no longer qualifies the selected setup.</p>
+<p>The benchmark measures the equipment with fixed probe exposures. Changes to base exposure, gain or guiding settings keep a valid result for the same camera, resolution, data format and binning. Plan timing is recalculated separately; a longer exposure may require a longer imaging interval.</p>
+<p>Allow enough storage and power for a multi-hour session. When guiding pauses during sets, with the shared camera or with <span class="ui">Pause guiding during exposures</span>, the preflight checklist warns when a selected phase leaves too little time for guiding between sets. Resolve that with cadence, the exposure ceiling, the <span class="ui">Guiding time policy</span> or a different camera arrangement before relying on the plan.</p>
+</main>
+<nav class="foot" aria-label="Chapter navigation"><a href="prepare-in-advance.html">← Prepare in advance</a><a href="contacts-and-visibility.html">Contacts & Moon visibility →</a></nav>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+</div>
+</body>
+</html>

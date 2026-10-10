@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Options - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Sequence Options</h1>
+    <p>
+        The <strong>Sequence Options</strong> dialog contains settings that affect how HelioMaker starts, pauses, resumes, and protects an imaging sequence.
+        Open it from the sequence options button next to the sequence timing controls on the main screen, or from the <strong>Setup</strong> menu.
+    </p>
+    <p>
+        <strong>Run SharpCap refocus periodically</strong> and <strong>Pause sequence while no object is detected</strong>
+        need HelioMaker to see the target: when PHD2 guides with its own camera rather than the Virtual Planetary Camera,
+        PHD2 must share its camera images with HelioMaker, and if it cannot, HelioMaker says so when PHD2 is linked.
+    </p>
+
+    <img src="Images/sequence_options.jpg" alt="Sequence Options Dialog" class="fig fig-75">
+
+    <h2>General Sequence Options</h2>
+    <ul>
+        <li>
+            <strong>Observed target:</strong> Identify the object in the camera image as <strong>Sun</strong>, <strong>Moon</strong> or
+            <strong>Planet or other</strong> (the default). This helps the cloud detector distinguish normal atmospheric dimming from cloud or haze
+            degradation. The choice is shown in Find &amp; Track, on the line below the Sky readout. See
+            <a href="#observed-target">Observed Target and Cloud Monitoring</a> below.
+        </li>
+        <li>
+            <strong>Lock active sequence parameters:</strong> Prevents accidental changes to main sequence parameters while a sequence is active.
+            If you need to change sequence length, frame count/time limit, or interval during a run, disable this option temporarily.
+        </li>
+        <li>
+            <strong>Enable Delayed Start Sequence option:</strong> Changes the <strong>Start Sequence</strong> button into a menu-style control
+            with immediate start and delayed-start choices.
+        </li>
+        <li>
+            <strong>Use time limit instead of frames per cycle:</strong> Replaces the per-cycle frame count input on the main screen with a burst
+            duration in seconds. This is useful when you want each capture cycle to last a fixed amount of time even if frame rate varies.
+        </li>
+        <li>
+            <strong>Display UTC time on main screen:</strong> Shows the Session panel's current time and estimated sequence completion time in UTC.
+            When this option is disabled, these values use the local computer time instead.
+        </li>
+    </ul>
+    <p>
+        Delayed-start and frame/time-limit mode can be changed only when no sequence is active. This avoids changing the meaning of the running sequence
+        in the middle of a capture session.
+    </p>
+
+    <h3 id="observed-target">Observed Target and Cloud Monitoring</h3>
+    <p>
+        The Sun and Moon dim naturally as they approach the horizon. Choose the body shown in the camera image
+        (<strong>Sun</strong> or <strong>Moon</strong>, also when imaging only part of its surface) so the cloud
+        detector can tell that from clouds or haze; <strong>Planet or other</strong>, the default, is for a planet or any other target. Find
+        &amp; Track shows the choice on its own line below the Sky readout (<em>Sun</em>, <em>Moon</em> or
+        <em>Planet or other</em>; see <a href="Find_Tool.htm#observed-target-line">Observed target</a> in the Find &amp; Track
+        help), and changing it starts a new evaluation. This setting does not move the mount or change its tracking.
+    </p>
+    <p class="framed">
+        <strong>When selecting Sun or Moon, verify the observer location and time zone in
+        <a href="DynamicTracking.htm#observer-location">Dynamic Target Tracking</a>, and check the PC's date,
+        time and time-zone settings.</strong> HelioMaker uses the observer location and current UTC time to
+        estimate the target's altitude and expected atmospheric dimming. Incorrect location or time information
+        can make normal dimming appear to be cloud or haze.
+    </p>
+
+    <h3>Delayed Sequence Start</h3>
+    <p>
+        When delayed start is enabled, the <strong>Start Sequence</strong> control lets you either start immediately or arm the sequence for a specified time.
+        Delayed start can be armed only after PHD2 guiding has already started; if guiding is not active, HelioMaker shows a message explaining that guiding
+        must begin before the delayed sequence can be scheduled.
+    </p>
+    <img src="Images/delayed_seq1.jpg" alt="Start Sequence button with delayed start option" class="fig fig-75">
+    <img src="Images/delayed_seq2.jpg" alt="Delayed start requires active PHD2 guiding" class="fig fig-75">
+    <img src="Images/delayed_seq3.jpg" alt="Delayed sequence armed while PHD2 guiding is active" class="fig fig-75">
+
+    <h3>Capture Time Limit</h3>
+    <p>
+        In time-limit mode, the main screen shows a time-limit field instead of the frame-count field. If the selected capture cycle becomes long enough
+        to allow noticeable target drift, consider enabling <strong>Continuous Guiding</strong> on the main screen.
+    </p>
+    <img src="Images/capture_seconds.jpg" alt="Capture Time Limit" class="fig fig-75">
+
+    <h2 id="autofocus">Autofocus</h2>
+    <p>
+        HelioMaker can periodically pause the active sequence and ask SharpCap Pro to run its autofocus routine between capture cycles.
+        This helps recover focus drift caused by temperature changes, seeing changes, or long sessions.
+        This setting does not affect eclipse imaging; eclipse refocusing is controlled by the eclipse plan.
+    </p>
+    <p>
+        Before enabling this feature, perform a one-time focusing run in SharpCap using your preferred focusing method. For example,
+        one reported workflow is to open <strong>Focus Assistant</strong> in SharpCap Pro, select <strong>Fourier Detail Detection</strong>
+        while HelioMaker is guiding on solar surface features, select a small area of interest containing a prominent feature, and run a
+        focus scan. After that focusing run completes successfully, HelioMaker can be configured to run automatic refocusing at the
+        specified intervals.
+    </p>
+    <p>
+        This initial SharpCap focusing run is required because SharpCap needs previous autofocus information before it can perform a
+        later refocus operation. Without this step, automatic refocusing will fail and will not have any effect.
+    </p>
+    <ul>
+        <li><strong>Run SharpCap refocus periodically:</strong> Enables automatic SharpCap refocusing during a running sequence.</li>
+        <li><strong>Repeat every:</strong> Minimum interval between automatic refocus attempts.</li>
+        <li><strong>Timeout:</strong> Maximum time HelioMaker will wait for SharpCap to complete the autofocus command.</li>
+        <li>
+            <strong>Snooze on manual resume:</strong> If you press <strong>Resume Sequence</strong> while refocusing is active,
+            HelioMaker cancels the current refocus attempt and delays the next eligible autofocus run by this many minutes.
+        </li>
+    </ul>
+    <p>
+        The Session area shows the result of the most recent refocus run. A failed or canceled refocus does not by itself end the sequence;
+        HelioMaker resumes according to the current sequence and guiding recovery settings.
+    </p>
+
+    <h2 id="cloud-detection">Cloud Detection and Pause Handling</h2>
+    <p>
+        HelioMaker can pause a running sequence while it cannot detect the target, for example because of clouds or an
+        obstruction, and resume it once detection is steady again.
+    </p>
+    <ul>
+        <li><strong>Pause sequence while no object is detected:</strong> turns the automatic pause and resume on.</li>
+        <li><strong>Pause after no detection:</strong> how long detection must be lost before the sequence pauses.</li>
+        <li><strong>Resume after detection:</strong> how long detection must be steady again before it resumes.</li>
+        <li><strong>Cloud sensitivity:</strong> how readily the Sky readout in Find &amp; Track reports a degraded view.
+            It changes only the readout.</li>
+    </ul>
+    <p>
+        The pause is armed only after the target has been detected once during the sequence, so a slow start does not
+        pause it. In this version the Sky readout itself does not pause or resume a sequence, with one exception: a
+        pause while the readout shows <strong>No usable image</strong> lasts until it shows <strong>Clear</strong>.
+        Resuming by hand always resumes at once.
+    </p>
+    <p>
+        The Sky readout works in Full Disk/Crescent, Planetary and Surface Features detection, and is off during eclipse
+        runs and SHG scans. <a href="Find_Tool.htm#sky-conditions">Sky conditions</a> in the Find &amp; Track help
+        describes every reading. Set the <a href="#observed-target"><strong>Observed target</strong></a> so it can tell
+        the normal dimming of the Sun or Moon near the horizon from clouds.
+    </p>
+
+    <h2>Paused Sequence Behavior</h2>
+    <ul>
+        <li>
+            <strong>Pause guiding when sequence is paused:</strong> When enabled, HelioMaker pauses PHD2 while the sequence is paused.
+            When disabled, PHD2 keeps guiding even though HelioMaker is holding capture cycles.
+        </li>
+        <li>
+            <strong>Guiding recovery timeout:</strong> After resuming from a paused sequence, HelioMaker waits locally for guiding to settle
+            before starting the next capture cycle. This gives PHD2 time to return the target toward the lock position.
+        </li>
+        <li>
+            <strong>Refocusing recovery timeout:</strong> Same idea as guiding recovery, but used after a SharpCap refocus run completes and the sequence resumes.
+        </li>
+    </ul>
+    <p>
+        During guiding recovery, HelioMaker shows settling-style status information, including lock distance and timing. If detection becomes unstable again,
+        the detection-loss pause can still pause the sequence during this recovery period.
+    </p>
+
+    <h2>Reset to Defaults</h2>
+    <p>
+        The <strong>Reset to defaults</strong> button restores Sequence Options to their defaults. Options that cannot be changed while a sequence is active
+        remain unchanged in that state.
+    </p>
+
+    <p><a href="MainScreen.htm#sequence-params">Back to Sequence Parameters</a></p>
+</body>
+</html>

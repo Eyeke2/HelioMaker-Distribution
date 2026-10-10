@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulation options | HelioMaker Lunar Eclipse Guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="top" aria-label="Guide navigation"><a href="index.html">← Lunar eclipse guide index</a><span>9 · Simulation options</span></nav>
+<main id="main"><header><h1>Simulation options</h1><p class="lead">Practise the sequence with a simulated eclipse clock and choose which parts of the rig to exercise.</p></header>
+
+<h2>Open a rehearsal</h2>
+<p>Select an event and click <span class="ui">Eclipse plan rehearsal...</span>. Review the plan version. You can rehearse a draft before approving it for live capture.</p>
+<div class="table-scroll"><table class="t"><thead><tr><th scope="col">Imaging source</th><th scope="col">What happens</th></tr></thead><tbody><tr><td>Eclipse simulator</td><td>Renders lunar images and writes them without a physical SharpCap camera. Useful for reviewing the sequence and output structure.</td></tr><tr><td>SharpCap camera</td><td>Uses a simulated eclipse clock with the real imaging camera. Camera operations and image files are real.</td></tr><tr><td>None (timing only)</td><td>Exercises timing without writing science image files.</td></tr></tbody></table></div>
+<figure class="shot" id="simulation-preflight"><img src="img/simulation-preflight.png" alt="Rehearsal preflight with Compress time, start lead and phase, Imaging source, and Phases to run."><figcaption>Rehearsal preflight with Compress time, start lead and phase, Imaging source, and Phases to run.</figcaption></figure>
+<p>The <span class="ui">Eclipse simulator</span> times each set with the camera's overhead for the selected capture mode, Still or Live, as the <span class="ui">System benchmark</span> measured it, or a conservative estimate before the benchmark is run, so set durations follow those the planner shows. A rehearsal is refused, as a live start is, while another eclipse run or a capture sequence, an SHG scan or a PHD2 calibration uses the rig.</p>
+<h2>Choose time and phases</h2>
+<p>Set the lead as hours:minutes:seconds before the selected starting phase. Choose the phases to run and use <span class="ui">Compress time</span> for a quicker walkthrough. Rehearse with realistic timing when judging long exposures, camera overhead and guiding opportunities.</p>
+<p>The planner’s visual preview is useful for inspecting geometry. Use an actual rehearsal to exercise scheduling and output. Uncheck <span class="ui">Show umbra</span> for the view with the Moon held still.</p>
+<figure class="shot" id="simulation-moon-view"><img src="img/simulation-moon-view.png" alt="The lunar preview with Show umbra unchecked, holding the Moon still while the shadow crosses it."><figcaption>The lunar preview with Show umbra unchecked, holding the Moon still while the shadow crosses it.</figcaption></figure>
+<h2>Simulated guiding frames</h2>
+<p>With shared-camera guiding enabled, the rehearsal can offer <span class="ui">Simulated guiding frames</span>. This feeds rendered lunar frames to PHD2 to exercise lunar-disk detection without the sky. It is independent of the science imaging source. PHD2 must be linked to test this path.</p>
+<aside class="callout warn"><span class="lbl">Know what the rehearsal controls</span>A SharpCap-camera rehearsal operates physical equipment. Simulated guiding frames also exercise PHD2. Check the selected source and guiding settings before starting; use the internal simulator with guiding off for a rehearsal without physical guide commands.</aside>
+<p>In the console, <strong>Ctrl+click Freeze</strong> pauses the simulation clock; Ctrl+click Unfreeze resumes it. This control is absent from a live eclipse run. After rehearsing, review generated images and the final summary.</p>
+</main>
+<nav class="foot" aria-label="Chapter navigation"><a href="focusing.html">← Focusing</a><a href="preflight.html">Preflight checklist →</a></nav>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+</div>
+</body>
+</html>

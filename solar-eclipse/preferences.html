@@ -4,59 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plan Preferences | HelioMaker Eclipse Guide</title>
-<style>
-  :root{
-    --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef2f7; --ink:#1b2430; --muted:#5a6673;
-    --line:#dde3ea; --accent:#0b6fb8; --accent-ink:#075186;
-    --safe:#1e874b; --safe-bg:#e6f6ec; --safe-line:#bfe5cd;
-    --warn:#b5730b; --warn-bg:#fdf3e0; --warn-line:#f0d9a8;
-    --danger:#c02626; --danger-bg:#fdeaea; --danger-line:#f3c4c4;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#0f1216; --panel:#171c22; --panel2:#1d242c; --ink:#e6ebf0; --muted:#9aa7b4;
-      --line:#2a333d; --accent:#7cc4ff; --accent-ink:#a9d7ff;
-      --safe:#7bd88f; --safe-bg:#14261a; --safe-line:#2f5138;
-      --warn:#ffcf6b; --warn-bg:#2a2213; --warn-line:#544526;
-      --danger:#ff8a8a; --danger-bg:#2a1515; --danger-line:#5a2b2b;
-    }
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-  .wrap{max-width:820px;margin:0 auto;padding:22px 22px 72px;}
-  a{color:var(--accent);text-decoration:none;} a:hover{text-decoration:underline;}
-  nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
-    color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
-  nav.top a{color:var(--muted);}
-  h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
-  .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
-  h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
-    margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);}
-  h3{font-size:17px;margin:22px 0 6px;}
-  p{margin:0 0 12px;} ul,ol{margin:0 0 14px;padding-left:22px;} li{margin:0 0 6px;}
-  code{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
-    font:13.5px/1.4 SFMono-Regular,Consolas,monospace;}
-  .ui{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:14.5px;white-space:nowrap;}
-  figure.shot{margin:18px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);overflow:hidden;}
-  figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;}
-  figure.shot figcaption{border-top:1px solid var(--line);padding:7px 12px;font-size:12.5px;color:var(--muted);}
-  .callout{border-radius:10px;padding:12px 15px;margin:16px 0;border:1px solid var(--line);
-    border-left:4px solid var(--accent);background:var(--panel);}
-  .callout.safe{border-left-color:var(--safe);background:var(--safe-bg);border-color:var(--safe-line);}
-  .callout.warn{border-left-color:var(--warn);background:var(--warn-bg);border-color:var(--warn-line);}
-  .callout .lbl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
-  .callout.safe .lbl{color:var(--safe);} .callout.warn .lbl{color:var(--warn);}
-  dl.f{margin:10px 0;} dl.f dt{font-weight:600;margin-top:10px;} dl.f dd{margin:2px 0 0;color:var(--ink);}
-  dl.f dd .m{color:var(--muted);}
-  nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
-  @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
-    .callout{break-inside:avoid;}nav.top,nav.foot{display:none;}}
-</style>
+<link rel="stylesheet" href="guide.css">
 </head>
-<body>
+<body class="page-preferences">
 <div class="wrap">
-<nav class="top"><a href="index.html">← Eclipse guide index</a><span>5 · Plan preferences</span></nav>
+<nav class="top"><a href="index.html">← Solar eclipse guide index</a><span>5 · Plan preferences</span></nav>
 
 <h1>Plan preferences</h1>
 <p class="lead">The settings for the whole plan, including camera, exposure model, guiding, refocus and cues. Open them with
@@ -170,10 +122,10 @@ setting to estimate or tune.</p>
   Complete these settings before opening preflight. HelioMaker applies the plan's sequence controlled camera
   settings to SharpCap during preflight and again when the run is armed. Do not treat manual SharpCap changes as
   edits to the eclipse plan; they can be detected as a mismatch and replaced by the saved values.
-  <p style="margin-top:8px;"><strong>The selected SharpCap camera is part of the saved plan.</strong> Preflight
+  <p class="mt-8"><strong>The selected SharpCap camera is part of the saved plan.</strong> Preflight
   and final arming block if the camera configured in HelioMaker, the plan camera and the camera currently open in
   SharpCap do not agree. This camera identity check cannot be bypassed with an ignore-warnings choice.</p>
-  <p style="margin-top:8px;">If physical testing requires a change, enter it here or in the
+  <p class="mt-8">If physical testing requires a change, enter it here or in the
   <a href="phase-editor.html">Phase editor</a>, save the revised plan, repeat the System benchmark test when the
   camera format, colour space, binning or capture area changed, and rehearse again. Avoid last minute tuning
   after preflight begins.</p>
@@ -219,7 +171,7 @@ setting to estimate or tune.</p>
 <h2 id="imaging-base">Imaging base: the exposure model</h2>
 <p>HelioMaker anchors the whole exposure plan to one filtered reference exposure and gain, together with the
 solar filter density. It combines these physical inputs with
-<a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank">Fred Espenak's eclipse exposure
+<a href="https://www.mreclipse.com/SEphoto/SEphoto.html" target="_blank" rel="noopener">Fred Espenak's eclipse exposure
 recommendations</a> to derive the starting recipe for every phase. These are the most important imaging
 parameters in the plan. Set:</p>
 <figure class="shot">
@@ -263,7 +215,7 @@ parameters in the plan. Set:</p>
     partial ingress and egress, and on Apply it also sets the pre-eclipse and post-eclipse intervals to
     match, so the whole outer eclipse is paced one way.</span></dd>
   <dt><span class="ui">Annularity interval (s):</span> / <span class="ui">Central interval (s):</span>
-    <span style="color:var(--muted);">(annular and partial eclipses)</span></dt>
+    <span class="muted">(annular and partial eclipses)</span></dt>
   <dd><span class="m">The time between shots through annularity, or through the central phase of a partial
     eclipse. Unlike totality, these phases are long and their brightness barely changes, so shooting flat out
     would fill the disk with thousands of near-identical frames for no gain. Pick a spacing you actually want
@@ -272,7 +224,7 @@ parameters in the plan. Set:</p>
     phase is, rather than how often it shoots, select its row in the
     <a href="phase-editor.html">Phase editor</a> and use <span class="ui">Start before (s):</span> and
     <span class="ui">End after (s):</span> there.</span></dd>
-  <dt><span class="ui">Totality filter margin (s):</span> <span style="color:var(--muted);">(total eclipses)</span></dt>
+  <dt><span class="ui">Totality filter margin (s):</span> <span class="muted">(total eclipses)</span></dt>
   <dd><span class="m"><strong>Safe mode only.</strong> This parameter creates a deliberate buffer at both ends
     of totality. HelioMaker sets filter removal to C2 plus the selected margin and filter replacement to C3 minus
     the same margin. It does not change the calculated C2 or C3 contact times; it shortens the interval during

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHD2 Calibration and Troubleshooting</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>PHD2 Calibration and Troubleshooting</h1>
+
+    <p>
+        Proper calibration in PHD2 is essential to ensure accurate guiding and optimal performance during imaging sessions.
+        Before starting the calibration process, make sure to configure HelioMaker detection and PHD2 guiding settings.
+        It is highly recommended to verify that object detection is stable over a few guiding samples before initiating calibration.
+        When calibrating on the Moon, it is also strongly recommended to enable <a href="DynamicTracking.htm">Dynamic Target Tracking</a> first,
+        as the correct dynamic lunar rate can substantially reduce drift and improve calibration quality. If the mount is properly polar aligned, this can result in
+        practically no orthogonality error during PHD2 calibration on the Moon. Dynamic tracking may also be useful for solar imaging, although the improvement is
+        usually smaller than for the Moon.
+        For detailed information and examples for setting detection parameters please refer to
+        <a href="Find_Tool.htm">Find &amp; Track</a>. The same detector interface is used with a shared camera
+        and with a supported physical PHD2 camera. For standalone and fallback physical-camera behavior, see
+        <a href="Find_Tool_PHD2.htm">Find &amp; Track with a Physical PHD2 Camera</a>.
+    </p>
+
+    <h2>Preparing for Calibration</h2>
+    <p>
+        Several factors influence the success and accuracy of PHD2 calibration:
+    </p>
+    <ul>
+        <li>
+            <strong>Polar Alignment:</strong> Ensure your mount is accurately polar-aligned to minimize drift and improve guiding efficiency.
+            <p>
+                For detailed steps on how to align your mount during daytime imaging, refer to the
+                <a href="DaytimePolarAlignment.htm">Daytime Polar Alignment Using PHD2</a> chapter.
+            </p>
+            <p>
+                For lunar calibration in particular, combining good polar alignment with Dynamic Target Tracking can significantly improve calibration stability
+                and may result in practically no orthogonality error.
+            </p>
+        </li>
+
+        <li>
+            <p>
+                <strong>Mount Mechanical Condition:</strong> Proper maintenance of your mount, such as minimizing backlash, can significantly
+                enhance calibration accuracy and overall guiding performance.
+            </p>
+        </li>
+    </ul>
+
+    <h2>Using Calibration Tools</h2>
+    <p>
+        PHD2 provides several tools to assist with calibration and guiding optimization:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Calibration Assistant:</strong> While this tool helps evaluate calibration settings and provides recommendations, it is
+                limited for daytime use because calibration must be performed "here." For more details, see the
+                <a href="https://openphdguiding.org/man-dev/Tools.htm" target="_blank" rel="noopener">PHD2 Tools documentation</a>.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>HelioMaker Calibration:</strong> When performing calibration via HelioMaker, either using the <em>Calibrate</em> button
+                or as part of a sequence, HelioMaker automatically computes the optimum calibration step size and number of steps.
+                The <a href="Phd2CalibrationPreflight.htm">PHD2 Calibration Pre-flight Dialog</a> is shown before calibration starts, allowing
+                HelioMaker to use accurate solar or lunar ephemeris declination when calibrating on the Sun or Moon.
+                If you choose to calibrate using PHD2's internal tools, you will need to set the calibration parameters manually.
+            </p>
+        </li>
+    </ul>
+
+    <h2>Post-Calibration Optimization</h2>
+    <p>
+        After completing calibration, you can optionally use PHD2's <strong>Guiding Assistant (GA)</strong> to measure guiding performance
+        and suggest improved guiding settings, such as minimum and maximum motion thresholds. Note the following:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Exposure Time:</strong> When accepting GA's suggestions for exposure time, apply the recommended value to the
+                <em>Exposure + Time Lapse</em> setting rather than just the exposure. The exposure setting itself should be determined based
+                on image quality considerations for solar, lunar, and planetary imaging.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Time Lapse:</strong> Adjust the <em>Time Lapse</em> parameter in PHD2's Planetary and Solar Guiding Tool as needed
+                to achieve the desired guiding frequency (or sampling period). Note that HelioMaker enforces a minimum guiding interval
+                (the sum of exposure and time lapse values in milliseconds), which can be configured in its PHD2 Configuration settings
+                (accessible via the PHD2 gear button).
+            </p>
+
+        </li>
+    </ul>
+
+    <h2 id="calibration-graph">Understanding the PHD2 Calibration Graph</h2>
+    <p>
+        The PHD2 calibration graph shows how the guide target moved while PHD2 sent calibration pulses to the mount.
+        In HelioMaker it is shown in the Session area after valid calibration data is available; until then the plot area may appear empty or dark.
+    </p>
+    <p>
+        The RA and Dec lines show how the mount axes map onto the camera sensor's X/Y directions. These lines should be roughly perpendicular,
+        but their overall angle on the screen is not important. The calibration points will rarely be perfectly spaced or perfectly aligned.
+        What matters is that the paths are reasonably straight and do not show major curves, sharp turns, or reversals.
+    </p>
+    <p>
+        Solid points represent the west and north calibration moves used to calculate the RA and Dec guide rates. Hollow points show the return
+        paths for the east and south moves. These return paths are useful for spotting seeing-related fluctuation and mechanical backlash. If the
+        return path looks delayed, offset, or irregular, the mount may have backlash or inconsistent response. If PHD2 is configured to use fast
+        recentering, the return paths may contain fewer points.
+    </p>
+    <p>
+        Good polar alignment reduces drift during calibration and helps the RA and Dec axes appear clean and orthogonal. A mechanically healthy,
+        well-balanced mount with secure connections and minimal backlash will usually produce a cleaner calibration graph and more reliable guiding
+        corrections.
+    </p>
+    <p>
+        Calibration quality also depends on an accurate focal length setting in HelioMaker. When the focal length is set correctly, HelioMaker can
+        better estimate the calibration step size and the expected number of calibration points PHD2 should use. An incorrect focal length can make
+        the calibration moves too small or too large, causing PHD2 to complete calibration with too many or too few steps, which can make the
+        resulting calibration graph less reliable.
+    </p>
+    <img src="Images/cal_graph.jpg" alt="PHD2 calibration graph">
+
+    <h2 id="troubleshooting-calibration-issues">Troubleshooting Calibration Issues</h2>
+    <p>
+        If calibration fails or guiding performance is suboptimal, consider the following:
+    </p>
+    <ul>
+        <li>
+            Ensure proper mount leveling, polar alignment, and verify that the target is detectable with stable
+            and consistent settings in HelioMaker's Find &amp; Track tool.
+            Accurate mount leveling helps minimize tracking errors, while polar alignment ensures the mount's axis is aligned with the Earth's
+            rotational axis, reducing drift over time. Before calibration, confirm that the target is clearly visible and consistently detected
+            using the appropriate guiding mode, such as Full Disk/Crescent or Surface Features. Adjust camera
+            exposure and gain at the camera source and tune detection sensitivity in Find &amp; Track. If
+            HelioMaker reported that the physical-camera detection link is unavailable, use PHD2's local detector
+            controls for that fallback session.
+            <p></p>
+        </li>
+
+        <li>
+            Inspect the mount for mechanical issues, such as excessive backlash, and address them before recalibrating. Backlash occurs when there is
+            a delay in the mount's response to guiding corrections, often caused by looseness or gaps in the gears or drivetrain. Excessive backlash
+            can lead to inaccurate guiding and calibration results. Check the mount's gear tension and adjust it according to the manufacturer's recommendations.
+            Lubricate moving parts if necessary and ensure all connections, including the dovetail saddle and counterweights, are secure. Additionally,
+            verify that the mount is properly balanced in both RA and Dec axes to reduce strain on the motors and improve overall performance.
+            <p></p>
+        </li>
+
+        <li>
+            <strong>Avoid Calibration near the mount flip window:</strong>
+            <em>Do not</em> start calibration so close to the meridian that a pier flip could be triggered mid-calibration, leave a safety buffer
+            (for example 20-40 minutes, roughly 5-10&deg; east or west).
+            <p></p>
+        </li>
+
+        <li>
+            In case guiding stops working after a meridian flip and the mount drives the target out of its place, consider toggling
+            the PHD2's <strong>Reverse Dec output after meridian flip</strong> checkbox in its Advanced Settings (accessible via the
+            "brain" button). This setting tells PHD2 how to adjust its guiding corrections based on the mount's behavior after a
+            meridian flip. Some mounts automatically reverse their declination motor behavior, while others require PHD2 to handle
+            the reversal. Experiment with this setting to determine the correct configuration for your mount.
+            <p></p>
+        </li>
+
+        <li>
+            Review PHD2's calibration graph and adjust calibration step size or guiding parameters as needed. The calibration graph provides
+            a visual representation of how the mount responds to guiding commands along the RA and Dec axes. Look for a clean, orthogonal pattern
+            with evenly spaced calibration steps. If the steps are too short or too long, it may indicate that the calibration step size is
+            not optimized for your setup. In such cases:
+            <ul>
+                <li>
+                    <strong>Step Size:</strong> Adjust the calibration step size in PHD2's Advanced Settings. For long focal lengths or slow mounts,
+                    increase the step size to ensure the mount moves a measurable distance during calibration. For shorter focal lengths or faster
+                    mounts, decrease the step size to avoid excessive movement.
+                </li>
+                <li>
+                    <strong>Orthogonality:</strong> Ensure that the RA and Dec axes are nearly perpendicular in the calibration graph. Significant
+                    deviations from 90 degrees may indicate polar alignment issues or mechanical problems, such as differential flexure or mount
+                    imbalance, which should be addressed before recalibrating.
+                </li>
+                <li>
+                    <strong>Number of Steps:</strong> Aim for at least 12 well-defined steps in each direction. If the number of steps is too few,
+                    consider increasing the calibration step size or the exposure duration to allow sufficient movement during each step.
+                </li>
+            </ul>
+            After making these adjustments, repeat the calibration process and verify the updated graph for improvements. A well-tuned calibration
+            ensures that guiding corrections are applied effectively, minimizing drift and optimizing tracking accuracy during your imaging session.
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet and Asteroid Tracking with Ephemeris Planner and Dynamic Tracking - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Comet and Asteroid Tracking with Ephemeris Planner and Dynamic Tracking</h1>
+
+    <p>
+        The <strong>Ephemeris Planner</strong> creates target-position data for natural solar-system minor bodies, including comets, asteroids, planets and moons.
+        A generated plan can later be loaded into <strong>Dynamic Target Tracking</strong> so HelioMaker can slew, center, and track the selected object using custom mount
+        rates when available, or the fully automated PHD2 comet-tracking fallback when custom mount rates are not available.
+    </p>
+    <img src="Images/ephemeris_tool.jpg" alt="Ephemeris Planner" class="fig fig-75">
+
+    <h2>Opening the Tool</h2>
+    <p>
+        The planner can be opened in either of these ways:
+    </p>
+    <ul>
+        <li>Open the <strong>Tools</strong> menu and select <strong>Ephemeris Planner</strong>, or press <strong>Ctrl-E</strong>.</li>
+        <li>Open the <a href="DynamicTracking.htm#dynamic-target-tracking">Dynamic Target Tracking (DTT)</a> dialog and click the Ephemeris Planner button next to the target selector.</li>
+    </ul>
+    <p>
+        The planner is available when HelioMaker's ephemeris module is ready and an observer location can be determined. If PHD2 is connected, HelioMaker checks
+        that the custom PHD2 version is <strong>v2.6.14-solar.3.3</strong> or later. If PHD2 is not connected, the planner can still run by using a custom observer location or
+        a cached mount site, and HelioMaker will ask the user to confirm that location before continuing. If no observer location is available, connect PHD2 with
+        a mount that reports its site, or enter a custom location in DTT first.
+    </p>
+
+    <h2>Object Selection Helpers</h2>
+    <p>
+        The <strong>Object name</strong> field accepts a typed object name or designation, and also keeps recently used objects for quicker reuse.
+        The comet button opens the Comet Observation Database (COBS), which can help identify active comets and their designations. The link button opens
+        a set of useful minor-body resources, including Minor Planet Center and ESA NEO pages for finding asteroid, comet, and minor-planet information.
+    </p>
+    <img src="Images/planner_object.jpg" alt="Ephemeris Planner object name controls" class="fig fig-75">
+
+    <h2>Request Settings</h2>
+    <ul>
+        <li><strong>Observer:</strong> Shows the observing location used for the request, including latitude, longitude, elevation, and time-zone offset.</li>
+        <li><strong>Object name:</strong> Select or enter the target object. Examples include comet designations, asteroid names, planets, moons, and known minor-body names.</li>
+        <li><strong>Use UTC time:</strong> Switches the request between local-time entry and UTC-time entry.</li>
+        <li><strong>Start:</strong> Sets the start date and time for the plan. The <strong>Now</strong> button can use the current time.</li>
+        <li><strong>Duration:</strong> Selects the time window for which ephemeris data should be generated.</li>
+        <li><strong>Planning mode:</strong> Chooses the cadence and precision used for the generated plan. Finer modes use more request points.</li>
+        <li><strong>Add or update local model for this object:</strong> Downloads and stores a local ephemeris model for later reuse when available.</li>
+        <li><strong>Request object magnitude data:</strong> Requests magnitude information when supported by the data source.</li>
+    </ul>
+
+    <h2>Local Object Database</h2>
+    <p>
+        The <strong>Add or update local model for this object</strong> option is useful when planning for an observing site where internet access may not
+        be available. When enabled, HelioMaker downloads a local ephemeris model for the selected object and stores it in the local object database. Later,
+        the planner can update or create plans for that object locally, without needing to contact JPL Horizons for the position data again.
+    </p>
+    <p>
+        This workflow is useful for offsite preparation: create or update the local model while internet access is available, then use the stored object
+        model later at the observing location to generate a plan for the actual observing time and site. The main drawback is magnitude data. Object
+        magnitude information still requires an online JPL Horizons request, so locally generated plans may not include magnitude values unless that data
+        was requested and stored earlier.
+    </p>
+
+    <h2>JPL Horizons Requests</h2>
+    <p>
+        Some ephemeris plans require internet access and use the JPL Horizons service. Before sending such a request, HelioMaker shows a confirmation dialog
+        with the target, local time, UTC time, duration, cadence, sample count, and request-point cost.
+    </p>
+    <p>
+        The planner displays the remaining request points for the current UTC day. Choose targets and time windows deliberately to respect the fair-use policy
+        of the JPL Horizons service.
+    </p>
+    <p>
+        Request points are a daily limit used to avoid accidental overuse of the external JPL Horizons service. A plan consumes points according to the
+        number of requested samples, and some local-model updates consume a fixed point cost. Shorter time windows and coarser planning modes generally use
+        fewer points. The remaining point count is shown in the request area so the user can decide whether to create the plan now, shorten the request, or
+        wait until the next UTC day.
+    </p>
+
+    <h2>Planned Objects</h2>
+    <p>
+        The <strong>Planned Objects</strong> table lists generated or available plans. The table includes the object name, object type, local start and end time,
+        duration, planning mode, status, and observer location. A status such as <strong>Ready</strong> indicates that the plan can be selected and loaded.
+    </p>
+    <p>
+        A plan can be loaded into DTT only when the current time is inside the plan's time window and the planned object is above the configured minimum
+        altitude. This altitude limit is set in <a href="advanced_settings.htm">Advanced Settings</a> as <strong>Minimum altitude for imaging and observations</strong>.
+    </p>
+    <ul>
+        <li><strong>Create/Update Plan:</strong> Creates a new plan or updates an existing plan for the selected object and time window.</li>
+        <li><strong>Load Selected Plan:</strong> Loads the selected ready plan into Dynamic Target Tracking.</li>
+        <li><strong>Refresh:</strong> Reloads the list and status of available plans.</li>
+        <li><strong>Remove:</strong> Removes the selected plan.</li>
+        <li><strong>Clean Expired Plans:</strong> Removes expired plan data that is no longer useful.</li>
+    </ul>
+
+    <h2>Altitude Graph</h2>
+    <p>
+        The graph shows the planned object's altitude over the selected time window. The optional <strong>Show Moon</strong> checkbox overlays the Moon so
+        the user can judge possible interference or observing context. The graph also helps visualize horizon crossing, daylight/twilight/night periods,
+        and the best time window for observing or capture.
+    </p>
+
+    <h2>Common Planner Workflows</h2>
+    <ul>
+        <li>
+            <strong>Prepare a minor-body session:</strong> Use the object helpers to find the target designation, choose the observer location and time
+            window, create the plan, review the altitude graph, then load the ready plan into DTT.
+        </li>
+        <li>
+            <strong>Plan a comet, asteroid, or minor-body capture:</strong> Look up the object in COBS or another linked resource, create the plan, and use the
+            planned object's altitude and optional Moon overlay to choose a practical capture window. Once the plan is loaded into Dynamic Target Tracking,
+            the target is centered in the camera view, and Dynamic Target Tracking is active, the user can continue with an existing imaging workflow while
+            PHD2 guides on the star field. HelioMaker updates the object drift rates in real time in the background, with precision based on the selected
+            Ephemeris Planner cadence, such as 10 minutes, 2 minutes, or 1 minute. For example, NINA, SGP, or another imaging tool can take a series of
+            exposures while HelioMaker keeps the PHD2 comet/minor-body drift rate updated. In this workflow, HelioMaker does not need to be connected to
+            SharpCap when PHD2 is using a physical guiding camera and the user prefers another imaging application.
+        </li>
+        <li>
+            <strong>Reuse a cached plan:</strong> Select an existing ready plan from <strong>Planned Objects</strong> and load it into DTT when the plan
+            still covers the current observing session.
+        </li>
+        <li>
+            <strong>Refresh stale planning data:</strong> Create or update a plan when the previous plan expired, was generated for a different observer
+            location, or does not cover the intended session time.
+        </li>
+    </ul>
+
+    <h2>Using a Plan in <a href="DynamicTracking.htm#dynamic-target-tracking">DTT</a></h2>
+    <ol>
+        <li>Open the Ephemeris Planner from the Tools menu or from the Dynamic Target Tracking dialog.</li>
+        <li>Select the observer location and target object.</li>
+        <li>Choose the start time, duration, and planning mode.</li>
+        <li>Create or update the plan and wait until its status is ready.</li>
+        <li>Select the plan and click <strong>Load Selected Plan</strong> while the current time is inside the plan window and the target is above the configured minimum altitude.</li>
+        <li>Return to Dynamic Target Tracking, verify the target and rates, and use <strong>Slew To Target</strong> or manual framing as needed.</li>
+        <li>Start Dynamic Target Tracking after confirming mount compatibility and safe operation.</li>
+    </ol>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li>If the request fails, check internet access and confirm that the target designation is valid.</li>
+        <li>If the target is below the horizon for the selected window, choose a better start time or duration.</li>
+        <li>If the plan is expired or stale, create a fresh plan for the current observing session.</li>
+        <li>If centering or tracking is inaccurate, recheck observer location, time zone, mount sync, and system time.</li>
+    </ul>
+
+    <p><a href="DynamicTracking.htm">Back to Dynamic Target Tracking</a></p>
+</body>
+</html>

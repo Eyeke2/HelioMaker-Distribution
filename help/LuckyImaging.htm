@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Imaging / Live Stack - HelioMaker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+
+    <h1>Lucky Imaging / Live Stack</h1>
+
+    <p>
+        HelioMaker can be used for deep sky lucky imaging together with SharpCap Pro's
+        <a href="https://www.sharpcap.co.uk/sharpcap/features/live-stacking" target="_blank" rel="noopener">Live Stacking</a> feature.
+        In this workflow, PHD2 performs star guiding while SharpCap Pro captures and stacks short exposures.
+        HelioMaker helps coordinate the connection between SharpCap Pro and PHD2 and, when using a shared camera,
+        provides the <strong>Find &amp; Track</strong> interface used to switch into <strong>Star Mode</strong>.
+    </p>
+
+    <h2>Using a Shared Camera</h2>
+    <p>
+        When PHD2 is configured with the <strong>Virtual Planetary Camera</strong>, both SharpCap Pro and PHD2
+        operate on the same camera stream. In this setup, open
+        <a href="Find_Tool.htm#lucky-imaging"><strong>Find &amp; Track</strong></a>
+        and select <strong>Star Mode</strong>. In Star Mode, HelioMaker lets PHD2 use its built-in star detection
+        algorithms, while SharpCap Pro continues handling the live capture stream.
+    </p>
+    <p>
+        Lucky imaging, also referred to as <strong>Live Stack</strong> in SharpCap Pro, works best with short exposures
+        that align with guiding frame rates of about one frame every few seconds (typically 1-3 seconds). Make sure to set
+        the exposure time in SharpCap Pro and adjust PHD2's minimum guiding period in HelioMaker to match the desired timing.
+    </p>
+    <img src="Images/FindStarMode.jpg" alt="Find &amp; Track Star Mode UI with star icon button and disabled sensitivity slider">
+    <div class="figure-caption">Star Mode example screenshot.</div>
+
+    <h2>Using a Dedicated PHD2 Physical Camera</h2>
+    <p>
+        Lucky imaging is also possible when PHD2 uses its own dedicated guiding camera. In that case, SharpCap Pro's Live Stack
+        feature can work with PHD2 guiding alone, without requiring HelioMaker to provide the shared camera stream. HelioMaker's
+        <a href="Find_Tool_PHD2.htm#lucky-imaging"><strong>Find &amp; Track with a Physical PHD2 Camera</strong></a>
+        chapter explains the related Star Mode and physical-camera behavior.
+    </p>
+
+    <h2>SharpCap Pro and PHD2 Connection Settings</h2>
+    <p>
+        Before using Lucky Imaging in SharpCap Pro with HelioMaker and PHD2, make sure to configure the correct connection settings.
+        In SharpCap Pro's <em>Guiding</em> tab, select PHD2 as the guiding interface and set the port number to
+        <code>4400 + (PHD2 instance number - 1)</code>. For example:
+    </p>
+    <ul>
+        <li>PHD2 Instance number 1 -> Port: 4400 (SharpCap default)</li>
+        <li>PHD2 Instance number 2 -> Port: 4401</li>
+    </ul>
+    <p>
+        This ensures SharpCap Pro and PHD2 communicate on the same port HelioMaker uses for the shared camera stream or the selected PHD2 instance.
+        Once configured, SharpCap Pro relays each live frame to PHD2, and PHD2 guides on your chosen star without requiring a separate guide scope in shared-camera mode.
+    </p>
+    <img src="Images/SharpCapPort.jpg" alt="SharpCap Pro guiding settings showing PHD2 port configuration">
+
+    <h2>Additional Notes</h2>
+    <p>
+        The <strong>Find &amp; Track</strong> tool is designed to work seamlessly with SharpCap Pro's Live Stack feature.
+        Dithering is fully supported in this mode, along with most other SharpCap Pro Live Stack options.
+    </p>
+    <p>
+        For optimum guiding in this workflow, it may also be beneficial to build and use a PHD2 <strong>Dark Library</strong>
+        or <strong>Bad-pixel Map</strong>, especially when guiding on the same short-exposure live frames used by SharpCap Pro.
+        For more information, please refer to
+        <a href="DarkLibrary.htm"><strong>Notes About PHD2 Dark Library and Image Calibration</strong></a>.
+    </p>
+    <p>
+        For additional details on setting up a Live Stack session, please refer to the
+        <a href="https://www.sharpcap.co.uk/sharpcap/features/live-stacking" target="_blank" rel="noopener">SharpCap Live Stacking documentation</a>
+        and other online resources.
+    </p>
+    <div class="figure-caption">An example screenshot of a Live Stack session in SharpCap Pro (using simulated data).</div>
+    <img src="Images/LiveStack.jpg" alt="Live stack screenshot">
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHG Workflow - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>SHG Workflow</h1>
+
+    <p>
+        This workflow is intended for spectroheliograph imaging with the <a href="SHGScanner.htm">SHG Scanner</a>.
+        It is separate from the normal HelioMaker sequence workflow and uses SharpCap Pro capture together with controlled
+        mount motion across the spectroheliograph slit.
+    </p>
+
+    <h2>Basic Preparation</h2>
+    <ul>
+        <li>Assemble the spectroheliograph, camera, mount, and solar safety equipment.</li>
+        <li>Connect SharpCap Pro to the imaging camera and confirm that the live view, exposure, gain, and binning are appropriate.</li>
+        <li>Connect the mount through PHD2 or the configured mount interface so HelioMaker can read mount capabilities and command scan motion.</li>
+        <li>Confirm that observer location, time, and focal length settings are correct.</li>
+        <li>Enable <strong>Enable SHG scanning</strong> in <a href="advanced_settings.htm#global-settings">Advanced Settings</a> if the SHG tool is disabled.</li>
+    </ul>
+
+    <h2>Prepare Tracking and Framing</h2>
+    <ol>
+        <li>Open <a href="DynamicTracking.htm">Dynamic Target Tracking</a> and select the Sun.</li>
+        <li>Center the solar disk and orient the spectroheliograph slit for the scan axis you plan to use.</li>
+        <li>Start Dynamic Target Tracking when appropriate, or otherwise make sure the mount is tracking the Sun well enough for the scan.</li>
+        <li>Open the SHG Scanner from the <strong>Tools</strong> menu or from the <strong>SHG Scanner</strong> button in the DTT dialog.</li>
+    </ol>
+
+    <h2>Configure the Scan</h2>
+    <ul>
+        <li>Select the scan axis and direction. When available, choose a direction that returns the mount near the starting position after capture.</li>
+        <li>Set the extra scan margin so the sweep covers the full solar disk plus a small safety margin.</li>
+        <li>Choose an oversampling factor or, for fixed legacy MoveAxis speeds, review the resulting oversampling shown by HelioMaker.</li>
+        <li>Set pre/post capture time so SharpCap records a small buffer before and after the computed scan interval.</li>
+        <li>Use <strong>Custom FPS</strong> only when the scanner calculations should use a frame rate different from the exposure-derived nominal FPS.</li>
+        <li>Open <strong>SHG Preferences</strong> to configure stall detection, 8-bit capture handling, MoveAxis speed interpretation, and scanner return method.</li>
+    </ul>
+
+    <h2>SharpCap Capture Format</h2>
+    <p>
+        The scanner expects SharpCap to be ready for SER capture with an accepted mono or raw format. If SharpCap is not already configured this way,
+        HelioMaker can offer to prepare the capture settings before the scan starts. The <strong>Allow 8-bit capture</strong> preference controls whether
+        8-bit capture formats are accepted or whether HelioMaker should prefer 16-bit output.
+    </p>
+
+    <h2>Run and Monitor</h2>
+    <ol>
+        <li>Review scan speed, solar diameter, capture time, and any orange warning panel shown by HelioMaker.</li>
+        <li>For repeated scans, configure the <strong>Multi-Pass scanning</strong> section and leave enough delay between scans for the system to settle.</li>
+        <li>Click <strong>Start Scan and Capture</strong>.</li>
+        <li>Monitor the mount, SharpCap capture, and SHG Scanner progress until the scan and optional return motion complete.</li>
+        <li>After completion, inspect the saved SER file and confirm that the solar disk crossed the slit as expected.</li>
+    </ol>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li>If the scanner cannot start, check that SharpCap is connected, the Sun is selected in DTT, no HelioMaker sequence is active, and the mount supports the selected scan method.</li>
+        <li>If the scan length is wrong, recheck focal length, binning, scan axis, slit orientation, and the <strong>Use absolute MoveAxis speeds</strong> preference.</li>
+        <li>If the scan undersamples the disk, reduce the scan speed when possible, increase FPS, or choose a larger oversampling factor.</li>
+        <li>If mount motion stalls or return motion behaves unexpectedly, review SHG Preferences and mount capability limitations.</li>
+    </ul>
+
+    <p><a href="RecommendedWorkflow.htm">Back to Recommended Solar, Lunar and Planetary Workflow</a></p>
+</body>
+</html>

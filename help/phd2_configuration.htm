@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHD2 Configuration - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>PHD2 Configuration</h1>
+    <p>
+        The PHD2 Configuration ensures HelioMaker integrates correctly with the custom version of PHD2 for guiding functionality.
+        It is recommended that users have prior experience with PHD2, but this section provides key concepts and guidelines specific
+        to HelioMaker's operation.
+    </p>
+
+    <h2>Enable Server in PHD2</h2>
+    <p>
+        Make sure to enable server in PHD2 by checking the <strong>Enable Server</strong> checkbox in the PHD2 Tools menu.
+        This is essential for HelioMaker to communicate with PHD2.
+    </p>
+
+    <h2>Accessing PHD2 Configuration</h2>
+    <ul>
+        <li>Click the <strong>gears icon</strong> located next to the "PHD2" label on HelioMaker's main screen, OR</li>
+        <li>Open the <strong>Setup</strong> menu in HelioMaker and choose <strong>PHD2 Configuration</strong>.</li>
+    </ul>
+    <img src="Images/phd2_setup1.jpg" alt="PHD2 Configuration Dialog">
+    <p>
+        Note: While HelioMaker is connected to PHD2, the fields for selecting the PHD2 executable path, instance number, and equipment profile are disabled to prevent changes
+        during an active connection. To modify these settings, exit the PHD2 Configuration dialog, disconnect from PHD2 using the Link button, and then reopen the PHD2 Configuration dialog.
+    </p>
+
+    <h2>Setting the Installation Folder</h2>
+    <ul>
+        <li>The recommended location is <code>C:\Program Files (x86)\PHDGuiding2-solar</code>.</li>
+        <li>Use the <strong>Browse</strong> button to locate the appropriate folder if the custom PHD2 version is installed in a different location.</li>
+    </ul>
+
+    <h2>Instance Number</h2>
+    <p>
+        The <strong>Instance Number</strong> specifies which PHD2 instance HelioMaker should connect to for solar and planetary guiding.
+        When HelioMaker launches PHD2, it passes this number as a command-line option (<code>-i</code>).
+        This allows you to run multiple PHD2 instances or maintain separate configurations.
+        By default, the custom PHD2 version uses <strong>2</strong>, while the official PHD2 version uses <strong>1</strong>.
+    </p>
+    <p>
+        If you wish to keep two separate installations of PHD2, one from the official PHD2 website for regular astrophotography and
+        another custom version for solar, lunar, and planetary imaging with HelioMaker, it is advisable to install the latter PHD2
+        version in a separate program folder. Use a different instance number to allow maintaining separate equipment profiles
+        for these two PHD2 installations. For more detailed information about PHD2 instance numbers and their usage, please refer to
+        the FAQ section: <a href="Faq_Phd2Instance.htm">How to Configure the PHD2 Instance Number?</a>.
+    </p>
+
+    <h2>Equipment Profile</h2>
+    <p>
+        This is the equipment profile that will be automatically loaded by PHD2 when HelioMaker connects with PHD2 via the Link button.
+        To ensure HelioMaker uses the correct PHD2 equipment profile:
+    </p>
+    <img src="Images/equipment_profile.jpg" alt="PHD2 Equipment Profile">
+    <ul>
+        <li>Click <strong>Get Profiles</strong> to enumerate existing PHD2 equipment profiles. This will launch PHD2 temporarily to fetch the profiles.</li>
+        <li>If the operation times out due to slow machines or unexpected delays, retry until the profiles are successfully fetched.</li>
+        <li>If the list of profiles remains empty, it is possible that PHD2 does not have any equipment profiles defined yet. In this case, open PHD2 directly and define at least one equipment profile for use with HelioMaker.</li>
+        <li>Refer to the PHD2 user documentation for detailed steps on creating an equipment profile, as this process is outside the scope of this document. Familiarity with PHD2 principles is highly recommended; consult external resources if needed.</li>
+        <li>Select the desired profile from the <strong>Equipment Profile</strong> drop-down list.</li>
+        <li>The <strong>&lt;Current profile&gt;</strong> option allows HelioMaker to use the profile manually selected by the PHD2 user.</li>
+    </ul>
+
+    <h2 id="shared-camera">Virtual Planetary Camera (shared camera)</h2>
+    <p>
+        HelioMaker with an activated license enables the selection of the <strong>Virtual Planetary Camera</strong>,
+        available only in the custom version of PHD2. This is not a physical device but rather a virtual PHD2
+        device that receives image frames directly as captured by a physical camera attached to SharpCap Pro.
+        Supporting this PHD2 camera is a key feature of HelioMaker, allowing a single camera to be used for both image capture and guiding.
+    </p>
+    <ul>
+        <li>
+            HelioMaker enables sharing the SharpCap Pro camera with PHD2, even while the camera is in live
+            preview mode or capturing images or image sequences.
+        </li>
+        <li>
+            HelioMaker is designed primarily for planetary cameras with typically short exposures, where SharpCap
+            Pro operates in Live Mode. While Still Mode in SharpCap can be used, it is generally not advised unless necessary.
+        </li>
+        <li>
+            When PHD2 is configured to use the Virtual Planetary Camera, exposure time and camera gain are controlled
+            exclusively through the SharpCap user interface. Any changes to these settings in PHD2 will have no effect.
+        </li>
+    </ul>
+    <p>
+        Sharing a single camera by selecting <strong>Virtual Planetary Camera</strong> in the PHD2 equipment profile
+        enables both imaging and guiding. This is particularly useful at long focal lengths when using HelioMaker's
+        Surface Features mode, as well as for full solar or lunar disk imaging. HelioMaker performs non-stellar
+        detection and supplies the detected target position to PHD2.
+    </p>
+    <p>
+        To select the <strong>Virtual Planetary Camera</strong>, open the camera selection dropdown list in the PHD2
+        equipment editor or Profile Wizard (accessible within the PHD2 program, not HelioMaker), as shown below.
+        Note that the <strong>Virtual Planetary Camera</strong> is available only in the <strong>custom PHD2 version</strong>
+        described in this documentation.
+    </p>
+    <img src="Images/phd2-vpc-selection.jpg" alt="PHD2 Camera Selection">
+    <p>If PHD2 is currently connected to HelioMaker, the choice of selecting the Equipment Profile will be greyed out. To select a different equipment profile, the user will need to disconnect HelioMaker from PHD2 first. This process will be described in the operational section of the manual.</p>
+
+    <p>
+        When selecting the <strong>Virtual Planetary Camera</strong> in PHD2 using its New Profile Wizard, the user
+        will be asked if the camera is already connected to the PC. It is recommended to answer <strong>No</strong> and then:
+    </p>
+    <ul>
+        <li>Enter an arbitrary pixel size (it will be set later automatically by HelioMaker based on the actual pixel size of the camera selected by SharpCap Pro).</li>
+        <li>Select <strong>binning level 1</strong>.</li>
+        <li>Set the guiding scope focal length to any value (it will also be set later by HelioMaker).</li>
+    </ul>
+    <img src="Images/phd2_wizard.jpg" alt="PHD2 New Profile Wizard">
+
+    <p>When using a camera shared between SharpCap and PHD2 (<strong>Virtual Planetary Camera</strong>):</p>
+    <ul>
+        <li>The camera must be included in the selected PHD2 equipment profile.</li>
+        <li>Exposure time and camera gain are exclusively controlled by SharpCap, and any changes to these settings in PHD2 will have no effect.</li>
+        <li>
+            Building and using the Dark Library in PHD2 is not required for the <strong>Virtual Planetary Camera</strong>, and any
+            related PHD2 warnings can be dismissed. However, please refer to the notes about the <a href="DarkLibrary.htm">PHD2 Dark Library</a>.
+        </li>
+        <li>
+            Enable <strong>Confirm use of Virtual Planetary Camera</strong> in HelioMaker to receive a warning if HelioMaker expects
+            to find the <strong>Virtual Planetary Camera</strong> in the PHD2 profile but does not detect it.
+        </li>
+        <img src="Images/confirm_vpc.jpg" alt="Confirm VPC">
+    </ul>
+
+    <h2>Using a Dedicated Guiding Camera</h2>
+    <p>
+        Alternatively, it is possible to use a separate guiding camera and its dedicated guidescope with HelioMaker
+        by selecting a camera other than <strong>Virtual Planetary Camera</strong> in the PHD2 equipment profile. In this case,
+        the "Confirm use of Virtual Planetary Camera" checkbox should be left disabled.
+    </p>
+    <p>When using a separate guiding camera with PHD2:</p>
+    <ul>
+        <li>The exposure time and camera gain are controlled directly in PHD2 by the user.</li>
+        <li>HelioMaker still enforces minimum guiding and calibration intervals through the PHD2 time lapse value.</li>
+        <li>
+            Current HelioMaker and custom PHD2 versions provide a continuous live camera view in Find &amp; Track.
+            HelioMaker can run Full Disk/Crescent, Planetary, and Surface Features detection on these frames and
+            return the result to PHD2. Star mode continues to use PHD2's native stellar detector.
+        </li>
+        <li>
+            Planetary and Surface Features modes require an active HelioMaker license. Their buttons are disabled
+            without activation; Star and Full Disk/Crescent remain available.
+        </li>
+        <li>
+            If the live detection link cannot be established, HelioMaker warns that PHD2 will use its built-in
+            detector for the session. In that fallback state, tune detection in PHD2's Planetary and Solar Guiding
+            Tool and reconnect after correcting any version, instance, or process-permission mismatch.
+        </li>
+    </ul>
+    <p>
+        If PHD2 already has a valid full-disk or crescent detection when HelioMaker connects, HelioMaker can adopt
+        the current object size and sensitivity to avoid restarting setup from defaults. For operational details,
+        see <a href="Find_Tool_PHD2.htm">Find &amp; Track with a Physical PHD2 Camera</a>.
+    </p>
+
+    <h2 id="guiding-params">Guiding and Calibration Parameters</h2>
+    <p>
+        HelioMaker enforces reasonable guiding intervals to maintain optimal guiding performance.
+        This is managed through a set of parameters introduced by HelioMaker:
+    </p>
+    <ul>
+        <li>
+            <strong>Minimum Guiding Interval:</strong> Defines the minimum interval between guiding frames,
+            including both exposure time and time lapse.
+        </li>
+        <li>
+            <strong>Minimum Calibration Interval:</strong> Specifies a shorter interval recommended during PHD2
+            calibration to expedite the process, provided the user's setup can accommodate it.
+        </li>
+    </ul>
+    <p>
+        HelioMaker automatically adjusts the PHD2 time lapse value to comply with these parameters.
+        To ensure effective guiding, it is recommended to set intervals that allow guiding pulses
+        approximately every 0.5-5 seconds, aligning with PHD2 operational principles.
+    </p>
+    <p>
+        Additional guiding and calibration parameters, such as settling distance and timeouts, can be reviewed and edited in
+        <a href="advanced_settings.htm#settling-guiding">HelioMaker Advanced Settings</a>. For manual control, these parameters
+        can also be adjusted directly using the PHD2 user interface.
+    </p>
+    <p>
+        Since PHD2 calibration is an advanced topic, and manually selecting its parameters requires in-depth knowledge and experience,
+        beginners are encouraged to use HelioMaker's recommended workflow for PHD2 calibration. This workflow automates the process and
+        ensures that PHD2 calibration parameters are configured optimally without requiring extensive user intervention.
+        Although PHD2 recommends calibrating near the celestial equator, this is not a blocker for daytime solar or planetary work.
+        The Sun, Moon, and planets stay within about +/-30 degrees declination everywhere on Earth, which provides a strong enough RA signal
+        for reliable calibration. Since stars are unavailable in daylight, the proper approach is to calibrate directly on the visible
+        target (Sun, Moon, or a planet). If PHD2 still warns that calibration is "far from the equator," it usually indicates a configuration
+        issue (incorrect mount coordinates, time or site, profile or driver settings) rather than a limitation of the target.
+    </p>
+
+    <h2>Invert RA Rate for Dynamic Tracking</h2>
+    <p>
+        The <strong>Invert RA rate for Dynamic Tracking</strong> checkbox controls the sign of the RA tracking rate used by HelioMaker's
+        <a href="DynamicTracking.htm">Dynamic Target Tracking</a> feature.
+    </p>
+    <p>
+        Some mounts interpret ASCOM RA-rate polarity differently. If enabling Dynamic Target Tracking causes the target to drift excessively
+        instead of improving stability, try toggling <strong>Invert RA rate for Dynamic Tracking</strong> and then click <strong>Start Dynamic Tracking</strong> again.
+    </p>
+    <p>
+        This setting is relevant only to Dynamic Target Tracking. It does not affect standard sidereal, solar, lunar, or king tracking rates
+        selected directly in the mount.
+    </p>
+
+    <h2>Warn if Virtual Planetary Camera is not used</h2>
+    <p>
+        This checkbox enables a warning if HelioMaker expects to find the <strong>Virtual Planetary Camera</strong> in the PHD2 profile but does not detect it.
+        This is useful for users who may have multiple PHD2 profiles and want to ensure they are using the correct one.
+    </p>
+
+    <h2>Guiding Recommendations</h2>
+    <ul>
+        <li>Set the <strong>Minimum Guiding Interval</strong> to 2-3 seconds for typical guiding scenarios.</li>
+        <li>Use slightly lower values for <strong>Minimum Calibration Interval</strong> if your setup can handle it to speed up the calibration process.</li>
+    </ul>
+
+    <h2>A Few Useful PHD2 Links</h2>
+    <p>
+        For a tutorial on setting parameters in the PHD2 Solar & Planetary Guiding Tool, refer to the
+        <a href="Phd2PlanetaryTool.htm">Using PHD2 Solar & Planetary Guiding Tool</a>.
+    </p>
+    <p>
+        For details about the custom PHD2 version used in HelioMaker, visit the Wiki section on GitHub:
+        <a href="https://github.com/Eyeke2/phd2.planetary/wiki" target="_blank" rel="noopener">github.com/Eyeke2/phd2.planetary/wiki</a>.
+    </p>
+    <p>
+        For PHD2 documentation, visit the official PHD2 website:
+        <a href="https://openphdguiding.org/documentation" target="_blank" rel="noopener">openphdguiding.org</a>.
+    </p>
+    <p>
+        The PHD2 user forum is another excellent resource for asking questions and receiving help from the community:
+        <a href="https://groups.google.com/g/open-phd-guiding" target="_blank" rel="noopener">Open PHD Guiding on Google Groups</a>.
+    </p>
+
+    <p><a href="ConfigurationAndSetup.htm">Back to Configuration and Setup</a></p>
+</body>
+</html>

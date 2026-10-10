@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to manage meridian flip during an active session? - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h2>How to Manage a Meridian Flip During an Active Session?</h2>
+
+    <p>
+        Due to the nature of daytime imaging and the likelihood of less precise telescope alignment (compared to nighttime multi-star
+        alignment), there is a high probability that your telescope may miss the imaging target after a meridian flip. This is especially
+        true when working with high magnification setups for imaging and guiding.
+    </p>
+    <p>
+        To reduce pointing errors after a meridian flip, it is still recommended to perform a star sync at the beginning of the session.
+        After framing your target near the center of the main imaging scope's field of view, perform a star sync to confirm that
+        the telescope is accurately aligned with the intended celestial target. If you are using a separate guide scope with its
+        own guiding camera, ensure that the guide scope is aligned so the target is properly visible in PHD2 for guiding.
+        Star syncing minimizes alignment errors and reduces adjustment times following a meridian flip.
+    </p>
+
+    <h3>Key Considerations</h3>
+    <p>
+        HelioMaker provides a <strong>Meridian Flip Timer</strong> on its main screen showing the estimated time before a meridian flip or the time elapsed
+        since the last flip. While this tool is only an approximate indicator, it helps users prepare for and take action during and after
+        a meridian flip. In some cases, users may need to manually monitor the meridian flip process to avoid issues such as cable snags
+        or physical collisions between telescope parts and the pier. When possible, it is recommended to define safety limits in the mount software
+        or controller as a best practice.
+    </p>
+    <img src="Images/meridian_timer.jpg" alt="Meridian Flip Timer">
+
+    <p>
+        After a meridian flip, the target may be placed out of the camera's field of view. Use the following methods to locate the target
+        before fine-tuning its framing:
+    </p>
+
+    <ul>
+        <li>
+            For solar imaging, use a solar finder and minimize shadows cast by the telescope to align the target roughly.
+        </li>
+        <li>
+            For lunar or planetary imaging, use a finder scope to locate the target and align the telescope accordingly.
+        </li>
+        <li>
+            If the target remains out of frame, use SharpCap's <strong>Spiral Search</strong> feature. This tool automates slewing in a
+            spiral pattern and can help locate the target when manual methods are insufficient.
+        </li>
+    </ul>
+
+    <p>
+        Once the target is found, fine-tune its framing using these steps:
+    </p>
+    <ul>
+        <li>
+            Temporarily use the image flip feature in SharpCap Pro to visually match the framing to the pre-flip orientation.
+        </li>
+        <li>
+            After framing the target, revert the image flip setting in SharpCap to its original state to avoid interfering with PHD2 calibration.
+        </li>
+    </ul>
+
+    <p>
+        For full solar or lunar disk imaging, the process is simpler: once the disk is located, manually center it within the frame.
+    </p>
+
+    <h3>If Guiding Stops Working After a Meridian Flip: How to Fix?</h3>
+    <p>
+        If guiding stops working after a meridian flip, this issue may be related to how your mount handles
+        the declination motor's direction after the flip. According to the <strong>PHD2</strong> documentation,
+        a setting in the <strong>PHD2 Advanced Settings</strong> dialog (accessible from PHD2, not HelioMaker)
+        determines how PHD2 adjusts the calibration data to handle meridian flips.
+    </p>
+
+    <p>
+        The setting <em><strong>"Reverse Dec output after meridian flip"</strong></em> tells PHD2 whether to automatically
+        reverse the direction of the declination motor based on the mount's side-of-pier state. Here's what you need to know:
+    </p>
+
+    <ul>
+        <li>
+            Some newer mounts track their <strong>side of pier</strong> state and automatically reverse the direction
+            of the declination motor after a meridian flip. In such cases, this setting should typically be disabled.
+        </li>
+        <li>
+            Older mounts do not automatically reverse the declination motor, so this setting should typically be enabled.
+        </li>
+    </ul>
+
+    <p>
+        If changing the state of the <strong>"Reverse Dec output after meridian flip"</strong> setting does not resolve the issue,
+        it is advised to repeat the PHD2 calibration process after performing a meridian flip. This is because some mounts may
+        experience shifts in balance or other mechanical changes that affect guiding accuracy.
+    </p>
+
+    <p>
+        To recalibrate PHD2 after a meridian flip:
+    </p>
+
+    <ul>
+        <li>Ensure the mount is tracking correctly after the flip.</li>
+        <li>Use the <strong>"Calibrate PHD2"</strong> button in HelioMaker or start the calibration process directly from PHD2.</li>
+        <li>Verify the new calibration by checking the PHD2 guiding graph and ensuring the target remains stable.</li>
+    </ul>
+
+    <p>
+        For additional information, consult the
+        <a href="https://openphdguiding.org/man-dev/Advanced_settings.htm" target="_blank" rel="noopener">PHD2 Advanced Settings</a>
+        or visit the PHD2 user forums and related astrophotography resources.
+    </p>
+
+</body>
+</html>

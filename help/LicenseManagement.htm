@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Management - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>License Management</h1>
+    <p>HelioMaker includes several license management functions, accessible from the <strong>Help</strong> menu. The central tool for reviewing and maintaining activations is the <strong>License Activations Manager</strong>.</p>
+    <img src="Images/license_mgr1.jpg" alt="License Manager Menu">
+
+    <h2>1. Activate License</h2>
+    <p>The <strong>Activate License</strong> option allows you to activate your HelioMaker license on the current machine and for the current user. This requires the license key and email address used during the purchase. After a successful activation, HelioMaker may also prompt you to create a <strong>License Management PIN</strong> if that license is not yet protected.</p>
+
+    <h2>2. Deactivate License</h2>
+    <p>The <strong>Deactivate License</strong> option deactivates the license on the current machine. This is useful when moving the activation to another computer or when freeing one of the allowed activation slots.</p>
+
+    <h2>3. License Activations Manager</h2>
+    <p>The <strong>License Activations Manager</strong> displays all activations associated with the provided license key and email address. To retrieve the list, enter the license details and, when prompted, the <strong>License Management PIN</strong> for that license.</p>
+    <ul>
+        <li>Machine Identifier</li>
+        <li>Activation Date</li>
+        <li>Action</li>
+    </ul>
+    <p>Each listed activation row includes its own <strong>Deactivate</strong> button. Click the button in the row of the machine you want to deactivate, then confirm the action. This allows flexibility for users with multiple computers, as the HelioMaker license permits up to two active activations in accordance with the End User License Agreement (EULA).</p>
+    <p>If the current computer is not yet activated for the selected license, the activation list can also include a special row for <strong>This machine</strong>. In that row, the activation date is shown as <strong>Not activated</strong> and the action button changes to <strong>Activate</strong>, allowing you to activate the current computer directly from the License Activations Manager.</p>
+    <img src="Images/deactivate_by_id.jpg" alt="Deactivate action in the activation list">
+
+    <h2 id="pin-management">Managing the License Management PIN</h2>
+    <p>The License Activations Manager also lets you maintain the PIN that protects activation management. In practice, this is similar to adding a password that helps protect your existing licenses. If someone else gains access to your license key and email address, activation management still requires a secret known only to you. The PIN protects activation-management actions only and does not affect normal use of a copy of HelioMaker that is already activated.</p>
+    <ul>
+        <li>Setting a PIN promptly is strongly recommended after receiving a new license key, or after upgrading from an older HelioMaker version that did not yet support PIN protection.</li>
+        <li>If no PIN exists yet, HelioMaker may proactively prompt you to create one and confirm it.</li>
+        <li>If a PIN already exists, use the <strong>Change PIN...</strong> button in the License Activations Manager to replace it.</li>
+        <li>The PIN is created for a specific pair of <strong>email address</strong> and <strong>license key</strong>. If you use multiple HelioMaker licenses, you must set and use a separate PIN for each license pair.</li>
+        <li>Even if someone obtains your email address and license key, they should not be able to retrieve and deactivate your existing activations without also knowing your secret PIN.</li>
+        <li>The PIN must contain <strong>4 to 40</strong> letters, digits, or dashes.</li>
+        <li>Simple sequential combinations such as <strong>1234</strong> or <strong>ABCD</strong>, and runs of repeated characters such as <strong>1111</strong> or <strong>AAAA</strong>, are not allowed.</li>
+        <li>Keep the PIN in a safe place, because it is required to retrieve and manage existing activations.</li>
+        <li>If you later need to deactivate an existing activation but no longer have access to one of your machines where HelioMaker is still activated, the PIN may be required to recover access to the activation list and deactivate the old machine entry.</li>
+        <li>If the PIN is lost in that situation, you may need to contact customer support for assistance before the activation can be released.</li>
+    </ul>
+    <img src="Images/license_mgr_change_pin.jpg" alt="Change License Management PIN dialog">
+
+    <h2>4. Renew License</h2>
+    <p>
+        The <a href="LicenseRenewal.htm"><strong>Renew License</strong></a> option is intended for users who are renewing from an existing 1-year license
+        to a new license. When the renewal conditions are met, HelioMaker can carry over remaining days from the old license to the new license. This can
+        be used when renewing to another 1-year plan or upgrading to a lifetime license.
+    </p>
+
+    <h2>Floating License Scheme</h2>
+    <p>HelioMaker supports a floating license scheme that allows users to maintain licenses on up to two computers they own. To activate the current computer, use the <strong>Activate</strong> button shown in the <strong>This machine</strong> row when that row appears. To deactivate a license from a specific computer, locate the correct machine entry and click that row's <strong>Deactivate</strong> button.</p>
+    <img src="Images/license_mgr2.jpg" alt="License Activations Manager Dialog">
+    <p><em>Note:</em> The exact dialog layout may vary slightly between releases, but current versions use dedicated action buttons in each row, including <strong>Deactivate</strong> for existing activations and <strong>Activate</strong> for the current machine when it is not yet activated.</p>
+
+    <p><strong>Important Security Notice</strong>: Your product key, license key, associated email address, and License Management PIN are for your personal use only. To maintain the security of your license, please avoid sharing any of this information with others. Unauthorized sharing may lead to the suspension or termination of your license.</p>
+    <p>Note: An active internet connection is required for all license operations.</p>
+</body>
+</html>

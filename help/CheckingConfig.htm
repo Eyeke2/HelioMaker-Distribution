@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking System Configuration - HelioMaker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+    <h1>Checking System Configuration</h1>
+    <p>Assuming the user has activated the HelioMaker license, installed SharpCap Pro with its own active license, and installed and configured the custom PHD2 version using the respective configuration dialogs as described earlier, it is now time to test if the system has been properly configured.</p>
+
+    <h2>Preparing for Testing</h2>
+    <ul>
+        <li>Close any currently running instances of PHD2 and SharpCap to avoid conflicts.</li>
+        <li>The main HelioMaker screen should display both SharpCap Pro and PHD2 link buttons colored red, indicating that neither of these programs is yet connected to HelioMaker.</li>
+        <li>Notice that the Monitor section displays a black-colored switch and a small red icon at the bottom status line with descriptive text stating there is no link and no PHD2 or SharpCap connection.</li>
+    </ul>
+    <img src="Images/main_screen1.jpg" alt="HelioMaker Main Screen - No Connections">
+
+    <h2>Connecting to SharpCap Pro</h2>
+    <p>To launch SharpCap Pro and connect it with HelioMaker:</p>
+    <ul>
+        <li>Click the red link button in the Controls area, located to the right of the SharpCap Pro text label following the gear symbol.</li>
+        <li>The link button will be greyed out and display a different graphic for a few seconds while SharpCap Pro is starting.</li>
+        <li>When SharpCap is fully initialized, it will attempt to connect to HelioMaker. If successful, the connection status will be indicated by a green status line, as shown in the attached image.</li>
+    </ul>
+    <img src="Images/sharpcap_connect_msg.jpg" alt="SharpCap Pro Connection Message">
+
+    <h2>SharpCap Pro Launch Warning</h2>
+    <p>
+        If you previously launched SharpCap Pro outside of HelioMaker and then attempt to connect to it from HelioMaker, a warning prompt
+        will appear. If you choose to proceed, HelioMaker will attempt to close SharpCap Pro and reopen it to establish communication,
+        ensuring proper connection between the two programs.
+    </p>
+    <img src="Images/scap_warning.jpg" alt="SharpCap Manual Launch Warning">
+
+    <h2>Verifying Connection</h2>
+    <ul>
+        <li>Once SharpCap is connected, the red link button for SharpCap Pro will turn green, and HelioMaker's status line will update accordingly.</li>
+        <li>The system is now ready to proceed with PHD2 connection and further testing.</li>
+        <li>Note that both SharpCap Pro and PHD2 may take between a few seconds to about half a minute to launch and initialize, and sometimes even longer on slower machines.</li>
+        <li>Give it another try if the connection times out before attempting anything else.</li>
+        <li>If HelioMaker fails to connect with SharpCap Pro, check the SharpCap Pro installation, its license status, and its settings in the previously described SharpCap Configuration section. In case of difficulty, refer to the troubleshooting section or contact customer support.</li>
+    </ul>
+    <img src="Images/main_screen2.jpg" alt="HelioMaker Main Screen - SharpCap Connected">
+
+    <h2>Connecting to PHD2</h2>
+    <p>Assuming that SharpCap Pro has been successfully connected, proceed with connecting the custom version of PHD2 required by HelioMaker:</p>
+    <ul>
+        <li>Press the red link button corresponding to PHD2 in the Control section.</li>
+        <li>Give it a few seconds to launch and initialize.</li>
+        <li>Note that both SharpCap Pro and PHD2 may take between a few seconds to about half a minute to launch and initialize, and sometimes even longer on slower machines.</li>
+        <li>Give it another try if the connection times out before attempting anything else.</li>
+    </ul>
+    <p>When PHD2 is fully initialized and HelioMaker establishes a control channel over it:</p>
+    <ul>
+        <li>The PHD2 link button symbol will change and become green, as shown below.</li>
+        <li>The Monitor area graphics will change, and the status line will display signal strength bars, explained later.</li>
+    </ul>
+    <img src="Images/main_screen3.jpg" alt="HelioMaker Main Screen - PHD2 Connected">
+    <hr>
+
+    <h2>Verifying Settings</h2>
+    <p>
+        If you have configured a specific SharpCap camera and selected a specific PHD2 equipment profile
+        in the HelioMaker configuration, now is the time to check in each program whether your settings
+        are properly loaded.
+    </p>
+    <p>
+        For instance, if you have successfully connected all the required components and have chosen
+        the "Virtual Planetary Camera" in PHD2, you should see PHD2 continuously taking (looping)
+        exposures. In this scenario, the image displayed in the PHD2 main window should match the
+        live view captured in SharpCap Pro. However, keep in mind that the frame refresh rate in
+        PHD2 will be much lower compared to SharpCap Pro, which is normal and expected.
+    </p>
+    <p>
+        If your PHD2 profile uses a different camera (not the "Virtual Planetary Camera"), the image
+        you see in the PHD2 main window will directly reflect the view captured by that particular
+        camera. Open HelioMaker's <strong>Find &amp; Track</strong> tool and verify that it also shows a
+        continuously updating view from the PHD2 camera. Test the intended detection mode while PHD2 is
+        looping, before starting calibration or guiding. Planetary and Surface Features modes require an
+        active HelioMaker license.
+    </p>
+    <p>
+        If HelioMaker reports that the physical-camera detection link is unavailable, PHD2 remains usable
+        with its own built-in detector for that session, but Find &amp; Track will not show live frames from
+        that camera. Confirm that the current custom PHD2 version is installed, that HelioMaker is connected
+        to the intended PHD2 instance, and that the two programs are running at compatible permission levels.
+    </p>
+    <p>
+        The sample image below shows a screenshot of SharpCap Pro configured with "Test Camera 2 (High Speed)"
+        using a simulated Jupiter image as the source, alongside PHD2 connected to the "Virtual Planetary Camera"
+        and displaying the same Jupiter image. Note that PHD2 includes gamma correction slider that can be adjusted
+        for optimal viewing. This example demonstrates how the "Virtual Planetary Camera" allows the camera used by
+        SharpCap Pro to be effectively shared with PHD2 and HelioMaker.
+    </p>
+
+    <h4>Clarifying camera setup for the illustration below</h4>
+    <ul>
+        <li><strong>HelioMaker:</strong> Configured to use "Test Camera 2 (High Speed)" in SharpCap Pro and a PHD2 profile with "Virtual Planetary Camera".</li>
+        <li><strong>SharpCap Pro:</strong> Selected and connected to "Test Camera 2 (High Speed)"</li>
+        <li><strong>PHD2:</strong> Connected to "Virtual Planetary Camera," configured as part of the current equipment profile.</li>
+    </ul>
+    <img src="Images/high_speed_vpc.jpg" alt=Sample of shared camera" class="fig">
+    <p></p>
+    <p><a href="ConfigurationAndSetup.htm">Back to Configuration and Setup</a></p>
+
+</body>
+</html>
