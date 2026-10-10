@@ -186,3 +186,37 @@ ul.web-contents ul {
     margin-top: 4px;
     font-weight: normal;
 }
+
+/* The web copy takes the colours of the eclipse guides and the site's landing page, light or dark as the reader's
+   system is set. The CHM viewer ignores these media queries and keeps the colours above. */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #f6f8fb; --panel: #ffffff; --ink: #1b2430; --muted: #5a6673; --line: #dde3ea; --accent: #0b6fb8;
+        --danger: #c02626; --good: #2e7d32; --icon-bg: transparent;
+        color-scheme: light;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0f1216; --panel: #171c22; --ink: #e6ebf0; --muted: #9aa7b4; --line: #2a333d; --accent: #7cc4ff;
+        --danger: #ff8a8a; --good: #7ed492; --icon-bg: #f0f0f0;
+        color-scheme: dark;
+    }
+}
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
+    body { background-color: var(--bg); color: var(--ink); }
+    h1, h2, h3, h4 { color: var(--ink); }
+    a { color: var(--accent); }
+    hr { border-top-color: var(--line); }
+    img, .two-column-float img, .fig { border-color: var(--line); }
+    /* The indicator icons are transparent and drawn for the program's light window. */
+    img[src$=".png"] { background-color: var(--icon-bg); }
+    .framed { border-color: var(--line); background-color: var(--panel); }
+    .red { color: var(--danger); }
+    .green { color: var(--good); }
+    .blue { color: var(--accent); }
+    nav.web-nav { border-bottom-color: var(--line); color: var(--muted); }
+    nav.web-nav a { color: var(--muted); }
+}
