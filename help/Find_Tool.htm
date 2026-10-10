@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Find &amp; Track Tool — HelioMaker</title>
     <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Using HelioMaker</span></nav>
 
     <h1>Find &amp; Track</h1>
 
@@ -43,7 +45,7 @@
         you may additionally use HelioMaker's <a href="DynamicTracking.htm">Dynamic Target Tracking</a> tool to apply real-time target-specific tracking rates.
         The Find &amp; Track tool itself does not manage those parameters.
     </p>
-    <img src="Images/FindTool_ui.jpg" alt="Find &amp; Track Tool UI">
+    <figure class="shot"><img src="Images/FindTool_ui.jpg" srcset="Images/FindTool_ui.jpg 1.5x" alt="Find &amp; Track Tool UI"></figure>
     <p>
         👉 👉 👉 Tip: Double-clicking the brightness icon on the left side of the panel resets the brightness slider to its default position.
         Similarly, double-clicking the tuning icon on the right side resets its slider to the default setting.
@@ -202,10 +204,10 @@
     </ul>
     <div class="image-row">
         <span class="image-cell">
-            <img src="Images/FindEclipseMode.jpg" alt="Eclipse Mode">
+            <img src="Images/FindEclipseMode.jpg" srcset="Images/FindEclipseMode.jpg 1.5x" alt="Eclipse Mode">
         </span>
         <span class="image-cell">
-            <img src="Images/FindEclipseModeSun.jpg" alt="Eclipse Mode Eye">
+            <img src="Images/FindEclipseModeSun.jpg" srcset="Images/FindEclipseModeSun.jpg 1.5x" alt="Eclipse Mode Eye">
         </span>
     </div>
     <div class="figure-caption">👆 Full Disk Detection Mode example screenshots.</div>
@@ -225,10 +227,10 @@
     </p>
     <div class="image-row">
         <span class="image-cell">
-            <img src="Images/FindPlanetJupiter.jpg" alt="Jupiter in Planetary Mode">
+            <img src="Images/FindPlanetJupiter.jpg" srcset="Images/FindPlanetJupiter.jpg 1.5x" alt="Jupiter in Planetary Mode">
         </span>
         <span class="image-cell">
-            <img src="Images/FindPlanetSaturn.jpg" alt="Saturn in Planetary Mode">
+            <img src="Images/FindPlanetSaturn.jpg" srcset="Images/FindPlanetSaturn.jpg 1.5x" alt="Saturn in Planetary Mode">
         </span>
     </div>
     <div class="figure-caption">👆 Planetary Mode example screenshots.</div>
@@ -296,8 +298,8 @@
         <span class="red"><strong>‼️</strong></span> This advanced mode requires an active HelioMaker license.
         It is available with either a shared camera or a supported physical PHD2 camera.
     </p>
-    <img src="Images/FindSurfaceSun1.jpg" alt="Solar Surface detection">
-    <div class="figure-caption">👆 Surface Features Tracking Mode example screenshot.</div>
+    <figure class="shot"><img src="Images/FindSurfaceSun1.jpg" srcset="Images/FindSurfaceSun1.jpg 1.5x" alt="Solar Surface detection"><figcaption>👆 Surface Features Tracking Mode example screenshot.</figcaption></figure>
+    
 
     <h3 id="lucky-imaging">Star Mode (lucky imaging)</h3>
     <p>
@@ -310,8 +312,8 @@
         timing guidance, and Live Stack notes, please refer to
         <a href="LuckyImaging.htm"><strong>Lucky Imaging / Live Stack</strong></a>.
     </p>
-    <img src="Images/FindStarMode.jpg" alt="Find &amp; Track Star Mode UI with star icon button and disabled sensitivity slider">
-    <div class="figure-caption">👆 Star Mode example screenshot.</div>
+    <figure class="shot"><img src="Images/FindStarMode.jpg" srcset="Images/FindStarMode.jpg 1.5x" alt="Find &amp; Track Star Mode UI with star icon button and disabled sensitivity slider"><figcaption>👆 Star Mode example screenshot.</figcaption></figure>
+    
 
     <p>
         To use Star mode, ensure SharpCap Pro and PHD2 are both connected in HelioMaker. You can connect
@@ -330,8 +332,8 @@
         The assistant is the dividers button on the right-hand toolbar. It appears in Full Disk/Crescent mode only,
         and is enabled while PHD2 is looping or guiding. Run it before calibration.
     </p>
-    <img src="Images/focus_assist.jpg" alt="Focal Length Assistant dialog over the Find &amp; Track window">
-    <div class="figure-caption">👆 The Focal Length Assistant, opened over a locked full-disk detection.</div>
+    <figure class="shot"><img src="Images/focus_assist.jpg" srcset="Images/focus_assist.jpg 1.5x" alt="Focal Length Assistant dialog over the Find &amp; Track window"><figcaption>👆 The Focal Length Assistant, opened over a locked full-disk detection.</figcaption></figure>
+    
     <p>
         Before measuring, the assistant asks you to confirm three things in a single panel:
     </p>
@@ -450,5 +452,7 @@
         signal-to-noise ratio, with the additional detail relevant to the active mode.
     </p>
 
+<nav class="foot"><a href="Icons.htm">&larr; Monitor Area Indicators</a><a href="Find_Tool_PHD2.htm">Physical PHD2 Camera and Fallback &rarr;</a></nav>
+</div>
 </body>
 </html>

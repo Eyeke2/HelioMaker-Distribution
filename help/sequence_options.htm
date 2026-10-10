@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sequence Options - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Configuration and Setup</span></nav>
     <h1>Sequence Options</h1>
     <p>
         The <strong>Sequence Options</strong> dialog contains settings that affect how HelioMaker starts, pauses, resumes, and protects an imaging sequence.
@@ -20,7 +22,7 @@
         PHD2 must share its camera images with HelioMaker, and if it cannot, HelioMaker says so when PHD2 is linked.
     </p>
 
-    <img src="Images/sequence_options.jpg" alt="Sequence Options Dialog" class="fig fig-75">
+    <figure class="shot"><img src="Images/sequence_options.jpg" srcset="Images/sequence_options.jpg 1.5x" alt="Sequence Options Dialog" class="fig fig-75"></figure>
 
     <h2>General Sequence Options</h2>
     <ul>
@@ -75,16 +77,16 @@
         Delayed start can be armed only after PHD2 guiding has already started; if guiding is not active, HelioMaker shows a message explaining that guiding
         must begin before the delayed sequence can be scheduled.
     </p>
-    <img src="Images/delayed_seq1.jpg" alt="Start Sequence button with delayed start option" class="fig fig-75">
-    <img src="Images/delayed_seq2.jpg" alt="Delayed start requires active PHD2 guiding" class="fig fig-75">
-    <img src="Images/delayed_seq3.jpg" alt="Delayed sequence armed while PHD2 guiding is active" class="fig fig-75">
+    <figure class="shot"><img src="Images/delayed_seq1.jpg" srcset="Images/delayed_seq1.jpg 1.5x" alt="Start Sequence button with delayed start option" class="fig fig-75"></figure>
+    <figure class="shot"><img src="Images/delayed_seq2.jpg" srcset="Images/delayed_seq2.jpg 1.5x" alt="Delayed start requires active PHD2 guiding" class="fig fig-75"></figure>
+    <figure class="shot"><img src="Images/delayed_seq3.jpg" srcset="Images/delayed_seq3.jpg 1.5x" alt="Delayed sequence armed while PHD2 guiding is active" class="fig fig-75"></figure>
 
     <h3>Capture Time Limit</h3>
     <p>
         In time-limit mode, the main screen shows a time-limit field instead of the frame-count field. If the selected capture cycle becomes long enough
         to allow noticeable target drift, consider enabling <strong>Continuous Guiding</strong> on the main screen.
     </p>
-    <img src="Images/capture_seconds.jpg" alt="Capture Time Limit" class="fig fig-75">
+    <figure class="shot"><img src="Images/capture_seconds.jpg" srcset="Images/capture_seconds.jpg 1.5x" alt="Capture Time Limit" class="fig fig-75"></figure>
 
     <h2 id="autofocus">Autofocus</h2>
     <p>
@@ -168,5 +170,7 @@
     </p>
 
     <p><a href="MainScreen.htm#sequence-params">Back to Sequence Parameters</a></p>
+<nav class="foot"><a href="advanced_settings.htm">&larr; Advanced Settings</a><a href="CheckingConfig.htm">Checking System Configuration &rarr;</a></nav>
+</div>
 </body>
 </html>

@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comet and Asteroid Tracking with Ephemeris Planner and Dynamic Tracking - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Using HelioMaker</span></nav>
     <h1>Comet and Asteroid Tracking with Ephemeris Planner and Dynamic Tracking</h1>
 
     <p>
@@ -16,7 +18,7 @@
         A generated plan can later be loaded into <strong>Dynamic Target Tracking</strong> so HelioMaker can slew, center, and track the selected object using custom mount
         rates when available, or the fully automated PHD2 comet-tracking fallback when custom mount rates are not available.
     </p>
-    <img src="Images/ephemeris_tool.jpg" alt="Ephemeris Planner" class="fig fig-75">
+    <figure class="shot"><img src="Images/ephemeris_tool.jpg" srcset="Images/ephemeris_tool.jpg 1.5x" alt="Ephemeris Planner" class="fig fig-75"></figure>
 
     <h2>Opening the Tool</h2>
     <p>
@@ -39,7 +41,7 @@
         The comet button opens the Comet Observation Database (COBS), which can help identify active comets and their designations. The link button opens
         a set of useful minor-body resources, including Minor Planet Center and ESA NEO pages for finding asteroid, comet, and minor-planet information.
     </p>
-    <img src="Images/planner_object.jpg" alt="Ephemeris Planner object name controls" class="fig fig-75">
+    <figure class="shot"><img src="Images/planner_object.jpg" srcset="Images/planner_object.jpg 1.5x" alt="Ephemeris Planner object name controls" class="fig fig-75"></figure>
 
     <h2>Request Settings</h2>
     <ul>
@@ -151,5 +153,7 @@
     </ul>
 
     <p><a href="DynamicTracking.htm">Back to Dynamic Target Tracking</a></p>
+<nav class="foot"><a href="DynamicTracking_SlewAndSafety.htm">&larr; Slew to Target and Safety</a><a href="RecommendedWorkflow.htm">Recommended Solar, Lunar and Planetary Workflow &rarr;</a></nav>
+</div>
 </body>
 </html>

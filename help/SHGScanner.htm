@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHG Scanner - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Using HelioMaker</span></nav>
     <h1>SHG Scanner</h1>
 
     <p>
@@ -24,7 +26,7 @@
     <p>
         This feature is experimental. It supports RA scanning and, when the license and mount capabilities allow it, Dec scanning and multi-pass operation.
     </p>
-    <img src="Images/shg_scanner.jpg" alt="SHG Scanner Dialog" class="fig fig-75">
+    <figure class="shot"><img src="Images/shg_scanner.jpg" srcset="Images/shg_scanner.jpg 1.5x" alt="SHG Scanner Dialog" class="fig fig-75"></figure>
 
     <h2>Opening the Tool</h2>
     <p>
@@ -34,7 +36,7 @@
         <li>Open the <strong>Tools</strong> menu and select <strong>SHG Scan</strong>, or press <strong>Ctrl-G</strong>.</li>
         <li>Select the Sun in the <a href="DynamicTracking.htm#dynamic-target-tracking">Dynamic Target Tracking (DTT)</a> dialog and click <strong>SHG Scanner</strong>.</li>
     </ul>
-    <img src="Images/tools_menu.jpg" alt="Tools menu" class="fig fig-75">
+    <figure class="shot"><img src="Images/tools_menu.jpg" srcset="Images/tools_menu.jpg 1.5x" alt="Tools menu" class="fig fig-75"></figure>
     <p>
         The SHG entry is controlled by the <strong>Enable SHG scanning</strong> option in <a href="advanced_settings.htm#global-settings">Advanced Settings</a>.
         When that option is disabled, the DTT dialog button is hidden and the Tools menu entry is disabled. When enabled, the scanner is available only when
@@ -80,7 +82,7 @@
     <p>
         Click <strong>SHG Preferences</strong> in the scanner dialog to configure behavior that is not part of the per-scan setup.
     </p>
-    <img src="Images/shg_prefs.jpg" alt="SHG Preferences Dialog" class="fig fig-75">
+    <figure class="shot"><img src="Images/shg_prefs.jpg" srcset="Images/shg_prefs.jpg 1.5x" alt="SHG Preferences Dialog" class="fig fig-75"></figure>
     <ul>
         <li><strong>Enable stall detector:</strong> Lets HelioMaker stop a scan or return motion if mount position feedback indicates that the mount is no longer moving as expected.</li>
         <li><strong>Allow 8-bit capture:</strong> Allows the scanner to accept 8-bit capture formats. When disabled, HelioMaker prefers 16-bit output and falls back to 8-bit only when the camera does not support 16-bit.</li>
@@ -113,5 +115,7 @@
     </p>
 
     <p><a href="DynamicTracking.htm">Back to Dynamic Target Tracking</a></p>
+<nav class="foot"><a href="LunarEclipseImaging.htm">&larr; Lunar Eclipse Imaging</a><a href="DynamicTracking.htm">Dynamic Target Tracking &rarr;</a></nav>
+</div>
 </body>
 </html>

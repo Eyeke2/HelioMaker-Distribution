@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recommended Solar, Lunar and Planetary Workflow - HelioMaker</title>
     <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>HelioMaker Workflows</span></nav>
     <h1>Recommended Solar, Lunar and Planetary Workflow</h1>
     <p>
         This section provides a step-by-step guide for using HelioMaker to optimize guiding and imaging.
@@ -221,7 +223,7 @@
         checkbox in HelioMaker and verify that the <strong>Auto restore calibration</strong> option is enabled in PHD2's
         <strong>Advanced Settings</strong> (the "brains") dialog under the <strong>Guiding</strong> tab.
     </p>
-    <img src="Images/control.jpg" alt="Control Area">
+    <figure class="shot"><img src="Images/control.jpg" srcset="Images/control.jpg 1.5x" alt="Control Area"></figure>
     <p>
         The calibration process may take a few minutes, depending on the sampling period and other user-defined parameters.
         For detailed explanations of the related parameters, refer to the following sections
@@ -273,7 +275,7 @@
         However, HelioMaker can still perform reasonably well with less-than-perfect PHD2 calibration or an approximate, best-effort polar alignment.
         That said, significant misalignment or invalid PHD2 calibration can eventually cause the target to drift out of frame.
     </p>
-    <img src="Images/cal_graph.jpg" alt="Calibration Graph">
+    <figure class="shot"><img src="Images/cal_graph.jpg" srcset="Images/cal_graph.jpg 1.5x" alt="Calibration Graph"></figure>
     <p>
         If you experience issues with PHD2 calibration or find that HelioMaker fails to keep your target in frame for the desired duration, the first step is to check
         and adjust the detector in HelioMaker's Find &amp; Track tool. If HelioMaker has reported that the live
@@ -340,5 +342,7 @@
         to an active sequence and offers less precise timing between capture cycles compared to HelioMaker.
     </p>
 
+<nav class="foot"><a href="DynamicTracking_EphemerisPlanner.htm">&larr; Comet and Asteroid Tracking with Ephemeris Planner and Dynamic Tracking</a><a href="SHGWorkflow.htm">SHG Workflow &rarr;</a></nav>
+</div>
 </body>
 </html>

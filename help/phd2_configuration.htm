@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHD2 Configuration - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Configuration and Setup</span></nav>
     <h1>PHD2 Configuration</h1>
     <p>
         The PHD2 Configuration ensures HelioMaker integrates correctly with the custom version of PHD2 for guiding functionality.
@@ -27,7 +29,7 @@
         <li>Click the <strong>gears icon</strong> located next to the "PHD2" label on HelioMaker's main screen, OR</li>
         <li>Open the <strong>Setup</strong> menu in HelioMaker and choose <strong>PHD2 Configuration</strong>.</li>
     </ul>
-    <img src="Images/phd2_setup1.jpg" alt="PHD2 Configuration Dialog">
+    <figure class="shot"><img src="Images/phd2_setup1.jpg" srcset="Images/phd2_setup1.jpg 1.5x" alt="PHD2 Configuration Dialog"></figure>
     <p>
         Note: While HelioMaker is connected to PHD2, the fields for selecting the PHD2 executable path, instance number, and equipment profile are disabled to prevent changes
         during an active connection. To modify these settings, exit the PHD2 Configuration dialog, disconnect from PHD2 using the Link button, and then reopen the PHD2 Configuration dialog.
@@ -59,7 +61,7 @@
         This is the equipment profile that will be automatically loaded by PHD2 when HelioMaker connects with PHD2 via the Link button.
         To ensure HelioMaker uses the correct PHD2 equipment profile:
     </p>
-    <img src="Images/equipment_profile.jpg" alt="PHD2 Equipment Profile">
+    <figure class="shot"><img src="Images/equipment_profile.jpg" srcset="Images/equipment_profile.jpg 1.5x" alt="PHD2 Equipment Profile"></figure>
     <ul>
         <li>Click <strong>Get Profiles</strong> to enumerate existing PHD2 equipment profiles. This will launch PHD2 temporarily to fetch the profiles.</li>
         <li>If the operation times out due to slow machines or unexpected delays, retry until the profiles are successfully fetched.</li>
@@ -102,7 +104,7 @@
         Note that the <strong>Virtual Planetary Camera</strong> is available only in the <strong>custom PHD2 version</strong>
         described in this documentation.
     </p>
-    <img src="Images/phd2-vpc-selection.jpg" alt="PHD2 Camera Selection">
+    <figure class="shot"><img src="Images/phd2-vpc-selection.jpg" srcset="Images/phd2-vpc-selection.jpg 1.5x" alt="PHD2 Camera Selection"></figure>
     <p>If PHD2 is currently connected to HelioMaker, the choice of selecting the Equipment Profile will be greyed out. To select a different equipment profile, the user will need to disconnect HelioMaker from PHD2 first. This process will be described in the operational section of the manual.</p>
 
     <p>
@@ -114,7 +116,7 @@
         <li>Select <strong>binning level 1</strong>.</li>
         <li>Set the guiding scope focal length to any value (it will also be set later by HelioMaker).</li>
     </ul>
-    <img src="Images/phd2_wizard.jpg" alt="PHD2 New Profile Wizard">
+    <figure class="shot"><img src="Images/phd2_wizard.jpg" srcset="Images/phd2_wizard.jpg 1.5x" alt="PHD2 New Profile Wizard"></figure>
 
     <p>When using a camera shared between SharpCap and PHD2 (<strong>Virtual Planetary Camera</strong>):</p>
     <ul>
@@ -128,7 +130,7 @@
             Enable <strong>Confirm use of Virtual Planetary Camera</strong> in HelioMaker to receive a warning if HelioMaker expects
             to find the <strong>Virtual Planetary Camera</strong> in the PHD2 profile but does not detect it.
         </li>
-        <img src="Images/confirm_vpc.jpg" alt="Confirm VPC">
+        <figure class="shot"><img src="Images/confirm_vpc.jpg" srcset="Images/confirm_vpc.jpg 1.5x" alt="Confirm VPC"></figure>
     </ul>
 
     <h2>Using a Dedicated Guiding Camera</h2>
@@ -243,5 +245,7 @@
     </p>
 
     <p><a href="ConfigurationAndSetup.htm">Back to Configuration and Setup</a></p>
+<nav class="foot"><a href="sharpcap_configuration.htm">&larr; SharpCap Pro Configuration</a><a href="advanced_settings.htm">Advanced Settings &rarr;</a></nav>
+</div>
 </body>
 </html>

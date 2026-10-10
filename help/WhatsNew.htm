@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What's New in This Version - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>About HelioMaker</span></nav>
     <h1>What's New in This Version</h1>
     <p>
         HelioMaker continues to evolve to better support solar, lunar, and planetary imaging workflows.
@@ -156,7 +158,7 @@
         Dynamic Target Tracking, Find &amp; Track, Ephemeris Planner, Solar Eclipse Planner,
         Lunar Eclipse Planner, SHG Scanner, and Focal Length Calculator.
     </p>
-    <img src="Images/tools_menu.jpg" alt="Tools menu" class="fig fig-75">
+    <figure class="shot"><img src="Images/tools_menu.jpg" srcset="Images/tools_menu.jpg 1.5x" alt="Tools menu" class="fig fig-75"></figure>
 
     <h2 id="eclipse-imaging">Solar Eclipse Planner and Sequencer</h2>
     <p>
@@ -214,7 +216,7 @@
         <a href="sequence_options.htm#observed-target"><strong>Observed target</strong></a> choice identifies
         the camera target for cloud monitoring and its allowance for natural airmass changes.
     </p>
-    <img src="Images/sequence_options.jpg" alt="Sequence Options Dialog" class="fig fig-75">
+    <figure class="shot"><img src="Images/sequence_options.jpg" srcset="Images/sequence_options.jpg 1.5x" alt="Sequence Options Dialog" class="fig fig-75"></figure>
 
     <h2 id="shg-scanner">Experimental SHG Scanner</h2>
     <p>
@@ -226,7 +228,7 @@
         an additional guide scope and guide camera (protected by an appropriate solar filter), multipass scanning can be enhanced by automatically
         recentering the Sun between scan passes using PHD2 guiding. Scanning in Ra and Dec is supported.
     </p>
-    <img src="Images/shg_scanner.jpg" alt="SHG Scanner Dialog" class="fig fig-75">
+    <figure class="shot"><img src="Images/shg_scanner.jpg" srcset="Images/shg_scanner.jpg 1.5x" alt="SHG Scanner Dialog" class="fig fig-75"></figure>
 
     <h2>Advanced Dialog Settings</h2>
     <p>
@@ -241,7 +243,7 @@
         Added a new option in the <strong>PHD2 Config</strong> dialog to invert the RA rate for Dynamic Target Tracking. This helps match the tracking
         direction to mount-specific behavior on mounts that expect the opposite RA-rate sign.
     </p>
-    <img src="Images/phd2_setup1.jpg" alt="PHD2 Configuration Dialog" class="fig fig-75">
+    <figure class="shot"><img src="Images/phd2_setup1.jpg" srcset="Images/phd2_setup1.jpg 1.5x" alt="PHD2 Configuration Dialog" class="fig fig-75"></figure>
 
     <h2>PHD2 Calibration Pre-flight Dialog</h2>
     <p>
@@ -344,7 +346,7 @@
         detections and can apply the result to the appropriate primary scope or PHD2 guidescope configuration.
     </p>
 
-    <img src="Images/find_tool_intro.jpg" alt="Find Tool" class="fig">
+    <figure class="shot"><img src="Images/find_tool_intro.jpg" srcset="Images/find_tool_intro.jpg 1.5x" alt="Find Tool" class="fig"></figure>
 
     <h2>Architecture Update: Improved Detection and 64-bit Performance</h2>
     <p>
@@ -395,7 +397,9 @@
         Updated interface with crisp, sharp graphics and full support for Windows High-DPI display devices. Added on-screen display of the currently
         selected main imaging camera and real-time CPU load indicators, showing the impact of detection and tracking algorithms.
     </p>
-    <img src="Images/hm-guiding.jpg" alt="UI" class="fig">
+    <figure class="shot"><img src="Images/hm-guiding.jpg" srcset="Images/hm-guiding.jpg 1.5x" alt="UI" class="fig"></figure>
 
+<nav class="foot"><a href="About.htm">&larr; About HelioMaker</a><a href="Installation.htm">Installation and Prerequisites &rarr;</a></nav>
+</div>
 </body>
 </html>

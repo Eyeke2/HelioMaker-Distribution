@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monitor Area Indicators - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Using HelioMaker</span></nav>
     <h1>Monitor Area Indicators</h1>
 
     <h2 id="indicator-disconnected">Disconnected or Not Fully Connected</h2>
-    <img src="Graphics/switched_off.png" alt="off">
+    <img src="Graphics/switched_off.png" srcset="Graphics/switched_off.png 1.5x" alt="off">
     <p>
         This is the normal initial status right after launching HelioMaker. It indicates that HelioMaker is not yet
         fully connected to the components required by the selected workflow. A shared-camera workflow requires
@@ -28,7 +30,7 @@
     <hr>
 
     <h2 id="indicator-looping-idle">Looping Exposures (Greyed-Out)</h2>
-    <img src="Graphics/loop_no_detection.png" alt="Looping Exposures Icon">
+    <img src="Graphics/loop_no_detection.png" srcset="Graphics/loop_no_detection.png 1.5x" alt="Looping Exposures Icon">
     <p>
         This indicator represents a normal state right after all components (SharpCap Pro and PHD2) and all imaging gear are initially connected.
         It means that PHD2 has started looping exposures but the selected detector has not yet established a target.
@@ -38,7 +40,7 @@
     <hr>
 
     <h2 id="indicator-looping">Looping Exposures (Green)</h2>
-    <img src="Graphics/loop_detected.png" alt="Looping Exposures (Green) Indicator">
+    <img src="Graphics/loop_detected.png" srcset="Graphics/loop_detected.png 1.5x" alt="Looping Exposures (Green) Indicator">
     <p>
         This indicator is displayed when PHD2 has been instructed and configured to detect an object, and the object is successfully detected.
         "Object" may refer to an entire solar system body or an anchor point on its surface.
@@ -51,7 +53,7 @@
     <hr>
 
     <h2 id="indicator-findstar">Searching for Object</h2>
-    <img src="Graphics/finding_object.png" alt="Searching for Object Indicator">
+    <img src="Graphics/finding_object.png" srcset="Graphics/finding_object.png 1.5x" alt="Searching for Object Indicator">
     <p>
         This indicator is displayed when the user starts a sequence in HelioMaker and PHD2 is attempting to detect an object.
         "Object" can refer to an entire solar system body or an anchor point on its surface, depending on the detection mode configured.
@@ -63,7 +65,7 @@
     <hr>
 
     <h2 id="indicator-calibration">PHD2 Calibration</h2>
-    <img src="Graphics/calibration.png" alt="PHD2 Calibration">
+    <img src="Graphics/calibration.png" srcset="Graphics/calibration.png 1.5x" alt="PHD2 Calibration">
     <p>
         This indicator is displayed when PHD2 is in the process of calibration, a critical phase required before guiding can start.
         Calibration measures how the telescope mount responds to guiding commands in each of the available axes - Right Ascension (RA) and Declination (Dec).
@@ -96,7 +98,7 @@
     <hr>
 
     <h2 id="indicator-settling">Mount Settling</h2>
-    <img src="Graphics/settling.png" alt="Mount Settling Indicator">
+    <img src="Graphics/settling.png" srcset="Graphics/settling.png 1.5x" alt="Mount Settling Indicator">
     <p>
         The <strong>Mount Settling</strong> indicator is displayed during the <em>settling phase</em> in PHD2,
         which occurs just before guiding begins. Settling is an essential step after PHD2 completes its calibration
@@ -134,7 +136,7 @@
     <hr>
 
     <h2 id="indicator-guiding">PHD2 Guiding</h2>
-    <img src="Graphics/guiding.png" alt="PHD2 Guiding Indicator">
+    <img src="Graphics/guiding.png" srcset="Graphics/guiding.png 1.5x" alt="PHD2 Guiding Indicator">
     <p>The <strong>PHD2 Guiding Indicator</strong> is displayed when PHD2 has successfully detected an object, is taking exposures, and is actively guiding based on:</p>
     <ul>
         <li>The results of the most recent PHD2 calibration.</li>
@@ -184,7 +186,7 @@
     <hr>
 
     <h2 id="indicator-recording-paused">Recording Cycle</h2>
-    <img src="Graphics/capturing.png" alt="Recording Cycle Indicator">
+    <img src="Graphics/capturing.png" srcset="Graphics/capturing.png 1.5x" alt="Recording Cycle Indicator">
     <p>
         The <strong>Recording Cycle</strong> indicator is displayed when a HelioMaker sequence is actively running,
         and SharpCap Pro is capturing images in a high-speed cycle. Depending on the selected <a href="sequence_options.htm">Sequence Options</a>,
@@ -246,7 +248,7 @@
     <hr>
 
     <h2 id="indicator-recording">Recording Cycle with Guiding</h2>
-    <img src="Graphics/rec_and_guiding.png" alt="Recording Cycle with Guiding Indicator">
+    <img src="Graphics/rec_and_guiding.png" srcset="Graphics/rec_and_guiding.png 1.5x" alt="Recording Cycle with Guiding Indicator">
     <p>
         The <strong>Recording Cycle with Guiding</strong> indicator is displayed when a HelioMaker sequence is actively running,
         and SharpCap Pro is capturing images in a high-speed cycle. Unlike the <a href="#indicator-recording-paused">Recording Cycle</a> mode,
@@ -281,7 +283,7 @@
     <hr>
 
     <h2 id="indicator-rec">SharpCap Recording</h2>
-    <img src="Graphics/recording.png" alt="SharpCap Recording Indicator">
+    <img src="Graphics/recording.png" srcset="Graphics/recording.png 1.5x" alt="SharpCap Recording Indicator">
     <p>
         The <strong>SharpCap Recording</strong> indicator appears when the user initiates an image capture
         operation <em>directly from SharpCap Pro</em>, rather than using the HelioMaker sequencer.
@@ -339,7 +341,7 @@
     <hr>
 
     <h2 id="indicator-clouds">Clouds or Poor Seeing While Guiding</h2>
-    <img src="Graphics/guiding_with_clouds.png" alt="Clouds or Poor Seeing Indicator">
+    <img src="Graphics/guiding_with_clouds.png" srcset="Graphics/guiding_with_clouds.png 1.5x" alt="Clouds or Poor Seeing Indicator">
     <p>
         The <strong>Clouds or Poor Seeing</strong> indicator is displayed when <strong>PHD2 loses its target</strong> while guiding.
         During this time, guiding cannot continue until the conditions improve, such as:
@@ -368,7 +370,7 @@
     <hr>
 
     <h2 id="indicator-no-camera">No Camera</h2>
-    <img src="Graphics/no_camera.png" alt="No Camera Indicator">
+    <img src="Graphics/no_camera.png" srcset="Graphics/no_camera.png 1.5x" alt="No Camera Indicator">
     <p>
         The <strong>No Camera</strong> symbol is displayed when SharpCap or PHD2 has lost connection to its camera
         or when a camera has not been connected yet. It can also appear in the following cases:
@@ -400,7 +402,7 @@
     <hr>
 
     <h2 id="indicator-stop">PHD2 Stopped</h2>
-    <img src="Graphics/stopped.png" alt="PHD2 Stopped Indicator">
+    <img src="Graphics/stopped.png" srcset="Graphics/stopped.png 1.5x" alt="PHD2 Stopped Indicator">
     <p>
         The <strong>PHD2 Stopped</strong> symbol indicates that PHD2 stopped taking exposures
         and cannot perform its guiding functions. This state can occur for the following reasons:
@@ -414,7 +416,7 @@
     </ul>
 
     <h2 id="indicator-pause">Sequence Paused</h2>
-    <img src="Graphics/pause.png" alt="Sequence Paused Indicator">
+    <img src="Graphics/pause.png" srcset="Graphics/pause.png 1.5x" alt="Sequence Paused Indicator">
     <p>
         The <strong>Sequence Paused</strong> symbol indicates that sequence execution is currently paused,
         which can be triggered manually by operator or automatically due to certain conditions:
@@ -430,7 +432,7 @@
     </p>
 
     <h2 id="indicator-refocus">Image refocusing</h2>
-    <img src="Graphics/focus.png" alt="Sequence Refocus Indicator">
+    <img src="Graphics/focus.png" srcset="Graphics/focus.png 1.5x" alt="Sequence Refocus Indicator">
     <p>
         The <strong>Focusing</strong> symbol indicates that sequence execution is currently paused
         and is executing SharpCap's Automatic refocusing routine, as configured in <a href="sequence_options.htm">Sequence Options</a>.
@@ -459,5 +461,7 @@
     </ul>
     <hr>
 
+<nav class="foot"><a href="MainScreen.htm">&larr; Main Screen</a><a href="Find_Tool.htm">Find &amp; Track &rarr;</a></nav>
+</div>
 </body>
 </html>

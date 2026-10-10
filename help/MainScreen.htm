@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Screen - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Using HelioMaker</span></nav>
     <h1>Main Screen</h1>
     <p>The main screen of HelioMaker provides an intuitive interface for configuring and controlling the guiding and imaging setup. This section explains each area of the main screen in detail.</p>
-    <img src="Images/main_screen3.jpg" alt="Main Screen of HelioMaker">
+    <figure class="shot"><img src="Images/main_screen3.jpg" srcset="Images/main_screen3.jpg 1.5x" alt="Main Screen of HelioMaker"></figure>
 
     <h2 id="sequence-params">Sequence Parameters</h2>
     <p>The sequence parameters include fields for defining the imaging sequence, such as:</p>
-    <img src="Images/sequence_params.jpg" alt="Sequence parameters">
+    <figure class="shot"><img src="Images/sequence_params.jpg" srcset="Images/sequence_params.jpg 1.5x" alt="Sequence parameters"></figure>
     <ul>
         <li><strong>Target Name:</strong> The name of the object being imaged (e.g., "Sun").</li>
         <li><strong>Capture Folder:</strong> The directory where the captured images will be stored.</li>
@@ -36,7 +38,7 @@
         correctly as this value contributes to the accuracy of PHD2 calibration, which is essential for guiding accuracy, as well as for
         estimating correct settings for SHG scanning that require accurate image scale.
     </p>
-    <img src="Images/focal.jpg" alt="Focal length">
+    <figure class="shot"><img src="Images/focal.jpg" srcset="Images/focal.jpg 1.5x" alt="Focal length"></figure>
     <ul>
         <li>
             <strong>When using a shared camera</strong>
@@ -58,7 +60,7 @@
         </li>
         <li><strong>Guiding Camera</strong>: Displays the currently selected guiding camera, serving as a reference for setting the correct focal length based on the telescope and any accessories used with that camera.</li>
     </ul>
-    <img src="Images/focal_calc.jpg" alt="Focal length calculator">
+    <figure class="shot"><img src="Images/focal_calc.jpg" srcset="Images/focal_calc.jpg 1.5x" alt="Focal length calculator"></figure>
 
     <h2 id="control">Control Section</h2>
     <p>
@@ -101,7 +103,7 @@
             this control changes into a menu-style button that lets you either start immediately or arm the sequence for a specified time.
         </li>
     </ul>
-    <img src="Images/control.jpg" alt="Control area">
+    <figure class="shot"><img src="Images/control.jpg" srcset="Images/control.jpg 1.5x" alt="Control area"></figure>
 
     <h3>Notes about Continuous Guiding</h3>
     <p>
@@ -138,7 +140,7 @@
             A very useful but easy-to-miss feature of HelioMaker is the functionality associated with the static labels
             and icons representing <strong>SharpCap Pro</strong> and <strong>PHD2</strong> in the Control section of the main screen.
         </p>
-        <img src="Images/static_labels.jpg" alt="Static Labels for SharpCap Pro and PHD2">
+        <figure class="shot"><img src="Images/static_labels.jpg" srcset="Images/static_labels.jpg 1.5x" alt="Static Labels for SharpCap Pro and PHD2"></figure>
         <p>
             <strong>Feature Overview:</strong>
         </p>
@@ -191,7 +193,7 @@
             <p>Please note that the actual timing of the meridian flip depends on the mount hardware and its controller settings. This timer serves as a rough indicator and should not be solely relied upon for precise flip timing.</p>
         </li>
     </ul>
-    <img src="Images/session.jpg" alt="Session area">
+    <figure class="shot"><img src="Images/session.jpg" srcset="Images/session.jpg 1.5x" alt="Session area"></figure>
     <p>The session section also includes:</p>
     <ul>
         <li>
@@ -207,14 +209,14 @@
             consistent but the target still drifts, please
             refer to the PHD2 user manual, user forums, or other resources for advice on improving your mount's polar alignment and guiding performance.
         </li>
-        <img src="Images/cal_graph.jpg" alt="Calibration graph">
+        <figure class="shot"><img src="Images/cal_graph.jpg" srcset="Images/cal_graph.jpg 1.5x" alt="Calibration graph"></figure>
 
         <li>
             A <strong>sequence progress indicator and session pause/resume button</strong> when a sequence initiated from HelioMaker is active.
             The progress indicator shows the number of completed cycles out of the total number of cycles in the sequence. The pause/resume button
             allows you to temporarily halt the sequence and resume it later without losing progress.
         </li>
-        <img src="Images/progress.jpg" alt="Progress bar">
+        <figure class="shot"><img src="Images/progress.jpg" srcset="Images/progress.jpg 1.5x" alt="Progress bar"></figure>
     </ul>
 
     <h2>Monitor Section</h2>
@@ -229,7 +231,7 @@
         <li><strong>RMS (Total):</strong> The root mean square (RMS) of guiding errors on both axes, expressed in guiding camera pixel units.</li>
         <li><strong>X and Y:</strong> The guiding errors in X and Y axes, expressed in guiding camera pixel units.</li>
     </ul>
-    <img src="Images/phd2_graph.jpg" alt="PHD2 graph">
+    <figure class="shot"><img src="Images/phd2_graph.jpg" srcset="Images/phd2_graph.jpg 1.5x" alt="PHD2 graph"></figure>
     <p>
         On the left side of the Monitor area, you will find the <a href="Icons.htm"><strong>HelioMaker Indicator</strong></a> - a large graphical
         element that represents the current state of PHD2 (e.g., stopped, looping exposures, guiding, calibration) as well as HelioMaker-specific
@@ -267,8 +269,10 @@
         <li><strong>Upper Status Line:</strong> Displays the current states and related details for HelioMaker, PHD2, and SharpCap.</li>
         <li><strong>Lower Status Line:</strong> Displays signal strength bars to provide visual feedback on the quality of PHD2 planetary detection, state information, the current tracking-rate indicator, any current PHD2 alert messages (refer to the PHD2 documentation for detailed descriptions), and the HelioMaker processing time for the last guiding frame in seconds. The tracking-rate indicator can show standard mount rates or HelioMaker's dynamically updated custom tracking mode.</li>
     </ul>
-    <img src="Images/status1.jpg" alt="Status lines">
+    <figure class="shot"><img src="Images/status1.jpg" srcset="Images/status1.jpg 1.5x" alt="Status lines"></figure>
 
     <p>Refer to the respective sections of this manual for detailed guidance on specific features.</p>
+<nav class="foot"><a href="VersionCheck.htm">&larr; Checking for Updates</a><a href="Icons.htm">Monitor Area Indicators &rarr;</a></nav>
+</div>
 </body>
 </html>

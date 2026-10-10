@@ -22,6 +22,8 @@
   nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;
     color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);}
   nav.top a{color:var(--muted);}
+  /* Online only: the publish adds the link to the documentation index at the top of the index page (053-1). */
+  nav.site{font-size:13.5px;color:var(--muted);margin:0 0 16px;} nav.site a{color:var(--muted);}
   h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650;}
   .lead{color:var(--muted);font-size:16px;margin:0 0 8px;}
   h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);
@@ -46,7 +48,7 @@
   table.t code{font-size:12.5px;}
   nav.foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;}
   @media print{body{background:#fff;color:#000;font-size:12pt;}a{color:#000;text-decoration:underline;}
-    .callout,table.t{break-inside:avoid;}nav.top,nav.foot{display:none;}}
+    .callout,table.t{break-inside:avoid;}nav.top,nav.foot,nav.site{display:none;}}
 
 /* Lunar guide additions; base palette, typography and chapter layout match Help/eclipse. */
 .wrap.index{max-width:860px;}

@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dynamic Target Tracking - HelioMaker</title>
     <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Using HelioMaker</span></nav>
 
     <h1 id="dynamic-target-tracking">Dynamic Target Tracking</h1>
 
@@ -60,7 +62,7 @@
         planned minor-body workflows.
     </p>
 
-    <img src="Images/dynamic_tracking.jpg" alt="Dynamic Target Tracking Tool" class="fig">
+    <figure class="shot"><img src="Images/dynamic_tracking.jpg" srcset="Images/dynamic_tracking.jpg 1.5x" alt="Dynamic Target Tracking Tool" class="fig"></figure>
 
     <h2 id="before-starting-dynamic-tracking">Before Starting Dynamic Tracking</h2>
     <p>
@@ -141,7 +143,7 @@
         <li>the dynamic tracking glyph beside the letters <strong>DTT</strong>, and</li>
         <li>the target's own symbol with its name, for example the Sun or Jupiter.</li>
     </ul>
-    <img src="Images/dynamic_indicator.jpg" alt="Status indicator showing dynamic tracking for the Sun" class="fig fig-75">
+    <figure class="shot"><img src="Images/dynamic_indicator.jpg" srcset="Images/dynamic_indicator.jpg 1.5x" alt="Status indicator showing dynamic tracking for the Sun" class="fig fig-75"></figure>
     <p>
         The glyph appears only while dynamic tracking is actually driving the mount. That is a different fact from the Dynamic Target Tracking window being open,
         which is what the toolbar button reflects. When Dynamic Target Tracking is not in use, the same field reflects one of the standard mount tracking modes,
@@ -157,7 +159,7 @@
         Some mounts may require inversion of the RA tracking-rate sign when using Dynamic Target Tracking. This option can be controlled in HelioMaker's
         <strong>PHD2 configuration</strong> dialog using the <strong>Invert RA rate for Dynamic Tracking</strong> checkbox shown below.
     </p>
-    <img src="Images/phd2_setup1.jpg" alt="PHD2 Configuration Dialog showing Invert RA rate for Dynamic Tracking option" class="fig fig-75">
+    <figure class="shot"><img src="Images/phd2_setup1.jpg" srcset="Images/phd2_setup1.jpg 1.5x" alt="PHD2 Configuration Dialog showing Invert RA rate for Dynamic Tracking option" class="fig fig-75"></figure>
     <p>
         If applying a dynamic rate results in excessive target drift, this may indicate that RA rate reversal is required for your mount. In that case, try toggling this
         checkbox and then click <strong>Start Dynamic Tracking</strong> again.
@@ -173,5 +175,7 @@
         <a href="Faq_DynamicTracking.htm"><strong>Why does the target drift excessively after enabling Dynamic Target Tracking?</strong></a>.
     </p>
 
+<nav class="foot"><a href="SHGScanner.htm">&larr; SHG Scanner</a><a href="DynamicTracking_MountCompatibility.htm">Mount Compatibility for Dynamic Tracking &rarr;</a></nav>
+</div>
 </body>
 </html>

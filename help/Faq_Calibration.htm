@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHD2 Calibration and Troubleshooting</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Troubleshooting and FAQ</span></nav>
     <h1>PHD2 Calibration and Troubleshooting</h1>
 
     <p>
@@ -124,7 +126,7 @@
         the calibration moves too small or too large, causing PHD2 to complete calibration with too many or too few steps, which can make the
         resulting calibration graph less reliable.
     </p>
-    <img src="Images/cal_graph.jpg" alt="PHD2 calibration graph">
+    <figure class="shot"><img src="Images/cal_graph.jpg" srcset="Images/cal_graph.jpg 1.5x" alt="PHD2 calibration graph"></figure>
 
     <h2 id="troubleshooting-calibration-issues">Troubleshooting Calibration Issues</h2>
     <p>
@@ -193,5 +195,7 @@
             ensures that guiding corrections are applied effectively, minimizing drift and optimizing tracking accuracy during your imaging session.
         </li>
     </ul>
+<nav class="foot"><a href="Faq_Phd2Instance.htm">&larr; How to configure the PHD2 instance number?</a><a href="Faq_DynamicTracking.htm">Why does the target drift excessively after enabling Dynamic Target Tracking? &rarr;</a></nav>
+</div>
 </body>
 </html>

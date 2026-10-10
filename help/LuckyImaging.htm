@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky Imaging / Live Stack - HelioMaker</title>
     <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>HelioMaker Workflows</span></nav>
 
     <h1>Lucky Imaging / Live Stack</h1>
 
@@ -33,8 +35,8 @@
         that align with guiding frame rates of about one frame every few seconds (typically 1-3 seconds). Make sure to set
         the exposure time in SharpCap Pro and adjust PHD2's minimum guiding period in HelioMaker to match the desired timing.
     </p>
-    <img src="Images/FindStarMode.jpg" alt="Find &amp; Track Star Mode UI with star icon button and disabled sensitivity slider">
-    <div class="figure-caption">Star Mode example screenshot.</div>
+    <figure class="shot"><img src="Images/FindStarMode.jpg" srcset="Images/FindStarMode.jpg 1.5x" alt="Find &amp; Track Star Mode UI with star icon button and disabled sensitivity slider"><figcaption>Star Mode example screenshot.</figcaption></figure>
+    
 
     <h2>Using a Dedicated PHD2 Physical Camera</h2>
     <p>
@@ -58,7 +60,7 @@
         This ensures SharpCap Pro and PHD2 communicate on the same port HelioMaker uses for the shared camera stream or the selected PHD2 instance.
         Once configured, SharpCap Pro relays each live frame to PHD2, and PHD2 guides on your chosen star without requiring a separate guide scope in shared-camera mode.
     </p>
-    <img src="Images/SharpCapPort.jpg" alt="SharpCap Pro guiding settings showing PHD2 port configuration">
+    <figure class="shot"><img src="Images/SharpCapPort.jpg" srcset="Images/SharpCapPort.jpg 1.5x" alt="SharpCap Pro guiding settings showing PHD2 port configuration"></figure>
 
     <h2>Additional Notes</h2>
     <p>
@@ -76,8 +78,10 @@
         <a href="https://www.sharpcap.co.uk/sharpcap/features/live-stacking" target="_blank" rel="noopener">SharpCap Live Stacking documentation</a>
         and other online resources.
     </p>
-    <div class="figure-caption">An example screenshot of a Live Stack session in SharpCap Pro (using simulated data).</div>
-    <img src="Images/LiveStack.jpg" alt="Live stack screenshot">
+    
+    <figure class="shot"><figcaption>An example screenshot of a Live Stack session in SharpCap Pro (using simulated data).</figcaption><img src="Images/LiveStack.jpg" srcset="Images/LiveStack.jpg 1.5x" alt="Live stack screenshot"></figure>
 
+<nav class="foot"><a href="CometsMinorBodiesWorkflow.htm">&larr; Comets and Minor Bodies Workflow</a><a href="About_CustomPhd2.htm">About the custom version of PHD2 &rarr;</a></nav>
+</div>
 </body>
 </html>

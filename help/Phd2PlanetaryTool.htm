@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Using PHD2 Solar & Planetary Guiding Tool - HelioMaker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
 <body>
-<nav class="web-nav"><a href="index.html">&larr; Contents</a> &middot; <a href="../">HelioMaker documentation</a></nav>
+<div class="wrap">
+<nav class="top"><span><a href="../">HelioMaker documentation</a> &rsaquo; <a href="index.html">Contents</a></span><span>Getting Started &amp; Resources</span></nav>
     <h1>Using PHD2 Solar & Planetary Guiding Tool (Standalone Full Disk Detection Mode)</h1>
 
     <p>
@@ -17,7 +19,7 @@
         circular shapes such as the Sun or Moon and crescent shapes including lunar phases and partial solar
         eclipses (excluding moments of totality).
     </p>
-    <img src="Images/planetary_disk_default.jpg" alt="Full Disk Detection Mode Example" class="fig">
+    <figure class="shot"><img src="Images/planetary_disk_default.jpg" srcset="Images/planetary_disk_default.jpg 1.5x" alt="Full Disk Detection Mode Example" class="fig"></figure>
 
     <p>
         To prepare PHD2 for guiding, it is essential to set up your system correctly and configure the detection parameters appropriately.
@@ -51,7 +53,7 @@
         local detection controls while HelioMaker owns detection, because radius, region, sensitivity, and detection
         results are managed in Find &amp; Track.
     </p>
-    <img src="Images/phd2-solar-tool-phys.jpg" alt="Solar tool in shared mode" class="fig">
+    <figure class="shot"><img src="Images/phd2-solar-tool-phys.jpg" srcset="Images/phd2-solar-tool-phys.jpg 1.5x" alt="Solar tool in shared mode" class="fig"></figure>
 
     <h4>Enable Planetary and Solar Guiding</h4>
     <p>
@@ -191,5 +193,7 @@
         guiding performance during the session or as diagnostic data when seeking assistance.
     </p>
 
+<nav class="foot"><a href="DaytimePolarAlignment.htm">&larr; Daytime polar alignment using PHD2</a><a href="Faq.htm">Troubleshooting and FAQ &rarr;</a></nav>
+</div>
 </body>
 </html>

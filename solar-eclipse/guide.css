@@ -27,6 +27,9 @@ a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 nav.top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--muted);margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 nav.top a{color:var(--muted)}
+/* Online only: the publish adds the link to the documentation index at the top of the index page (053-1) */
+nav.site{font-size:13.5px;color:var(--muted);margin:0 0 16px}
+nav.site a{color:var(--muted)}
 h1{font-size:27px;line-height:1.2;margin:0 0 8px;font-weight:650}
 .lead{color:var(--muted);font-size:16px;margin:0 0 8px}
 h2{font-size:14px;text-transform:uppercase;letter-spacing:.11em;color:var(--accent-ink);margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line)}
@@ -176,7 +179,7 @@ th.w-26{width:26%}
 @media print{
   body{background:#fff;color:#000;font-size:12pt}
   a{color:#000;text-decoration:underline}
-  nav.top,nav.foot{display:none}
+  nav.top,nav.foot,nav.site{display:none}
   .callout,table.t,table.map,table.modes,table.opt,.step,.gear>li,.toc a,.spine,.safety,.guide-hero,
   .hero-shot,.grp,.card,.cue{break-inside:avoid}
 }
