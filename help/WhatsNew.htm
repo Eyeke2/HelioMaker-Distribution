@@ -14,8 +14,8 @@
     <h1>What's New in This Version</h1>
     <p>
         HelioMaker continues to evolve to better support solar, lunar, and planetary imaging workflows.
-        This release brings a more stable lunar eclipse workflow, an improved surface tracking algorithm,
-        and further reliability improvements for camera and PHD2 communication.
+        This release brings the lunar eclipse workflow out of early preview as a regular feature, an improved
+        surface tracking algorithm, and further reliability improvements for camera and PHD2 communication.
     </p>
     <h2>Latest Improvements (2.0.18)</h2>
     <ul>
@@ -25,7 +25,8 @@
             August 2, 2027.
         </li>
         <li>
-            <strong><a href="#lunar-eclipse">More stable lunar eclipse imaging.</a></strong> Improved capture
+            <strong><a href="#lunar-eclipse">Lunar eclipse imaging out of early preview.</a></strong> The Lunar
+            Eclipse Planner, an early preview in 2.0.14 and 2.0.16, is now a regular feature, with improved capture
             scheduling, shared-camera guiding, capture counts, and recovery after camera or PHD2 interruptions.
             Long exposures are handled more reliably during camera startup and recovery. Stopping a run or
             leaving pre-flight during autofocus also includes improved cleanup of pending capture and focus work.
@@ -205,10 +206,11 @@
         Detailed, task-oriented instructions are supplied separately in the Solar Eclipse Imaging Manual.
     </p>
 
-    <h2 id="lunar-eclipse">More Stable Lunar Eclipse Workflow</h2>
+    <h2 id="lunar-eclipse">Lunar Eclipse Workflow Out of Early Preview</h2>
     <p>
         The Lunar Eclipse Planner brings together event search, phase-by-phase exposure planning, rehearsal,
-        pre-flight checks, and automated capture. This release improves coordination between imaging and
+        pre-flight checks, and automated capture. After its early preview in 2.0.14 and 2.0.16, it is now a
+        regular feature. This release improves coordination between imaging and
         guiding when sharing a camera, phase transitions, and the reporting of completed and missed captures.
     </p>
     <p>
