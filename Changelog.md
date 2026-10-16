@@ -1,8 +1,17 @@
+Version 2.0.18
+
+* Solar and lunar eclipse planning now extends to the end of 2027, with full support for the great total solar eclipse of 2 August 2027
+* Improved the **Lunar Eclipse Planner**, with more reliable capture, guiding and recovery, and an illustrated Lunar Eclipse Guide in the Help menu
+* Improved cloud and haze monitoring with tracked-target photometry
+* Improved surface feature tracking algorithm
+* HelioMaker Help and the eclipse guides are also available online at docs.heliomaker.com
+* Requires the custom PHD2 v2.6.14-solar.3.3 or later; v2.6.14-solar.7.2 or later is recommended
+* Bug fixes and stability improvements
+
 Version 2.0.16
 
-* The **Lunar Eclipse Planner remains an Early Preview**. It is unfinished, may contain bugs, and is offered as-is for evaluation
-* Expanded lunar-eclipse planning with phase-by-phase exposure and guiding controls, automatic partial and deep-umbra HDR brackets, plan locking, draft/final plans, and file import/export
-* Added real-time lunar scheduling based on the brightness and altitude at each planned capture, with Live View and Still capture, shared or separate guiding cameras, and simulated PHD2 guide frames
+* Expanded the **Lunar Eclipse Planner (Early Preview)** with planning, simulation, rehearsal and imaging tools. This unfinished preview may contain bugs and is offered as-is
+* Improved lunar-eclipse simulation and capture workflows
 * Bug fixes and stability improvements
 
 Version 2.0.14
