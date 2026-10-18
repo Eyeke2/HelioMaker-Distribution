@@ -137,6 +137,38 @@
         connections with all devices listed in the current profile.
     </p>
 
+    <h4>Guiding through ST-4</h4>
+
+    <p>
+        If your mount receives guide corrections through its ST-4 guide port, set up the PHD2 equipment profile as follows:
+    </p>
+
+    <ul>
+        <li>
+            <strong>Mount:</strong> choose the device that sends the ST-4 pulses: <strong>On-camera</strong> (the guide camera's ST-4 port),
+            <strong>GPUSB</strong> or <strong>GPINT</strong>.
+        </li>
+        <li>
+            <strong>Aux Mount:</strong> choose the ASCOM driver of your actual mount, for example the Astro-Physics ASCOM driver.
+            The mount's controller must be connected to the computer, and its ASCOM driver installed.
+        </li>
+    </ul>
+
+    <p>
+        With this setup, PHD2 sends guide pulses through the ST-4 port, while HelioMaker reads the mount's position, park state
+        and tracking state through the Aux Mount. HelioMaker can then prepare the mount for calibration and guiding: it unparks
+        the mount and sets the tracking rate.
+    </p>
+
+    <p>
+        Without an Aux Mount, HelioMaker cannot read whether the mount is parked or tracking, so it does not start PHD2 calibration
+        or a sequence.
+    </p>
+
+    <p>
+        ST-4 guiding requires the custom PHD2 version <strong>2.6.14-solar.7.1</strong> or later.
+    </p>
+
     <h2>Guiding Algorithm Settings</h2>
 
     <p>
