@@ -161,8 +161,10 @@
     </p>
 
     <p>
-        Without an Aux Mount, HelioMaker cannot read whether the mount is parked or tracking, so it does not start PHD2 calibration
-        or a sequence.
+        Without an Aux Mount, for example with a mount that has no ASCOM driver, HelioMaker sees that PHD2 guides the mount
+        through ST-4 only. It then does not read or set the mount's park state, tracking or position: unpark the mount and
+        set its tracking rate on the mount itself. PHD2 calibration and sequences start without those checks. Dynamic
+        Tracking, the SHG scanner and the eclipse tracking controls need a mount HelioMaker can read, through an Aux Mount.
     </p>
 
     <p>
