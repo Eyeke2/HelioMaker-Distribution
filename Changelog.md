@@ -1,3 +1,9 @@
+Version 2.0.20
+
+* Timing summary button in the Solar Eclipse Planner opens the frame-timing summary of a past run. It replaces the Tools menu's **Solar eclipse timing summary**
+* A new update dialog. One Download and Install click downloads the new version, shows its progress, and then asks to install it. This dialog installs the updates that follow 2.0.20; the update to 2.0.20 itself uses your current version's dialog
+* General bug fixes and reliability improvements
+
 Version 2.0.18
 
 * Solar and lunar eclipse planning now extends to the end of 2027, with full support for the great total solar eclipse of 2 August 2027
