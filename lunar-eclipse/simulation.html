@@ -24,11 +24,11 @@
 <figure class="shot" id="simulation-moon-view"><img src="img/simulation-moon-view.png" alt="The lunar preview with Show umbra unchecked, holding the Moon still while the shadow crosses it."><figcaption>The lunar preview with Show umbra unchecked, holding the Moon still while the shadow crosses it.</figcaption></figure>
 <h2>Simulated guiding frames</h2>
 <p>With shared-camera guiding enabled, the rehearsal can offer <span class="ui">Simulated guiding frames</span>. This feeds rendered lunar frames to PHD2 to exercise lunar-disk detection without the sky. It is independent of the science imaging source. PHD2 must be linked to test this path.</p>
-<aside class="callout warn"><span class="lbl">Know what the rehearsal controls</span>A SharpCap-camera rehearsal operates physical equipment. Simulated guiding frames also exercise PHD2. Check the selected source and guiding settings before starting; use the internal simulator with guiding off for a rehearsal without physical guide commands.</aside>
+<aside class="callout warn"><span class="lbl">Know what the rehearsal controls</span>A SharpCap-camera rehearsal operates physical equipment. Simulated guiding frames also exercise PHD2. A rehearsal on the <span class="ui">Eclipse simulator</span> or <span class="ui">None (timing only)</span> whose plan guides also guides the mount through PHD2 when PHD2 is linked, as with a separate guide camera; with a shared camera, link SharpCap too. Check the selected source and guiding settings before starting; use the internal simulator with guiding off for a rehearsal without physical guide commands.</aside>
 <p>In the console, <strong>Ctrl+click Freeze</strong> pauses the simulation clock; Ctrl+click Unfreeze resumes it. This control is absent from a live eclipse run. After rehearsing, review generated images and the final summary.</p>
 </main>
 <nav class="foot" aria-label="Chapter navigation"><a href="focusing.html">← Focusing</a><a href="preflight.html">Preflight checklist →</a></nav>
-<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.20 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
 </div>
 </body>
 </html>

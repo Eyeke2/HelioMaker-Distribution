@@ -202,10 +202,15 @@ Safe <b>REPLACE the filter NOW, BEFORE THE FIRST BEAD OF SUNLIGHT</b>.</div>
     asked for, so the badge states the mount fact plainly, for example
     <span class="ui">Mount parked, waiting for unpark</span>: guiding cannot run at all until the mount tracks
     again. A neutral badge means guiding is not required now.
-    When recovery needs a new PHD2 session, the badge offers <span class="ui">Reconnect PHD2</span> in both full
-    and compact views. If the PHD2 camera or mount is disconnected, HelioMaker reconnects the equipment before
-    sending any looping, target-selection or guiding command. Eclipse imaging continues while this guiding path
-    is being repaired.</td></tr>
+    If PHD2 closes or its link drops during a run that guides, HelioMaker restarts PHD2 by itself, and the badge
+    reads <span class="ui">Guiding: PHD2 relaunching</span>. It tries up to three times, 3 seconds apart. When
+    PHD2 is back, HelioMaker restores its planetary detection mode and the mount's tracking rate for the run. If
+    PHD2 cannot be restarted, or stops answering HelioMaker's commands, the badge reads
+    <span class="ui">Guiding: PHD2 recovery needs action</span> and offers <span class="ui">Retry recovery</span>
+    in both full and compact views, and the console says "PHD2 could not be restarted. Imaging continues; use
+    Retry recovery on the guiding badge." If the PHD2 camera or mount is disconnected, HelioMaker reconnects the
+    equipment before sending any looping, target-selection or guiding command. Eclipse imaging continues while
+    this guiding path is being repaired.</td></tr>
     <tr><td><strong>Automatic refocus</strong></td><td>Blue means armed, waiting, or pausing guiding; the
     near-white badge marks an active focus scan; green means complete; red means failed, unable to run because
     focus was not confirmed, or that the refocus time window was missed. A neutral badge means refocus is off or
@@ -225,7 +230,7 @@ Safe <b>REPLACE the filter NOW, BEFORE THE FIRST BEAD OF SUNLIGHT</b>.</div>
   detects an unexpected critical PHD2 or SharpCap error. The alarm asks for your attention; read the guiding,
   SharpCap/refocus badge and incident text immediately. Depending on the failure, HM may relaunch PHD2 or
   SharpCap, reconnect and attempt to resume eclipse imaging automatically. Do not assume the sound means either
-  failure or recovery is complete—the console reports the current state. The alarm follows the plan's Audio cues
+  failure or recovery is complete: the console reports the current state. The alarm follows the plan's Audio cues
   checkbox and remains audible when <span class="ui">Silent shutter ON</span> has muted camera feedback. It uses
   a separate audio path from the spoken safety and filter cues, so it cannot interrupt or mute a scheduled spoken
   instruction; only cosmetic shutter feedback may yield briefly. Stopping the sequence or closing its console

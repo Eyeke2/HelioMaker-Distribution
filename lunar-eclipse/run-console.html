@@ -18,7 +18,7 @@
 <figure class="shot" id="run-console-overview"><img src="img/run-console-overview.png" alt="The full lunar run console during capture, showing mode, timeline, phase, recipe, guiding, telemetry and image totals."><figcaption>The full lunar run console during capture, showing mode, timeline, phase, recipe, guiding, telemetry and image totals.</figcaption></figure>
 <p>Watch the delivered-image count and missed work as well as the timeline. A moving clock does not prove files are being saved. Use the capture-folder button to inspect output.</p>
 <p>When the Moon is below the observable altitude, its sets are skipped: the recipe reads <span class="ui">Skipped (not observable)</span>, and the console counts these sets separately from missed cycles, which are sets the run could not capture.</p>
-<p>The guiding line says how guiding runs. With a physical guiding camera and <span class="ui">Pause guiding during exposures</span> ticked, it reads "Guiding: separate camera, paused during each imaging set": PHD2 pauses for each set and resumes between sets, or before a set ends with <span class="ui">Resume guiding early</span>. If the run paused PHD2, HelioMaker resumes it when the run ends, when you stop the run and when HelioMaker exits; PHD2 is never left paused.</p>
+<p>The guiding line says how guiding runs. With a physical guiding camera and <span class="ui">Pause guiding during exposures</span> ticked, it reads "Guiding: paused during each imaging set": PHD2 pauses for each set and resumes between sets, or before a set ends with <span class="ui">Resume guiding early</span>. If the run paused PHD2, HelioMaker resumes it when the run ends, when you stop the run and when HelioMaker exits; PHD2 is never left paused.</p>
 <p>The guiding line reflects PHD2's guiding state, for example <span class="ui">PHD2 paused</span>, <span class="ui">PHD2 lost the Moon</span> or <span class="ui">PHD2 looping, not guiding</span>. A lost connection to PHD2 shows in red: <span class="ui">PHD2 link lost; reconnecting</span>.</p>
 <h2>Compact view</h2>
 <p><span class="ui">Switch to compact view</span> reduces the console to its essential status. Return to the full view when you need detailed telemetry or to understand an alert. A completed run returns to its full summary.</p>
@@ -42,7 +42,7 @@
 <p>Files are placed beneath the main-window Capture Folder in an event/run folder derived from the base filename, eclipse date and run mode. Rehearsal output uses simulation folders; live output uses a live folder and a numbered suffix when needed. Use the console’s folder action to locate the actual run.</p>
 </main>
 <nav class="foot" aria-label="Chapter navigation"><a href="preflight.html">← Preflight checklist</a><a href="index.html">Guide index →</a></nav>
-<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.18 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
+<footer><p>HelioMaker Lunar Eclipse Imaging Guide · HelioMaker 2.0.20 · October 2026.<br><a href="index.html">Guide index</a></p></footer>
 </div>
 </body>
 </html>

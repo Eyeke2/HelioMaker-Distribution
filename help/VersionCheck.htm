@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checking for Updates — HelioMaker</title>
+    <title>Checking for Updates &#149; HelioMaker</title>
     <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" type="text/css" href="help-web.css">
 </head>
@@ -16,6 +16,11 @@
     <p>
         HelioMaker can automatically check for new releases, download, and install them without leaving the application.
         You can trigger a manual check at any time via <strong>Help &rarr; Check for Updates</strong>.
+    </p>
+    <p>
+        <strong>Note:</strong> the update dialog described here comes with HelioMaker 2.0.20 and installs the updates
+        that follow it. An earlier version updates to 2.0.20 with its own dialog: click <strong>Download</strong>, then
+        <strong>Install</strong>.
     </p>
 
     <h2>1. Open the Update Dialog</h2>
@@ -31,24 +36,37 @@
     <ol>
         <li>Query the update server for the latest version.</li>
         <li>Compare it against your installed version (displayed above).</li>
-        <li>If a newer build is found, the button label changes to <strong>Download</strong>.</li>
+        <li>If a newer build is found, show its changelog, and the button label changes to
+        <strong>Download and Install</strong>.</li>
     </ol>
+    <p>
+        If the daily check has already found a new version, the dialog opens with its changelog and the
+        <strong>Download and Install</strong> button.
+    </p>
 
     <h2>3. Download & Install</h2>
     <p>
-        After clicking <strong>Download</strong>, HelioMaker fetches the installer package. Once downloaded, the button label changes to <strong>Install</strong>.
+        Click <strong>Download and Install</strong>. HelioMaker downloads the installer package and shows its progress
+        (<strong>Downloading HelioMaker</strong>, the version and the percentage done). Closing the dialog during the
+        download cancels it. When the download is complete and verified, the dialog closes and HelioMaker asks to
+        install the update.
     </p>
     <figure class="shot"><img src="Images/VersionCheck2.jpg" srcset="Images/VersionCheck2.jpg 1.5x" alt="Update dialog showing installed version and options" class="fig"></figure>
 
     <h2>4. Applying the Update</h2>
     <p>
-        When you click <strong>Install</strong>, HelioMaker will:
+        HelioMaker asks: "New HelioMaker version ... is available for install. The application will be closed and the
+        update will be installed. Do you want to continue?" When you click <strong>Install</strong>, HelioMaker will:
     </p>
     <ul>
-        <li>Prompt for confirmation to close the running application.</li>
+        <li>Close the running application.</li>
         <li>Run the downloaded installer package.</li>
         <li>Reopen HelioMaker into the newly installed version when the installer completes.</li>
     </ul>
+    <p>
+        An update restarts HelioMaker, so it cannot be installed while a sequence, an eclipse run or a scan is in
+        progress. Finish or stop the run, then check again.
+    </p>
 
     <h2>Enable Automatic Checks</h2>
     <p>

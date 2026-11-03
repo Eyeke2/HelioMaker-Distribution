@@ -139,7 +139,10 @@ site's local time. It changes the display, not the calculated eclipse contacts.<
     <dd>If you use a separate guide scope and guide camera, focus the guide camera too; focusing the main imaging
     camera does not focus the separate guiding optical path. The badge shows guiding status and, if your plan
     would guide through the unfiltered phases, a red warning about both filters with a risk acceptance checkbox
-    that gates a clean arm. See <a href="safety.html">Safety</a>.</dd>
+    that gates a clean arm. See <a href="safety.html">Safety</a>. Start Sun guiding prepares guiding; while it
+    runs, the button reads Cancel, and after a failure, Retry Sun guiding. A stop in PHD2 ends it at once. The
+    first Start in a planner switches Find &amp; Track to crescent detection; later Starts keep the detector you
+    chose.</dd>
   </dl>
 </div>
 <figure class="shot">
@@ -218,7 +221,7 @@ site's local time. It changes the display, not the calculated eclipse contacts.<
 </figure>
 
 <div class="grp">
-  <h3>Exposure, storage &amp; latency</h3>
+  <h3>Exposure &amp; storage</h3>
   <dl>
     <dt><span class="ui">Exposure plan</span> · <span class="ui">Totality slot</span></dt>
     <dd>A check on the exposure plan and whether the central phase cycles fit their time slot.</dd>
@@ -228,10 +231,6 @@ site's local time. It changes the display, not the calculated eclipse contacts.<
     planning values. If the disk is not bright and detailed without clipping, adjust the physical camera, record
     the pair that works, return to <span class="ui">Plan preferences...</span>, enter it as the full solar disk
     exposure and gain, derive and review the phases again, and save the revised plan as final before starting.</dd>
-    <dt><span class="ui">Camera latency</span></dt>
-    <dd>Warns if the intervals for each phase are faster than the camera was measured to sustain, or if the
-    measurement no longer matches the plan's frame size. Fix via the <a href="preferences.html">System benchmark
-    test</a>.</dd>
     <dt><span class="ui">Capture folder</span> · <span class="ui">Disk space</span></dt>
     <dd>Where frames are written (<span class="ui">Choose folder...</span>) and whether there's enough free space for
     the estimated capture. HelioMaker preserves a non-empty folder from an earlier or interrupted Live session
@@ -249,12 +248,6 @@ site's local time. It changes the display, not the calculated eclipse contacts.<
   reference exposure and gain against the filtered Sun, not to choose or rewrite those planning values.</figcaption>
 </figure>
 <figure class="shot">
-  <img src="img/preflight-latency.png" alt="Confirmed Camera latency gate showing the measured milliseconds per
-  frame used for capture time estimates.">
-  <figcaption>A valid camera latency measurement lets HelioMaker include the measured time per frame in its
-  capture estimates.</figcaption>
-</figure>
-<figure class="shot">
   <img src="img/preflight-storage.png" alt="Storage group showing Capture folder and Disk space gates with free
   space and estimated space required.">
   <figcaption>Check both the capture folder and the estimated free space. The estimate shown here is based on the
@@ -266,6 +259,18 @@ site's local time. It changes the display, not the calculated eclipse contacts.<
   The exposure, gain and filter ND rating should already have been determined with the physical rig, applied to
   the plan and rehearsed. Once you select <span class="ui">Start</span>, the current version locks exposure and
   gain for the run. A last minute change in SharpCap alone does not update the planned phase recipes.
+</div>
+
+<div class="grp">
+  <h3>Gear setup</h3>
+  <dl>
+    <dt><span class="ui">Imaging device</span></dt>
+    <dd>Names the SharpCap camera, and for a still-image plan whether it passed the camera check, then the time the
+    plan's intervals add per frame. It asks you to confirm when that time is not measured for the plan's setup, was
+    measured with a different setup, or is less than the camera measured. Run the
+    <a href="preferences.html">System benchmark test</a> from the same badge to measure it, or confirm to proceed
+    with the plan's figure.</dd>
+  </dl>
 </div>
 
 <div class="grp">
